@@ -1,5 +1,11 @@
 tap "teamookla/speedtest"
 tap "codecrafters-io/tap"
+tap "FelixKratz/formulae"
+
+# packages
+
+## Environment
+brew "FelixKratz/formulae/sketchybar"
 
 ## Dev
 
@@ -95,7 +101,7 @@ cask "font-fira-code-nerd-font"
 cask "google-chrome"
 cask "brave-browser"
 cask "appcleaner"
-cask "docker"
+cask "docker-desktop"
 cask "ghostty"
 cask "keepassxc"
 cask "rectangle"

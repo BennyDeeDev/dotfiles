@@ -3,6 +3,7 @@
 DOTFILES="$HOME/Repos/dotfiles"
 
 ln -sfn "$DOTFILES/Brewfile" ~/Brewfile
+ln -sfn "$DOTFILES/sketchybar" ~/.config/sketchybar
 ln -sfn "$DOTFILES/nvim" ~/.config/nvim
 ln -sfn "$DOTFILES/ghostty" ~/.config/ghostty
 ln -sfn "$DOTFILES/.zshrc.macos" ~/.zshrc
