@@ -1,11 +1,7 @@
 tap "teamookla/speedtest"
 tap "codecrafters-io/tap"
-tap "FelixKratz/formulae"
 
 # packages
-
-## Environment
-brew "FelixKratz/formulae/sketchybar"
 
 ## Dev
 
