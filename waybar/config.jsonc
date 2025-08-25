@@ -4,13 +4,8 @@
   "position": "top",
   "height": 30,
   "spacing": 1,
-  "modules-left": [
-    "hyprland/workspaces",
-    "hyprland/window",
-  ],
-  "modules-center": [
-    "mpris"
-  ],
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-center": ["mpris"],
   "modules-right": [
     "idle_inhibitor",
     "custom/kernel",
@@ -22,20 +17,20 @@
     "network",
     "pulseaudio",
     "clock",
-    "custom/weather"
+    "custom/weather",
   ],
 
   "hyprland/workspaces": {
     "all-outputs": true,
     "format": "{icon}",
     "persistent-workspaces": {
-      "*": 5
+      "*": 5,
     },
-    "move-to-monitor": true
+    "move-to-monitor": true,
   },
 
   "hyprland/window": {
-    "format": "{}"
+    "format": "{}",
   },
 
   "bluetooth": {
@@ -47,7 +42,7 @@
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
   },
 
   "mpris": {
@@ -59,24 +54,24 @@
       "default": "▶",
       "firefox": "▶",
       "tidal-hifi": "🎵",
-      "cmus": "🎵"
+      "cmus": "🎵",
     },
     "status-icons": {
-      "paused": "⏸"
-    }
+      "paused": "⏸",
+    },
   },
 
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
       "activated": "",
-      "deactivated": ""
-    }
+      "deactivated": "",
+    },
   },
 
   "tray": {
     "icon-size": 13,
-    "spacing": 10
+    "spacing": 10,
   },
 
   "clock": {
@@ -95,22 +90,22 @@
         "days": "<span color='#cdd6f4'><b>{}</b></span>",
         "weeks": "<span color='#94e2d5'>W{}</span>",
         "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
-        "today": "<span color='#f5e0dc'><b><u>{}</u></b></span>"
-      }
+        "today": "<span color='#f5e0dc'><b><u>{}</u></b></span>",
+      },
     },
     "actions": {
       "on-click-right": "mode",
       "on-click-forward": "tz_up",
       "on-click-backward": "tz_down",
       "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down"
-    }
+      "on-scroll-down": "shift_down",
+    },
   },
 
   "cpu": {
     "interval": 3,
     "format": "{usage}% ",
-    "on-click": "foot --app-id htop htop"
+    "on-click": "foot --app-id htop htop",
   },
 
   "memory": {
@@ -119,8 +114,8 @@
     "on-click": "foot --app-id htop htop",
     "tooltip-format": "Used: {used:0.1f}G/{total:0.1f}G. Swap: {swapUsed:0.1f}G/{swapTotal:0.1f}G",
     "states": {
-      "critical": 80
-    }
+      "critical": 80,
+    },
   },
 
   "temperature": {
@@ -129,7 +124,7 @@
     "critical-threshold": 90,
     "format-critical": "{temperatureC}°C {icon}",
     "format": "{temperatureC}°C {icon}",
-    "format-icons": ["", "", ""]
+    "format-icons": ["", "", ""],
   },
 
   "disk#ssd": {
@@ -138,7 +133,7 @@
     "path": "/",
     "tooltip": true,
     "warning": 80,
-    "critical": 90
+    "critical": 90,
   },
 
   "network": {
@@ -150,7 +145,7 @@
     "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
     "tooltip-format-wifi": "{ifname}: {ipaddr}/{cidr} ",
     "format-linked": "(No IP) ",
-    "format-disconnected": "Disconnected ⚠"
+    "format-disconnected": "Disconnected ⚠",
   },
 
   "custom/weather": {
@@ -158,12 +153,12 @@
     "exec": "~/.config/waybar/wittr.sh nyiregyhaza",
     "return-type": "json",
     "format": "{}",
-    "tooltip": true
+    "tooltip": true,
   },
 
   "custom/kernel": {
     "exec": "uname -r | sed -E 's/^([0-9]+\\.[0-9]+\\.[0-9]+)-.*-([a-zA-Z0-9]+)/\\1-\\2/'",
-    "format": "{} "
+    "format": "{} ",
   },
 
   "pulseaudio": {
@@ -180,8 +175,8 @@
       "headset": "",
       "phone": "",
       "portable": "",
-      "car": ""
+      "car": "",
     },
-    "on-click": "foot --app-id pulsemixer pulsemixer"
-  }
+    "on-click": "foot --app-id pulsemixer pulsemixer",
+  },
 }
