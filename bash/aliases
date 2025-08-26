@@ -1,0 +1,4 @@
+alias xc='xclip -selection clipboard'
+alias lg='lazygit'
+alias n='nvim'
+
