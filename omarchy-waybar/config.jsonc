@@ -61,7 +61,7 @@
     "status-icons": {
       "paused": "⏸",
     },
-    "ignored-players": ["brave"],
+    // "ignored-players": ["brave"],
   },
   "cpu": {
     "interval": 5,
