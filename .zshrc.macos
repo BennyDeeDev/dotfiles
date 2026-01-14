@@ -110,7 +110,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias xc='pb-copy'
+alias xc='pbcopy'
 alias lg='lazygit'
 alias n='nvim'
 
