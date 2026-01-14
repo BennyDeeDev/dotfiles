@@ -32,7 +32,6 @@ brew "fd"
 brew "ansible"
 brew "terraform"
 brew "bazelisk"
-brew "docker"
 brew "lazydocker"
 
 # Kubernetes
