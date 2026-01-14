@@ -1,15 +1,12 @@
+# Taps
 tap "teamookla/speedtest"
 tap "codecrafters-io/tap"
 tap "FelixKratz/formulae"
+tap "fluxcd/tap"
 
-# packages
-
-## Dev
-
+# Programming Languages
 brew "git"
-
 brew "mise"
-
 brew "node"
 brew "go"
 brew "ruby"
@@ -17,34 +14,28 @@ brew "python"
 brew "java"
 brew "rustup"
 
+# Development Tools
 brew "codecrafters"
 brew "hugo"
 brew "prettier"
 brew "eslint"
 brew "rust-analyzer"
+brew "cmake"
 
-### Neovim
-
+# Neovim
 brew "neovim"
 brew "lazygit"
 brew "ripgrep"
 brew "fd"
 
-## Ops
-
+# DevOps
 brew "ansible"
 brew "terraform"
 brew "bazelisk"
+brew "docker"
+brew "lazydocker"
 
-### SQL
-
-brew "mysql"
-brew "postgresql"
-brew "sqlite"
-brew "sqlc"
-
-### Kubernetes
-
+# Kubernetes
 brew "kubernetes-cli"
 brew "stern"
 brew "k9s"
@@ -54,11 +45,13 @@ brew "kubectx"
 brew "argocd"
 brew "fluxcd/tap/flux"
 
-## Utilities
+# Databases
+brew "mysql"
+brew "postgresql"
+brew "sqlite"
+brew "sqlc"
 
-# brew "raylib"
-brew "cmake"
-brew "lazydocker"
+# CLI Utilities
 brew "bat"
 brew "eza"
 brew "tlrc"
@@ -74,23 +67,25 @@ brew "btop"
 brew "yt-dlp"
 brew "teamookla/speedtest/speedtest"
 brew "gh"
-brew "powerlevel10k"
 brew "mas"
 brew "fastfetch"
 brew "tree"
-brew "sketchybar"
 
-### Yazi
+# Shell
+brew "powerlevel10k"
+brew "fzf"
+brew "zoxide"
 
+# Yazi File Manager
 brew "yazi"
 brew "ffmpegthumbnailer"
 brew "sevenzip"
 brew "poppler"
-brew "fzf"
-brew "zoxide"
 
-# cask
+# macOS Utilities
+brew "sketchybar"
 
+# Fonts
 cask "font-fira-code-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-meslo-lg-nerd-font"
@@ -98,8 +93,7 @@ cask "font-hack-nerd-font"
 cask "font-iosevka-nerd-font"
 cask "font-caskaydia-cove-nerd-font"
 
-## Must-have
-
+# Essential Apps
 cask "google-chrome"
 cask "firefox"
 cask "brave-browser"
@@ -113,29 +107,27 @@ cask "the-unarchiver"
 cask "visual-studio-code"
 cask "github"
 
-## Personal
-
+# Personal Apps
 cask "obs"
 cask "raspberry-pi-imager"
-# cask "obsidian"
+cask "obsidian"
 cask "google-drive"
 cask "vlc"
-# cask "minecraft"
+cask "minecraft"
 cask "ledger-wallet"
 cask "discord"
 cask "teamviewer"
-# cask "affinity-photo"
-# cask "jdownloader"
-# cask "godot"
+cask "affinity-photo"
+cask "jdownloader"
+cask "godot"
 
-## Work
-
+# Work Apps
 # cask "mattermost"
 # cask "microsoft-edge"
 # cask "microsoft-teams"
 # cask "microsoft-office"
 
-# mas
+# Mac App Store
 # mas "Xcode", id: 497799835
 # mas "Final Cut Pro", id: 424389933
 # mas "Amphetamine", id: 937984704
@@ -143,5 +135,5 @@ cask "teamviewer"
 # mas "Kindle", id: 302584613
 # mas "Wireguard", id: 1451685025
 
-# manual
+# Manual Installs
 # epson software https://www.epson.de/de_DE/support/sc/epson-workforce-es-50/s/s1684
