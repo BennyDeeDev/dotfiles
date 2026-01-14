@@ -34,7 +34,6 @@ brew "fd"
 
 brew "ansible"
 brew "terraform"
-brew "bazel"
 brew "bazelisk"
 
 ### SQL
@@ -122,7 +121,7 @@ cask "raspberry-pi-imager"
 cask "google-drive"
 cask "vlc"
 # cask "minecraft"
-cask "ledger-live"
+cask "ledger-wallet"
 cask "discord"
 cask "teamviewer"
 # cask "affinity-photo"
@@ -137,13 +136,12 @@ cask "teamviewer"
 # cask "microsoft-office"
 
 # mas
-
-mas "Xcode", id: 497799835
-mas "Final Cut Pro", id: 424389933
-mas "Amphetamine", id: 937984704
-mas "BetterSnapTool", id: 417375580
+# mas "Xcode", id: 497799835
+# mas "Final Cut Pro", id: 424389933
+# mas "Amphetamine", id: 937984704
+# mas "BetterSnapTool", id: 417375580
 # mas "Kindle", id: 302584613
-mas "Wireguard", id: 1451685025
+# mas "Wireguard", id: 1451685025
 
 # manual
 # epson software https://www.epson.de/de_DE/support/sc/epson-workforce-es-50/s/s1684

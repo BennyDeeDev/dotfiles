@@ -3,3 +3,4 @@ font-size = 16
 theme = dark:catppuccin-mocha.conf,light:catppuccin-latte.conf
 quit-after-last-window-closed = true
 shell-integration = zsh
+adjust-cursor-thickness = 2
