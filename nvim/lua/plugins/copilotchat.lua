@@ -2,7 +2,7 @@ return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     opts = function(_, opts)
-      opts.model = "gpt-5.2"
+      opts.model = "claude-sonnet-4.5"
       opts.sticky = { "#buffer:listed" }
       return opts
     end,
