@@ -1,11 +1,15 @@
 #!/bin/bash
 
+set -e
+
 DOTFILES="$HOME/Repos/dotfiles"
 
-ln -sfn "$DOTFILES/nvim" ~/.config/nvim
-ln -sfn "$DOTFILES/i3" ~/.config/i3
-ln -sfn "$DOTFILES/alacritty" ~/.config/alacritty
-ln -sfn "$DOTFILES/rofi" ~/.config/rofi
-ln -sfn "$DOTFILES/polybar" ~/.config/polybar
-ln -sfn "$DOTFILES/.zshrc.arch" ~/.zshrc
-ln -sfn "$DOTFILES/.p10k.zsh" ~/.p10k.zsh
+source "$DOTFILES/bash/link"
+
+link "$DOTFILES/nvim" "$HOME/.config/nvim"
+link "$DOTFILES/i3" "$HOME/.config/i3"
+link "$DOTFILES/alacritty" "$HOME/.config/alacritty"
+link "$DOTFILES/rofi" "$HOME/.config/rofi"
+link "$DOTFILES/polybar" "$HOME/.config/polybar"
+link "$DOTFILES/.zshrc.arch" "$HOME/.zshrc"
+link "$DOTFILES/.p10k.zsh" "$HOME/.p10k.zsh"

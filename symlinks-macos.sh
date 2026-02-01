@@ -1,10 +1,14 @@
 #!/bin/bash
 
+set -e
+
 DOTFILES="$HOME/Repos/dotfiles"
 
-ln -sfn "$DOTFILES/Brewfile" ~/Brewfile
-ln -sfn "$DOTFILES/nvim" ~/.config/nvim
-ln -sfn "$DOTFILES/ghostty" ~/.config/ghostty
-ln -sfn "$DOTFILES/.zshrc.macos" ~/.zshrc
-ln -sfn "$DOTFILES/.zprofile.macos" ~/.zprofile
-ln -sfn "$DOTFILES/.p10k.zsh" ~/.p10k.zsh
+source "$DOTFILES/bash/link"
+
+link "$DOTFILES/Brewfile" "$HOME/Brewfile"
+link "$DOTFILES/nvim" "$HOME/.config/nvim"
+link "$DOTFILES/ghostty" "$HOME/.config/ghostty"
+link "$DOTFILES/.zshrc.macos" "$HOME/.zshrc"
+link "$DOTFILES/.zprofile.macos" "$HOME/.zprofile"
+link "$DOTFILES/.p10k.zsh" "$HOME/.p10k.zsh"
