@@ -1,6 +1,24 @@
-font-family = FiraCode Nerd Font
-font-size = 16
-theme = dark:catppuccin-mocha.conf,light:catppuccin-latte.conf
-quit-after-last-window-closed = true
+# Font
+font-family = FiraCode Nerd Fonts
+font-style = Regular
+
+# Theme
+theme = catppuccin-mocha.conf
+
+# Shell
 shell-integration = zsh
+
+# Window
+window-padding-x = 14
+window-padding-y = 14
+quit-after-last-window-closed = true
+confirm-close-surface = false
+
+# Cursor
 adjust-cursor-thickness = 2
+
+# Keyboard bindings
+# keybind = super+c=quit
+
+# Load OS-specific overrides
+config-file = ?config-local

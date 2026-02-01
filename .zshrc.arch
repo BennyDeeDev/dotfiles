@@ -82,6 +82,13 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+# Source bash configuration
+DOTFILES="$HOME/Repos/dotfiles"
+[[ -f "$DOTFILES/bash/init" ]] && source "$DOTFILES/bash/init"
+[[ -f "$DOTFILES/bash/aliases" ]] && source "$DOTFILES/bash/aliases"
+[[ -f "$DOTFILES/bash/envs" ]] && source "$DOTFILES/bash/envs"
+[[ -f "$DOTFILES/bash/functions" ]] && source "$DOTFILES/bash/functions"
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -112,60 +119,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias yay="paru"
 alias xc='xclip -selection clipboard'
-alias lg='lazygit'
-alias n='nvim'
-
-__cd_and_optional_nvim() {
-  local open_in_nvim="$1"
-  local REPOS_DIR=~/Repos
-  local CONFIG_DIR=~/.config
-
-  [[ -d "$REPOS_DIR" && -d "$CONFIG_DIR" ]] || {
-    [[ ! -d "$REPOS_DIR" ]] && echo "$REPOS_DIR does not exist."
-    [[ ! -d "$CONFIG_DIR" ]] && echo "$CONFIG_DIR does not exist."
-    return 1
-  }
-
-  local selected
-  selected=$(find "$REPOS_DIR" "$CONFIG_DIR" -mindepth 1 -maxdepth 1 -type d | fzf)
-
-  [[ -z "$selected" ]] && {
-    echo "No directory selected."
-    return 0
-  }
-
-  cd "$selected" || return 1
-  [[ "$open_in_nvim" == "true" ]] && nvim .
-}
-
-ncd() { __cd_and_optional_nvim true; }
-ccd() { __cd_and_optional_nvim false; }
-
-prettierrc() {
-  cat > .prettierrc << 'EOF'
-{
-  "printWidth": 80,
-  "proseWrap": "always"
-}
-EOF
-}
-
-tasksjson() {
-  mkdir -p .vscode
-  cat > .vscode/tasks.json << 'EOF'
-{
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "My Placeholder Task",
-      "type": "shell",
-      "command": "echo 'Hello, World!'",
-      "problemMatcher": []
-    }
-  ]
-}
-EOF
-}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

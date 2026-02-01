@@ -24,4 +24,30 @@ __cd_and_optional_nvim() {
 ncd() { __cd_and_optional_nvim true; }
 ccd() { __cd_and_optional_nvim false; }
 
+prettierrc() {
+  cat > .prettierrc << 'EOF'
+{
+  "printWidth": 80,
+  "proseWrap": "always"
+}
+EOF
+}
+
+tasksjson() {
+  mkdir -p .vscode
+  cat > .vscode/tasks.json << 'EOF'
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "My Placeholder Task",
+      "type": "shell",
+      "command": "echo 'Hello, World!'",
+      "problemMatcher": []
+    }
+  ]
+}
+EOF
+}
+
 
