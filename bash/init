@@ -1,16 +1,49 @@
 if command -v mise &> /dev/null; then
-  eval "$(mise activate bash)"
+  if [ -n "$ZSH_VERSION" ]; then
+    eval "$(mise activate zsh)"
+  else
+    eval "$(mise activate bash)"
+  fi
 fi
 
 if command -v zoxide &> /dev/null; then
-  eval "$(zoxide init bash)"
+  if [ -n "$ZSH_VERSION" ]; then
+    eval "$(zoxide init zsh)"
+  else
+    eval "$(zoxide init bash)"
+  fi
 fi
 
 if command -v fzf &> /dev/null; then
-  if [[ -f /usr/share/fzf/completion.bash ]]; then
-    source /usr/share/fzf/completion.bash
+  if [ -n "$ZSH_VERSION" ]; then
+    if [[ -f /usr/share/fzf/completion.zsh ]]; then
+      source /usr/share/fzf/completion.zsh
+    fi
+    if [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
+      source /usr/share/fzf/key-bindings.zsh
+    fi
+  else
+    if [[ -f /usr/share/fzf/completion.bash ]]; then
+      source /usr/share/fzf/completion.bash
+    fi
+    if [[ -f /usr/share/fzf/key-bindings.bash ]]; then
+      source /usr/share/fzf/key-bindings.bash
+    fi
   fi
-  if [[ -f /usr/share/fzf/key-bindings.bash ]]; then
-    source /usr/share/fzf/key-bindings.bash
+fi
+
+if command -v kubectl &> /dev/null; then
+  if [ -n "$ZSH_VERSION" ]; then
+    source <(kubectl completion zsh)
+  else
+    source <(kubectl completion bash)
+  fi
+fi
+
+if command -v flux &> /dev/null; then
+  if [ -n "$ZSH_VERSION" ]; then
+    source <(flux completion zsh)
+  else
+    source <(flux completion bash)
   fi
 fi

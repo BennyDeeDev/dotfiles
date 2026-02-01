@@ -6,6 +6,10 @@ if command -v eza &> /dev/null; then
   alias lta='lt -a'
 fi
 
+if command -v bat &> /dev/null; then
+  alias cat='bat'
+fi
+
 alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
 
 if command -v zoxide &> /dev/null; then

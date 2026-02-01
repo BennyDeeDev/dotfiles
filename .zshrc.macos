@@ -125,11 +125,6 @@ export PATH="$PATH:$HOME/go/bin"
 
 export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
 
-source <(mise completion zsh)
-eval "$(mise activate)"
-
-eval "$(zoxide init zsh)"
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
