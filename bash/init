@@ -1,3 +1,12 @@
+if [ -n "$ZSH_VERSION" ]; then
+  autoload -Uz compinit && compinit
+  autoload -U up-line-or-beginning-search down-line-or-beginning-search
+  zle -N up-line-or-beginning-search
+  zle -N down-line-or-beginning-search
+  bindkey "^[[A" up-line-or-beginning-search
+  bindkey "^[[B" down-line-or-beginning-search
+fi
+
 if command -v mise &> /dev/null; then
   if [ -n "$ZSH_VERSION" ]; then
     eval "$(mise activate zsh)"
@@ -59,5 +68,13 @@ if command -v flux &> /dev/null; then
     source <(flux completion zsh)
   else
     source <(flux completion bash)
+  fi
+fi
+
+if command -v starship &> /dev/null; then
+  if [ -n "$ZSH_VERSION" ]; then
+    eval "$(starship init zsh)"
+  else
+    eval "$(starship init bash)"
   fi
 fi

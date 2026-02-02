@@ -71,7 +71,7 @@ brew "fastfetch"
 brew "tree"
 
 # Shell
-brew "powerlevel10k"
+brew "starship"
 brew "fzf"
 brew "zoxide"
 
