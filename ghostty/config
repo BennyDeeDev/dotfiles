@@ -9,10 +9,12 @@ theme = catppuccin-mocha.conf
 shell-integration = zsh
 
 # Window
-window-padding-x = 14
-window-padding-y = 14
+window-padding-x = 7
+window-padding-y = 7
 quit-after-last-window-closed = true
 confirm-close-surface = false
+maximize = true
+window-show-tab-bar = always
 
 # Cursor
 adjust-cursor-thickness = 2
