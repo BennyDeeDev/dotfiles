@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
 DOTFILES="$HOME/Repos/dotfiles"
 PACMANFILE="$DOTFILES/Pacmanfile"

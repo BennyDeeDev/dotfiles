@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
 # Check if zsh is installed
 if ! command -v zsh &> /dev/null; then

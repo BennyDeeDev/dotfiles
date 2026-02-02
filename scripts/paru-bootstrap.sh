@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 sudo pacman -S --needed base-devel git
 sudo pacman -S rustup
 rustup default stable

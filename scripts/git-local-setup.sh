@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
 # Configuration
 GH_USERNAME="BennyDeeDev"
