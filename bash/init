@@ -6,6 +6,14 @@ if command -v mise &> /dev/null; then
   fi
 fi
 
+if command -v gh &> /dev/null; then
+  if [ -n "$ZSH_VERSION" ]; then
+    source <(gh completion -s zsh)
+  else
+    source <(gh completion -s bash)
+  fi
+fi
+
 if command -v zoxide &> /dev/null; then
   if [ -n "$ZSH_VERSION" ]; then
     eval "$(zoxide init zsh)"
@@ -16,19 +24,17 @@ fi
 
 if command -v fzf &> /dev/null; then
   if [ -n "$ZSH_VERSION" ]; then
-    if [[ -f /usr/share/fzf/completion.zsh ]]; then
-      source /usr/share/fzf/completion.zsh
-    fi
-    if [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
-      source /usr/share/fzf/key-bindings.zsh
-    fi
+    source <(fzf --zsh)
   else
-    if [[ -f /usr/share/fzf/completion.bash ]]; then
-      source /usr/share/fzf/completion.bash
-    fi
-    if [[ -f /usr/share/fzf/key-bindings.bash ]]; then
-      source /usr/share/fzf/key-bindings.bash
-    fi
+    eval "$(fzf --bash)"
+  fi
+fi
+
+if command -v docker &> /dev/null; then
+  if [ -n "$ZSH_VERSION" ]; then
+    source <(docker completion zsh)
+  else
+    source <(docker completion bash)
   fi
 fi
 
@@ -37,6 +43,14 @@ if command -v kubectl &> /dev/null; then
     source <(kubectl completion zsh)
   else
     source <(kubectl completion bash)
+  fi
+fi
+
+if command -v helm &> /dev/null; then
+  if [ -n "$ZSH_VERSION" ]; then
+    source <(helm completion zsh)
+  else
+    source <(helm completion bash)
   fi
 fi
 
