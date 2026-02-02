@@ -1,15 +1,16 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[](red)\
+[ ](bg:red)\
 $os\
 $username\
-[](bg:peach fg:red)\
+[ ](bg:red)\
+[ ](bg:peach fg:red)\
 $directory\
-[](bg:yellow fg:peach)\
+[ ](bg:yellow fg:peach)\
 $git_branch\
 $git_status\
-[](fg:yellow bg:green)\
+[ ](fg:yellow bg:green)\
 $c\
 $rust\
 $golang\
@@ -19,11 +20,11 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[](fg:green bg:sapphire)\
-$conda\
-[](fg:sapphire bg:lavender)\
-$time\
-[ ](fg:lavender)\
+[ ](fg:green bg:sapphire)\
+$docker_context\
+[ ](fg:sapphire bg:lavender)\
+$kubernetes\
+[ ](fg:lavender)\
 $cmd_duration\
 $line_break\
 $character"""
@@ -73,7 +74,7 @@ truncation_symbol = "…/"
 "Downloads" = " "
 "Music" = "󰝚 "
 "Pictures" = " "
-"Developer" = "󰲋 "
+"Repos" = "󰲋 "
 
 [git_branch]
 symbol = ""
@@ -134,14 +135,14 @@ symbol = ""
 style = "bg:sapphire"
 format = '[[ $symbol( $context) ](fg:crust bg:sapphire)]($style)'
 
-[conda]
-symbol = "  "
-style = "fg:crust bg:sapphire"
-format = '[$symbol$environment ]($style)'
-ignore_base = false
+[kubernetes]
+disabled = false
+symbol = "☸ "
+style = "bg:lavender"
+format = '[[ $symbol$context( \($namespace\)) ](fg:crust bg:lavender)]($style)'
 
 [time]
-disabled = false
+disabled = true
 time_format = "%R"
 style = "bg:lavender"
 format = '[[  $time ](fg:crust bg:lavender)]($style)'
