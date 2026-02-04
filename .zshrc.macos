@@ -1,6 +1,8 @@
 DOTFILES="$HOME/Repos/dotfiles"
 [[ -f "$DOTFILES/.zshrc.common" ]] && source "$DOTFILES/.zshrc.common"
 
+export XDG_CONFIG_HOME="$HOME/.config"
+
 alias xc='pbcopy'
 
 export PATH="/opt/homebrew/bin:$PATH" 
