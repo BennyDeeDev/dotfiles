@@ -5,14 +5,9 @@ alias yay="paru"
 alias xc="wl-copy"
 
 pacman-bundle() {
-  local PACMANFILE="$HOME/Repos/dotfiles/Pacmanfile"
-  
-  [[ ! -f "$PACMANFILE" ]] && {
-    echo "Pacmanfile not found at $PACMANFILE"
-    return 1
-  }
-  
-  echo "Installing packages from Pacmanfile..."
-  paru -S --needed --noconfirm - < "$PACMANFILE"
+  "$DOTFILES/scripts/pacman-bundle.sh"
 }
 
+reboot-arch() {
+  "$DOTFILES/scripts/reboot-to-arch.sh"
+}

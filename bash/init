@@ -1,6 +1,17 @@
 if [ -n "$ZSH_VERSION" ]; then
+  HISTFILE=~/.zsh_history
+  HISTSIZE=50000
+  SAVEHIST=50000
+
+  setopt SHARE_HISTORY
+  setopt INC_APPEND_HISTORY
+  setopt HIST_IGNORE_DUPS
+  setopt HIST_REDUCE_BLANKS
+
   autoload -Uz compinit && compinit
-  autoload -U up-line-or-beginning-search down-line-or-beginning-search
+
+  autoload -U up-line-or-beginning-search 
+  autoload -U down-line-or-beginning-search
   zle -N up-line-or-beginning-search
   zle -N down-line-or-beginning-search
   bindkey "^[[A" up-line-or-beginning-search
