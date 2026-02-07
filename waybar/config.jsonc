@@ -82,7 +82,7 @@
     "on-click": "ghostty -e btop"
   },
   "custom/brightness": {
-    "format": "󰃚",
+    "format": "󰍹",
     "exec": "asdbctl get | awk '{print $2}'",
     "interval": 2,
     "on-click": "asdbctl up -s 5",
