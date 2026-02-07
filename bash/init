@@ -7,6 +7,7 @@ if [ -n "$ZSH_VERSION" ]; then
   setopt INC_APPEND_HISTORY
   setopt HIST_IGNORE_DUPS
   setopt HIST_REDUCE_BLANKS
+  setopt HIST_IGNORE_SPACE
 
   autoload -Uz compinit && compinit
 
@@ -22,6 +23,8 @@ if [ -n "$ZSH_VERSION" ]; then
 
   bindkey "^[[H" beginning-of-line
   bindkey "^[[F" end-of-line
+
+  bindkey "^[[3~" delete-char
 fi
 
 if command -v mise &> /dev/null; then
