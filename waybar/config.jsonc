@@ -16,6 +16,7 @@
     "network",
     "pulseaudio",
     "battery",
+    "custom/brightness",
 
     "custom/separator-right",
 
@@ -79,6 +80,14 @@
     "interval": 5,
     "format": "",
     "on-click": "ghostty -e btop"
+  },
+  "custom/brightness": {
+    "format": "󰃚",
+    "exec": "asdbctl get | awk '{print $2}'",
+    "interval": 2,
+    "on-click": "asdbctl up -s 5",
+    "on-click-right": "asdbctl down -s 5",
+    "tooltip-format": "Brightness: {}%"
   },
   "temperature#cpu": {
     // k10temp: Tctl (CPU control temp)
@@ -146,8 +155,9 @@
   },
   "pulseaudio": {
     "format": "{icon}",
-    "on-click": "ghostty -e wiremix",
-    "on-click-right": "pamixer -t",
+    "on-click": "pamixer -i 5",
+    "on-click-right": "pamixer -d 5",
+    "on-click-middle": "ghostty -e wiremix",
     "tooltip-format": "Playing at {volume}%",
     "scroll-step": 5,
     "format-muted": "",

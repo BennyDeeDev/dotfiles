@@ -1,11 +1,13 @@
 # Todo
 
-## Arch Hyprland
+## Arch
 
 - [ ] Have a fully reproducable user land Arch
-- [ ] Install arch with `archinstall` minimal
 - [ ] Figure out cursors
+- [ ] Homebrew bundle cleanup in paru
+- [ ] Control T in ghostty
 
-- [] Git config
-- [] Homebrew bundle like paru `paru -S --needed --noconfirm - < Pacmanfile`
-- [] Enable Tabs in ghostty
+## Project Ideas
+
+- [ ] Write a TUI that shows Temperatures
+- [ ] Install arch with `archinstall` minimal
