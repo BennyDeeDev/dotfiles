@@ -28,7 +28,8 @@ prettierrc() {
   cat > .prettierrc << 'EOF'
 {
   "printWidth": 80,
-  "proseWrap": "always"
+  "proseWrap": "always",
+  "trailingComma": "none"
 }
 EOF
 }
