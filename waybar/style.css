@@ -56,6 +56,18 @@
   font-size: 18px;
 }
 
+#temperature.cpu {
+  margin-left: 4px;
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+#temperature.gpu {
+  margin-left: 8px;
+  margin-right: 4px;
+  font-size: 16px;
+}
+
 #clock {
   margin-left: 4px;
 }

@@ -7,19 +7,24 @@
   "modules-left": ["custom/arch", "custom/separator-left", "hyprland/workspaces"],
   "modules-center": ["mpris"],
   "modules-right": [
-    "group/tray-expander",
+    "cpu",
     "bluetooth",
     "network",
     "pulseaudio",
-    "cpu",
     "battery",
+
+    "custom/separator-right",
+
+    "temperature#cpu",
+    "temperature#gpu",
+    
     "custom/separator-right",
     "clock"
   ],
   "custom/arch": {
     "format": "󰣇",
     "tooltip": true,
-    "on-click": "ghostty -e sh -c 'fastfetch; read -p \"Press Enter to close...\"'"
+    "on-click": "ghostty -e sh -c 'fastfetch; exec zsh'"
   },
   "custom/separator-left": {
     "format": "|",
@@ -68,9 +73,28 @@
   },
   "cpu": {
     "interval": 5,
-    "format": "󰍛",
-    "on-click": "ghostty -e btop",
-    "on-click-right": "ghostty"
+    "format": "",
+    "on-click": "ghostty -e btop"
+  },
+  "temperature#cpu": {
+    // k10temp: Tctl (CPU control temp)
+    "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
+    "input-filename": "temp1_input",
+    "critical-threshold": 80,
+    "format": "󰍛 {temperatureC}°",
+    "format-critical": "󰍛 {temperatureC}°",
+    "tooltip-format": "CPU: {temperatureC}°C",
+    "interval": 5
+  },
+  "temperature#gpu": {
+    // amdgpu: edge (Radeon RX 9060 XT - discrete GPU die edge temp)
+    "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/0000:02:00.0/0000:03:00.0/hwmon",
+    "input-filename": "temp1_input",
+    "critical-threshold": 85,
+    "format": "󰢮 {temperatureC}°",
+    "format-critical": "󰢮 {temperatureC}°",
+    "tooltip-format": "GPU: {temperatureC}°C",
+    "interval": 5
   },
   "clock": {
     "format": "{:%a %d %b %H:%M}",
