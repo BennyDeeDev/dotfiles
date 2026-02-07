@@ -16,6 +16,12 @@ if [ -n "$ZSH_VERSION" ]; then
   zle -N down-line-or-beginning-search
   bindkey "^[[A" up-line-or-beginning-search
   bindkey "^[[B" down-line-or-beginning-search
+
+  bindkey "^[[1;5C" forward-word
+  bindkey "^[[1;5D" backward-word
+
+  bindkey "^[[H" beginning-of-line
+  bindkey "^[[F" end-of-line
 fi
 
 if command -v mise &> /dev/null; then
