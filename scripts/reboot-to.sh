@@ -2,8 +2,8 @@
 
 set -euo pipefail
 
-if [[ $# -lt 1 ]]; then
-  echo "Usage: $0 <efi-entry-name> [command]"
+if [[ $# -lt 2 ]]; then
+  echo "Usage: $0 <efi-entry-name> <command>"
   echo "Example: $0 'Linux Boot Manager' reboot"
   exit 1
 fi
