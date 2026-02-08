@@ -19,8 +19,5 @@ window-show-tab-bar = always
 # Cursor
 adjust-cursor-thickness = 2
 
-# Keyboard bindings
-# keybind = super+c=quit
-
 # Load OS-specific overrides
 config-file = ?config-local
