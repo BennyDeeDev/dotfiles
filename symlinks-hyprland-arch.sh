@@ -4,13 +4,11 @@ set -e
 
 DOTFILES="$HOME/Repos/dotfiles"
 
-source "$DOTFILES/bash/link"
-
-link "$DOTFILES/hypr" "$HOME/.config/hypr"
-link "$DOTFILES/ghostty" "$HOME/.config/ghostty"
-link "$DOTFILES/ghostty/arch.conf" "$HOME/.config/ghostty/config-local"
-link "$DOTFILES/nvim" "$HOME/.config/nvim"
-link "$DOTFILES/starship/starship.toml" "$HOME/.config/starship.toml"
-link "$DOTFILES/.zshrc.arch" "$HOME/.zshrc"
-link "$DOTFILES/waybar"  "$HOME/.config/waybar"
-link "$DOTFILES/k9s" "$HOME/.config/k9s"
+"$DOTFILES/scripts/symlink.sh" "$DOTFILES/hypr" "$HOME/.config/hypr"
+"$DOTFILES/scripts/symlink.sh" "$DOTFILES/ghostty" "$HOME/.config/ghostty"
+"$DOTFILES/scripts/symlink.sh" "$DOTFILES/ghostty/arch.conf" "$HOME/.config/ghostty/config-local"
+"$DOTFILES/scripts/symlink.sh" "$DOTFILES/nvim" "$HOME/.config/nvim"
+"$DOTFILES/scripts/symlink.sh" "$DOTFILES/starship/starship.toml" "$HOME/.config/starship.toml"
+"$DOTFILES/scripts/symlink.sh" "$DOTFILES/.zshrc.arch" "$HOME/.zshrc"
+"$DOTFILES/scripts/symlink.sh" "$DOTFILES/waybar"  "$HOME/.config/waybar"
+"$DOTFILES/scripts/symlink.sh" "$DOTFILES/k9s" "$HOME/.config/k9s"

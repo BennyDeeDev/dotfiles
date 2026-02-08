@@ -4,12 +4,10 @@ set -e
 
 DOTFILES="$HOME/Repos/dotfiles"
 
-source "$DOTFILES/bash/link"
-
-link "$DOTFILES/nvim" "$HOME/.config/nvim"
-link "$DOTFILES/i3" "$HOME/.config/i3"
-link "$DOTFILES/alacritty" "$HOME/.config/alacritty"
-link "$DOTFILES/rofi" "$HOME/.config/rofi"
-link "$DOTFILES/polybar" "$HOME/.config/polybar"
-link "$DOTFILES/starship/starship.toml" "$HOME/.config/starship.toml"
-link "$DOTFILES/.zshrc.arch" "$HOME/.zshrc"
+"$DOTFILES/scripts/symlink.sh" "$DOTFILES/nvim" "$HOME/.config/nvim"
+"$DOTFILES/scripts/symlink.sh" "$DOTFILES/i3" "$HOME/.config/i3"
+"$DOTFILES/scripts/symlink.sh" "$DOTFILES/alacritty" "$HOME/.config/alacritty"
+"$DOTFILES/scripts/symlink.sh" "$DOTFILES/rofi" "$HOME/.config/rofi"
+"$DOTFILES/scripts/symlink.sh" "$DOTFILES/polybar" "$HOME/.config/polybar"
+"$DOTFILES/scripts/symlink.sh" "$DOTFILES/starship/starship.toml" "$HOME/.config/starship.toml"
+"$DOTFILES/scripts/symlink.sh" "$DOTFILES/.zshrc.arch" "$HOME/.zshrc"
