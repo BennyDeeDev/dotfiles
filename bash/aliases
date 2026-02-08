@@ -25,10 +25,6 @@ if command -v zoxide &> /dev/null; then
   }
 fi
 
-open() (
-  xdg-open "$@" >/dev/null 2>&1 &
-)
-
 # Directories
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -37,7 +33,7 @@ alias ....='cd ../../..'
 # Tools
 alias c='opencode'
 alias d='docker'
-n() { if [ "$#" -eq 0 ]; then nvim .; else nvim "$@"; fi; }
+alias n='nvim'
 
 alias lg='lazygit'
 alias k='kubectl'

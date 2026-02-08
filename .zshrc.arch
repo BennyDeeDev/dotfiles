@@ -4,6 +4,10 @@ DOTFILES="$HOME/Repos/dotfiles"
 alias yay="paru"
 alias xc="wl-copy"
 
+open() (
+  xdg-open "$@" >/dev/null 2>&1 &
+)
+
 pacman-bundle() {
   local pacmanfile="$DOTFILES/Pacmanfile"
   
