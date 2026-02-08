@@ -2,9 +2,6 @@
 font-family = FiraCode Nerd Fonts
 font-style = Regular
 
-# Theme
-theme = catppuccin-mocha.conf
-
 # Shell
 shell-integration = zsh
 
