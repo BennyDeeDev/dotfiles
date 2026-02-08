@@ -11,11 +11,11 @@
   ],
   "modules-center": ["mpris"],
   "modules-right": [
-    "cpu",
     "bluetooth",
     "network",
     "pulseaudio",
     "battery",
+    "cpu",
     "custom/brightness",
 
     "custom/separator-right",
@@ -78,7 +78,7 @@
   },
   "cpu": {
     "interval": 5,
-    "format": "",
+    "format": "",
     "on-click": "ghostty -e btop"
   },
   "custom/brightness": {

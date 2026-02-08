@@ -6,6 +6,7 @@
 - [ ] Figure out cursors
 - [ ] Homebrew bundle cleanup in paru
 - [ ] Control T in ghostty
+- [ ] Custom Privacy Icons
 
 ## Project Ideas
 
