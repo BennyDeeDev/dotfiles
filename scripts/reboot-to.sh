@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+
+set -euo pipefail
+
+if [[ $# -lt 1 ]]; then
+  echo "Usage: $0 <efi-entry-name> [command]"
+  echo "Example: $0 'Linux Boot Manager' reboot"
+  exit 1
+fi
+
+efi_entry="$1"
+shift
+
+boot_number=$(efibootmgr | grep -Po "(?<=Boot)\S{4}(?=( |\* )${efi_entry})" | head -n1)
+
+if [[ -z "$boot_number" ]]; then
+  echo "Cannot find '$efi_entry' in EFI boot entries"
+  exit 1
+fi
+
+echo "Setting next boot to '$efi_entry' (boot number: $boot_number)"
+sudo efibootmgr -n "$boot_number" && "$@"

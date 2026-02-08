@@ -5,9 +5,87 @@ alias yay="paru"
 alias xc="wl-copy"
 
 pacman-bundle() {
-  "$DOTFILES/scripts/pacman-bundle.sh"
+  local pacmanfile="$DOTFILES/Pacmanfile"
+  
+  [[ ! -f "$pacmanfile" ]] && {
+    echo "Pacmanfile not found at $pacmanfile"
+    return 1
+  }
+  
+  echo "Installing packages from Pacmanfile..."
+  paru -S --needed --noconfirm - < "$pacmanfile"
 }
 
 reboot-arch() {
-  "$DOTFILES/scripts/reboot-to-arch.sh"
+  "$DOTFILES/scripts/reboot-to.sh" "Linux Boot Manager" reboot
+}
+
+shutdown-arch() {
+  "$DOTFILES/scripts/reboot-to.sh" "Linux Boot Manager" shutdown now
+}
+
+# Fuzzy find and install Arch/OPR packages
+pkg-install() {
+  local fzf_args=(
+    --multi
+    --preview 'pacman -Sii {1}'
+    --preview-label='alt-p: toggle, alt-j/k: scroll, tab: multi-select'
+    --preview-label-pos='bottom'
+    --preview-window 'down:65%:wrap'
+    --bind 'alt-p:toggle-preview'
+    --bind 'alt-d:preview-half-page-down,alt-u:preview-half-page-up'
+    --bind 'alt-k:preview-up,alt-j:preview-down'
+    --color 'pointer:green,marker:green'
+  )
+
+  local pkg_names
+  pkg_names=$(pacman -Slq | fzf "${fzf_args[@]}")
+
+  if [[ -n "$pkg_names" ]]; then
+    echo "$pkg_names" | tr '\n' ' ' | xargs sudo pacman -S --noconfirm
+  fi
+}
+
+# Fuzzy find and install AUR packages
+aur-install() {
+  fzf_args=(
+    --multi
+    --preview 'paru -Siia {1}'
+    --preview-label='alt-p: toggle description, alt-b/B: toggle PKGBUILD, alt-j/k: scroll, tab: multi-select'
+    --preview-label-pos='bottom'
+    --preview-window 'down:65%:wrap'
+    --bind 'alt-p:toggle-preview'
+    --bind 'alt-d:preview-half-page-down,alt-u:preview-half-page-up'
+    --bind 'alt-k:preview-up,alt-j:preview-down'
+    --bind 'alt-b:change-preview:paru -Gpa {1} | tail -n +5'
+    --bind 'alt-B:change-preview:paru -Siia {1}'
+    --color 'pointer:green,marker:green'
+  )
+
+  pkg_names=$(paru -Slq | fzf "${fzf_args[@]}")
+
+  if [[ -n "$pkg_names" ]]; then
+    echo "$pkg_names" | tr '\n' ' ' | xargs paru -S --noconfirm
+    sudo updatedb
+  fi
+}
+
+regen-mirrors() {
+  if ! command -v reflector &>/dev/null; then
+    echo "Error: reflector not installed. Install with: sudo pacman -S reflector"
+    return 1
+  fi
+
+  echo "Fetching and testing mirrors..."
+  if sudo reflector --latest 20 --fastest 5 --protocol https --save /etc/pacman.d/mirrorlist; then
+    echo "Mirrorlist updated successfully"
+    echo ""
+    cat /etc/pacman.d/mirrorlist
+    echo ""
+    echo "Refreshing package database..."
+    sudo pacman -Syy
+  else
+    echo "Error: Failed to update mirrorlist"
+    return 1
+  fi
 }

@@ -28,6 +28,10 @@ sources.
 
 - Keep scripts small, readable, and non-clever.
 - Prefer a few straightforward commands over dense bash tricks.
+- Use the exit early pattern: check conditions and exit/return immediately
+  rather than nesting if/else blocks.
 - Avoid unnecessary branching; only add conditionals when they prevent real
   breakage.
 - Provide user feedback with simple `echo` statements.
+- Don't add comments unless the code is genuinely unclear. Self-documenting code
+  is preferred.
