@@ -23,9 +23,23 @@ fi
 
 echo ""
 
-# Create omarchy config directory (for generated themes)
+# Create omarchy config directories
 mkdir -p ~/.config/omarchy/current
 echo "✓ Created ~/.config/omarchy/current/"
+
+mkdir -p ~/.config/omarchy/themed
+echo "✓ Created ~/.config/omarchy/themed/"
+
+# Symlink custom templates
+DOTFILES_DIR="$REPOS_DIR/dotfiles"
+for template in "$DOTFILES_DIR"/templates/*.tpl; do
+  [[ -f $template ]] || continue
+  filename=$(basename "$template")
+  "$DOTFILES_DIR/scripts/symlink.sh" "$template" ~/.config/omarchy/themed/"$filename"
+done
+
+# Symlink starship.toml to omarchy-generated version
+"$DOTFILES_DIR/scripts/symlink.sh" ~/.config/omarchy/current/theme/starship.toml ~/.config/starship.toml
 
 echo ""
 echo "✓ Omarchy bootstrap complete!"
