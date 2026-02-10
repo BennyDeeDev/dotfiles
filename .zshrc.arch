@@ -1,7 +1,7 @@
 DOTFILES="$HOME/Repos/dotfiles"
 [[ -f "$DOTFILES/.zshrc.common" ]] && source "$DOTFILES/.zshrc.common"
 
-export OMARCHY_PATH="$HOME/Repos/omarchy"
+export OMARCHY_PATH="$HOME/.local/share/omarchy"
 export PATH="$OMARCHY_PATH/bin:$PATH"
 
 alias yay="paru"

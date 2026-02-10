@@ -4,9 +4,10 @@ set -euo pipefail
 
 REPOS_DIR="$HOME/Repos"
 OMARCHY_REPO="$REPOS_DIR/omarchy"
+OMARCHY_INSTALL="$HOME/.local/share/omarchy"
 OMARCHY_UPSTREAM="https://github.com/basecamp/omarchy.git"
 
-echo "Bootstrapping omarchy theme system..."
+echo "Bootstrapping omarchys toolchain..."
 echo ""
 
 # Create Repos directory if needed
@@ -23,6 +24,17 @@ fi
 
 echo ""
 
+# Copy omarchy to local share (installation location)
+if [[ ! -d "$OMARCHY_INSTALL" ]]; then
+  echo "Copying omarchy to $OMARCHY_INSTALL..."
+  cp -r "$OMARCHY_REPO" "$OMARCHY_INSTALL"
+  echo "✓ Omarchy installed to $OMARCHY_INSTALL"
+else
+  echo "✓ Omarchy already installed at $OMARCHY_INSTALL"
+fi
+
+echo ""
+
 # Create omarchy config directories
 mkdir -p ~/.config/omarchy/current
 echo "✓ Created ~/.config/omarchy/current/"
@@ -30,21 +42,49 @@ echo "✓ Created ~/.config/omarchy/current/"
 mkdir -p ~/.config/omarchy/themed
 echo "✓ Created ~/.config/omarchy/themed/"
 
+# Create config directories for omarchy refresh commands
+echo "Creating config directories for refresh commands..."
+for dir in autostart elephant fastfetch hypr swayosd systemd tmux walker waybar mako; do
+  mkdir -p ~/.config/"$dir"
+done
+echo "✓ Created config directories"
+
+# Setup theme system (Nautilus icons, mako, browser policies, etc.)
+echo ""
+echo "Setting up theme system..."
+source "$OMARCHY_INSTALL/install/config/theme.sh"
+
 # Symlink custom templates
-DOTFILES_DIR="$REPOS_DIR/dotfiles"
 for template in "$DOTFILES_DIR"/templates/*.tpl; do
   [[ -f $template ]] || continue
   filename=$(basename "$template")
   "$DOTFILES_DIR/scripts/symlink.sh" "$template" ~/.config/omarchy/themed/"$filename"
 done
 
-# Symlink starship.toml to omarchy-generated version
-"$DOTFILES_DIR/scripts/symlink.sh" ~/.config/omarchy/current/theme/starship.toml ~/.config/starship.toml
+# Setup Walker and Elephant
+echo ""
+echo "Setting up Walker and Elephant..."
+source "$OMARCHY_INSTALL/install/config/walker-elephant.sh"
+source "$OMARCHY_INSTALL/install/first-run/elephant.sh"
+"$OMARCHY_INSTALL/bin/omarchy-refresh-walker"
+echo "✓ Walker and Elephant configured"
+
+# Override default theme with kanagawa
+echo ""
+echo "Setting kanagawa theme..."
+OMARCHY_PATH="$OMARCHY_INSTALL" "$OMARCHY_INSTALL/bin/omarchy-theme-set" kanagawa
 
 echo ""
 echo "✓ Omarchy bootstrap complete!"
 echo ""
-echo "Available commands (after sourcing shell config):"
+echo "Next steps:"
+echo "  1. Ensure OMARCHY_PATH is set in your shell config:"
+echo "     export OMARCHY_PATH=\"\$HOME/.local/share/omarchy\""
+echo "  2. Add omarchy bin to PATH:"
+echo "     export PATH=\"\$OMARCHY_PATH/bin:\$PATH\""
+echo "  3. Source your shell config (or restart terminal)"
+echo ""
+echo "Available commands:"
 echo "  omarchy-theme-set <theme>    - Switch themes"
 echo "  omarchy-theme-list            - List available themes"
 echo "  omarchy-theme-current         - Show current theme"
