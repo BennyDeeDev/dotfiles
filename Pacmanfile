@@ -64,6 +64,11 @@ swaybg
 polkit-gnome
 grim
 slurp
+satty
+gpu-screen-recorder
+ffmpeg
+v4l-utils
+libnotify
 nautilus
 nautilus-python
 gnome-themes-extra

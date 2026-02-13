@@ -44,6 +44,25 @@ naming. See `omarchy/AGENTS.md` for full conventions.
 - Don't add comments unless the code is genuinely unclear. Self-documenting code
   is preferred.
 
+## Dependency management
+
+All software dependencies must be declared in the appropriate package file:
+
+- `Pacmanfile` - Arch Linux packages (pacman and AUR)
+- `Brewfile` - macOS packages (Homebrew)
+
+Never install packages manually or suggest ad-hoc installation commands. If a
+script or configuration requires a package, add it to the relevant file. This
+ensures reproducible environments across machines and makes dependencies
+explicit.
+
+When a command fails due to a missing dependency:
+1. Identify the package name
+2. Add it to `Pacmanfile` or `Brewfile`
+3. Execute the package installer:
+   - `pacman-bundle` (Arch Linux)
+   - `brew bundle` (macOS)
+
 ## Symlink management
 
 Always use the OS-specific symlink scripts when applying configuration changes:
