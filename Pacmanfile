@@ -69,6 +69,9 @@ gpu-screen-recorder
 ffmpeg
 v4l-utils
 libnotify
+imv
+mpv
+evince
 nautilus
 nautilus-python
 gnome-themes-extra
