@@ -49,6 +49,7 @@ elephant-unicode
 elephant-websearch
 elephant-todo
 walker
+xdg-utils
 xdg-terminal-exec
 hypridle
 hyprland

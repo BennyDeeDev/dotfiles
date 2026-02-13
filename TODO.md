@@ -19,6 +19,7 @@
 - [ ] Alt Tab
 - [ ] Screenshot
 - [ ] Alt Tab + Groups
+- [ ] Agents CLI should be in HIST File too
 
 ## Project Ideas
 
