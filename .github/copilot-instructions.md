@@ -43,3 +43,23 @@ naming. See `omarchy/AGENTS.md` for full conventions.
 - Provide user feedback with simple `echo` statements.
 - Don't add comments unless the code is genuinely unclear. Self-documenting code
   is preferred.
+
+## Symlink management
+
+Always use the OS-specific symlink scripts when applying configuration changes:
+
+- `symlinks-hyprland-arch.sh` - Arch Linux with Hyprland
+- `symlinks-i3-arch.sh` - Arch Linux with i3
+- `symlinks-macos.sh` - macOS with Aerospace
+
+Never manually symlink files. The scripts ensure all configurations are applied
+consistently.
+
+## Walker application launcher
+
+Query visible applications in walker using elephant:
+
+```bash
+# List all visible apps (what walker shows)
+elephant query "desktopapplications;;9999;false"
+```

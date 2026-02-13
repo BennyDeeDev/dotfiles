@@ -32,7 +32,7 @@
 }
 
 #custom-arch {
-  font-size: 20px;
+  font-size: 24px;
   margin-right: 4px;
 }
 
@@ -56,7 +56,7 @@
 #custom-brightness {
   margin-right: 12px;
   margin-left: 12px;
-  font-size: 16px;
+  font-size: 24px;
 }
 
 #temperature.cpu {

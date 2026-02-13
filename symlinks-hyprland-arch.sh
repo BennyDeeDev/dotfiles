@@ -18,4 +18,8 @@ DOTFILES="$HOME/Repos/dotfiles"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/vscode/settings.json" "$HOME/.config/Code/User/settings.json"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/pipewire/pipewire.conf.d" "$HOME/.config/pipewire/pipewire.conf.d"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/pipewire/pipewire-pulse.conf.d" "$HOME/.config/pipewire/pipewire-pulse.conf.d"
-"$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/applications/hidden/nm-connection-editor.desktop" "$HOME/.local/share/applications/nm-connection-editor.desktop"
+
+# Hidden applications
+for app in "$DOTFILES"/applications/hidden/*.desktop; do
+  "$DOTFILES/bin/common/dot-cmd-symlink" "$app" "$HOME/.local/share/applications/$(basename "$app")"
+done
