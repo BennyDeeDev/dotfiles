@@ -2,27 +2,20 @@
 
 These instructions apply when working in this repo.
 
-**Required workflow for any Hyprland question:**
+## Omarchy dependency
 
-1. **Search the hyprland-wiki first** using grep_search or semantic_search to
-   confirm names, syntax, and semantics
-2. **Search omarchy config files** to check for relevant defaults, conventions,
-   or example implementations
-3. **Link to relevant sources** in your response using markdown:
-   `[Environment-variables](hyprland-wiki/content/Configuring/Environment-variables.md)`
-   or `[hyprland.conf](omarchy/config/hypr/hyprland.conf)`
-4. **If uncertain or information is missing**, explicitly state what you
-   couldn't verify
+**Never modify omarchy code.** Omarchy is used as a dependency, not as the whole
+system. Always assume omarchy code works correctly and that any issues are
+configuration problems on this machine.
 
-**Example response format:**
-
-> According to
-> [Environment-variables.md](hyprland-wiki/content/Configuring/Environment-variables.md),
-> `XCURSOR_SIZE` controls X11 cursor size. The omarchy default in
-> [hyprland.conf](omarchy/config/hypr/hyprland.conf) uses 24px.
-
-Never state facts about Hyprland configuration without searching and citing
-sources.
+- Don't edit files in `omarchy/bin/`, `omarchy/config/`, or other omarchy
+  directories
+- If something seems broken in omarchy, investigate local configuration first:
+  - Check symlinked configs in `~/.config/`
+  - Check for missing or misconfigured files
+  - Check if services or dependencies are installed/running
+- Only suggest omarchy code changes if you're absolutely certain there's a bug
+  (after exhausting all configuration possibilities)
 
 ## Shell scripting (simplicity + maintainability)
 

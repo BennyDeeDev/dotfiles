@@ -10,6 +10,8 @@
 
 ## Soon
 
+- [ ] Scripts in bin and properly configured in path
+- [ ] Symlink Omarchy properly and think about a pattern when changes come
 - [ ] Nautilus Theming
 - [ ] Keyring
 - [ ] Mimetype

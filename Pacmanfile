@@ -36,14 +36,18 @@ pamixer
 reflector
 tree
 elephant
-elephant-providerlist
+elephant-calc
+elephant-clipboard
+elephant-bluetooth
 elephant-desktopapplications
 elephant-files
+elephant-menus
+elephant-providerlist
 elephant-runner
-elephant-calc
-elephant-websearch
-elephant-clipboard
 elephant-symbols
+elephant-unicode
+elephant-websearch
+elephant-todo
 walker
 xdg-terminal-exec
 mako
@@ -52,3 +56,4 @@ swaybg
 nautilus
 nautilus-python
 gnome-themes-extra
+opencode
