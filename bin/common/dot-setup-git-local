@@ -10,15 +10,15 @@ REPO_URL="git@github.com:$GH_USERNAME/dotfiles.git"
 
 DOTFILES="$HOME/Repos/dotfiles"
 
-if [ "$PWD" != "$DOTFILES" ]; then
-    echo "Error: Must be run from the dotfiles directory (\$DOTFILES)"
-    echo "Current directory: $PWD"
-    echo "Expected directory: $DOTFILES"
-    exit 1
+if [[ "$PWD" != "$DOTFILES" ]]; then
+  echo "Error: Must be run from the dotfiles directory (\$DOTFILES)"
+  echo "Current directory: $PWD"
+  echo "Expected directory: $DOTFILES"
+  exit 1
 fi
 
 # Generate SSH key for personal GitHub account if it doesn't exist
-if [ ! -f "$SSH_KEY_PATH" ]; then
+if [[ ! -f "$SSH_KEY_PATH" ]]; then
     echo "Generating SSH key..."
     ssh-keygen -t ed25519 -C "$GH_EMAIL" -f "$SSH_KEY_PATH" -N ""
     

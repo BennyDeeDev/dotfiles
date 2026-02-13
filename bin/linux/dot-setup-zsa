@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Setup udev rules and permissions for ZSA keyboards (Voyager, Moonlander, Ergodox EZ, Planck EZ)
+
 set -euo pipefail
 
 echo "Setting up ZSA keyboard support (Keymapp/Wally)..."

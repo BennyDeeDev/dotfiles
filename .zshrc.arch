@@ -3,6 +3,7 @@ DOTFILES="$HOME/Repos/dotfiles"
 
 export OMARCHY_PATH="$HOME/.local/share/omarchy"
 export PATH="$OMARCHY_PATH/bin:$PATH"
+export PATH="$DOTFILES/bin/linux:$PATH"
 
 alias yay="paru"
 alias xc="wl-copy"
@@ -24,11 +25,11 @@ pacman-bundle() {
 }
 
 reboot-arch() {
-  "$DOTFILES/scripts/reboot-to.sh" "Linux Boot Manager" reboot
+  dot-cmd-reboot-to "Linux Boot Manager" reboot
 }
 
 shutdown-arch() {
-  "$DOTFILES/scripts/reboot-to.sh" "Linux Boot Manager" shutdown now
+  dot-cmd-reboot-to "Linux Boot Manager" shutdown now
 }
 
 # Fuzzy find and install Arch/OPR packages

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Install omarchy desktop environment
+
 set -euo pipefail
 
 REPOS_DIR="$HOME/Repos"
@@ -24,11 +26,11 @@ fi
 
 echo ""
 
-# Copy omarchy to local share (installation location)
-if [[ ! -d "$OMARCHY_INSTALL" ]]; then
-  echo "Copying omarchy to $OMARCHY_INSTALL..."
-  cp -r "$OMARCHY_REPO" "$OMARCHY_INSTALL"
-  echo "✓ Omarchy installed to $OMARCHY_INSTALL"
+# Symlink omarchy to local share (installation location)
+if [[ ! -e "$OMARCHY_INSTALL" ]]; then
+  echo "Symlinking omarchy to $OMARCHY_INSTALL..."
+  ln -s "$OMARCHY_REPO" "$OMARCHY_INSTALL"
+  echo "✓ Omarchy symlinked to $OMARCHY_INSTALL"
 else
   echo "✓ Omarchy already installed at $OMARCHY_INSTALL"
 fi
@@ -55,10 +57,10 @@ echo "Setting up theme system..."
 source "$OMARCHY_INSTALL/install/config/theme.sh"
 
 # Symlink custom templates
-for template in "$DOTFILES_DIR"/templates/*.tpl; do
+for template in "$DOTFILES"/templates/*.tpl; do
   [[ -f $template ]] || continue
   filename=$(basename "$template")
-  "$DOTFILES_DIR/scripts/symlink.sh" "$template" ~/.config/omarchy/themed/"$filename"
+  "$DOTFILES/bin/common/dot-cmd-symlink" "$template" ~/.config/omarchy/themed/"$filename"
 done
 
 # Setup Walker and Elephant

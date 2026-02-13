@@ -1,10 +1,12 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
+# Create symlink from source to target, backing up any existing files
 
 source="$1"
 target="$2"
 
 if [[ -z "$source" || -z "$target" ]]; then
-  echo "Usage: link <source> <target>"
+  echo "Usage: dot-cmd-symlink <source> <target>"
   exit 1
 fi
 

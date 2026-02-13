@@ -1,4 +1,6 @@
-#!/usr/bin/bash
+#!/bin/bash
+
+# Set next EFI boot entry and reboot/shutdown
 
 set -euo pipefail
 

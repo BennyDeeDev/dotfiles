@@ -8,4 +8,5 @@ alias xc='pbcopy'
 export PATH="/opt/homebrew/bin:$PATH" 
 export PATH="$PATH:$HOME/go/bin"
 export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
+export PATH="$DOTFILES/bin/macos:$PATH"
 

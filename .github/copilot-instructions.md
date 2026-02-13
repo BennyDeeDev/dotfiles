@@ -17,6 +17,21 @@ configuration problems on this machine.
 - Only suggest omarchy code changes if you're absolutely certain there's a bug
   (after exhausting all configuration possibilities)
 
+## Structure conventions
+
+**OS-specific configuration**: Use OS-specific zshrc files instead of runtime OS
+detection in common configs.
+
+- `.zshrc.arch` - Linux (Arch) specific config
+- `.zshrc.macos` - macOS specific config
+- `.zshrc.common` - Shared config sourced by both
+
+Each OS-specific zshrc sources `.zshrc.common` and adds its own PATH extensions,
+aliases, and functions.
+
+**Follow omarchy conventions**: This repo mirrors omarchy's structure and
+naming. See `omarchy/AGENTS.md` for full conventions.
+
 ## Shell scripting (simplicity + maintainability)
 
 - Keep scripts small, readable, and non-clever.
