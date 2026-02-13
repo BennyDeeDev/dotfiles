@@ -29,3 +29,4 @@
 
 - [ ] Omarchy PR to change to asdbcontrol
 - [ ] Create Config before refresh bug
+- [ ] Change VSCode Font dynamically

@@ -51,6 +51,13 @@ for dir in autostart elephant fastfetch hypr swayosd systemd tmux walker waybar 
 done
 echo "✓ Created config directories"
 
+# Setup fontconfig
+echo ""
+echo "Setting up fontconfig..."
+mkdir -p ~/.config/fontconfig
+cp "$OMARCHY_INSTALL/config/fontconfig/fonts.conf" ~/.config/fontconfig/
+echo "✓ Fontconfig configured"
+
 # Setup theme system (Nautilus icons, mako, browser policies, etc.)
 echo ""
 echo "Setting up theme system..."

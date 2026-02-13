@@ -62,6 +62,8 @@ mako
 swayosd
 swaybg
 polkit-gnome
+grim
+slurp
 nautilus
 nautilus-python
 gnome-themes-extra
@@ -71,3 +73,5 @@ opencode
 wayfreeze
 localsend-bin
 satty
+gnome-calculator
+xmlstarlet

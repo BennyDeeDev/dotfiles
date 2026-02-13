@@ -1,0 +1,23 @@
+{
+  "workbench.colorTheme": "Kanagawa",
+
+  "editor.fontFamily": "Hack Nerd Font Mono",
+  "editor.formatOnSave": true,
+
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "github.copilot.enable": {
+    "*": false
+  }
+}
