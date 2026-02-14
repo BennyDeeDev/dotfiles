@@ -3,7 +3,7 @@ starship
 nerd-fonts
 neovim
 zed
-yay
+yay-bin
 github-cli
 brave-bin
 visual-studio-code-bin
@@ -58,7 +58,7 @@ hyprland-guiutils
 hyprlock
 hyprpicker
 hyprsunset
-hyprland-preview-share-picker
+hyprland-preview-share-picker-git
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-gtk
 mako

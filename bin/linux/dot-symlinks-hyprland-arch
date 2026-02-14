@@ -4,7 +4,7 @@ set -e
 
 DOTFILES="$HOME/Repos/dotfiles"
 
-"$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/hypr/config" "$HOME/.config/hypr"
+"$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/hypr" "$HOME/.config/hypr"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/ghostty" "$HOME/.config/ghostty"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/ghostty/arch.conf" "$HOME/.config/ghostty/config-local"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/nvim" "$HOME/.config/nvim"

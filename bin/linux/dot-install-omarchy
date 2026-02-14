@@ -66,20 +66,29 @@ echo "Symlinking infrastructure configs from omarchy..."
 "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/btop" ~/.config/btop
 # "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/chromium" ~/.config/chromium
 # "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/chromium-flags.conf" ~/.config/chromium-flags.conf
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/elephant" ~/.config/elephant  # Managed by walker-elephant.sh
 # "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/environment.d" ~/.config/environment.d
 # "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/fastfetch" ~/.config/fastfetch
 # "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/fcitx5" ~/.config/fcitx5
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/ghostty" ~/.config/ghostty  # Managed in dotfiles
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/git" ~/.config/git  # Managed in dotfiles
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/hypr" ~/.config/hypr  # Managed in dotfiles
 "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/hyprland-preview-share-picker" ~/.config/hyprland-preview-share-picker
 "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/imv" ~/.config/imv
 # "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/kitty" ~/.config/kitty
 # "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/lazygit" ~/.config/lazygit
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/omarchy" ~/.config/omarchy  # Omarchy metadata (managed by theme system)
 # "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/opencode" ~/.config/opencode
 # "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/starship.toml" ~/.config/starship.toml
 "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/swayosd" ~/.config/swayosd
 # "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/systemd/user" ~/.config/systemd/user
 # "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/tmux" ~/.config/tmux
 # "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/Typora" ~/.config/Typora
+"$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/uwsm" ~/.config/uwsm  # Managed in dotfiles
+"$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/walker" ~/.config/walker
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/waybar" ~/.config/waybar  # Managed in dotfiles
 # "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/wiremix" ~/.config/wiremix
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/xdg-terminals.list" ~/.config/xdg-terminals.list  # Managed in dotfiles
 # "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/xournalpp" ~/.config/xournalpp
 echo "✓ Infrastructure configs symlinked"
 
@@ -100,7 +109,6 @@ echo ""
 echo "Setting up Walker and Elephant..."
 source "$OMARCHY_INSTALL/install/config/walker-elephant.sh"
 source "$OMARCHY_INSTALL/install/first-run/elephant.sh"
-"$OMARCHY_INSTALL/bin/omarchy-refresh-walker"
 echo "✓ Walker and Elephant configured"
 
 # Override default theme with kanagawa
