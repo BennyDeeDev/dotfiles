@@ -6,6 +6,8 @@
 - [ ] Figure out cursors
 - [ ] Homebrew bundle cleanup in paru
 - [ ] Custom Privacy Icons
+- [ ] Arch Booting dont wait 3 sec
+- [ ] Tui greeter
 
 ## Soon
 
@@ -20,6 +22,7 @@
 - [ ] Omarchy PR to change to asdbcontrol
 - [ ] Create Config before refresh bug
 - [ ] Change VSCode Font dynamically
+- [ ] Share using Omarchy without installing it
 
 ## Bugs
 
