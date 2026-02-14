@@ -1,0 +1,9 @@
+[user]
+	name = BennyDeeDev
+	email = 45900418+BennyDeeDev@users.noreply.github.com
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = true  # Rebase (instead of merge) on pull

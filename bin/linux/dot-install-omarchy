@@ -5,6 +5,7 @@
 set -euo pipefail
 
 REPOS_DIR="$HOME/Repos"
+DOTFILES="$REPOS_DIR/dotfiles"
 OMARCHY_REPO="$REPOS_DIR/omarchy"
 OMARCHY_INSTALL="$HOME/.local/share/omarchy"
 OMARCHY_UPSTREAM="https://github.com/basecamp/omarchy.git"
@@ -44,13 +45,6 @@ echo "✓ Created ~/.config/omarchy/current/"
 mkdir -p ~/.config/omarchy/themed
 echo "✓ Created ~/.config/omarchy/themed/"
 
-# Create config directories for omarchy refresh commands
-echo "Creating config directories for refresh commands..."
-for dir in autostart elephant fastfetch hypr swayosd systemd tmux walker waybar mako; do
-  mkdir -p ~/.config/"$dir"
-done
-echo "✓ Created config directories"
-
 # Setup default keyring
 echo ""
 echo "Setting up default keyring..."
@@ -63,6 +57,31 @@ echo "Setting up fontconfig..."
 mkdir -p ~/.config/fontconfig
 cp "$OMARCHY_INSTALL/config/fontconfig/fonts.conf" ~/.config/fontconfig/
 echo "✓ Fontconfig configured"
+
+# Symlink infrastructure configs from omarchy
+echo ""
+echo "Symlinking infrastructure configs from omarchy..."
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/alacritty" ~/.config/alacritty
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/brave-flags.conf" ~/.config/brave-flags.conf
+"$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/btop" ~/.config/btop
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/chromium" ~/.config/chromium
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/chromium-flags.conf" ~/.config/chromium-flags.conf
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/environment.d" ~/.config/environment.d
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/fastfetch" ~/.config/fastfetch
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/fcitx5" ~/.config/fcitx5
+"$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/hyprland-preview-share-picker" ~/.config/hyprland-preview-share-picker
+"$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/imv" ~/.config/imv
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/kitty" ~/.config/kitty
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/lazygit" ~/.config/lazygit
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/opencode" ~/.config/opencode
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/starship.toml" ~/.config/starship.toml
+"$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/swayosd" ~/.config/swayosd
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/systemd/user" ~/.config/systemd/user
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/tmux" ~/.config/tmux
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/Typora" ~/.config/Typora
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/wiremix" ~/.config/wiremix
+# "$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_INSTALL/config/xournalpp" ~/.config/xournalpp
+echo "✓ Infrastructure configs symlinked"
 
 # Setup theme system (Nautilus icons, mako, browser policies, etc.)
 echo ""

@@ -25,6 +25,7 @@
 
 - [ ] Write a TUI that shows Temperatures
 - [ ] Install arch with `archinstall` minimal
+- [ ] Write Omarchy differ
 
 ## Open Source
 

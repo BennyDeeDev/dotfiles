@@ -50,8 +50,9 @@ system. Using omarchy's defaults ensures:
 - Battle-tested configurations that work together
 - Ability to benefit from omarchy's visual polish
 
-**My approach:** Use omarchy's rice stack but own the configs. Copy omarchy's
-configs into my dotfiles, then customize from there.
+**My approach:** Use omarchy's rice stack. Copy configs to dotfiles **only when
+customizing them**. For configs you don't customize (Elephant, Btop themes,
+etc.), use omarchy's directly—no need to track them.
 
 ### ✅ Read-Only Reference
 
@@ -105,17 +106,40 @@ Only the theme-switching tooling breaks. Everything else is mine.
 
 This proves omarchy is a toolchain, not a dependency.
 
+## Config Ownership Boundary
+
+**Copy to dotfiles (own and customize):**
+
+- **Hypr configs** - custom keybinds (CTRL SHIFT), autostart apps, input
+  settings
+- **Waybar** (when customizing modules/layout)
+- **Mako** (when customizing notification behavior)
+- **Walker** (when customizing activation/modules)
+
+**Use omarchy directly (don't copy):**
+
+- **Elephant** - data source infrastructure, rarely needs customization
+- **Btop, Fastfetch** - just consume theme colors, no custom behavior needed
+- **Theme files** - omarchy owns these completely
+- **Any config you're happy with omarchy's defaults for**
+
+**Benefits:**
+
+- Smaller dotfiles (only what you actually customize)
+- Less noise in diffs (only relevant changes)
+- Still get omarchy's polish for uncustomized components
+
 ## Handling Rice Updates
 
 **The problem:** If I copy omarchy's rice configs once, I'm frozen—missing
 future improvements. If I let omarchy refresh configs, I lose ownership.
 
-**The solution:** Mirror omarchy's config structure, then automate selective
-syncing.
+**The solution:** For configs you own, mirror omarchy's structure to enable
+selective syncing.
 
 ### Structure Requirements
 
-Dotfiles mirror omarchy's config layout:
+For configs in dotfiles, mirror omarchy's layout:
 
 ```
 omarchy/default/hypr/       → dotfiles/hypr/
@@ -125,6 +149,10 @@ omarchy/default/walker/     → dotfiles/walker/
 ```
 
 Same structure = meaningful diffs = selective updates.
+
+Only mirror components you customize (hypr, waybar if customized, etc.). Don't
+copy configs you're not customizing (elephant, btop, etc.)—those stay in
+omarchy.
 
 ### Sync Options
 
