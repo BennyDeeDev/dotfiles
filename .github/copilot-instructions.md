@@ -95,25 +95,3 @@ Query visible applications in walker using elephant:
 # List all visible apps (what walker shows)
 elephant query "desktopapplications;;9999;false"
 ```
-
-## Maintaining diff-ability with omarchy
-
-**Critical:** Config files must remain easily diffable against omarchy's defaults for selective syncing.
-
-### Editing config files
-
-When editing files in `hypr/config/` or similar:
-
-1. **Preserve structure** - Keep same sections, ordering, and formatting as omarchy
-2. **Preserve comments** - Don't remove or rewrite omarchy's comments
-3. **Minimal changes** - Only change values, not structure
-4. **Add, don't replace** - Add your customizations after omarchy's sections
-
-### Why this matters
-
-When omarchy updates, we diff `hypr/default/` against the new version. If our config structure matches theirs, we can:
-- Clearly see what changed in omarchy
-- Selectively adopt improvements
-- Merge updates without conflicts
-
-If structure diverges, diffs become useless and we lose the ability to stay current.

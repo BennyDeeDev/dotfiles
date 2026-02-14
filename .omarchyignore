@@ -1,5 +1,0 @@
-# Files/patterns from omarchy to never sync
-# Used by dot-omarchy-sync to avoid suggesting files you've intentionally removed
-
-# Completely rewritten with custom keybind scheme (CTRL SHIFT instead of SUPER SHIFT)
-hypr/config/bindings.conf
