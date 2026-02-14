@@ -1,0 +1,103 @@
+#!/bin/bash
+
+# Install omarchy desktop environment
+
+set -euo pipefail
+
+REPOS_DIR="$HOME/Repos"
+DOTFILES="$REPOS_DIR/dotfiles"
+OMARCHY_REPO="$REPOS_DIR/omarchy"
+OMARCHY_INSTALL="$HOME/.local/share/omarchy"
+OMARCHY_UPSTREAM="https://github.com/basecamp/omarchy.git"
+
+# Save current theme to restore later
+CURRENT_THEME=$(omarchy-theme-current 2>/dev/null || echo "catppuccin")
+
+echo "Bootstrapping omarchys toolchain..."
+echo ""
+
+# Create Repos directory if needed
+mkdir -p "$REPOS_DIR"
+
+# Clone omarchy if not present
+if [[ ! -d "$OMARCHY_REPO" ]]; then
+  echo "Cloning omarchy from $OMARCHY_UPSTREAM..."
+  git clone "$OMARCHY_UPSTREAM" "$OMARCHY_REPO"
+  echo "✓ Omarchy cloned"
+else
+  echo "Updating omarchy repo..."
+  git -C "$OMARCHY_REPO" pull
+  echo "✓ Omarchy updated"
+fi
+
+echo ""
+
+# Symlink omarchy to local share (installation location)
+echo "Ensuring omarchy is symlinked to $OMARCHY_INSTALL..."
+"$DOTFILES/bin/common/dot-cmd-symlink" "$OMARCHY_REPO" "$OMARCHY_INSTALL"
+
+# Copy infrastructure configs from omarchy
+echo ""
+echo "Copying infrastructure configs from omarchy..."
+# dot-cmd-copy "$OMARCHY_INSTALL/config/alacritty" ~/.config/alacritty
+# dot-cmd-copy "$OMARCHY_INSTALL/config/brave-flags.conf" ~/.config/brave-flags.conf
+dot-cmd-copy "$OMARCHY_INSTALL/config/btop" ~/.config/btop
+# dot-cmd-copy "$OMARCHY_INSTALL/config/chromium" ~/.config/chromium
+# dot-cmd-copy "$OMARCHY_INSTALL/config/chromium-flags.conf" ~/.config/chromium-flags.conf
+# dot-cmd-copy "$OMARCHY_INSTALL/config/elephant" ~/.config/elephant
+# dot-cmd-copy "$OMARCHY_INSTALL/config/environment.d" ~/.config/environment.d
+# dot-cmd-copy "$OMARCHY_INSTALL/config/fastfetch" ~/.config/fastfetch
+# dot-cmd-copy "$OMARCHY_INSTALL/config/fcitx5" ~/.config/fcitx5
+dot-cmd-copy "$OMARCHY_INSTALL/config/fontconfig" ~/.config/fontconfig
+# dot-cmd-copy "$OMARCHY_INSTALL/config/ghostty" ~/.config/ghostty
+# dot-cmd-copy "$OMARCHY_INSTALL/config/git" ~/.config/git
+# dot-cmd-copy "$OMARCHY_INSTALL/config/hypr" ~/.config/hypr
+dot-cmd-copy "$OMARCHY_INSTALL/config/hyprland-preview-share-picker" ~/.config/hyprland-preview-share-picker
+dot-cmd-copy "$OMARCHY_INSTALL/config/imv" ~/.config/imv
+# dot-cmd-copy "$OMARCHY_INSTALL/config/kitty" ~/.config/kitty
+# dot-cmd-copy "$OMARCHY_INSTALL/config/lazygit" ~/.config/lazygit
+# dot-cmd-copy "$OMARCHY_INSTALL/config/omarchy" ~/.config/omarchy
+# dot-cmd-copy "$OMARCHY_INSTALL/config/opencode" ~/.config/opencode
+# dot-cmd-copy "$OMARCHY_INSTALL/config/starship.toml" ~/.config/starship.toml
+dot-cmd-copy "$OMARCHY_INSTALL/config/swayosd" ~/.config/swayosd
+# dot-cmd-copy "$OMARCHY_INSTALL/config/systemd/user" ~/.config/systemd/user
+# dot-cmd-copy "$OMARCHY_INSTALL/config/tmux" ~/.config/tmux
+# dot-cmd-copy "$OMARCHY_INSTALL/config/Typora" ~/.config/Typora
+dot-cmd-copy "$OMARCHY_INSTALL/config/uwsm" ~/.config/uwsm
+dot-cmd-copy "$OMARCHY_INSTALL/config/walker" ~/.config/walker
+# dot-cmd-copy "$OMARCHY_INSTALL/config/waybar" ~/.config/waybar
+# dot-cmd-copy "$OMARCHY_INSTALL/config/wiremix" ~/.config/wiremix
+# dot-cmd-copy "$OMARCHY_INSTALL/config/xdg-terminals.list" ~/.config/xdg-terminals.list
+# dot-cmd-copy "$OMARCHY_INSTALL/config/xournalpp" ~/.config/xournalpp
+echo "✓ Infrastructure configs copied"
+
+# Setup theme system
+echo ""
+source "$DOTFILES/install/theme.sh"
+
+# Symlink custom templates
+mkdir -p ~/.config/omarchy/themed
+for template in "$DOTFILES"/templates/*.tpl; do
+  [[ -f $template ]] || continue
+  filename=$(basename "$template")
+  "$DOTFILES/bin/common/dot-cmd-symlink" "$template" ~/.config/omarchy/themed/"$filename"
+done
+
+# Setup Walker and Elephant
+echo ""
+source "$DOTFILES/install/walker-elephant.sh"
+elephant service enable 2>/dev/null || true
+systemctl --user start elephant.service 2>/dev/null || true
+echo "✓ Elephant service configured"
+
+# Restore previous theme
+echo ""
+echo "Restoring theme: $CURRENT_THEME..."
+omarchy-theme-set "$CURRENT_THEME"
+echo "✓ Theme restored"
+
+echo ""
+echo "✓ Omarchy toolchain updated!"
+echo ""
+echo "Theme: $CURRENT_THEME"
+echo "Commands: omarchy-theme-set, omarchy-theme-list"

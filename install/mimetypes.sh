@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 # Configure default applications for file types
 
 # Open directories in file manager

@@ -65,6 +65,9 @@ mako
 swayosd
 swaybg
 polkit-gnome
+fontconfig
+uwsm
+wireplumber
 grim
 slurp
 satty
@@ -88,3 +91,4 @@ satty
 gnome-calculator
 xmlstarlet
 man-db
+yaru-icon-theme
