@@ -1,5 +1,6 @@
 return {
   "f-person/auto-dark-mode.nvim",
+  enabled = vim.fn.has("mac") == 1,
   opts = {
     update_interval = 1000,
     set_dark_mode = function()

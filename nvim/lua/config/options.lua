@@ -5,4 +5,4 @@
 vim.opt.scrolloff = 16
 vim.opt.relativenumber = false
 vim.o.title = true
-vim.o.titlestring = "%t – " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. " – nvim"
+vim.o.titlestring = "%t - " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. " - nvim"

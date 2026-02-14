@@ -71,17 +71,25 @@ dot-cmd-copy "$OMARCHY_INSTALL/config/walker" ~/.config/walker
 # dot-cmd-copy "$OMARCHY_INSTALL/config/xournalpp" ~/.config/xournalpp
 echo "✓ Infrastructure configs copied"
 
+echo ""
+echo "Setting up Neovim theme integration..."
+dot-cmd-symlink ~/.config/omarchy/current/theme/neovim.lua ~/.config/nvim/lua/plugins/theme.lua
+echo "✓ Neovim theme symlink created"
+
 # Setup theme system
 echo ""
 source "$DOTFILES/install/theme.sh"
 
 # Symlink custom templates
+echo ""
+echo "Symlinking custom templates..."
 mkdir -p ~/.config/omarchy/themed
 for template in "$DOTFILES"/templates/*.tpl; do
   [[ -f $template ]] || continue
   filename=$(basename "$template")
   "$DOTFILES/bin/common/dot-cmd-symlink" "$template" ~/.config/omarchy/themed/"$filename"
 done
+echo "✓ Custom templates symlinked"
 
 # Setup Walker and Elephant
 echo ""
