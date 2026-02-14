@@ -44,6 +44,19 @@ naming. See `omarchy/AGENTS.md` for full conventions.
 - Don't add comments unless the code is genuinely unclear. Self-documenting code
   is preferred.
 
+## Documentation style
+
+Be thorough but not excessive. Cover what's needed, nothing more.
+
+- Explain concepts clearly but don't over-explain
+- Each section should add new information, not restate what was already said
+- Skip unnecessary sections or subsections that don't add value
+- No introductory fluff ("In this document...", "As mentioned earlier...")
+- Use concrete examples over abstract explanations
+- If a point is made once clearly, don't restate it
+
+**Balance:** Provide enough context to understand decisions, but cut anything repetitive or obvious.
+
 ## Dependency management
 
 All software dependencies must be declared in the appropriate package file:

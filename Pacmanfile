@@ -3,6 +3,7 @@ starship
 nerd-fonts
 neovim
 zed
+yay
 github-cli
 brave-bin
 visual-studio-code-bin
@@ -77,6 +78,7 @@ nautilus
 nautilus-python
 gnome-themes-extra
 gnome-keyring
+gnome-disk-utility
 libsecret
 opencode
 wayfreeze
@@ -84,3 +86,4 @@ localsend-bin
 satty
 gnome-calculator
 xmlstarlet
+man-db

@@ -51,6 +51,12 @@ for dir in autostart elephant fastfetch hypr swayosd systemd tmux walker waybar 
 done
 echo "✓ Created config directories"
 
+# Setup default keyring
+echo ""
+echo "Setting up default keyring..."
+"$OMARCHY_INSTALL/install/login/default-keyring.sh" > /dev/null
+echo "✓ Default keyring configured"
+
 # Setup fontconfig
 echo ""
 echo "Setting up fontconfig..."

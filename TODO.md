@@ -31,3 +31,7 @@
 - [ ] Omarchy PR to change to asdbcontrol
 - [ ] Create Config before refresh bug
 - [ ] Change VSCode Font dynamically
+
+## Bugs
+
+- [ ] VSCode does not capture Ctrl C Keybind when prompted for password
