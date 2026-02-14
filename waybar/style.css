@@ -1,4 +1,4 @@
-@import "../../.config/omarchy/current/theme/waybar.css";
+@import "../omarchy/current/theme/waybar.css";
 
 * {
   background-color: @background;
@@ -81,4 +81,8 @@
 
 tooltip {
   padding: 2px;
+}
+
+.hidden {
+  opacity: 0;
 }

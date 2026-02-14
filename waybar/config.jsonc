@@ -26,19 +26,6 @@
     "custom/separator-right",
     "clock"
   ],
-  "custom/arch": {
-    "format": "󰣇",
-    "tooltip": true,
-    "on-click": "ghostty -e sh -c 'fastfetch; exec zsh'"
-  },
-  "custom/separator-left": {
-    "format": "|",
-    "tooltip": false
-  },
-  "custom/separator-right": {
-    "format": "|",
-    "tooltip": false
-  },
   "hyprland/workspaces": {
     "on-click": "activate",
     "format": "{icon}",
@@ -63,6 +50,19 @@
       "4": [],
       "5": []
     }
+  },
+  "custom/arch": {
+    "format": "󰣇",
+    "tooltip": true,
+    "on-click": "ghostty -e sh -c 'fastfetch; exec zsh'"
+  },
+  "custom/separator-left": {
+    "format": "|",
+    "tooltip": false
+  },
+  "custom/separator-right": {
+    "format": "|",
+    "tooltip": false
   },
   "mpris": {
     "format": "{player_icon} {dynamic}",
@@ -155,9 +155,8 @@
   },
   "pulseaudio": {
     "format": "{icon}",
-    "on-click": "pamixer -i 5",
-    "on-click-right": "pamixer -d 5",
-    "on-click-middle": "ghostty -e wiremix",
+    "on-click": "ghostty -e wiremix",
+    "on-click-right": "pamixer -t",
     "tooltip-format": "Playing at {volume}%",
     "scroll-step": 5,
     "format-muted": "",
