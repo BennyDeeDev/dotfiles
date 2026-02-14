@@ -8,7 +8,7 @@ REPOS_DIR="$HOME/Repos"
 DOTFILES="$REPOS_DIR/dotfiles"
 OMARCHY_REPO="$REPOS_DIR/omarchy"
 OMARCHY_INSTALL="$HOME/.local/share/omarchy"
-OMARCHY_UPSTREAM="https://github.com/basecamp/omarchy.git"
+OMARCHY_UPSTREAM="https://github.com/BennyDeeDev/omarchy.git"
 
 # Save current theme to restore later
 CURRENT_THEME=$(omarchy-theme-current 2>/dev/null || echo "catppuccin")

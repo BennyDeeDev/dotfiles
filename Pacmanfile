@@ -66,6 +66,7 @@ swayosd
 swaybg
 polkit-gnome
 fontconfig
+ttf-liberation
 uwsm
 wireplumber
 grim
