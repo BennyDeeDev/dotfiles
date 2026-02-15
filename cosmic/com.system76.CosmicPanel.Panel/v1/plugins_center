@@ -1,1 +1,3 @@
-Some([])
+Some([
+    "com.github.MusicPlayer",
+])

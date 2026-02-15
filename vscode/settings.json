@@ -3,6 +3,7 @@
 
   "editor.fontFamily": "Hack Nerd Font Mono",
   "editor.formatOnSave": true,
+  "editor.inlayHints.enabled": "off",
 
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
@@ -20,5 +21,8 @@
   "github.copilot.enable": {
     "*": false
   },
-  "chat.viewSessions.orientation": "stacked"
+  "chat.viewSessions.orientation": "stacked",
+  "chat.tools.terminal.autoApprove": {
+    "cargo build": true
+  }
 }

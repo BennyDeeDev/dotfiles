@@ -16,6 +16,9 @@
 - [ ] Write a TUI that shows Temperatures
 - [ ] Install arch with `archinstall` minimal
 - [ ] Refactor Omarchy Script out and open source it
+- [ ] Theme Switcher Cosmic Applet
+- [ ] Seperator Cosmic Applet
+- [ ] Mpris Cosmic Applet
 
 ## Open Source
 
