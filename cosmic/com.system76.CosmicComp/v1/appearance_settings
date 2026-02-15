@@ -1,0 +1,6 @@
+(
+    clip_floating_windows: true,
+    clip_tiled_windows: true,
+    shadow_tiled_windows: false,
+    disable_workspace_switch_animation: true,
+)

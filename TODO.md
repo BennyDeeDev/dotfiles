@@ -24,6 +24,10 @@
 - [ ] Change VSCode Font dynamically
 - [ ] Share using Omarchy without installing it
 
+## Open Source Bugs
+
+- [ ] Cosmic DE Custom Shortcuts Name
+
 ## Bugs
 
 - [ ] VSCode does not capture Ctrl C Keybind when prompted for password
