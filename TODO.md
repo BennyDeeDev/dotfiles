@@ -19,6 +19,8 @@
 - [ ] Theme Switcher Cosmic Applet
 - [ ] Seperator Cosmic Applet
 - [ ] Mpris Cosmic Applet
+- [ ] Brightness Cosmic Applet
+- [ ] Dark/Night Cosmic Applet
 
 ## Open Source
 
