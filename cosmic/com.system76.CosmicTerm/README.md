@@ -27,7 +27,7 @@ Opacity setting (90%) stored separately
 
 ### ✅ Implemented
 - Font family: FiraCode Nerd Font
-- Font size: 14pt (Arch Linux)
+- Font size: 14pt (matches Ghostty's Arch Linux configuration)
 - Window opacity: 90%
 - Catppuccin Mocha color palette (dark theme)
 - Catppuccin Latte color palette (light theme)

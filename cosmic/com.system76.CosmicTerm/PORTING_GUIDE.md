@@ -23,13 +23,13 @@ This document details the porting of Ghostty terminal configuration to COSMIC Te
 
 ### Appearance Settings
 
-| Ghostty Setting | Value | COSMIC Setting | Value |
-|----------------|-------|----------------|-------|
-| `font-family` | FiraCode Nerd Fonts | `font_name` | "FiraCode Nerd Font" |
-| `font-size` (arch) | 14 | `font_size` | 14 |
-| `background-opacity` | 0.90 | `opacity` | 90 |
-| `font-weight` | Regular (400) | `font_weight` | 400 |
-| `bold-font-weight` | Bold (700) | `bold_font_weight` | 700 |
+| Ghostty Setting | Value | COSMIC Setting | Value | Notes |
+|----------------|-------|----------------|-------|-------|
+| `font-family` | FiraCode Nerd Fonts | `font_name` | "FiraCode Nerd Font" | COSMIC uses singular form (official font name) |
+| `font-size` (arch) | 14 | `font_size` | 14 | |
+| `background-opacity` | 0.90 | `opacity` | 90 | |
+| `font-weight` | Regular (400) | `font_weight` | 400 | |
+| `bold-font-weight` | Bold (700) | `bold_font_weight` | 700 | |
 
 ### Color Scheme Mapping (Catppuccin Mocha)
 
