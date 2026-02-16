@@ -7,9 +7,7 @@
 - [ ] Homebrew bundle cleanup in paru
 - [ ] Custom Privacy Icons
 - [ ] Arch Booting dont wait 3 sec
-- [ ] Tui greeter
-
-## Soon
+- [ ] Secure Boot
 
 ## Project Ideas
 
@@ -19,8 +17,8 @@
 - [ ] Theme Switcher Cosmic Applet
 - [ ] Seperator Cosmic Applet
 - [ ] Mpris Cosmic Applet
-- [ ] Brightness Cosmic Applet
-- [ ] Dark/Night Cosmic Applet
+- [ ] Brightness Dark/Night Theme Cosmic Applet
+- [ ] Custom OS Icon Cosmic Applet
 
 ## Open Source
 
