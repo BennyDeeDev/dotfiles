@@ -79,10 +79,9 @@
     ): Disable,
     (
         modifiers: [
-            Ctrl,
             Shift,
         ],
-        key: "3",
+        key: "F3",
     ): MoveToWorkspace(3),
     (
         modifiers: [
@@ -130,10 +129,9 @@
     ): System(HomeFolder),
     (
         modifiers: [
-            Ctrl,
             Shift,
         ],
-        key: "1",
+        key: "F1",
     ): MoveToWorkspace(1),
     (
         modifiers: [
@@ -158,10 +156,9 @@
     ): Disable,
     (
         modifiers: [
-            Ctrl,
             Shift,
         ],
-        key: "2",
+        key: "F2",
     ): MoveToWorkspace(2),
     (
         modifiers: [
@@ -227,11 +224,16 @@
     ): Disable,
     (
         modifiers: [
-            Ctrl,
             Shift,
         ],
-        key: "9",
+        key: "F9",
     ): MoveToWorkspace(9),
+    (
+        modifiers: [
+            Shift,
+        ],
+        key: "F10",
+    ): MoveToWorkspace(10),
     (
         modifiers: [
             Super,
@@ -311,10 +313,9 @@
     ): Disable,
     (
         modifiers: [
-            Ctrl,
             Shift,
         ],
-        key: "6",
+        key: "F6",
     ): MoveToWorkspace(6),
     (
         modifiers: [
@@ -475,10 +476,9 @@
     ): Disable,
     (
         modifiers: [
-            Ctrl,
             Shift,
         ],
-        key: "4",
+        key: "F4",
     ): MoveToWorkspace(4),
     (
         modifiers: [
@@ -586,10 +586,9 @@
     ): Disable,
     (
         modifiers: [
-            Ctrl,
             Shift,
         ],
-        key: "7",
+        key: "F7",
     ): MoveToWorkspace(7),
     (
         modifiers: [
@@ -644,10 +643,9 @@
     ): Disable,
     (
         modifiers: [
-            Ctrl,
             Shift,
         ],
-        key: "5",
+        key: "F5",
     ): MoveToWorkspace(5),
     (
         modifiers: [
@@ -743,10 +741,9 @@
     ): Disable,
     (
         modifiers: [
-            Ctrl,
             Shift,
         ],
-        key: "8",
+        key: "F8",
     ): MoveToWorkspace(8),
     (
         modifiers: [

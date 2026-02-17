@@ -1,5 +1,6 @@
 {
   "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.iconTheme": "catppuccin-mocha",
 
   "editor.fontFamily": "Hack Nerd Font Mono",
   "editor.formatOnSave": true,
