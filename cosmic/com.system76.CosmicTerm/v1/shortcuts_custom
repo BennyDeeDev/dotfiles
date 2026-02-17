@@ -1,0 +1,343 @@
+{
+    (
+        modifiers: [],
+        key: "F11",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+        ],
+        key: "0",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+        ],
+        key: "1",
+    ): TabActivate0,
+    (
+        modifiers: [
+            Ctrl,
+        ],
+        key: "2",
+    ): TabActivate1,
+    (
+        modifiers: [
+            Ctrl,
+        ],
+        key: "3",
+    ): TabActivate2,
+    (
+        modifiers: [
+            Ctrl,
+        ],
+        key: "4",
+    ): TabActivate3,
+    (
+        modifiers: [
+            Ctrl,
+        ],
+        key: "5",
+    ): TabActivate4,
+    (
+        modifiers: [
+            Ctrl,
+        ],
+        key: "6",
+    ): TabActivate5,
+    (
+        modifiers: [
+            Ctrl,
+        ],
+        key: "7",
+    ): TabActivate6,
+    (
+        modifiers: [
+            Ctrl,
+        ],
+        key: "8",
+    ): TabActivate7,
+    (
+        modifiers: [
+            Ctrl,
+        ],
+        key: "9",
+    ): TabActivate8,
+    (
+        modifiers: [
+            Ctrl,
+        ],
+        key: "A",
+    ): SelectAll,
+    (
+        modifiers: [
+            Ctrl,
+        ],
+        key: "C",
+    ): Copy,
+    (
+        modifiers: [
+            Ctrl,
+        ],
+        key: "F",
+    ): Find,
+    (
+        modifiers: [
+            Ctrl,
+        ],
+        key: "T",
+    ): TabNew,
+    (
+        modifiers: [
+            Ctrl,
+        ],
+        key: "Tab",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+        ],
+        key: "V",
+    ): Paste,
+    (
+        modifiers: [
+            Ctrl,
+        ],
+        key: "W",
+    ): TabClose,
+    (
+        modifiers: [
+            Ctrl,
+        ],
+        key: "c",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "1",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "2",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "3",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "4",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "5",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "6",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "7",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "8",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "9",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "A",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "ArrowDown",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "ArrowLeft",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "ArrowRight",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "ArrowUp",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "C",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "F",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "H",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "J",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "K",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "L",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "N",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "Q",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "T",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "Tab",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "V",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "W",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Shift,
+        ],
+        key: "X",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Alt,
+        ],
+        key: "L",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Alt,
+        ],
+        key: "d",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Alt,
+        ],
+        key: "p",
+    ): Disable,
+    (
+        modifiers: [
+            Ctrl,
+            Alt,
+        ],
+        key: "r",
+    ): Disable,
+    (
+        modifiers: [
+            Shift,
+        ],
+        key: "Insert",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "C",
+    ): CopyOrSigint,
+}

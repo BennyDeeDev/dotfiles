@@ -1,13 +1,13 @@
 # Font
-font-family = FiraCode Nerd Fonts
+font-family = Hack Nerd Font Mono
 font-style = Regular
 
 # Shell
 shell-integration = zsh
 
 # Window
-window-padding-x = 7
-window-padding-y = 7
+window-padding-x = 8
+window-padding-y = 8
 quit-after-last-window-closed = true
 confirm-close-surface = false
 
