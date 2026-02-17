@@ -32,6 +32,7 @@
 - [ ] Cosmic DE Custom Shortcuts Name
 - [ ] Cosmic DE Config not Diffable
 - [ ] Cosmic DE Screenshot is State
+- [ ] Ghostty pastes inline comments after keycode
 
 ## Bugs
 
