@@ -20,10 +20,9 @@ __cd_and_exec() {
   [[ $# -gt 0 ]] && "$@"
 }
 
+ccd() { __cd_and_exec "$@"; }
 ncd() { __cd_and_exec nvim .; }
-ccd() { __cd_and_exec; }
 vcd() { __cd_and_exec code -r .; }
-ocd() { __cd_and_exec "$@"; }
 
 prettierrc() {
   cat > .prettierrc << 'EOF'
