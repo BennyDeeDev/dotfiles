@@ -1,6 +1,7 @@
 (
     enabled_players: [
         "Spotify",
+        "Brave",
     ],
     auto_detect_new_players: true,
     selected_player: None,

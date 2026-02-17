@@ -1,5 +1,4 @@
-__cd_and_optional_nvim() {
-  local open_in_nvim="$1"
+__cd_and_exec() {
   local REPOS_DIR=~/Repos
   local CONFIG_DIR=~/.config
 
@@ -18,11 +17,13 @@ __cd_and_optional_nvim() {
   }
 
   cd "$selected" || return 1
-  [[ "$open_in_nvim" == "true" ]] && nvim .
+  [[ $# -gt 0 ]] && "$@"
 }
 
-ncd() { __cd_and_optional_nvim true; }
-ccd() { __cd_and_optional_nvim false; }
+ncd() { __cd_and_exec nvim .; }
+ccd() { __cd_and_exec; }
+vcd() { __cd_and_exec code -r .; }
+ocd() { __cd_and_exec "$@"; }
 
 prettierrc() {
   cat > .prettierrc << 'EOF'

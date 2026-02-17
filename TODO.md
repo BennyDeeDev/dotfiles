@@ -19,6 +19,7 @@
 - [ ] Mpris Cosmic Applet
 - [ ] Brightness Dark/Night Theme Cosmic Applet
 - [ ] Custom OS Icon Cosmic Applet
+- [ ] Local Wikis for AI to crawl
 
 ## Open Source
 

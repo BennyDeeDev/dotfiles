@@ -2,6 +2,8 @@
   "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.iconTheme": "catppuccin-mocha",
 
+  "window.confirmSaveUntitledWorkspace": false,
+
   "editor.fontFamily": "Hack Nerd Font Mono",
   "editor.formatOnSave": true,
   "editor.inlayHints.enabled": "off",
