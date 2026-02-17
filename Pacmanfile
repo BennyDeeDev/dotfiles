@@ -28,6 +28,7 @@ fd
 btop
 fastfetch
 tlrc
+tmux
 wiremix
 libusb
 jq

@@ -5,6 +5,7 @@ set -e
 DOTFILES="$HOME/Repos/dotfiles"
 
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/nvim" "$HOME/.config/nvim"
+"$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/tmux" "$HOME/.config/tmux"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/i3" "$HOME/.config/i3"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/alacritty" "$HOME/.config/alacritty"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/rofi" "$HOME/.config/rofi"

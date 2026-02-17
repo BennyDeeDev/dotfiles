@@ -34,6 +34,7 @@ alias ....='cd ../../..'
 alias c='opencode'
 alias d='docker'
 alias n='nvim'
+alias t='tmux attach || tmux new -s main'
 
 alias lg='lazygit'
 alias k='kubectl'
