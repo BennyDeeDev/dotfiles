@@ -16,6 +16,7 @@ DOTFILES="$HOME/Repos/dotfiles"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/pipewire/pipewire.conf.d" "$HOME/.config/pipewire/pipewire.conf.d"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/pipewire/pipewire-pulse.conf.d" "$HOME/.config/pipewire/pipewire-pulse.conf.d"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/git/config" "$HOME/.gitconfig"
+"$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/opencode" "$HOME/.config/opencode"
 
 # COSMIC configs
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/cosmic" "$HOME/.config/cosmic"

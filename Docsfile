@@ -1,0 +1,6 @@
+# Documentation repos to clone into ~/Docs
+# Add GitHub repo URLs (clone with git clone --bare for docs-only)
+
+# AI / Coding Tools
+lazyvim/lazyvim
+anomalyco/opencode
