@@ -7,27 +7,23 @@ set -euo pipefail
 DOCS_DIR="$HOME/Docs"
 DOCSFILE="$HOME/Repos/dotfiles/Docsfile"
 
-if [[ ! -f "$DOCSFILE" ]]; then
-  echo "Docsfile not found at $DOCSFILE"
-  exit 1
-fi
-
 mkdir -p "$DOCS_DIR"
 
 while IFS= read -r line || [[ -n "$line" ]]; do
   [[ "$line" =~ ^#.*$ ]] && continue
   [[ -z "$line" ]] && continue
 
-  repo="$line"
-  reponame="${repo##*/}"
-  target_dir="$DOCS_DIR/$reponame"
+  repo=$(echo "$line" | awk '{print $1}')
+  name=$(echo "$line" | awk '{print $2}')
+  [[ -z "$name" ]] && name="${repo##*/}" && name="${name%.git}"
+  target_dir="$DOCS_DIR/$name"
 
   if [[ -d "$target_dir" ]]; then
-    echo "Updating $reponame..."
-    git -C "$target_dir" pull --ff || true
+    echo "Updating $name..."
+    git -C "$target_dir" pull
   else
-    echo "Cloning $repo..."
-    git clone --depth 1 "https://github.com/$repo.git" "$target_dir"
+    echo "Cloning $name..."
+    git clone --depth 1 "$repo" "$target_dir"
   fi
 done < "$DOCSFILE"
 

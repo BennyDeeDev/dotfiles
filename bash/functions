@@ -1,15 +1,8 @@
 __cd_and_exec() {
-  local REPOS_DIR=~/Repos
-  local CONFIG_DIR=~/.config
-
-  [[ -d "$REPOS_DIR" && -d "$CONFIG_DIR" ]] || {
-    [[ ! -d "$REPOS_DIR" ]] && echo "$REPOS_DIR does not exist."
-    [[ ! -d "$CONFIG_DIR" ]] && echo "$CONFIG_DIR does not exist."
-    return 1
-  }
+  local dirs=(~/Repos ~/.config ~/Docs)
 
   local selected
-  selected=$(find "$REPOS_DIR" "$CONFIG_DIR" -mindepth 1 -maxdepth 1 -type d | fzf)
+  selected=$(find "${dirs[@]}" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf)
 
   [[ -z "$selected" ]] && {
     echo "No directory selected."
