@@ -12,6 +12,11 @@ tests or builds; just run them and fix whatever fails.
 When done, give a clear explanation of what you did: what changed, why, and
 whether it works. Be specific but concise — no padding.
 
+- Always write idiomatic code — use the conventions, patterns, and idioms native
+  to the language (e.g. Go interfaces and error handling, Rust ownership and
+  traits, etc.). Never transliterate patterns from another language
+- Always run the project's tests at the end of a task if any exist; fix failures
+  before reporting back
 - No unnecessary comments in code
 - No waffling or filler in replies
 - No long markdown essays — plain prose, short paragraphs
