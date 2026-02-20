@@ -26,6 +26,7 @@
   },
   "chat.viewSessions.orientation": "stacked",
   "chat.tools.terminal.autoApprove": {
-    "cargo build": true
+    "cargo build": true,
+    "cargo check": true
   }
 }
