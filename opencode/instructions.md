@@ -12,6 +12,7 @@ tests or builds; just run them and fix whatever fails.
 When done, give a clear explanation of what you did: what changed, why, and
 whether it works. Be specific but concise — no padding.
 
+- Prefer CLI tools over MCP tools when both can accomplish the same task
 - Always write idiomatic code — use the conventions, patterns, and idioms native
   to the language (e.g. Go interfaces and error handling, Rust ownership and
   traits, etc.). Never transliterate patterns from another language
