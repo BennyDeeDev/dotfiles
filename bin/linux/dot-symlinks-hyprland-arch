@@ -16,10 +16,13 @@ DOTFILES="$HOME/Repos/dotfiles"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/k9s" "$HOME/.config/k9s"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/vscode/keybindings-linux.json" "$HOME/.config/Code/User/keybindings.json"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/vscode/settings.json" "$HOME/.config/Code/User/settings.json"
-"$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/pipewire/pipewire.conf.d" "$HOME/.config/pipewire/pipewire.conf.d"
-"$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/pipewire/pipewire-pulse.conf.d" "$HOME/.config/pipewire/pipewire-pulse.conf.d"
+"$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/pipewire" "$HOME/.config/pipewire"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/git/config" "$HOME/.gitconfig"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/opencode" "$HOME/.config/opencode"
+
+# Omarchy themes
+"$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/themes/catppuccin-extended" "$HOME/.config/omarchy/themes/catppuccin-extended"
+"$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/themes/catppuccin-latte-extended" "$HOME/.config/omarchy/themes/catppuccin-latte-extended"
 
 # Hidden applications
 for app in "$DOTFILES"/applications/hidden/*.desktop; do

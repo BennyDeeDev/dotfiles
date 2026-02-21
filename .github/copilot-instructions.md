@@ -2,6 +2,10 @@
 
 These instructions apply when working in this repo.
 
+## Global Instructions
+
+Always refer to `opencode/instructions.md` for instructions.
+
 ## Omarchy dependency
 
 **Never modify omarchy code.** Omarchy is used as a dependency, not as the whole
@@ -55,7 +59,8 @@ Be thorough but not excessive. Cover what's needed, nothing more.
 - Use concrete examples over abstract explanations
 - If a point is made once clearly, don't restate it
 
-**Balance:** Provide enough context to understand decisions, but cut anything repetitive or obvious.
+**Balance:** Provide enough context to understand decisions, but cut anything
+repetitive or obvious.
 
 ## Dependency management
 
@@ -70,6 +75,7 @@ ensures reproducible environments across machines and makes dependencies
 explicit.
 
 When a command fails due to a missing dependency:
+
 1. Identify the package name
 2. Add it to `Pacmanfile` or `Brewfile`
 3. Execute the package installer:

@@ -1,0 +1,72 @@
+binds {
+    Ctrl+Shift+T { spawn "ghostty"; }
+    Ctrl+Shift+F { spawn "nautilus"; }
+    Ctrl+Shift+B { spawn "brave"; }
+    Ctrl+Shift+E { spawn "code"; }
+    Ctrl+Shift+P { spawn "keepassxc"; }
+    Ctrl+Shift+S { spawn "spotify"; }
+    Ctrl+Space   { spawn "walker"; }
+    Ctrl+Shift+Space { spawn "omarchy-menu"; }
+
+    Ctrl+Q       { close-window; }
+    Ctrl+Shift+Q { quit; }
+    Ctrl+Shift+V { toggle-window-floating; }
+    Ctrl+Shift+J { switch-preset-column-width; }
+    Ctrl+Shift+W { spawn-sh "pkill waybar; waybar &"; }
+
+    Super+Left  { focus-column-left; }
+    Super+Right { focus-column-right; }
+    Super+Up    { focus-window-up; }
+    Super+Down  { focus-window-down; }
+
+    Super+1 { focus-workspace 1; }
+    Super+2 { focus-workspace 2; }
+    Super+3 { focus-workspace 3; }
+    Super+4 { focus-workspace 4; }
+    Super+5 { focus-workspace 5; }
+    Super+6 { focus-workspace 6; }
+    Super+7 { focus-workspace 7; }
+    Super+8 { focus-workspace 8; }
+    Super+9 { focus-workspace 9; }
+    Super+0 { focus-workspace 10; }
+
+    Shift+F1  { move-window-to-workspace 1; }
+    Shift+F2  { move-window-to-workspace 2; }
+    Shift+F3  { move-window-to-workspace 3; }
+    Shift+F4  { move-window-to-workspace 4; }
+    Shift+F5  { move-window-to-workspace 5; }
+    Shift+F6  { move-window-to-workspace 6; }
+    Shift+F7  { move-window-to-workspace 7; }
+    Shift+F8  { move-window-to-workspace 8; }
+    Shift+F9  { move-window-to-workspace 9; }
+    Shift+F10 { move-window-to-workspace 10; }
+
+    Super+Minus       { set-column-width "-10%"; }
+    Super+Equal       { set-column-width "+10%"; }
+    Super+Shift+Minus { set-window-height "-10%"; }
+    Super+Shift+Equal { set-window-height "+10%"; }
+
+    Ctrl+Tab       { focus-column-right-or-first; }
+    Ctrl+Shift+Tab { focus-column-left-or-last; }
+
+    Print       { spawn "omarchy-cmd-screenshot"; }
+    Shift+Print { spawn "omarchy-cmd-screenrecord"; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "raise"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "lower"; }
+    XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "swayosd-client" "--input-volume" "mute-toggle"; }
+
+    Alt+XF86AudioRaiseVolume { spawn "swayosd-client" "--output-volume" "+1"; }
+    Alt+XF86AudioLowerVolume { spawn "swayosd-client" "--output-volume" "-1"; }
+
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "asdbctl" "up" "-s" "5"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "asdbctl" "down" "-s" "5"; }
+    Alt+XF86MonBrightnessUp   { spawn "asdbctl" "up" "-s" "1"; }
+    Alt+XF86MonBrightnessDown { spawn "asdbctl" "down" "-s" "1"; }
+
+    XF86AudioNext  allow-when-locked=true { spawn "swayosd-client" "--playerctl" "next"; }
+    XF86AudioPause allow-when-locked=true { spawn "swayosd-client" "--playerctl" "play-pause"; }
+    XF86AudioPlay  allow-when-locked=true { spawn "swayosd-client" "--playerctl" "play-pause"; }
+    XF86AudioPrev  allow-when-locked=true { spawn "swayosd-client" "--playerctl" "previous"; }
+}

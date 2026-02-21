@@ -1,0 +1,19 @@
+window-rule {
+    match at-startup=true app-id="brave-browser"
+    open-on-workspace "www"
+}
+
+window-rule {
+    match at-startup=true app-id="com.mitchellh.ghostty"
+    open-on-workspace "term"
+}
+
+window-rule {
+    match at-startup=true app-id="code"
+    open-on-workspace "dev"
+}
+
+window-rule {
+    match at-startup=true app-id="spotify"
+    open-on-workspace "media"
+}

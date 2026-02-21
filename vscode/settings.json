@@ -1,6 +1,6 @@
 {
-  "workbench.colorTheme": "Catppuccin Mocha",
-  "workbench.iconTheme": "catppuccin-mocha",
+  "workbench.colorTheme": "Catppuccin Latte",
+  "workbench.iconTheme": "catppuccin-latte",
 
   "window.confirmSaveUntitledWorkspace": false,
 
@@ -20,6 +20,9 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 
   "github.copilot.enable": {
     "*": false
@@ -27,6 +30,11 @@
   "chat.viewSessions.orientation": "stacked",
   "chat.tools.terminal.autoApprove": {
     "cargo build": true,
-    "cargo check": true
+    "cargo check": true,
+    "niri": true
+  },
+  "chat.tools.urls.autoApprove": {
+    "https://www.reddit.com": true,
+    "https://www.github.com": true
   }
 }

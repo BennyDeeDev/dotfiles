@@ -1,0 +1,26 @@
+workspace "www"
+workspace "term"
+workspace "dev"
+workspace "dev2"
+workspace "media"
+
+animations {
+    off
+}
+
+layout {
+    gaps 16
+
+    focus-ring {
+        width 2
+        active-color "#89b4fa"
+        inactive-color "#595959aa"
+    }
+
+    preset-column-widths {
+        proportion 0.5
+        proportion 1.0
+    }
+
+    default-column-width { proportion 1.0; }
+}

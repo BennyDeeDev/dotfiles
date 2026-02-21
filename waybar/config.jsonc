@@ -7,7 +7,8 @@
   "modules-left": [
     "custom/arch",
     "custom/separator-left",
-    "hyprland/workspaces"
+    "hyprland/workspaces",
+    "niri/workspaces"
   ],
   "modules-center": ["mpris"],
   "modules-right": [
@@ -26,11 +27,23 @@
     "custom/separator-right",
     "clock"
   ],
+  "niri/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "www": "󰖟",
+      "term": "",
+      "dev": "󰨞",
+      "dev2": "󰨞",
+      "media": "󰝚",
+
+      "default": ""
+    }
+  },
   "hyprland/workspaces": {
     "on-click": "activate",
     "format": "{icon}",
     "format-icons": {
-      "default": "",
+      "default": "",
       "1": "1",
       "2": "2",
       "3": "3",
@@ -40,8 +53,7 @@
       "7": "7",
       "8": "8",
       "9": "9",
-      "10": "0",
-      "active": "󱓻"
+      "10": "0"
     },
     "persistent-workspaces": {
       "1": [],
@@ -65,16 +77,9 @@
     "tooltip": false
   },
   "mpris": {
-    "format": "{player_icon} {dynamic}",
-    "format-paused": "{status_icon} <i>{dynamic}</i>",
-    "player-icons": {
-      "default": "▶",
-      "mpv": "🎵"
-    },
-    "status-icons": {
-      "paused": "⏸"
-    }
-    // "ignored-players": ["brave"],
+    "format": "<i>{dynamic}</i>",
+    "format-paused": "{dynamic}",
+    "dynamic-order": ["title", "artist"]
   },
   "cpu": {
     "interval": 5,

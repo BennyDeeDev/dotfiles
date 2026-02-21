@@ -4,12 +4,15 @@ set -e
 
 DOTFILES="$HOME/Repos/dotfiles"
 
+"$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/niri" "$HOME/.config/niri"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/ghostty" "$HOME/.config/ghostty"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/ghostty/linux.conf" "$HOME/.config/ghostty/config-local"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/nvim" "$HOME/.config/nvim"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/tmux" "$HOME/.config/tmux"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/.zshrc.arch" "$HOME/.zshrc"
+"$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/xdg-terminals.list" "$HOME/.config/xdg-terminals.list"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/brave-flags.conf" "$HOME/.config/brave-flags.conf"
+"$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/waybar" "$HOME/.config/waybar"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/k9s" "$HOME/.config/k9s"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/vscode/keybindings-linux.json" "$HOME/.config/Code/User/keybindings.json"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/vscode/settings.json" "$HOME/.config/Code/User/settings.json"
@@ -17,5 +20,11 @@ DOTFILES="$HOME/Repos/dotfiles"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/git/config" "$HOME/.gitconfig"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/opencode" "$HOME/.config/opencode"
 
-# COSMIC configs
-"$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/cosmic" "$HOME/.config/cosmic"
+# Omarchy themes
+"$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/themes/catppuccin-extended" "$HOME/.config/omarchy/themes/catppuccin-extended"
+"$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/themes/catppuccin-latte-extended" "$HOME/.config/omarchy/themes/catppuccin-latte-extended"
+
+# Hidden applications
+for app in "$DOTFILES"/applications/hidden/*.desktop; do
+  "$DOTFILES/bin/common/dot-cmd-symlink" "$app" "$HOME/.local/share/applications/$(basename "$app")"
+done
