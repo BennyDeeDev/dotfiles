@@ -1,5 +1,6 @@
 spawn-at-startup "hypridle"
 spawn-at-startup "mako"
+spawn-at-startup "xwayland-satellite" ":0"
 spawn-at-startup "waybar"
 spawn-sh-at-startup "swaybg -i ~/.config/omarchy/current/background -m fill"
 spawn-at-startup "swayosd-server"

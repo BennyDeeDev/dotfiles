@@ -56,12 +56,15 @@ xdg-terminal-exec
 hypridle
 hyprland
 hyprland-guiutils
+niri
 hyprlock
 hyprpicker
 hyprsunset
 hyprland-preview-share-picker-git
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-gtk
+xdg-desktop-portal-gnome
+xwayland-satellite
 mako
 swayosd
 swaybg
@@ -89,7 +92,6 @@ libsecret
 opencode
 wayfreeze
 localsend-bin
-satty
 gnome-calculator
 xmlstarlet
 man-db

@@ -1,12 +1,57 @@
+prefer-no-csd
+
+hotkey-overlay {
+    skip-at-startup
+}
+
 animations {
-    off
+    workspace-switch {
+        off
+    }
+
+    window-open {
+        duration-ms 410
+        curve "cubic-bezier" 0.23 1.0 0.32 1.0
+    }
+
+    window-close {
+        duration-ms 75
+        curve "linear"
+    }
+
+    horizontal-view-movement {
+        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+
+    window-movement {
+        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+
+    window-resize {
+        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
 }
 
 layout {
-    gaps 16
+    gaps 8
+
+    struts {
+        left 8
+        right 8
+        top 8
+        bottom 8
+    }
 
     focus-ring {
         width 2
+    }
+
+    shadow {
+        on
+        softness 2
+        spread 0
+        offset x=0 y=2
+        color "#1a1a1aee"
     }
 
     preset-column-widths {
