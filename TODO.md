@@ -11,6 +11,7 @@
 
 ## Project Ideas
 
+- [ ] Terminal Greeter TUI with base16 themes
 - [ ] Write a TUI that shows Temperatures
 - [ ] Install arch with `archinstall` minimal
 - [ ] Refactor Omarchy Script out and open source it
