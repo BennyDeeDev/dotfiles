@@ -1,3 +1,9 @@
-https://github.com/LazyVim/lazyvim.github.io.git lazyvim-docs
-https://github.com/anomalyco/opencode 
-https://github.com/ghostty-org/website.git ghostty-docs
+https://github.com/LazyVim/lazyvim.github.io.git lazyvim-docs docs
+https://github.com/anomalyco/opencode opencode-docs packages/docs
+https://github.com/ghostty-org/website.git ghostty-docs docs
+https://github.com/niri-wm/niri.git niri-docs docs
+https://github.com/hyprwm/hyprland-wiki.git hyprland-docs content
+https://github.com/starship/starship.git starship-docs docs
+https://github.com/tmux/tmux.wiki.git tmux-docs
+https://github.com/Alexays/Waybar.wiki.git waybar-docs
+https://github.com/catppuccin/catppuccin.git catpuccin-docs docs
