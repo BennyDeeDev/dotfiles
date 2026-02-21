@@ -34,6 +34,7 @@
 - [ ] Cosmic DE Config not Diffable
 - [ ] Cosmic DE Screenshot is State
 - [ ] Ghostty pastes inline comments after keycode
+- [ ] Niri Symlink Bug
 
 ## Bugs
 

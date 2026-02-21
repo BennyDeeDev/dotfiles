@@ -1,9 +1,3 @@
-workspace "www"
-workspace "term"
-workspace "dev"
-workspace "dev2"
-workspace "media"
-
 animations {
     off
 }
@@ -13,8 +7,6 @@ layout {
 
     focus-ring {
         width 2
-        active-color "#89b4fa"
-        inactive-color "#595959aa"
     }
 
     preset-column-widths {

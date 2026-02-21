@@ -7,7 +7,7 @@
   border: none;
   border-radius: 0;
   min-height: 0;
-  font-family: 'Hack Nerd Font Mono';
+  font-family: "Hack Nerd Font Mono";
   font-size: 16px;
 }
 
@@ -84,10 +84,6 @@
 
 #mpris {
   font-size: 12px;
-}
-
-#mpris.playing {
-  color: @accent;
 }
 
 tooltip {
