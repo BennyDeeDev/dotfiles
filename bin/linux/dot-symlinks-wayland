@@ -21,6 +21,7 @@ DOTFILES="$HOME/Repos/dotfiles"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/pipewire" "$HOME/.config/pipewire"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/git/config" "$HOME/.gitconfig"
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/opencode" "$HOME/.config/opencode"
+"$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/fontconfig/fonts.conf" "$HOME/.config/fontconfig/fonts.conf"
 
 # Omarchy themes
 "$DOTFILES/bin/common/dot-cmd-symlink" "$DOTFILES/themes/catppuccin-extended" "$HOME/.config/omarchy/themes/catppuccin-extended"

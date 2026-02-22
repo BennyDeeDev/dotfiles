@@ -101,7 +101,7 @@
         ],
         key: "s",
         description: Some("Spotify"),
-    ): Spawn("spotify"),
+    ): Spawn("spotify-launcher"),
     (
         modifiers: [
             Super,

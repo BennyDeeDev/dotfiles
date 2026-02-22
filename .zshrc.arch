@@ -13,14 +13,81 @@ open() (
 
 pacman-bundle() {
   local pacmanfile="$DOTFILES/Pacmanfile"
-  
+
   [[ ! -f "$pacmanfile" ]] && {
     echo "Pacmanfile not found at $pacmanfile"
     return 1
   }
-  
+
   echo "Installing packages from Pacmanfile..."
-  paru -Syu --needed --noconfirm - < "$pacmanfile"
+  paru -S --needed --noconfirm - < "$pacmanfile"
+  sudo mandb
+}
+
+pacman-bundle-system() {
+  local pacmanfile="$DOTFILES/Pacmanfile.system"
+
+  [[ ! -f "$pacmanfile" ]] && {
+    echo "Pacmanfile.system not found at $pacmanfile"
+    return 1
+  }
+
+  echo "Installing system packages from Pacmanfile.system..."
+  paru -S --needed --noconfirm - < "$pacmanfile"
+  sudo mandb
+}
+
+pacman-cleanup() {
+  local tracked
+  tracked=$(
+    for f in "$DOTFILES"/Pacmanfile "$DOTFILES"/Pacmanfile.system; do
+      [[ -f "$f" ]] || continue
+      while read -r pkg || [[ -n "$pkg" ]]; do
+        members=$(pacman -Sqg "$pkg" 2>/dev/null)
+        if [[ -n "$members" ]]; then
+          echo "$members"
+        else
+          echo "$pkg"
+        fi
+      done < "$f"
+    done | sort -u
+  )
+
+  local to_remove
+  to_remove=$(comm -23 \
+    <(pacman -Qqe | grep -v -- '-debug$' | sort) \
+    <(echo "$tracked"))
+
+  if [[ -z "$to_remove" ]]; then
+    echo "Nothing to remove — all installed packages are tracked"
+  else
+    echo "Untracked packages:"
+    echo "$to_remove"
+
+    if [[ "$1" == "--apply" ]]; then
+      echo ""
+      echo "Removing..."
+      echo "$to_remove" | xargs paru -Rns --noconfirm
+    else
+      echo ""
+      echo "Dry run — run with --apply to remove"
+    fi
+  fi
+
+  local orphans
+  orphans=$(pacman -Qdtq 2>/dev/null)
+
+  if [[ -n "$orphans" ]]; then
+    echo ""
+    echo "Orphaned packages:"
+    echo "$orphans"
+
+    if [[ "$1" == "--apply" ]]; then
+      echo ""
+      echo "Removing orphans..."
+      echo "$orphans" | xargs paru -Rns --noconfirm
+    fi
+  fi
 }
 
 reboot-arch() {

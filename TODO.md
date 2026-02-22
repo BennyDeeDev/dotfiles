@@ -4,7 +4,6 @@
 
 - [ ] Have a fully reproducable user land Arch
 - [ ] Figure out cursors
-- [ ] Homebrew bundle cleanup in paru
 - [ ] Custom Privacy Icons
 - [ ] Secure Boot
 
