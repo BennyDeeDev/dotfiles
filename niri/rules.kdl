@@ -17,3 +17,48 @@ window-rule {
     match at-startup=true app-id="spotify"
     open-on-workspace "media"
 }
+
+window-rule {
+    match app-id=r#"^org\.gnome\.Nautilus$"#
+    default-column-width { proportion 0.5; }
+}
+
+window-rule {
+    match app-id="^xdg-desktop-portal-gtk$"
+    open-floating true
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 0.5; }
+}
+
+window-rule {
+    match app-id=r#"^org\.gnome\.Calculator$"#
+    open-floating true
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 0.5; }
+}
+
+window-rule {
+    match app-id="^localsend$"
+    open-floating true
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 0.5; }
+}
+
+window-rule {
+    match app-id=r#"^org\.gnome\.DiskUtility$"#
+    open-floating true
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 0.5; }
+}
+
+window-rule {
+    match app-id="^system-config-printer$"
+    open-floating true
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 0.5; }
+}
+
+window-rule {
+    match app-id=r#"^org\.gnome\.Evince$"#
+    default-column-width { proportion 0.5; }
+}

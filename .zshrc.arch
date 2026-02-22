@@ -21,7 +21,8 @@ pacman-bundle() {
 
   echo "Installing packages from Pacmanfile..."
   paru -S --needed --noconfirm - < "$pacmanfile"
-  sudo mandb
+  sudo mandb -q
+  sudo updatedb
 }
 
 pacman-bundle-system() {
@@ -34,7 +35,8 @@ pacman-bundle-system() {
 
   echo "Installing system packages from Pacmanfile.system..."
   paru -S --needed --noconfirm - < "$pacmanfile"
-  sudo mandb
+  sudo mandb -q
+  sudo updatedb
 }
 
 pacman-cleanup() {
@@ -117,6 +119,8 @@ pkg-install() {
 
   if [[ -n "$pkg_names" ]]; then
     echo "$pkg_names" | tr '\n' ' ' | xargs sudo pacman -S --noconfirm
+    sudo mandb -q
+    sudo updatedb
   fi
 }
 
@@ -140,6 +144,7 @@ aur-install() {
 
   if [[ -n "$pkg_names" ]]; then
     echo "$pkg_names" | tr '\n' ' ' | xargs yay -S --noconfirm
+    sudo mandb -q
     sudo updatedb
   fi
 }

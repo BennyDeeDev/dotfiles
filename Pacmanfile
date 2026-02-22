@@ -62,7 +62,6 @@ hyprpicker
 hyprsunset
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-gtk
-xdg-desktop-portal-gnome
 xwayland-satellite
 mako
 swayosd
@@ -91,6 +90,7 @@ localsend-bin
 gnome-calculator
 xmlstarlet
 man-db
+plocate
 yaru-icon-theme
 cosmic
 flatpak
@@ -102,14 +102,13 @@ wqy-zenhei
 mangohud
 lib32-mangohud
 obs-studio
+brother-hll2400dwe-bin
 cups
-cups-pk-helper
 system-config-printer
 unzip
 imagemagick
 ffmpegthumbnailer
 gvfs-smb
-gvfs-mtp
 ripgrep
 rustup
 go
