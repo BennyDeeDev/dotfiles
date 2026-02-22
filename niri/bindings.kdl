@@ -4,7 +4,7 @@ binds {
     Ctrl+Shift+B { spawn "brave"; }
     Ctrl+Shift+E { spawn "code"; }
     Ctrl+Shift+P { spawn "keepassxc"; }
-    Ctrl+Shift+S { spawn "spotify"; }
+    Ctrl+Shift+S { spawn "spotify-launcher"; }
     Ctrl+Space   { spawn "walker"; }
 
     Ctrl+Q       { close-window; }

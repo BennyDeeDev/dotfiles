@@ -1,6 +1,7 @@
 zsh
 starship
-nerd-fonts
+ttf-hack-nerd
+ttf-jetbrains-mono-nerd
 neovim
 yay-bin
 paru
@@ -76,9 +77,6 @@ slurp
 satty
 ffmpeg
 libnotify
-imv
-mpv
-evince
 nautilus
 nautilus-python
 gnome-themes-extra
@@ -114,4 +112,15 @@ rustup
 go
 just
 clang
+cmake
+llvm
 keepassxc
+papers
+celluloid
+loupe
+baobab
+gnome-characters
+simple-scan
+gnome-font-viewer
+gnome-logs
+gnome-system-monitor

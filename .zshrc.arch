@@ -21,7 +21,8 @@ pacman-bundle() {
 
   echo "Installing packages from Pacmanfile..."
   paru -S --needed --noconfirm - < "$pacmanfile"
-  sudo mandb -q
+  grep -v '^ *#' "$pacmanfile" | xargs sudo pacman -D --asexplicit >/dev/null 2>&1
+  sudo mandb -q 2>/dev/null
   sudo updatedb
 }
 
@@ -35,12 +36,12 @@ pacman-bundle-system() {
 
   echo "Installing system packages from Pacmanfile.system..."
   paru -S --needed --noconfirm - < "$pacmanfile"
-  sudo mandb -q
+  grep -v '^ *#' "$pacmanfile" | xargs sudo pacman -D --asexplicit >/dev/null 2>&1
+  sudo mandb -q 2>/dev/null
   sudo updatedb
 }
 
 pacman-cleanup() {
-  local tracked
   tracked=$(
     for f in "$DOTFILES"/Pacmanfile "$DOTFILES"/Pacmanfile.system; do
       [[ -f "$f" ]] || continue
@@ -68,8 +69,8 @@ pacman-cleanup() {
 
     if [[ "$1" == "--apply" ]]; then
       echo ""
-      echo "Removing..."
-      echo "$to_remove" | xargs paru -Rns --noconfirm
+      echo "Marking as dependencies..."
+      echo "$to_remove" | xargs sudo pacman -D --asdeps --noconfirm
     else
       echo ""
       echo "Dry run — run with --apply to remove"
@@ -77,7 +78,7 @@ pacman-cleanup() {
   fi
 
   local orphans
-  orphans=$(pacman -Qdtq 2>/dev/null)
+  orphans=$(pacman -Qdttq 2>/dev/null)
 
   if [[ -n "$orphans" ]]; then
     echo ""
@@ -119,7 +120,8 @@ pkg-install() {
 
   if [[ -n "$pkg_names" ]]; then
     echo "$pkg_names" | tr '\n' ' ' | xargs sudo pacman -S --noconfirm
-    sudo mandb -q
+    echo "$pkg_names" >> "$DOTFILES/Pacmanfile"
+    sudo mandb -q 2>/dev/null
     sudo updatedb
   fi
 }
@@ -144,7 +146,8 @@ aur-install() {
 
   if [[ -n "$pkg_names" ]]; then
     echo "$pkg_names" | tr '\n' ' ' | xargs yay -S --noconfirm
-    sudo mandb -q
+    echo "$pkg_names" >> "$DOTFILES/Pacmanfile"
+    sudo mandb -q 2>/dev/null
     sudo updatedb
   fi
 }

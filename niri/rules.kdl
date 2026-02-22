@@ -66,6 +66,72 @@ window-rule {
 }
 
 window-rule {
-    match app-id="org.gnome.Evince"
+    match app-id="org.gnome.Papers"
     default-column-width { proportion 0.5; }
+}
+
+window-rule {
+    match app-id="org.gnome.Loupe"
+    default-column-width { proportion 0.5; }
+}
+
+window-rule {
+    match app-id="steam" title="Friends List"
+    default-column-width { proportion 0.25; }
+    default-window-height { proportion 1.0; }
+}
+
+window-rule {
+    match app-id="steam" title="Sign in to Steam"
+    open-floating true
+    default-column-width { proportion 0.25; }
+    default-window-height { proportion 0.25; }
+}
+
+window-rule {
+    match app-id="steam" title="Steam Settings"
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 1.0; }
+}
+
+window-rule {
+    match app-id="org.gnome.baobab"
+    open-floating true
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 0.5; }
+}
+
+window-rule {
+    match app-id="org.gnome.Characters"
+    open-floating true
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 0.5; }
+}
+
+window-rule {
+    match app-id="org.gnome.SimpleScan"
+    open-floating true
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 0.5; }
+}
+
+window-rule {
+    match app-id="org.gnome.font-viewer"
+    open-floating true
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 0.5; }
+}
+
+window-rule {
+    match app-id="org.gnome.Logs"
+    open-floating true
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 0.5; }
+}
+
+window-rule {
+    match app-id="org.gnome.SystemMonitor"
+    open-floating true
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 0.5; }
 }
