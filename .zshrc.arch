@@ -20,7 +20,7 @@ pacman-bundle() {
   }
   
   echo "Installing packages from Pacmanfile..."
-  paru -S --needed --noconfirm - < "$pacmanfile"
+  paru -Syu --needed --noconfirm - < "$pacmanfile"
 }
 
 reboot-arch() {

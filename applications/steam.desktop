@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Steam
+Exec=env -u SDL_VIDEODRIVER /usr/bin/steam %U
+Icon=steam
+Categories=Network;FileTransfer;Game;

@@ -1,6 +1,7 @@
 {
   "workbench.colorTheme": "Catppuccin Latte",
   "workbench.iconTheme": "catppuccin-latte",
+  "workbench.startupEditor": "none",
 
   "window.confirmSaveUntitledWorkspace": false,
 

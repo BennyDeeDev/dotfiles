@@ -8,7 +8,9 @@ INSTALL="$DOTFILES/install"
 echo "Which compositor? (hyprland/niri/cosmic/i3)"
 read -r compositor
 
+bash "$INSTALL/pacman.sh"
 bash "$INSTALL/paru.sh"
+
 pacman-bundle
 
 "$DOTFILES/bin/linux/dot-symlinks-${compositor}-arch"

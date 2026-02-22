@@ -30,3 +30,7 @@
 - [ ] Cosmic DE Screenshot is State
 - [ ] Ghostty pastes inline comments after keycode
 - [ ] Niri Symlink Bug
+
+## Bugs
+
+- [ ] Steam does not work on Walker
