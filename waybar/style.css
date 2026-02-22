@@ -7,24 +7,23 @@
   border: none;
   border-radius: 0;
   min-height: 0;
-  font-family: "Hack Nerd Font Mono";
+  font-family: "Hack Nerd Font";
   font-size: 16px;
 }
 
 .modules-left {
-  margin-left: 12px;
+  margin-left: 16px;
 }
 
 .modules-right {
-  margin-right: 12px;
+  margin-right: 16px;
 }
 
 #workspaces button {
-  padding-left: 6px;
-  padding-right: 6px;
-  margin-left: 2px;
-  margin-right: 2px;
-  min-width: 10px;
+  all: initial;
+  min-width: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
 #workspaces button.empty {
@@ -39,20 +38,15 @@
 }
 
 #custom-arch {
-  font-size: 24px;
-  margin-right: 4px;
+  min-width: 12px;
+  font-size: 18px;
+  margin-right: 12px;
 }
 
-#custom-separator-left {
-  font-size: 20px;
-  margin-left: 8px;
-  margin-right: 4px;
-}
-
+#custom-separator-left,
 #custom-separator-right {
-  font-size: 20px;
-  margin-left: 4px;
-  margin-right: 8px;
+  min-width: 12px;
+  font-size: 18px;
 }
 
 #cpu,
@@ -61,25 +55,14 @@
 #bluetooth,
 #network,
 #custom-brightness {
+  min-width: 12px;
   margin-right: 12px;
   margin-left: 12px;
-  font-size: 24px;
-}
-
-#temperature.cpu {
-  margin-left: 4px;
-  margin-right: 8px;
-  font-size: 16px;
-}
-
-#temperature.gpu {
-  margin-left: 8px;
-  margin-right: 4px;
   font-size: 16px;
 }
 
 #clock {
-  margin-left: 4px;
+  margin-left: 8px;
 }
 
 #mpris {
@@ -88,8 +71,4 @@
 
 tooltip {
   padding: 2px;
-}
-
-.hidden {
-  opacity: 0;
 }

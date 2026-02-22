@@ -19,8 +19,6 @@
     "cpu",
     "custom/brightness",
 
-    "custom/separator-right",
-
     "temperature#cpu",
     "temperature#gpu",
 
@@ -94,26 +92,6 @@
     "on-click-right": "asdbctl down -s 5",
     "tooltip-format": "Brightness: {}%"
   },
-  "temperature#cpu": {
-    // k10temp: Tctl (CPU control temp)
-    "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
-    "input-filename": "temp1_input",
-    "critical-threshold": 80,
-    "format": "󰍛 {temperatureC}°",
-    "format-critical": "󰍛 {temperatureC}°",
-    "tooltip-format": "CPU: {temperatureC}°C",
-    "interval": 5
-  },
-  "temperature#gpu": {
-    // amdgpu: edge (Radeon RX 9060 XT - discrete GPU die edge temp)
-    "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/0000:02:00.0/0000:03:00.0/hwmon",
-    "input-filename": "temp1_input",
-    "critical-threshold": 85,
-    "format": "󰢮 {temperatureC}°",
-    "format-critical": "󰢮 {temperatureC}°",
-    "tooltip-format": "GPU: {temperatureC}°C",
-    "interval": 5
-  },
   "clock": {
     "format": "{:%a %d %b %H:%M}",
     "tooltip": false
@@ -150,7 +128,7 @@
     }
   },
   "bluetooth": {
-    "format": "󰂯",
+    "format": "",
     "format-off": "󰂲",
     "format-disabled": "󰂲",
     "format-connected": "󰂱",

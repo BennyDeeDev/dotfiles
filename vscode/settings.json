@@ -1,6 +1,6 @@
 {
-  "workbench.colorTheme": "Catppuccin Mocha",
-  "workbench.iconTheme": "catppuccin-mocha",
+  "workbench.colorTheme": "Catppuccin Latte",
+  "workbench.iconTheme": "catppuccin-latte",
 
   "window.confirmSaveUntitledWorkspace": false,
 
@@ -29,10 +29,8 @@
   },
   "chat.viewSessions.orientation": "stacked",
   "chat.tools.terminal.autoApprove": {
-    "cargo build": true,
-    "cargo check": true,
-    "niri": true,
-    "cargo test": true
+    "cargo": true,
+    "niri": true
   },
   "chat.tools.urls.autoApprove": {
     "https://reddit.com": true,
