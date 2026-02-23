@@ -21,6 +21,7 @@ brew "prettier"
 brew "eslint"
 brew "rust-analyzer"
 brew "cmake"
+brew "git-lfs"
 
 # Neovim
 brew "neovim"
@@ -85,12 +86,9 @@ brew "poppler"
 brew "sketchybar"
 
 # Fonts
-cask "font-fira-code-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
-cask "font-meslo-lg-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-iosevka-nerd-font"
-cask "font-caskaydia-cove-nerd-font"
 
 # Essential Apps
 cask "google-chrome"
@@ -99,6 +97,7 @@ cask "brave-browser"
 cask "appcleaner"
 cask "docker-desktop"
 cask "ghostty"
+cask "hammerspoon"
 cask "keepassxc"
 cask "rectangle"
 cask "spotify"

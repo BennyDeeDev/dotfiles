@@ -1,0 +1,127 @@
+hs.loadSpoon("SpoonInstall")
+
+spoon.SpoonInstall.repos.PaperWM = {
+    url    = "https://github.com/mogenson/PaperWM.spoon",
+    desc   = "PaperWM.spoon repository",
+    branch = "release",
+}
+
+spoon.SpoonInstall:andUse("PaperWM", {
+    repo = "PaperWM",
+    config = {
+        window_gap    = { top = 8, bottom = 8, left = 8, right = 8 },
+        window_ratios = { 1 / 2, 1 },
+        center_mouse  = false,
+        swipe_fingers = 2,
+    },
+    start = false,
+    hotkeys = {
+        focus_left  = { { "ctrl" }, "h" },
+        focus_right = { { "ctrl" }, "l" },
+        focus_up    = { { "ctrl" }, "k" },
+        focus_down  = { { "ctrl" }, "j" },
+
+        swap_left  = { { "ctrl", "shift" }, "h" },
+        swap_right = { { "ctrl", "shift" }, "l" },
+        swap_up    = { { "ctrl", "shift" }, "k" },
+        swap_down  = { { "ctrl", "shift" }, "j" },
+
+        decrease_width = { { "ctrl" }, "-" },
+        increase_width = { { "ctrl" }, "=" },
+
+        cycle_width = { { "cmd", "shift" }, "r" },
+        toggle_floating = { { "cmd", "shift" }, "v" },
+
+        switch_space_1 = { { "ctrl" }, "1" },
+        switch_space_2 = { { "ctrl" }, "2" },
+        switch_space_3 = { { "ctrl" }, "3" },
+        switch_space_4 = { { "ctrl" }, "4" },
+        switch_space_5 = { { "ctrl" }, "5" },
+        switch_space_6 = { { "ctrl" }, "6" },
+        switch_space_7 = { { "ctrl" }, "7" },
+        switch_space_8 = { { "ctrl" }, "8" },
+        switch_space_9 = { { "ctrl" }, "9" },
+
+        move_window_1 = { { "shift" }, "f1" },
+        move_window_2 = { { "shift" }, "f2" },
+        move_window_3 = { { "shift" }, "f3" },
+        move_window_4 = { { "shift" }, "f4" },
+        move_window_5 = { { "shift" }, "f5" },
+        move_window_6 = { { "shift" }, "f6" },
+        move_window_7 = { { "shift" }, "f7" },
+        move_window_8 = { { "shift" }, "f8" },
+        move_window_9 = { { "shift" }, "f9" },
+    },
+})
+
+local rejected_apps = {
+    -- system utilities
+    "Finder",
+    "System Settings",
+    "System Preferences",
+    "Activity Monitor",
+    "Disk Utility",
+    "Console",
+    "Audio MIDI Setup",
+    "AirPort Utility",
+    "ColorSync Utility",
+    "Digital Color Meter",
+    "Migration Assistant",
+    "System Information",
+    "Screenshot",
+    "Font Book",
+    "App Store",
+    "AppCleaner",
+    -- small/fixed-size apps
+    "Calculator",
+    "Clock",
+    "Weather",
+    "Stocks",
+    -- one-shot utilities
+    "Archive Utility",
+    "The Unarchiver",
+    "Image Capture",
+    "Bluetooth File Exchange",
+    -- password/security
+    "KeePassXC",
+    "Passwords",
+    -- misc
+    "Hammerspoon",
+    "Google Drive",
+    "Stickies",
+    "iPhone Mirroring",
+}
+
+for _, app in ipairs(rejected_apps) do
+    spoon.PaperWM.window_filter:rejectApp(app)
+end
+
+-- hs.window.animationDuration = 0.1
+
+spoon.PaperWM:start()
+
+local function launch(app) return function() hs.application.launchOrFocus(app) end end
+
+local full_width = spoon.PaperWM.windows.toggleWindowFullWidth()
+spoon.PaperWM.window_filter:subscribe(hs.window.filter.windowCreated, function(win)
+  hs.timer.doAfter(hs.window.animationDuration, function()
+    if hs.window.focusedWindow() == win then
+      full_width()
+    end
+  end)
+end)
+
+hs.hotkey.bind({"cmd", "shift"}, "t", function()
+  hs.task.new("/usr/bin/open", nil, {"-na", "Ghostty"}):start()
+end)
+
+hs.hotkey.bind({"cmd", "shift"}, "b", function()
+  hs.task.new("/usr/bin/open", nil, {"-na", "Brave Browser"}):start()
+end)
+
+hs.hotkey.bind({"cmd", "shift"}, "e", function()
+  hs.task.new("/opt/homebrew/bin/code", nil, {"--new-window"}):start()
+end)
+
+hs.hotkey.bind({ "cmd", "shift" }, "p", launch("KeePassXC"))
+hs.hotkey.bind({ "cmd", "shift" }, "s", launch("Spotify"))

@@ -13,12 +13,17 @@ binds {
     Ctrl+Shift+V { toggle-window-floating; }
     Ctrl+Shift+W { spawn-sh "pkill waybar; waybar &"; }
 
-    Super+O repeat=false { toggle-overview; }
-    Super+R { switch-preset-column-width; }
+    Super+Shift+O repeat=false { toggle-overview; }
+    Super+Shift+R { switch-preset-column-width; }
     Super+H { focus-column-left; }
     Super+L { focus-column-right; }
     Super+K { focus-window-up; }
     Super+J { focus-window-down; }
+
+    Super+Shift+H { move-column-left; }
+    Super+Shift+L { move-column-right; }
+    Super+Shift+K { move-window-up; }
+    Super+Shift+J { move-window-down; }
 
     Super+1 { focus-workspace 1; }
     Super+2 { focus-workspace 2; }
