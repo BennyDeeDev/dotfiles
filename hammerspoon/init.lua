@@ -72,16 +72,46 @@ local rejected_apps = {
     "Font Book",
     "App Store",
     "AppCleaner",
+    "Automator",
+    "Shortcuts",
+    "Time Machine",
+    "Mission Control",
+    "Siri",
+    "Tips",
     -- small/fixed-size apps
     "Calculator",
     "Clock",
     "Weather",
     "Stocks",
+    "Dictionary",
+    "Chess",
+    "Phone",
+    -- communication (popover style)
+    "FaceTime",
+    "Messages",
+    "Mail",
+    "Contacts",
+    "Calendar",
+    "Reminders",
+    "Notes",
+    "Maps",
+    "FindMy",
+    "Home",
+    "Journal",
+    "Freeform",
+    -- media/content
+    "Photos",
+    "Photo Booth",
+    "Podcasts",
+    "News",
+    "VoiceMemos",
     -- one-shot utilities
     "Archive Utility",
     "The Unarchiver",
     "Image Capture",
     "Bluetooth File Exchange",
+    "TextEdit",
+    "Preview",
     -- password/security
     "KeePassXC",
     "Passwords",
@@ -95,6 +125,8 @@ local rejected_apps = {
 for _, app in ipairs(rejected_apps) do
     spoon.PaperWM.window_filter:rejectApp(app)
 end
+
+-- spoon.PaperWM.window_filter:setAppFilter("Preview", { rejectTitles = { "Open" } })
 
 -- hs.window.animationDuration = 0.1
 

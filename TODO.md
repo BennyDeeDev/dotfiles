@@ -33,6 +33,7 @@
 - [ ] PaperWM spawn lots of windows close them doesnt align it to the left
 - [ ] PaperWM Spawning a window from a pinned App in a different workspace puts its at the first position instead of the last
 - [ ] PaperWM allow setting a default width
+- [ ] Preview is tiled
 
 ## Bugs
 
