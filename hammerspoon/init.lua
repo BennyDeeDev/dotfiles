@@ -29,8 +29,9 @@ spoon.SpoonInstall:andUse("PaperWM", {
         decrease_width = { { "ctrl" }, "-" },
         increase_width = { { "ctrl" }, "=" },
 
-        cycle_width = { { "cmd", "shift" }, "r" },
-        toggle_floating = { { "cmd", "shift" }, "v" },
+        cycle_width = { { "ctrl" }, "g" },
+        toggle_floating = { { "ctrl" }, "v" },
+        focus_floating  = { { "ctrl" }, "f" },
 
         switch_space_1 = { { "ctrl" }, "1" },
         switch_space_2 = { { "ctrl" }, "2" },
@@ -141,6 +142,17 @@ spoon.PaperWM.window_filter:subscribe(hs.window.filter.windowCreated, function(w
       full_width()
     end
   end)
+end)
+
+hs.hotkey.bind({ "ctrl", "shift" }, "f", function()
+  local windows = hs.window.orderedWindows()
+  for _, win in ipairs(windows) do
+    local win_id = win:id()
+    if spoon.PaperWM.state.isTiled(win_id) then
+      win:focus()
+      return
+    end
+  end
 end)
 
 hs.hotkey.bind({"cmd", "shift"}, "t", function()

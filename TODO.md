@@ -31,9 +31,12 @@
 - [ ] Niri Symlink Bug
 - [ ] PaperWM don't center on resize - windows.lua 513
 - [ ] PaperWM spawn lots of windows close them doesnt align it to the left
-- [ ] PaperWM Spawning a window from a pinned App in a different workspace puts its at the first position instead of the last
+- [ ] PaperWM Spawning a window from a pinned App in a different workspace puts
+      its at the first position instead of the last
 - [ ] PaperWM allow setting a default width
-- [ ] Preview is tiled
+- [ ] PaperWM focus floating and reverse flaky
+- [ ] PaperWM new workspace then switch windows is bugged
+- [ ] PaperWM sometimes switches to different window when workspace switching
 
 ## Bugs
 

@@ -6,14 +6,9 @@ set -euo pipefail
 GH_USERNAME="BennyDeeDev"
 GH_EMAIL="45900418+BennyDeeDev@users.noreply.github.com"
 SSH_KEY_PATH="$HOME/.ssh/id_ed25519_personal"
-REPO_URL="git@github.com:$GH_USERNAME/dotfiles.git"
 
-DOTFILES="$HOME/Repos/dotfiles"
-
-if [[ "$PWD" != "$DOTFILES" ]]; then
-  echo "Error: Must be run from the dotfiles directory (\$DOTFILES)"
-  echo "Current directory: $PWD"
-  echo "Expected directory: $DOTFILES"
+if ! git rev-parse --is-inside-work-tree &>/dev/null; then
+  echo "Error: Not a git repository"
   exit 1
 fi
 
@@ -35,15 +30,19 @@ else
     echo "SSH key already exists, skipping generation..."
 fi
 
-# Update remote URL to use SSH
-echo "Updating remote URL to use SSH..."
-git remote set-url origin "$REPO_URL"
-
 # Configure local git settings
 echo "Configuring local git settings..."
 git config --local user.name "$GH_USERNAME"
 git config --local user.email "$GH_EMAIL"
 git config --local core.sshCommand "ssh -i $SSH_KEY_PATH -o IdentitiesOnly=yes"
+
+# Update origin to SSH
+CURRENT_URL=$(git remote get-url origin 2>/dev/null || true)
+if [[ "$CURRENT_URL" == https://github.com/* ]]; then
+  SSH_URL=$(echo "$CURRENT_URL" | sed 's|https://github.com/|git@github.com:|')
+  echo "Switching origin to SSH..."
+  git remote set-url origin "$SSH_URL"
+fi
 
 # Disable GPG signing
 echo "Disabling GPG signing..."
