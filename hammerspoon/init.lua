@@ -1,3 +1,7 @@
+require("hs.ipc")
+
+hs.spaces.MCwaitTime = 0.3
+
 hs.loadSpoon("SpoonInstall")
 
 spoon.SpoonInstall.repos.PaperWM = {
@@ -12,7 +16,6 @@ spoon.SpoonInstall:andUse("PaperWM", {
         window_gap    = { top = 8, bottom = 8, left = 8, right = 8 },
         window_ratios = { 1 / 2, 1 },
         center_mouse  = false,
-        swipe_fingers = 2,
     },
     start = false,
     hotkeys = {
