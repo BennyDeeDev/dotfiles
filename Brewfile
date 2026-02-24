@@ -84,6 +84,7 @@ brew "poppler"
 
 # macOS Utilities
 brew "sketchybar"
+brew "borders"
 
 # Fonts
 cask "font-jetbrains-mono-nerd-font"
