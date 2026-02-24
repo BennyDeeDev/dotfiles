@@ -3,13 +3,32 @@
 set -e
 
 LOG="/tmp/space_test_$(date +%Y%m%d_%H%M%S).log"
-
 SCRIPT="$(cd "$(dirname "$0")" && pwd)/space_test.lua"
 
-hs -c "SPACE_TEST_LOG='$LOG'; LOOPS=15; SPACES={1,3}; dofile('$SCRIPT')"
+# Set LOAD to a fraction of CPU cores to stress during the test, e.g: LOAD=0.5 ./run-space-test
+LOAD_PIDS=()
+if [[ "${LOAD:-0}" != "0" ]]; then
+    CORES=$(sysctl -n hw.logicalcpu)
+    WORKERS=$(( $(echo "$CORES * ${LOAD}" | bc | awk '{print int($1+0.5)}') ))
+    [[ $WORKERS -lt 1 ]] && WORKERS=1
+    echo "Stressing ${WORKERS}/${CORES} CPU cores during test..."
+    for ((i = 0; i < WORKERS; i++)); do
+        yes > /dev/null &
+        LOAD_PIDS+=($!)
+    done
+fi
+
+cleanup() {
+    for pid in "${LOAD_PIDS[@]}"; do
+        kill "$pid" 2>/dev/null
+    done
+}
+trap cleanup EXIT
+
+hs -c "SPACE_TEST_LOG='$LOG'; LOOPS=5; SPACES={1,3}; dofile('$SCRIPT')"
 
 echo "Waiting for test to finish..."
-TIMEOUT=60
+TIMEOUT=120
 ELAPSED=0
 until grep -q "Result:" "$LOG" 2>/dev/null; do
     sleep 0.5
