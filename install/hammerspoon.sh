@@ -18,4 +18,11 @@ else
   rm /tmp/SpoonInstall.spoon.zip
 fi
 
+if [[ -d "$SPOONS_DIR/Swipe.spoon" ]]; then
+  echo "Swipe.spoon already present, skipping."
+else
+  echo "Cloning Swipe.spoon..."
+  git clone https://github.com/mogenson/Swipe.spoon "$SPOONS_DIR/Swipe.spoon"
+fi
+
 echo "Done. Launch Hammerspoon and grant Accessibility access in System Settings."

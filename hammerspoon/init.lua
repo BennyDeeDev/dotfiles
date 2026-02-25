@@ -136,6 +136,30 @@ end
 
 spoon.PaperWM:start()
 
+-- 3-finger swipe to focus adjacent windows
+hs.loadSpoon("Swipe")
+local swipe_actions = spoon.PaperWM.actions.actions()
+local swipe_current_id, swipe_threshold
+spoon.Swipe:start(3, function(direction, distance, id)
+    if id == swipe_current_id then
+        if distance > swipe_threshold then
+            swipe_threshold = math.huge
+            if direction == "left" then
+                swipe_actions.focus_left()
+            elseif direction == "right" then
+                swipe_actions.focus_right()
+            elseif direction == "up" then
+                swipe_actions.focus_up()
+            elseif direction == "down" then
+                swipe_actions.focus_down()
+            end
+        end
+    else
+        swipe_current_id = id
+        swipe_threshold = 0.01
+    end
+end)
+
 local function launch(app) return function() hs.application.launchOrFocus(app) end end
 
 local full_width = spoon.PaperWM.windows.toggleWindowFullWidth()
