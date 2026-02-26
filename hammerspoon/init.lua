@@ -124,6 +124,8 @@ local rejected_apps = {
     "Google Drive",
     "Stickies",
     "iPhone Mirroring",
+    "Ice",
+    "Stats",
 }
 
 for _, app in ipairs(rejected_apps) do
