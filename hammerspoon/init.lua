@@ -13,7 +13,7 @@ spoon.SpoonInstall.repos.PaperWM = {
 spoon.SpoonInstall:andUse("PaperWM", {
     repo = "PaperWM",
     config = {
-        window_gap    = { top = 8, bottom = 8, left = 8, right = 8 },
+        window_gap    = { top = 12, bottom = 12, left = 12, right = 12 },
         window_ratios = { 1 / 2, 1 },
         center_mouse  = false,
     },
