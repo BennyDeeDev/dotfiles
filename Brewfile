@@ -120,7 +120,6 @@ cask "affinity-photo"
 cask "jdownloader"
 cask "godot"
 cask "stats"
-cask "jordanbaird-ice"
 
 # Work Apps
 # cask "mattermost"

@@ -124,7 +124,6 @@ local rejected_apps = {
     "Google Drive",
     "Stickies",
     "iPhone Mirroring",
-    "Ice",
     "Stats",
 }
 
