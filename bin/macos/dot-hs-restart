@@ -1,6 +1,0 @@
-#!/bin/bash
-
-pkill -x Hammerspoon 2>/dev/null
-sleep 0.5
-open -a Hammerspoon
-echo "Hammerspoon restarted"

@@ -3,6 +3,7 @@ tap "teamookla/speedtest"
 tap "codecrafters-io/tap"
 tap "FelixKratz/formulae"
 tap "fluxcd/tap"
+tap "acsandmann/tap"
 
 # Programming Languages
 brew "git"
@@ -83,8 +84,8 @@ brew "sevenzip"
 brew "poppler"
 
 # macOS Utilities
-brew "sketchybar"
 brew "borders"
+brew "acsandmann/tap/rift"
 
 # Fonts
 cask "font-jetbrains-mono-nerd-font"
