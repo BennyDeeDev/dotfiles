@@ -1,6 +1,6 @@
 [settings]
 animate            = true
-animation_duration = 0.2
+animation_duration = 0.15
 animation_fps      = 120.0
 
 default_disable         = false
@@ -25,15 +25,15 @@ invert_horizontal            = false
 fingers                      = 3
 propagate_to_workspace_swipe = false
 
-[settings.layout.gaps.outer]
-top    = 12
-left   = 12
-bottom = 12
-right  = 12
+# [settings.layout.gaps.outer]
+# top    = 12
+# left   = 12
+# bottom = 12
+# right  = 12
 
-[settings.layout.gaps.inner]
-horizontal = 12
-vertical   = 12
+# [settings.layout.gaps.inner]
+# horizontal = 12
+# vertical   = 12
 
 [settings.ui.menu_bar]
 enabled      = true
@@ -136,7 +136,10 @@ app_rules = [
   # password/security
   { app_name = "KeePassXC",                 manage = false },
   { app_name = "Passwords",                 manage = false },
+  # peripherals
+  { app_id = "com.epson.scan.Epson-ScanSmart", title_substring = "Progress", manage = false },
   # misc
+  { app_name = "winctl",               manage = false },
   { app_name = "Hammerspoon",               manage = false },
   { app_name = "Google Drive",              manage = false },
   { app_name = "Stickies",                  manage = false },
@@ -160,10 +163,6 @@ app_rules = [
 "Ctrl + Minus" = "resize_window_shrink"
 "Ctrl + Equal" = "resize_window_grow"
 
-# snap column width: Ctrl+G → 0.5, Ctrl+Shift+G → 1.0
-"Ctrl + G"         = { resize_window_by = { amount = 0.5 } }
-"Ctrl + Shift + G" = { resize_window_by = { amount = 1.0 } }
-
 # floating
 "Ctrl + V" = "toggle_window_floating"
 "Ctrl + F" = "toggle_focus_floating"
@@ -185,6 +184,9 @@ app_rules = [
 # mission control overview
 "Ctrl + M" = "show_mission_control_all"
 "Ctrl + Shift + M" = "show_mission_control_current"
+
+# rift
+"Meta + Shift + R" = { exec = ["/Users/benjaminderksen/Repos/rift/target/release/rift", "service", "restart"] }
 
 # app launchers (Meta = Cmd on macOS)
 "Meta + Shift + T" = { exec = ["open", "-na", "Ghostty"] }

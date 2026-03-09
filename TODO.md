@@ -30,7 +30,10 @@
 - [ ] Ghostty pastes inline comments after keycode
 - [ ] Niri Symlink Bug
 - [ ] Rift Gesture Switch
-- [ ] Rift real 1.0 width in Scrolling Mode
+- [ ] Rift hide windows next to each other properly
+- [ ] Rift in gap halfed windows the left windows jumps
+- [ ] Rift Support Home Expansion
+- [ ] Rift Kindle breaks Shortcuts
 
 ## Bugs
 

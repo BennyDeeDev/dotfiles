@@ -1,9 +1,7 @@
 # Taps
 tap "teamookla/speedtest"
 tap "codecrafters-io/tap"
-tap "FelixKratz/formulae"
 tap "fluxcd/tap"
-tap "acsandmann/tap"
 
 # Programming Languages
 brew "git"
@@ -83,9 +81,6 @@ brew "ffmpegthumbnailer"
 brew "sevenzip"
 brew "poppler"
 
-# macOS Utilities
-brew "borders"
-brew "acsandmann/tap/rift"
 
 # Fonts
 cask "font-jetbrains-mono-nerd-font"
@@ -99,9 +94,7 @@ cask "brave-browser"
 cask "appcleaner"
 cask "docker-desktop"
 cask "ghostty"
-cask "hammerspoon"
 cask "keepassxc"
-cask "rectangle"
 cask "spotify"
 cask "the-unarchiver"
 cask "visual-studio-code"
