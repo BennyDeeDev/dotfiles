@@ -30,6 +30,8 @@ defaults write com.apple.dock mru-spaces -bool false
 # Window Manager
 defaults write com.apple.WindowManager EnableTiledWindowMargins -bool false
 defaults write com.apple.WindowManager HideDesktop -bool true
+defaults write com.apple.WindowManager StandardHideWidgets -bool true
+defaults write com.apple.WindowManager StageManagerHideWidgets -bool true
 
 # Finder - General
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
