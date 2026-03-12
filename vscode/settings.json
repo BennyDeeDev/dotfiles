@@ -68,7 +68,8 @@
     "bazel query": true,
     "kubectl get": true,
     "kubectl describe": true,
-    "kubectl logs": true
+    "kubectl logs": true,
+    "defaults read": true
   },
   "chat.tools.urls.autoApprove": {
     "https://reddit.com": true,

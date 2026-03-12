@@ -1,0 +1,3 @@
+DOTFILES="$HOME/Repos/dotfiles"
+DOT_VARIANT=corp
+[[ -f "$DOTFILES/.zshrc.macos-common" ]] && source "$DOTFILES/.zshrc.macos-common"
