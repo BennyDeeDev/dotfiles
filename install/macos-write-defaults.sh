@@ -4,6 +4,14 @@ set -e
 
 DOTFILES="$HOME/Repos/dotfiles"
 
+# Backup plists before overwriting
+BACKUP_DIR="$HOME/.plist-backups/$(date +%Y%m%d-%H%M%S)"
+mkdir -p "$BACKUP_DIR"
+defaults export com.apple.symbolichotkeys "$BACKUP_DIR/symbolichotkeys.plist"
+defaults export eu.exelban.Stats "$BACKUP_DIR/stats.plist"
+defaults export com.apple.dock "$BACKUP_DIR/dock.plist"
+echo "Backed up plists to $BACKUP_DIR"
+
 # Accessibility
 sudo defaults write com.apple.universalaccess reduceMotion -bool true
 
@@ -60,6 +68,13 @@ defaults write com.apple.menuextra.clock ShowDayOfWeek -bool true
 # Plist
 defaults import com.apple.symbolichotkeys "$DOTFILES/plist/symbolichotkeys.plist"
 defaults import eu.exelban.Stats "$DOTFILES/plist/stats.plist"
+
+# Touch ID for sudo
+if ! grep -q "pam_tid.so" /etc/pam.d/sudo; then
+  sudo sed -i '' '1a\
+auth       sufficient     pam_tid.so
+' /etc/pam.d/sudo
+fi
 
 killall Dock
 killall Finder
