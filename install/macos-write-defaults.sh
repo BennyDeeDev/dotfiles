@@ -63,3 +63,4 @@ defaults import eu.exelban.Stats "$DOTFILES/plist/stats.plist"
 
 killall Dock
 killall Finder
+killall ControlCenter

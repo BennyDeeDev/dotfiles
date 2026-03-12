@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -euo pipefail
+
+DOTFILES="$HOME/Repos/dotfiles"
+
+if ! command -v code &>/dev/null; then
+  echo "code is not installed or not on PATH. Aborting."
+  exit 1
+fi
+
+[[ "${DOT_VARIANT:-}" != "personal" && "${DOT_VARIANT:-}" != "corp" ]] && echo "Invalid variant '${DOT_VARIANT:-}'. Aborting." && exit 1
+
+install_extensions() {
+  local file="$1"
+  while IFS= read -r ext; do
+    [[ -z "$ext" ]] && continue
+    echo "Installing VS Code extension: $ext"
+    code --install-extension "$ext" --force
+  done < "$file"
+}
+
+install_extensions "$DOTFILES/vscode/extensions"
+install_extensions "$DOTFILES/vscode/extensions.$DOT_VARIANT"

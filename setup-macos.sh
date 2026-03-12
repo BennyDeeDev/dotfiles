@@ -21,9 +21,13 @@ fi
 /opt/homebrew/bin/brew bundle --file="$DOTFILES/Brewfile"
 /opt/homebrew/bin/brew bundle --file="$DOTFILES/Brewfile.$DOT_VARIANT"
 
+"$DOTFILES/bin/common/dot-vscode-extensions"
+
 "$DOTFILES/bin/macos/dot-symlinks-macos-$DOT_VARIANT"
 "$DOTFILES/install/macos-write-defaults.sh"
 
 if [[ "$DOT_VARIANT" == "corp" ]]; then
   cd "$DOTFILES" && "$DOTFILES/install/git-local-setup.sh"
 fi
+
+sudo reboot
