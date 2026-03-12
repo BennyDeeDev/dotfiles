@@ -23,6 +23,7 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 # Dock
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock tilesize -int 39
+defaults write com.apple.dock persistent-apps -array
 
 # Mission Control
 defaults write com.apple.dock mru-spaces -bool false
@@ -54,16 +55,16 @@ defaults write com.apple.finder ShowStatusBar -bool true
 # Menu Bar - hide everything except Wi-Fi, Bluetooth, Battery, Clock
 defaults write com.apple.controlcenter "NSStatusItem Visible AccessibilityShortcuts" -bool false
 defaults write com.apple.controlcenter "NSStatusItem Visible StageManager" -bool false
-# defaults write com.apple.controlcenter "NSStatusItem Visible Item-0" -bool false
-# defaults write com.apple.controlcenter "NSStatusItem Visible Item-1" -bool false
-# defaults write com.apple.controlcenter "NSStatusItem Visible Item-2" -bool false
-# defaults write com.apple.controlcenter "NSStatusItem Visible Item-3" -bool false
-# defaults write com.apple.controlcenter "NSStatusItem Visible Item-4" -bool false
-# defaults write com.apple.controlcenter "NSStatusItem Visible Item-5" -bool false
-# defaults write com.apple.controlcenter "NSStatusItem Visible Item-6" -bool false
-# defaults write com.apple.controlcenter "NSStatusItem Visible Item-7" -bool false
-# defaults write com.apple.controlcenter "NSStatusItem Visible Item-8" -bool false
-# defaults write com.apple.controlcenter "NSStatusItem Visible Item-9" -bool false
+defaults write com.apple.controlcenter "NSStatusItem Visible Item-0" -bool false
+defaults write com.apple.controlcenter "NSStatusItem Visible Item-1" -bool false
+defaults write com.apple.controlcenter "NSStatusItem Visible Item-2" -bool false
+defaults write com.apple.controlcenter "NSStatusItem Visible Item-3" -bool false
+defaults write com.apple.controlcenter "NSStatusItem Visible Item-4" -bool false
+defaults write com.apple.controlcenter "NSStatusItem Visible Item-5" -bool false
+defaults write com.apple.controlcenter "NSStatusItem Visible Item-6" -bool false
+defaults write com.apple.controlcenter "NSStatusItem Visible Item-7" -bool false
+defaults write com.apple.controlcenter "NSStatusItem Visible Item-8" -bool false
+defaults write com.apple.controlcenter "NSStatusItem Visible Item-9" -bool false
 
 # Clock
 defaults write com.apple.menuextra.clock ShowAMPM -bool true
