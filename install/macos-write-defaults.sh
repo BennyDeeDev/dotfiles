@@ -5,7 +5,7 @@ set -e
 DOTFILES="$HOME/Repos/dotfiles"
 
 # Accessibility
-defaults write com.apple.universalaccess reduceMotion -bool true
+sudo defaults write com.apple.universalaccess reduceMotion -bool true
 
 # Appearance
 defaults write NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool true
