@@ -7,6 +7,7 @@ brew "rust"
 brew "prettier"
 brew "eslint"
 brew "git-lfs"
+brew "gnupg"
 
 # Neovim
 brew "neovim"
