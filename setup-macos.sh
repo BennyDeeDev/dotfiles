@@ -24,7 +24,7 @@ fi
 "$DOTFILES/bin/common/dot-vscode-extensions"
 
 "$DOTFILES/bin/macos/dot-symlinks-macos-$DOT_VARIANT"
-"$DOTFILES/install/macos-write-defaults.sh"
+"$DOTFILES/bin/macos/dot-macos-defaults-write"
 
 if [[ "$DOT_VARIANT" == "corp" ]]; then
   cd "$DOTFILES" && "$DOTFILES/install/git-local-setup.sh"

@@ -1,4 +1,4 @@
 DOTFILES="$HOME/Repos/dotfiles"
-DOT_VARIANT=personal
+export DOT_VARIANT=personal
 [[ -f "$DOTFILES/.zshrc.macos-common" ]] && source "$DOTFILES/.zshrc.macos-common"
 
