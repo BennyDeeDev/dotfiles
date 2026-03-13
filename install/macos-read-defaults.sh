@@ -3,6 +3,9 @@
 # Read all domains out with:
 # defaults domains | tr ',' '\n' | sort
 
+# Export a domain as XML plist:
+# defaults export <domain> <file>.plist && plutil -convert xml1 <file>.plist
+
 echo "=== NSGlobalDomain ==="
 defaults read NSGlobalDomain
 

@@ -1,19 +1,13 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
 DOTFILES="$HOME/Repos/dotfiles"
 
-# Backup plists before overwriting
-BACKUP_DIR="$HOME/.plist-backups/$(date +%Y%m%d-%H%M%S)"
-mkdir -p "$BACKUP_DIR"
-defaults export com.apple.symbolichotkeys "$BACKUP_DIR/symbolichotkeys.plist"
-defaults export eu.exelban.Stats "$BACKUP_DIR/stats.plist"
-defaults export com.apple.dock "$BACKUP_DIR/dock.plist"
-echo "Backed up plists to $BACKUP_DIR"
-
 # Accessibility
-sudo defaults write com.apple.universalaccess reduceMotion -bool true
+# Note: com.apple.universalaccess requires Full Disk Access for Terminal.
+# Set manually: System Settings > Accessibility > Display > Reduce Motion
+# defaults write com.apple.universalaccess reduceMotion -bool true
 
 # Appearance
 defaults write NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool true
@@ -31,7 +25,6 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 # Dock
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock tilesize -int 39
-defaults write com.apple.dock persistent-apps -array
 
 # Mission Control
 defaults write com.apple.dock mru-spaces -bool false
