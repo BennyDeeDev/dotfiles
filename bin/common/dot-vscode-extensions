@@ -11,14 +11,16 @@ fi
 
 [[ "${DOT_VARIANT:-}" != "personal" && "${DOT_VARIANT:-}" != "corp" ]] && echo "Invalid variant '${DOT_VARIANT:-}'. Aborting." && exit 1
 
-install_extensions() {
-  local file="$1"
-  while IFS= read -r ext; do
-    [[ -z "$ext" ]] && continue
-    echo "Installing VS Code extension: $ext"
-    code --install-extension "$ext" --force
-  done < "$file"
-}
+wanted=$(printf '%s\n' "$(cat "$DOTFILES/vscode/extensions")" "$(cat "$DOTFILES/vscode/extensions.$DOT_VARIANT")" | grep -v '^$')
 
-install_extensions "$DOTFILES/vscode/extensions"
-install_extensions "$DOTFILES/vscode/extensions.$DOT_VARIANT"
+while IFS= read -r ext; do
+  echo "Installing VS Code extension: $ext"
+  code --install-extension "$ext" --force
+done <<< "$wanted"
+
+while IFS= read -r ext; do
+  if ! grep -qi "^${ext}$" <<< "$wanted"; then
+    echo "Uninstalling VS Code extension: $ext"
+    code --uninstall-extension "$ext"
+  fi
+done < <(code --list-extensions)
