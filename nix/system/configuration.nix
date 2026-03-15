@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
 
@@ -66,7 +66,9 @@
     };
   };
 
-  
+  system.activationScripts.binbash = lib.stringAfter [ "binsh" ] ''
+    ln -sfn ${pkgs.bash}/bin/bash /bin/bash
+  '';
 
   system.stateVersion = "25.11";
 }
