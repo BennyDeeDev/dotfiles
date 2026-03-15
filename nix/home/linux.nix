@@ -51,7 +51,7 @@
     # Themes & fonts
     gnome-themes-extra
     yaru-theme
-    wqy-zenhei
+    wqy_zenhei
 
     # Utilities
     xdg-utils
