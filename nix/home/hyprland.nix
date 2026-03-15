@@ -6,7 +6,7 @@
     extraConfig = ''
       source = ${omarchy}/default/hypr/envs.conf
       source = ${omarchy}/default/hypr/looknfeel.conf
-      # source = ${omarchy}/default/hypr/windows.conf
+      source = ${omarchy}/default/hypr/windows.conf
       source = ~/.config/omarchy/current/theme/hyprland.conf
 
       source = ${../../hypr/monitors.conf}
