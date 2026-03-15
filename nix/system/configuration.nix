@@ -30,6 +30,7 @@
   users.users.benjamin = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
+    hashedPasswordFile = "/etc/nixos/password-hash";
   };
 
   nixpkgs.config.allowUnfree = true;
