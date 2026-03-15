@@ -8,6 +8,11 @@
 
   networking.hostName = "nixos-vm";
 
+  environment.variables = {
+    WLR_RENDERER = "pixman";
+    WLR_NO_HARDWARE_CURSORS = "1";
+  };
+
   services.openssh.enable = true;
   services.spice-vdagentd.enable = true;
 
