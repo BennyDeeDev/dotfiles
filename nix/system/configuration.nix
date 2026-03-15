@@ -39,6 +39,7 @@
   environment.systemPackages = with pkgs; [
     git
     vim
+    hyprland
   ];
 
   zramSwap.enable = true;
