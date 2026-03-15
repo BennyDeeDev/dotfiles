@@ -60,6 +60,12 @@
     sshpass
     libsecret
 
+    # Editors
+    vscode
+
+    # Browsers
+    brave
+
     # Personal
     keepassxc
     localsend

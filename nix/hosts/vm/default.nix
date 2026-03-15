@@ -12,7 +12,7 @@
   services.spice-vdagentd.enable = true;
 
   home-manager.users.benjamin = {
-    imports = [ ../../home ../../home/omarchy.nix ../../home/wayland.nix ../../home/mako.nix ../../home/ghostty.nix ../../home/waybar.nix ../../home/hyprland.nix ];
+    imports = [ ../../home ../../home/omarchy.nix ../../home/linux.nix ../../home/wayland.nix ../../home/mako.nix ../../home/ghostty.nix ../../home/waybar.nix ../../home/hyprland.nix ];
     home.username = "benjamin";
     home.homeDirectory = "/home/benjamin";
     programs.git.settings.user = {
