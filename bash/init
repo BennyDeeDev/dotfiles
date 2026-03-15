@@ -11,20 +11,7 @@ if [ -n "$ZSH_VERSION" ]; then
 
   autoload -Uz compinit && compinit
 
-  autoload -U up-line-or-beginning-search 
-  autoload -U down-line-or-beginning-search
-  zle -N up-line-or-beginning-search
-  zle -N down-line-or-beginning-search
-  bindkey "^[[A" up-line-or-beginning-search
-  bindkey "^[[B" down-line-or-beginning-search
-
-  bindkey "^[[1;5C" forward-word
-  bindkey "^[[1;5D" backward-word
-
-  bindkey "^[[H" beginning-of-line
-  bindkey "^[[F" end-of-line
-
-  bindkey "^[[3~" delete-char
+  source "$DOTFILES/bash/keybindings"
 fi
 
 if command -v zoxide &> /dev/null; then
