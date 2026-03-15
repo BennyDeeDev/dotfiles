@@ -8,7 +8,7 @@
 
   networking.hostName = "nixos-vm";
 
-  environment.variables = {
+  environment.sessionVariables = {
     WLR_RENDERER = "pixman";
     WLR_NO_HARDWARE_CURSORS = "1";
   };
