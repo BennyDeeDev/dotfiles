@@ -42,7 +42,7 @@
     nerd-fonts.hack
     nerd-fonts.iosevka
     noto-fonts
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     liberation_ttf
   ];
 
