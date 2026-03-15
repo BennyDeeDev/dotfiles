@@ -55,6 +55,7 @@
   };
 
   programs.hyprland.enable = true;
+  services.displayManager.sessionPackages = [ pkgs.hyprland ];
 
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
