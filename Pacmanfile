@@ -12,6 +12,9 @@ ghostty
 waybar
 lazygit
 lazydocker
+docker
+docker-compose
+docker-buildx
 fzf
 eza
 zoxide
@@ -85,6 +88,7 @@ gnome-disk-utility
 libsecret
 opencode
 localsend-bin
+gnome-boxes
 gnome-calculator
 xmlstarlet
 man-db

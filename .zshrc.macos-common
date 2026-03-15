@@ -3,11 +3,7 @@ DOTFILES="$HOME/Repos/dotfiles"
 
 export PATH="$DOTFILES/bin/macos:$PATH"
 
-export XDG_CONFIG_HOME="$HOME/.config"
-
 alias xc='pbcopy'
-
-export PATH="$PATH:$HOME/go/bin"
 
 if command -v docker &> /dev/null; then
   source <(docker completion zsh)

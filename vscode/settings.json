@@ -14,7 +14,7 @@
   "window.titleSeparator": " — ",
 
   "editor.fontFamily": "Hack Nerd Font Mono",
-  "editor.fontSize": 12,
+  "editor.fontSize": 13,
   "editor.formatOnSave": true,
   "editor.inlayHints.enabled": "off",
   "editor.accessibilitySupport": "off",
@@ -28,32 +28,32 @@
   "git.confirmSync": false,
 
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
   "typescript.updateImportsOnFileMove.enabled": "always",
   "go.toolsManagement.autoUpdate": true,
 
   "github.copilot.enable": {
-    "*": false
+    "*": false,
   },
   "chat.commandCenter.enabled": false,
   "chat.viewWelcome.enabled": false,
@@ -69,11 +69,11 @@
     "kubectl get": true,
     "kubectl describe": true,
     "kubectl logs": true,
-    "defaults read": true
+    "defaults read": true,
   },
   "chat.tools.urls.autoApprove": {
     "https://reddit.com": true,
     "https://github.com": true,
-    "https://raw.githubusercontent.com": true
-  }
+    "https://raw.githubusercontent.com": true,
+  },
 }
