@@ -53,6 +53,7 @@
     yaru-theme
     wqy_zenhei
     glib
+    gsettings-desktop-schemas
 
     # Utilities
     xdg-utils

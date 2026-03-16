@@ -56,6 +56,7 @@
     jack.enable = true;
   };
 
+  programs.dconf.enable = true;
   programs.hyprland.enable = true;
 
   # Allow users to write brave theme policy (used by omarchy-theme-set)
