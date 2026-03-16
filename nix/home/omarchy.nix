@@ -21,6 +21,7 @@
       cp -r --no-preserve=mode "${omarchy}" "$dest"
       echo "${omarchy}" > "$dest/.nix-source"
     fi
+    chmod -R u+w "$HOME/.config/omarchy/current" 2>/dev/null || true
   '';
 
   # Set default theme on first boot, skipped if already set

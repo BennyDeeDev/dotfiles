@@ -27,8 +27,11 @@
     variant = "";
   };
 
+  programs.zsh.enable = true;
+
   users.users.benjamin = {
     isNormalUser = true;
+    shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
     hashedPasswordFile = "/etc/nixos/password-hash";
   };
