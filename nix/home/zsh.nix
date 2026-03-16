@@ -3,6 +3,7 @@
 {
   programs.zsh = {
     enable = true;
+    dotDir = ".config/zsh";
     autocd = true;
 
     history = {
