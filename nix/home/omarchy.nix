@@ -21,11 +21,11 @@
       cp -r --no-preserve=mode "${omarchy}" "$dest"
       echo "${omarchy}" > "$dest/.nix-source"
     fi
-    chmod -R u+w "$HOME/.config/omarchy/current" 2>/dev/null || true
+    chmod -R u+w "$HOME/.config/omarchy" 2>/dev/null || true
   '';
 
   # Set default theme on first boot, skipped if already set
-  home.activation.omarchyThemeInit = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  home.activation.omarchyThemeInit = lib.hm.dag.entryAfter [ "omarchyInstall" ] ''
     if [[ ! -d "$HOME/.config/omarchy/current/theme" ]]; then
       export OMARCHY_PATH="$HOME/.local/share/omarchy"
       export PATH="${omarchy}/bin:$PATH"
