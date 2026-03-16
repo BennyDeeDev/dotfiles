@@ -1,8 +1,9 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
 
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 10;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.networkmanager.enable = true;
@@ -38,6 +39,12 @@
 
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.auto-optimise-store = true;
+  nix.gc = {
+    automatic = true;
+    dates = "monthly";
+    options = "--delete-older-than 30d";
+  };
 
   environment.systemPackages = with pkgs; [
     git
@@ -76,9 +83,7 @@
     };
   };
 
-  system.activationScripts.binbash = lib.stringAfter [ "binsh" ] ''
-    ln -sfn ${pkgs.bash}/bin/bash /bin/bash
-  '';
+  services.envfs.enable = true;
 
   system.stateVersion = "25.11";
 }
