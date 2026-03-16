@@ -16,5 +16,7 @@
     xwayland-satellite
     uwsm
     networkmanagerapplet
+    walker
+    elephant
   ];
 }

@@ -68,6 +68,7 @@
 
     # Personal
     keepassxc
+    spotify-player
     localsend
   ];
 }
