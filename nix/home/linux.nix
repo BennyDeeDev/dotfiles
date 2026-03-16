@@ -52,6 +52,7 @@
     gnome-themes-extra
     yaru-theme
     wqy_zenhei
+    glib
 
     # Utilities
     xdg-utils

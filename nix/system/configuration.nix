@@ -58,6 +58,11 @@
 
   programs.hyprland.enable = true;
 
+  # Allow users to write brave theme policy (used by omarchy-theme-set)
+  systemd.tmpfiles.rules = [
+    "d /etc/brave/policies/managed 0775 root users -"
+  ];
+
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
