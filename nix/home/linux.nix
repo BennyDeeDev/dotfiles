@@ -70,7 +70,7 @@
 
     # Personal
     keepassxc
-    spotify-player
+    spotify
     localsend
   ];
 }
