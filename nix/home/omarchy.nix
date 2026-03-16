@@ -19,6 +19,7 @@
     if [[ ! -d "$dest" ]] || [[ "${omarchy}" != "$(cat "$dest/.nix-source" 2>/dev/null)" ]]; then
       rm -rf "$dest"
       cp -r --no-preserve=mode "${omarchy}" "$dest"
+      chmod +x "$dest/bin/"*
       echo "${omarchy}" > "$dest/.nix-source"
     fi
     chmod -R u+w "$HOME/.config/omarchy" 2>/dev/null || true
