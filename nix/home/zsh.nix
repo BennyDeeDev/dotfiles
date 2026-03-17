@@ -19,6 +19,8 @@
       source ${../../bash/envs}
       source ${../../bash/functions}
       source ${../../bash/keybindings}
+
+      [[ $TERM != "linux" ]] && eval "$(starship init zsh)"
     '';
   };
 

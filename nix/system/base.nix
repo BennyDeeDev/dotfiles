@@ -3,7 +3,17 @@
 {
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 10;
+  boot.loader.systemd-boot.timeout = 0;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelParams = [
+    "quiet"
+    "loglevel=3"
+    "rd.systemd.show_status=false"
+    "rd.udev.log_level=3"
+    "udev.log_priority=3"
+    "vt.global_cursor_default=0"
+  ];
+  boot.consoleLogLevel = 0;
 
   networking.networkmanager.enable = true;
 

@@ -6,6 +6,7 @@
     settings = {
       env = [
         "XCURSOR_SIZE,24"
+        "XCURSOR_THEME,Adwaita"
         "HYPRCURSOR_SIZE,24"
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_DESKTOP,Hyprland"

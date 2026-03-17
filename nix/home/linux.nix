@@ -3,10 +3,19 @@
 {
   imports = [ ./ghostty.nix ];
 
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    package = pkgs.adwaita-icon-theme;
+    name = "Adwaita";
+    size = 24;
+  };
+
   home.packages = with pkgs; [
     # Media & audio
     playerctl
     pamixer
+    pavucontrol
     libnotify
     ffmpegthumbnailer
     obs-studio

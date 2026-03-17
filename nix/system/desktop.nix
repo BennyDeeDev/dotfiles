@@ -41,6 +41,17 @@
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
+  
+  services.flatpak.enable = true;
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+    ];
+    config.common.default = "*";
+  };
 
   services.greetd = {
     enable = true;
