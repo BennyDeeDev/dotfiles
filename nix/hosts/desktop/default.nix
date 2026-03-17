@@ -2,7 +2,8 @@
 
 {
   imports = [
-    ../../system/configuration.nix
+    ../../system/base.nix
+    ../../system/desktop.nix
     ./hardware-configuration.nix
   ];
 
@@ -12,14 +13,28 @@
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
+  hardware.bluetooth.settings = {
+    General = {
+      Experimental = true;
+      FastConnectable = true;
+    };
+    Policy.AutoEnable = true;
+  };
   services.blueman.enable = true;
 
   hardware.cpu.amd.updateMicrocode = true;
   hardware.enableRedistributableFirmware = true;
-  hardware.graphics.enable32Bit = true;
+  hardware.amdgpu.initrd.enable = true;
+
+  programs.hyprland.enable = true;
+
+  virtualisation.docker.enable = true;
+  virtualisation.docker.storageDriver = "btrfs";
+
+  virtualisation.libvirtd.enable = true;
 
   home-manager.users.benjamin = {
-    imports = [ ../../home ../../home/omarchy.nix ../../home/wayland.nix ../../home/mako.nix ../../home/ghostty.nix ../../home/waybar.nix ../../home/hyprland.nix ];
+    imports = [ ../../home ../../home/linux.nix ../../home/wayland ../../home/gamescope ];
     home.username = "benjamin";
     home.homeDirectory = "/home/benjamin";
     programs.git.settings.user = {

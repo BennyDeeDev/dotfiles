@@ -1,4 +1,4 @@
-{ omarchy, lib, ... }:
+{ pkgs, omarchy, lib, ... }:
 
 {
   home.sessionPath = [ "$HOME/.local/share/omarchy/bin" ];
@@ -9,8 +9,10 @@
     "swayosd/config.toml".source = "${omarchy}/config/swayosd/config.toml";
     "swayosd/style.css".source = "${omarchy}/config/swayosd/style.css";
     "walker/config.toml".source = "${omarchy}/config/walker/config.toml";
-    "omarchy/themes/catppuccin-extended".source = ../../themes/catppuccin-extended;
-    "omarchy/themes/catppuccin-latte-extended".source = ../../themes/catppuccin-latte-extended;
+    "hypr/xdph.conf".source = "${omarchy}/config/hypr/xdph.conf";
+    "hypr/hyprlock.conf".source = "${omarchy}/config/hypr/hyprlock.conf";
+    "omarchy/themes/catppuccin-extended".source = ../../../themes/catppuccin-extended;
+    "omarchy/themes/catppuccin-latte-extended".source = ../../../themes/catppuccin-latte-extended;
   };
 
   # Copy omarchy from the nix store with normal permissions so omarchy's own cp calls don't inherit 444

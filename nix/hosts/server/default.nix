@@ -3,19 +3,15 @@
 {
   imports = [
     ../../system/base.nix
-    ../../system/desktop.nix
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "nixos-vm";
-
-  programs.hyprland.enable = true;
+  networking.hostName = "nixos-server";
 
   services.openssh.enable = true;
-  services.spice-vdagentd.enable = true;
 
   home-manager.users.benjamin = {
-    imports = [ ../../home ../../home/linux.nix ../../home/wayland ];
+    imports = [ ../../home ];
     home.username = "benjamin";
     home.homeDirectory = "/home/benjamin";
     programs.git.settings.user = {

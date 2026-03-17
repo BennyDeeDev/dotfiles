@@ -14,6 +14,7 @@
     neovim
     lazygit
     lazydocker
+    docker-compose
     gh
     prettier
 
@@ -31,11 +32,7 @@
     tldr
     wget
     watch
-    rsync
     unzip
-    imagemagick
-    just
-    yt-dlp
 
     # Fonts
     nerd-fonts.jetbrains-mono
@@ -43,8 +40,17 @@
     nerd-fonts.iosevka
     noto-fonts
     noto-fonts-color-emoji
-    liberation_ttf
   ];
+
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      sansSerif = [ "Noto Sans" ];
+      serif = [ "Noto Serif" ];
+      monospace = [ "Hack Nerd Font" ];
+      emoji = [ "Noto Color Emoji" ];
+    };
+  };
 
   programs.home-manager.enable = true;
 }

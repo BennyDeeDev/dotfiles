@@ -1,7 +1,6 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 10;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -23,17 +22,14 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
+  console.keyMap = "us";
 
   programs.zsh.enable = true;
 
   users.users.benjamin = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
     hashedPasswordFile = "/etc/nixos/password-hash";
   };
 
@@ -42,7 +38,7 @@
   nix.settings.auto-optimise-store = true;
   nix.gc = {
     automatic = true;
-    dates = "monthly";
+    dates = "weekly";
     options = "--delete-older-than 30d";
   };
 
@@ -52,36 +48,6 @@
   ];
 
   zramSwap.enable = true;
-
-  hardware.graphics.enable = true;
-
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
-
-  programs.dconf.enable = true;
-  programs.hyprland.enable = true;
-
-  # Allow users to write brave theme policy (used by omarchy-theme-set)
-  systemd.tmpfiles.rules = [
-    "d /etc/brave/policies/managed 0775 root users -"
-  ];
-
-  security.polkit.enable = true;
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.greetd.enableGnomeKeyring = true;
-
-  services.greetd = {
-    enable = true;
-    settings.default_session = {
-      command = "${pkgs.tuigreet}/bin/tuigreet --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --remember --remember-user-session --time --asterisks";
-      user = "greeter";
-    };
-  };
 
   services.envfs.enable = true;
 

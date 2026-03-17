@@ -1,15 +1,7 @@
 { pkgs, ... }:
 
 {
-  fonts.fontconfig = {
-    enable = true;
-    defaultFonts = {
-      sansSerif = [ "Noto Sans" ];
-      serif = [ "Noto Serif" ];
-      monospace = [ "Hack Nerd Font" ];
-      emoji = [ "Noto Color Emoji" ];
-    };
-  };
+  imports = [ ./ghostty.nix ];
 
   home.packages = with pkgs; [
     # Media & audio
@@ -17,7 +9,6 @@
     pamixer
     libnotify
     ffmpegthumbnailer
-    ffmpeg
     obs-studio
     celluloid
 
@@ -41,26 +32,21 @@
     loupe
     papers
 
-    # Gaming
-    gamescope
-    mangohud
-
     # Virtualization
     virt-manager
 
     # Themes & fonts
     gnome-themes-extra
     yaru-theme
-    wqy_zenhei
     glib
     gsettings-desktop-schemas
 
     # Utilities
     xdg-utils
     xdg-terminal-exec
-    xmlstarlet
     sshpass
     libsecret
+    keymapp
 
     # Editors
     vscode
