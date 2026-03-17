@@ -4,9 +4,10 @@
   home.packages = with pkgs; [
     mangohud
     lsfg-vk
+    steam-rom-manager
+    ludusavi
     liberation_ttf
     wqy_zenhei
-    pkgsi686Linux.fontconfig
   ];
 
   services.flatpak.packages = [
@@ -20,7 +21,7 @@
       shared = [ "!network" ];
     };
     "com.usebottles.bottles".Context = {
-      filesystems = [ "~/Games/Bottles:rw" "xdg-data/applications:rw" ];
+      filesystems = [ "~/Games/PC:rw" "xdg-data/applications:rw" ];
       shared = [ "!network" ];
     };
   };
