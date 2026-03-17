@@ -34,4 +34,11 @@
       $DRY_RUN_CMD ${omarchy}/bin/omarchy-theme-set catppuccin
     fi
   '';
+
+  # btop loads themes from its own themes/ directory; create the symlink that
+  # omarchy's install script normally sets up (btop has no include/path support)
+  home.activation.btopThemeLink = lib.hm.dag.entryAfter [ "omarchyThemeInit" ] ''
+    $DRY_RUN_CMD mkdir -p "$HOME/.config/btop/themes"
+    $DRY_RUN_CMD ln -snf "$HOME/.config/omarchy/current/theme/btop.theme" "$HOME/.config/btop/themes/current.theme"
+  '';
 }
