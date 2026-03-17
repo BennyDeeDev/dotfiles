@@ -9,14 +9,15 @@
       url = "github:basecamp/omarchy";
       flake = false;
     };
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
   };
 
-  outputs = { nixpkgs, home-manager, omarchy, ... }:
+  outputs = { nixpkgs, home-manager, omarchy, nix-flatpak, ... }:
     let
       homeManagerModule = {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit omarchy; };
+        home-manager.extraSpecialArgs = { inherit omarchy nix-flatpak; };
       };
     in {
     nixosConfigurations = {
@@ -26,6 +27,7 @@
           ./hosts/vm
           home-manager.nixosModules.home-manager
           homeManagerModule
+          nix-flatpak.nixosModules.nix-flatpak
         ];
       };
       desktop = nixpkgs.lib.nixosSystem {
@@ -34,6 +36,7 @@
           ./hosts/desktop
           home-manager.nixosModules.home-manager
           homeManagerModule
+          nix-flatpak.nixosModules.nix-flatpak
         ];
       };
     };

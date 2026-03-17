@@ -1,7 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, nix-flatpak, ... }:
 
 {
   imports = [
+    nix-flatpak.homeManagerModules.nix-flatpak
     ./git.nix
     ./zsh.nix
     ./starship.nix
