@@ -32,7 +32,6 @@
     variant = "";
     options = "compose:ralt";
   };
-  console.useXkbConfig = true;
 
   # Allow users to write brave theme policy (used by omarchy-theme-set)
   systemd.tmpfiles.rules = [
