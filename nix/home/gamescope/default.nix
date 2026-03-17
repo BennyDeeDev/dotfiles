@@ -8,4 +8,6 @@
     wqy_zenhei
     pkgsi686Linux.fontconfig
   ];
+
+  xdg.configFile."lsfg-vk/conf.toml".source = ../../../gamescope/lsfg-vk.toml;
 }
