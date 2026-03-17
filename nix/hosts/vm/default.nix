@@ -15,7 +15,7 @@
   services.spice-vdagentd.enable = true;
 
   home-manager.users.benjamin = {
-    imports = [ ../../home ../../home/linux.nix ../../home/wayland ];
+    imports = [ ../../home ../../home/linux.nix ../../home/wayland ../../home/gamescope ];
     home.username = "benjamin";
     home.homeDirectory = "/home/benjamin";
     programs.git.settings.user = {
