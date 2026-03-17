@@ -41,7 +41,7 @@
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
-  
+
   services.flatpak.enable = true;
 
   xdg.portal = {
@@ -51,6 +51,24 @@
       xdg-desktop-portal-gtk
     ];
     config.common.default = "*";
+  };
+
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
+    args = [ "--mangoapp" "--adaptive-sync" "--hdr-enabled" "--rt" ];
+    env = {
+      MANGOHUD = "1";
+      MANGOHUD_CONFIG = "cpu_temp,gpu_temp,ram,vram";
+    };
+  };
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+    gamescopeSession.enable = true;
   };
 
   services.greetd = {

@@ -2,7 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    gamescope
     mangohud
     liberation_ttf
     wqy_zenhei
