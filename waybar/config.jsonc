@@ -12,23 +12,22 @@
     "format-icons": {
       "www": "󰖟",
       "term": "",
-      "dev": "󰨞",
-      "dev2": "󰨞",
+      "dev": "",
+      "dev2": "",
       "media": "󰝚",
-
-      "default": ""
+      "default": ""
     }
   },
   "hyprland/workspaces": {
     "on-click": "activate",
     "format": "{icon}",
     "format-icons": {
-      "www": "󰖟",
-      "term": "",
-      "dev": "󰨞",
-      "dev2": "󰨞",
-      "media": "󰝚",
-      "default": ""
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "󰝚",
+      "default": ""
     },
     "persistent-workspaces": {
       "1": [],
