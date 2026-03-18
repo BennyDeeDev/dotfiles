@@ -58,11 +58,6 @@
   programs.gamescope = {
     enable = true;
     capSysNice = true;
-    args = [ "--mangoapp" "--adaptive-sync" "--hdr-enabled" "--rt" ];
-    env = {
-      MANGOHUD = "1";
-      MANGOHUD_CONFIG = "cpu_temp,gpu_temp,ram,vram";
-    };
   };
 
   programs.steam = {
@@ -70,13 +65,23 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
-    gamescopeSession.enable = true;
+    gamescopeSession = {
+      enable = true;
+      args = [ "--mangoapp" "--mouse-sensitivity" "2.0" ];
+      steamArgs = [ "-steamdeck" "-steamos3" ];
+    };
+    extraPackages = [
+      (pkgs.writeShellScriptBin "steamos-session-select" ''steam -shutdown'')
+      (pkgs.writeShellScriptBin "steamos-update" ''exit 7'')
+      (pkgs.writeShellScriptBin "steamos-select-branch" ''echo "Not applicable for this OS"'')
+      (pkgs.writeShellScriptBin "jupiter-biosupdate" ''echo "No updates configured for this bios"; exit 0'')
+    ];
   };
 
   services.greetd = {
     enable = true;
     settings.default_session = {
-      command = "${pkgs.tuigreet}/bin/tuigreet --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --remember --remember-user-session --time --asterisks";
+      command = "${pkgs.tuigreet}/bin/tuigreet --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --remember --remember-session --time --asterisks";
       user = "greeter";
     };
   };
