@@ -25,6 +25,8 @@
 
   hardware.keyboard.zsa.enable = true;
 
+  services.udev.packages = [ pkgs.asdbctl ];
+
   programs.dconf.enable = true;
 
   services.xserver.xkb = {
