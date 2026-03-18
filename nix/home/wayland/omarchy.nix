@@ -11,8 +11,6 @@
     "walker/config.toml".source = "${omarchy}/config/walker/config.toml";
     "hypr/xdph.conf".source = "${omarchy}/config/hypr/xdph.conf";
     "hypr/hyprlock.conf".source = "${omarchy}/config/hypr/hyprlock.conf";
-    "omarchy/themes/catppuccin-extended".source = ../../../themes/catppuccin-extended;
-    "omarchy/themes/catppuccin-latte-extended".source = ../../../themes/catppuccin-latte-extended;
     "omarchy/hooks/theme-set".source = ../../../omarchy/hooks/theme-set;
   };
 
@@ -34,6 +32,17 @@
       export PATH="${omarchy}/bin:$PATH"
       $DRY_RUN_CMD ${omarchy}/bin/omarchy-theme-set catppuccin
     fi
+  '';
+
+  # Copy dotfiles themes so omarchy-theme-set can overwrite backgrounds (no-preserve avoids Nix store 444 permissions)
+  home.activation.omarchyThemes = lib.hm.dag.entryAfter [ "omarchyInstall" ] ''
+    mkdir -p "$HOME/.config/omarchy/themes"
+    cp -r --no-preserve=mode ${../../../themes}/* "$HOME/.config/omarchy/themes/"
+  '';
+
+  # Copy dotfiles templates into omarchy's themed directory so theme-set renders them
+  home.activation.omarchyTemplates = lib.hm.dag.entryAfter [ "omarchyInstall" ] ''
+    cp -r --no-preserve=mode ${../../../templates}/* "$HOME/.local/share/omarchy/default/themed/"
   '';
 
   # btop loads themes from its own themes/ directory; create the symlink that

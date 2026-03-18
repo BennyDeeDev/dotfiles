@@ -42,6 +42,7 @@ CentOS = ""
 Debian = "󰣚"
 Redhat = "󱄛"
 RedHatEnterprise = "󱄛"
+NixOS = "󱄅"
 
 [directory]
 style = "bg:foreground fg:background"

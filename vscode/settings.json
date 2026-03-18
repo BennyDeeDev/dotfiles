@@ -19,6 +19,8 @@
   "editor.inlayHints.enabled": "off",
   "editor.accessibilitySupport": "off",
 
+  "diffEditor.ignoreTrimWhitespace": false,
+
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
 
