@@ -1,7 +1,10 @@
 { ... }:
 
 {
-  programs.waybar.enable = true;
+  programs.waybar = {
+    enable = true;
+    systemd.enable = true;
+  };
 
   xdg.configFile = {
     "waybar/config.jsonc".source = ../../../waybar/config.jsonc;
