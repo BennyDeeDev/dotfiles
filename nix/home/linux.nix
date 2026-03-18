@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./ghostty.nix ];
+  imports = [ ./ghostty.nix ./vscode.nix ];
 
   home.pointerCursor = {
     gtk.enable = true;
@@ -56,6 +56,7 @@
     sshpass
     libsecret
     keymapp
+    asdbctl
 
     # Editors
     vscode
