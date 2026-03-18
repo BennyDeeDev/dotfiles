@@ -59,7 +59,5 @@
 
   zramSwap.enable = true;
 
-  services.envfs.enable = true;
-
   system.stateVersion = "25.11";
 }
