@@ -55,9 +55,11 @@
   environment.systemPackages = with pkgs; [
     git
     vim
+    fuse
   ];
 
   zramSwap.enable = true;
+  services.envfs.enable = true;
 
   system.stateVersion = "25.11";
 }
