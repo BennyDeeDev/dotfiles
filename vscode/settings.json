@@ -9,7 +9,7 @@
 
   "window.commandCenter": false,
   "window.confirmSaveUntitledWorkspace": false,
-  "window.autoDetectColorScheme": true,
+  "window.autoDetectColorScheme": false,
   "window.title": "${folderName}${separator}${activeEditorShort}",
   "window.titleSeparator": " — ",
 

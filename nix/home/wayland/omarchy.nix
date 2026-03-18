@@ -13,6 +13,7 @@
     "hypr/hyprlock.conf".source = "${omarchy}/config/hypr/hyprlock.conf";
     "omarchy/themes/catppuccin-extended".source = ../../../themes/catppuccin-extended;
     "omarchy/themes/catppuccin-latte-extended".source = ../../../themes/catppuccin-latte-extended;
+    "omarchy/hooks/theme-set".source = ../../../omarchy/hooks/theme-set;
   };
 
   # Copy omarchy from the nix store with normal permissions so omarchy's own cp calls don't inherit 444

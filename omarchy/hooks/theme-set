@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# On NixOS, ghostty runs via a wrapper symlink; match the command line path
+if pgrep -f "/bin/ghostty$" >/dev/null; then
+  pkill -SIGUSR2 -f "/bin/ghostty$"
+fi
