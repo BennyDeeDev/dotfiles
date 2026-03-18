@@ -27,7 +27,10 @@
   hardware.enableRedistributableFirmware = true;
   hardware.amdgpu.initrd.enable = true;
 
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+  };
 
   services.btrfs.autoScrub = {
     enable = true;
