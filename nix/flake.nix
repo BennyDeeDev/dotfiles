@@ -6,13 +6,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     omarchy = {
-      url = "github:basecamp/omarchy";
+      url = "github:basecamp/omarchy/master";
       flake = false;
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, omarchy, nix-flatpak, ... }:
+  outputs = { nixpkgs, home-manager, omarchy, nix-flatpak, disko, ... }:
     let
       homeManagerModule = {
         home-manager.useGlobalPkgs = true;
@@ -34,6 +38,7 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/desktop
+          disko.nixosModules.disko
           home-manager.nixosModules.home-manager
           homeManagerModule
           nix-flatpak.nixosModules.nix-flatpak

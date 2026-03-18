@@ -4,6 +4,7 @@
   imports = [
     ../../system/base.nix
     ../../system/desktop.nix
+    ./disko.nix
     ./hardware-configuration.nix
   ];
 
@@ -27,6 +28,12 @@
   hardware.amdgpu.initrd.enable = true;
 
   programs.hyprland.enable = true;
+
+  services.btrfs.autoScrub = {
+    enable = true;
+    interval = "monthly";
+    fileSystems = [ "/" ];
+  };
 
   virtualisation.docker.enable = true;
   virtualisation.docker.storageDriver = "btrfs";
