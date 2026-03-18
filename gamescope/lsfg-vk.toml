@@ -1,0 +1,10 @@
+[global]
+dll = "~/.steam/steam/steamapps/common/Lossless Scaling/Lossless.dll"
+multiplier = 2
+flow_scale = 1.0
+performance_mode = false
+
+# Add per-game profiles below, e.g.:
+# [[profile]]
+# name = "My Game"
+# active_in = ["MyGame.exe"]

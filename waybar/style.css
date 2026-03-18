@@ -11,14 +11,6 @@
   font-size: 16px;
 }
 
-.modules-left {
-  margin-left: 16px;
-}
-
-.modules-right {
-  margin-right: 16px;
-}
-
 #workspaces button {
   all: initial;
   min-width: 12px;
@@ -37,32 +29,9 @@
   color: @accent;
 }
 
-#custom-arch {
-  min-width: 12px;
-  font-size: 18px;
-  margin-right: 12px;
-}
-
-#custom-separator-left,
-#custom-separator-right {
-  min-width: 12px;
-  font-size: 18px;
-}
-
-#cpu,
-#battery,
-#pulseaudio,
-#bluetooth,
-#network,
-#custom-brightness {
-  min-width: 12px;
-  margin-right: 12px;
-  margin-left: 12px;
-  font-size: 16px;
-}
-
 #clock {
   margin-left: 8px;
+  margin-right: 12px;
 }
 
 #mpris {

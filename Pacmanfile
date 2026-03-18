@@ -88,6 +88,9 @@ gnome-disk-utility
 libsecret
 opencode
 localsend-bin
+virt-manager
+dnsmasq
+sshpass
 gnome-boxes
 gnome-calculator
 xmlstarlet

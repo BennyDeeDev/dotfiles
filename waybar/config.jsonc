@@ -4,54 +4,30 @@
   "position": "top",
   "spacing": 0,
   "height": 35,
-  "modules-left": [
-    "custom/arch",
-    "custom/separator-left",
-    "hyprland/workspaces",
-    "niri/workspaces"
-  ],
+  "modules-left": ["hyprland/workspaces", "niri/workspaces"],
   "modules-center": ["mpris"],
-  "modules-right": [
-    "bluetooth",
-    "network",
-    "pulseaudio",
-    "battery",
-    "cpu",
-    "custom/brightness",
-
-    "temperature#cpu",
-    "temperature#gpu",
-
-    "custom/separator-right",
-    "clock"
-  ],
+  "modules-right": ["clock"],
   "niri/workspaces": {
     "format": "{icon}",
     "format-icons": {
       "www": "󰖟",
       "term": "",
-      "dev": "󰨞",
-      "dev2": "󰨞",
+      "dev": "",
+      "dev2": "",
       "media": "󰝚",
-
-      "default": ""
+      "default": ""
     }
   },
   "hyprland/workspaces": {
     "on-click": "activate",
     "format": "{icon}",
     "format-icons": {
-      "default": "",
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5",
-      "6": "6",
-      "7": "7",
-      "8": "8",
-      "9": "9",
-      "10": "0"
+      "1": "󰖟",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "󰝚",
+      "default": ""
     },
     "persistent-workspaces": {
       "1": [],
@@ -61,92 +37,13 @@
       "5": []
     }
   },
-  "custom/arch": {
-    "format": "󰣇",
-    "tooltip": true,
-    "on-click": "ghostty -e sh -c 'fastfetch; exec zsh'"
-  },
-  "custom/separator-left": {
-    "format": "|",
-    "tooltip": false
-  },
-  "custom/separator-right": {
-    "format": "|",
-    "tooltip": false
-  },
   "mpris": {
     "format": "<i>{dynamic}</i>",
     "format-paused": "{dynamic}",
     "dynamic-order": ["title", "artist"]
   },
-  "cpu": {
-    "interval": 5,
-    "format": "",
-    "on-click": "ghostty -e btop"
-  },
-  "custom/brightness": {
-    "format": "󰍹",
-    "exec": "asdbctl get | awk '{print $2}'",
-    "interval": 2,
-    "on-click": "asdbctl up -s 5",
-    "on-click-right": "asdbctl down -s 5",
-    "tooltip-format": "Brightness: {}%"
-  },
   "clock": {
     "format": "{:%a %d %b %H:%M}",
     "tooltip": false
-  },
-  "network": {
-    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
-    "format": "{icon}",
-    "format-wifi": "{icon}",
-    "format-ethernet": "󰀂",
-    "format-disconnected": "󰤮",
-    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-    "tooltip-format-disconnected": "Disconnected",
-    "interval": 3,
-    "spacing": 1,
-    "on-click": "ghostty -e impala"
-  },
-  "battery": {
-    "format": "{capacity}% {icon}",
-    "format-discharging": "{icon}",
-    "format-charging": "{icon}",
-    "format-plugged": "",
-    "format-icons": {
-      "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
-      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
-    },
-    "format-full": "󰂅",
-    "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
-    "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
-    "interval": 5,
-    "states": {
-      "warning": 20,
-      "critical": 10
-    }
-  },
-  "bluetooth": {
-    "format": "",
-    "format-off": "󰂲",
-    "format-disabled": "󰂲",
-    "format-connected": "󰂱",
-    "format-no-controller": "",
-    "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "ghostty -e bluetui"
-  },
-  "pulseaudio": {
-    "format": "{icon}",
-    "on-click": "ghostty -e wiremix",
-    "on-click-right": "pamixer -t",
-    "tooltip-format": "Playing at {volume}%",
-    "scroll-step": 5,
-    "format-muted": "",
-    "format-icons": {
-      "headphone": "",
-      "headset": "",
-      "default": ["", "", ""]
-    }
   }
 }
