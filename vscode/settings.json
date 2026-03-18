@@ -72,6 +72,7 @@
     "kubectl describe": true,
     "kubectl logs": true,
     "defaults read": true,
+    "journalctl": true
   },
   "chat.tools.urls.autoApprove": {
     "https://reddit.com": true,
