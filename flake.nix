@@ -28,7 +28,7 @@
       vm = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/vm
+          ./nix/hosts/vm
           home-manager.nixosModules.home-manager
           homeManagerModule
           nix-flatpak.nixosModules.nix-flatpak
@@ -37,7 +37,7 @@
       desktop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/desktop
+          ./nix/hosts/desktop
           disko.nixosModules.disko
           home-manager.nixosModules.home-manager
           homeManagerModule
