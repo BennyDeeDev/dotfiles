@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, ... }:
 
 {
   imports = [ ./ghostty.nix ./vscode.nix ];
@@ -15,13 +15,9 @@
     templates = "${config.home.homeDirectory}/Templates";
     publicShare = "${config.home.homeDirectory}/Public";
     extraConfig = {
-      XDG_REPOS_DIR = "${config.home.homeDirectory}/Repos";
+      REPOS = "${config.home.homeDirectory}/Repos";
     };
   };
-
-  home.activation.createReposDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    mkdir -p "${config.home.homeDirectory}/Repos"
-  '';
 
   home.pointerCursor = {
     gtk.enable = true;
