@@ -4,6 +4,11 @@
   programs.zsh = {
     enable = true;
     dotDir = "${config.xdg.configHome}/zsh";
+
+    shellAliases = {
+      nrs = "sudo nixos-rebuild switch --flake /home/benjamin/Repos/dotfiles#desktop";
+    };
+    
     autocd = true;
 
     history = {

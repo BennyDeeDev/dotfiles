@@ -4,3 +4,8 @@
 if pgrep -f "/bin/ghostty$" >/dev/null; then
   pkill -SIGUSR2 -f "/bin/ghostty$"
 fi
+
+# On NixOS, swayosd runs as a systemd service; restart it to pick up new theme CSS
+if systemctl --user is-active --quiet swayosd; then
+  systemctl --user restart swayosd
+fi
