@@ -1,7 +1,27 @@
-{ pkgs, ... }:
+{ pkgs, config, lib, ... }:
 
 {
   imports = [ ./ghostty.nix ./vscode.nix ];
+
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+    documents = "${config.home.homeDirectory}/Documents";
+    download = "${config.home.homeDirectory}/Downloads";
+    pictures = "${config.home.homeDirectory}/Pictures";
+    music = "${config.home.homeDirectory}/Music";
+    videos = "${config.home.homeDirectory}/Videos";
+    desktop = "${config.home.homeDirectory}/Desktop";
+    templates = "${config.home.homeDirectory}/Templates";
+    publicShare = "${config.home.homeDirectory}/Public";
+    extraConfig = {
+      XDG_REPOS_DIR = "${config.home.homeDirectory}/Repos";
+    };
+  };
+
+  home.activation.createReposDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p "${config.home.homeDirectory}/Repos"
+  '';
 
   home.pointerCursor = {
     gtk.enable = true;
