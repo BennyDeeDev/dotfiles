@@ -19,6 +19,7 @@
     dest="$HOME/.local/share/omarchy"
     if [[ ! -d "$dest" ]] || [[ "${omarchy}" != "$(cat "$dest/.nix-source" 2>/dev/null)" ]]; then
       rm -rf "$dest"
+      mkdir -p "$HOME/.local/share"
       cp -r --no-preserve=mode "${omarchy}" "$dest"
       echo "${omarchy}" > "$dest/.nix-source"
     fi

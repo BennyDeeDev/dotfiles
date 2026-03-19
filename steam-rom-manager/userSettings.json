@@ -1,0 +1,44 @@
+{
+	"environmentVariables": {
+		"steamDirectory": "/home/benjamin/.local/share/Steam",
+		"userAccounts": [
+			"tfopgonehitgg"
+		],
+		"romsDirectory": "",
+		"retroarchPath": "",
+		"raCoresDirectory": "",
+		"localImagesDirectory": ""
+	},
+	"previewSettings": {
+		"retrieveCurrentSteamImages": true,
+		"disableCategories": false,
+		"deleteDisabledShortcuts": false,
+		"imageZoomPercentage": 49.75,
+		"imageLoadStrategy": "loadLazy",
+		"hideUserAccount": false
+	},
+	"enabledProviders": [
+		"sgdb",
+		"steamCDN"
+	],
+	"batchDownloadSize": 50,
+	"dnsServers": [],
+	"language": "en-US",
+	"theme": "Deck",
+	"emudeckInstall": false,
+	"autoUpdate": true,
+	"offlineMode": false,
+	"navigationWidth": 0,
+	"clearLogOnTest": false,
+	"autoKillSteam": true,
+	"autoRestartSteam": true,
+	"version": 10,
+	"fuzzyMatcher": {
+		"timestamps": {
+			"check": 1773953732150,
+			"download": 1773953732150
+		},
+		"verbose": false,
+		"filterProviders": true
+	}
+}

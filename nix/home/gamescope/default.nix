@@ -22,7 +22,7 @@
       shared = [ "!network" ];
     };
     "com.usebottles.bottles".Context = {
-      filesystems = [ "~/Games/PC:rw" "~/Repos/dotfiles/bottles:rw" ];
+      filesystems = [ "~/Games/PC:rw" "~/Repos/dotfiles/bottles:rw" "/mnt/bazzite/home/bazzite/Games/PC:ro" ];
     };
   };
 
@@ -35,6 +35,22 @@
   home.activation.lsfgVkConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     mkdir -p "$HOME/.config/lsfg-vk"
     ln -sf "$HOME/Repos/dotfiles/gamescope/lsfg-vk.toml" "$HOME/.config/lsfg-vk/conf.toml"
+  '';
+
+  home.activation.steamRomManagerConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p "$HOME/.config/steam-rom-manager/userData"
+    ln -sf "$HOME/Repos/dotfiles/steam-rom-manager/userConfigurations.json" "$HOME/.config/steam-rom-manager/userData/userConfigurations.json"
+    ln -sf "$HOME/Repos/dotfiles/steam-rom-manager/userSettings.json" "$HOME/.config/steam-rom-manager/userData/userSettings.json"
+  '';
+
+  home.activation.steamRomManagerBootstrap = lib.hm.dag.entryAfter [ "steamRomManagerConfig" ] ''
+    sentinel="$HOME/.local/share/steam-rom-manager/bootstrapped"
+    if [[ ! -f $sentinel ]]; then
+      pkill steam || true
+      ${pkgs.steam-rom-manager}/bin/steam-rom-manager add
+      mkdir -p "$(dirname $sentinel)"
+      touch "$sentinel"
+    fi
   '';
 
   home.activation.rcloneConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''

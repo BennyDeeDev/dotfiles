@@ -1,6 +1,10 @@
 [Desktop Entry]
-Type=Application
 Name=Steam
-Exec=env -u SDL_VIDEODRIVER /usr/bin/steam %U
+Exec=steam -forcedesktopscaling 2 %U
 Icon=steam
+Terminal=false
+Type=Application
 Categories=Network;FileTransfer;Game;
+MimeType=x-scheme-handler/steam;x-scheme-handler/steamlink;
+PrefersNonDefaultGPU=true
+X-KDE-RunOnDiscreteGpu=true
