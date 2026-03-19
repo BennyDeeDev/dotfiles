@@ -3,6 +3,17 @@
 {
   imports = [ ./ghostty.nix ./vscode.nix ];
 
+  xdg.configFile."gtk-3.0/bookmarks".text = ''
+    file:///home/benjamin/Documents
+    file:///home/benjamin/Downloads
+    file:///home/benjamin/Pictures
+    file:///home/benjamin/Repos
+    file:///home/benjamin/Backups
+    file:///mnt/nas/benjamin NAS - Benjamin
+    file:///mnt/nas/homelab NAS - Homelab
+    file:///mnt/nas/ludusavi NAS - Ludusavi
+  '';
+
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
@@ -16,6 +27,7 @@
     publicShare = "${config.home.homeDirectory}/Public";
     extraConfig = {
       REPOS = "${config.home.homeDirectory}/Repos";
+      BACKUPS = "${config.home.homeDirectory}/Backups";
     };
   };
 

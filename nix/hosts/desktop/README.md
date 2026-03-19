@@ -60,6 +60,17 @@ sudo mkdir -p /mnt/etc/nixos
 echo -n "yourpassword" | mkpasswd -m sha-512 -s | sudo tee /mnt/etc/nixos/password-hash
 ```
 
+**5a. Set NAS credentials**
+
+```bash
+sudo tee /mnt/etc/nixos/smb-secrets <<EOF
+username=Benjamin
+password=YOUR_NAS_PASSWORD
+domain=WORKGROUP
+EOF
+sudo chmod 600 /mnt/etc/nixos/smb-secrets
+```
+
 **6. Install**
 
 ```bash

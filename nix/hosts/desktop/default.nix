@@ -4,6 +4,7 @@
   imports = [
     ../../system/base.nix
     ../../system/desktop.nix
+    ../../system/nas.nix
     ./disko.nix
     ./hardware-configuration.nix
   ];
