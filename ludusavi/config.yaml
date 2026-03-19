@@ -9,13 +9,12 @@ manifest:
     - url: "https://raw.githubusercontent.com/BennyDeeDev/ludusavi-emudeck-manifest-flatpak/main/manifest.yml"
       enable: true
 language: en-US
-theme: light
+theme: dark
 roots:
   - store: steam
     path: /home/benjamin/.local/share/Steam
   - store: otherWine
     path: /home/benjamin/.var/app/com.usebottles.bottles/data/bottles/bottles/Games-Exe-Runner-Proton
-redirects: []
 backup:
   path: /home/benjamin/Backups/ludusavi
   ignoredGames:
@@ -71,10 +70,10 @@ scan:
 cloud:
   remote:
     Smb:
-      id: ludusavi-1759602723
+      id: ludusavi-1759601223
       host: 192.168.178.254
       port: 445
-      username: Benjamin
+      username: benjamin
   path: /Ludusavi/ludusavi-backup
   synchronize: true
 apps:

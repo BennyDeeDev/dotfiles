@@ -22,19 +22,65 @@
       shared = [ "!network" ];
     };
     "com.usebottles.bottles".Context = {
-      filesystems = [ "~/Games/PC:rw" "xdg-data/applications:rw" ];
-      shared = [ "!network" ];
+      filesystems = [ "~/Games/PC:rw" "~/Repos/dotfiles/bottles:rw" ];
     };
   };
+
+  home.activation.bottlesSetup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    bottle_dir="$HOME/.var/app/com.usebottles.bottles/data/bottles/bottles/Games-Exe-Runner-Proton"
+    mkdir -p "$bottle_dir"
+    ln -sf "$HOME/Repos/dotfiles/bottles/bottle.yml" "$bottle_dir/bottle.yml"
+  '';
 
   home.activation.lsfgVkConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     mkdir -p "$HOME/.config/lsfg-vk"
     ln -sf "$HOME/Repos/dotfiles/gamescope/lsfg-vk.toml" "$HOME/.config/lsfg-vk/conf.toml"
   '';
 
+  home.activation.rcloneConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    if [[ ! -f $HOME/.config/rclone/rclone.conf ]]; then
+      password=$(grep -oP 'password=\K.*' /etc/nixos/smb-secrets)
+      obscured=$(${pkgs.rclone}/bin/rclone obscure "$password")
+      mkdir -p "$HOME/.config/rclone"
+      sed "s/^pass =$/pass = $obscured/" \
+        "$HOME/Repos/dotfiles/rclone/rclone.conf" \
+        > "$HOME/.config/rclone/rclone.conf"
+    fi
+  '';
+
   home.activation.ludusaviConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     mkdir -p "$HOME/.config/ludusavi"
     ln -sf "$HOME/Repos/dotfiles/ludusavi/config.yaml" "$HOME/.config/ludusavi/config.yaml"
     mkdir -p "$HOME/Backups/ludusavi"
+  '';
+
+  systemd.user.services.ludusavi-backup = {
+    Unit.Description = "Ludusavi backup (NAS sync via Cloud settings)";
+    Service = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.ludusavi}/bin/ludusavi backup --force";
+      ExecStartPost = "${pkgs.ludusavi}/bin/ludusavi cloud upload --force";
+    };
+  };
+
+  systemd.user.timers.ludusavi-backup = {
+    Unit.Description = "Run Ludusavi backup on a timer";
+    Timer = {
+      OnCalendar = "*:0/15";
+      Persistent = true;
+      RandomizedDelaySec = "2m";
+    };
+    Install.WantedBy = [ "timers.target" ];
+  };
+
+  home.activation.ludusaviPullBackup = lib.hm.dag.entryAfter [ "ludusaviConfig" "rcloneConfig" ] ''
+    if [[ -z $(ls -A $HOME/Backups/ludusavi 2>/dev/null) ]]; then
+      ${pkgs.rclone}/bin/rclone sync \
+        --fast-list --ignore-checksum \
+        "ludusavi-1759601223:/Ludusavi/ludusavi-backup" \
+        "$HOME/Backups/ludusavi" && \
+      ${pkgs.ludusavi}/bin/ludusavi restore --force && \
+      ${pkgs.ludusavi}/bin/ludusavi backup --force || true
+    fi
   '';
 }
