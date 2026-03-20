@@ -88,11 +88,11 @@
   };
 
   xdg.configFile."gtk-3.0/bookmarks".text = ''
-    file:///home/benjamin/Documents
-    file:///home/benjamin/Downloads
-    file:///home/benjamin/Pictures
-    file:///home/benjamin/Repos
-    file:///home/benjamin/Backups
+    file://${config.home.homeDirectory}/Documents
+    file://${config.home.homeDirectory}/Downloads
+    file://${config.home.homeDirectory}/Pictures
+    file://${config.home.homeDirectory}/Repos
+    file://${config.home.homeDirectory}/Backups
     file:///mnt/nas/benjamin NAS - Benjamin
     file:///mnt/nas/homelab NAS - Homelab
     file:///mnt/nas/ludusavi NAS - Ludusavi
@@ -100,8 +100,10 @@
 
   xdg.dataFile = {
     # Application overrides
+    # TODO: Iterate over them instead of listing each one
     "applications/steam.desktop".source = ../../applications/steam.desktop;
     "applications/steam-rom-manager.desktop".source = ../../applications/steam-rom-manager.desktop;
+    "applications/io.github.ryubing.Ryujinx.desktop".source = ../../applications/io.github.ryubing.Ryujinx.desktop;
   };
 
   xdg.mimeApps = {

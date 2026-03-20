@@ -1,9 +1,5 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, dotfiles, ... }:
 
-let
-  vscodeDir = "$HOME/.config/Code/User";
-  dotfiles = "$HOME/Repos/dotfiles";
-in
 {
   programs.vscode = {
     enable = true;
@@ -14,15 +10,17 @@ in
     ];
   };
 
-  home.activation.vscodeConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    mkdir -p "${vscodeDir}"
-    mkdir -p "$HOME/.vscode"
+  home.file = {
+    ".config/Code/User/settings.json".source =
+      config.lib.file.mkOutOfStoreSymlink "${dotfiles}/vscode/settings.json";
+    ".config/Code/User/keybindings.json".source =
+      config.lib.file.mkOutOfStoreSymlink "${dotfiles}/vscode/keybindings-linux.json";
+  };
 
+  home.activation.vscodeConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p "$HOME/.vscode"
     cp ${../../vscode/argv-linux.json} "$HOME/.vscode/argv.json"
     chmod 644 "$HOME/.vscode/argv.json"
-
-    ln -sf "${dotfiles}/vscode/settings.json" "${vscodeDir}/settings.json"
-    ln -sf "${dotfiles}/vscode/keybindings-linux.json" "${vscodeDir}/keybindings.json"
   '';
 }
 

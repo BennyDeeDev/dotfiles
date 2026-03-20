@@ -18,10 +18,11 @@
 
   outputs = { nixpkgs, home-manager, omarchy, nix-flatpak, disko, ... }:
     let
+      dotfiles = "/home/benjamin/Repos/dotfiles";
       homeManagerModule = {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit omarchy nix-flatpak; };
+        home-manager.extraSpecialArgs = { inherit omarchy nix-flatpak dotfiles; };
       };
     in {
     nixosConfigurations = {

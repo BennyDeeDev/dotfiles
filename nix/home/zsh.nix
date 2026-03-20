@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, dotfiles, ... }:
 
 {
   programs.zsh = {
@@ -6,7 +6,7 @@
     dotDir = "${config.xdg.configHome}/zsh";
 
     shellAliases = {
-      nrs = "sudo nixos-rebuild switch --flake /home/benjamin/Repos/dotfiles#desktop";
+      nrs = "sudo nixos-rebuild switch --flake ${dotfiles}#desktop";
     };
     
     autocd = true;
