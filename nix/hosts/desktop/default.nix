@@ -33,6 +33,13 @@
     withUWSM = true;
   };
 
+  # TODO: remove once nixos is stable
+  fileSystems."/mnt/bazzite" = {
+    device = "/dev/disk/by-id/nvme-Samsung_SSD_990_PRO_1TB_S7HDNJ0Y413952T-part3";
+    fsType = "btrfs";
+    options = [ "ro" "subvol=/home" "relatime" "ssd" "discard=async" "space_cache=v2" "nofail" ];
+  };
+
   services.btrfs.autoScrub = {
     enable = true;
     interval = "monthly";
