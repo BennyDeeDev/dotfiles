@@ -15,6 +15,10 @@ roots:
     path: /home/benjamin/.local/share/Steam
   - store: otherWine
     path: /home/benjamin/.var/app/com.usebottles.bottles/data/bottles/bottles/Games-Exe-Runner-Proton
+# redirects:
+#   - kind: restore
+#     source: /var/home/bazzite
+#     target: /home/benjamin
 backup:
   path: /home/benjamin/Backups/ludusavi
   ignoredGames:

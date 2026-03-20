@@ -23,15 +23,17 @@
 
   services.flatpak.overrides = {
     "io.github.ryubing.Ryujinx".Context = {
-      filesystems = [ "~/Games/Switch:rw" "xdg-config/Ryujinx:rw" ];
+      filesystems = [ "/nix/store:ro" "~/Games/Switch:ro" "~/Repos/dotfiles/ryujinx:rw" "/mnt/bazzite/bazzite/Games/Switch:ro"  ];
       shared = [ "!network" ];
     };
     "com.usebottles.bottles".Context = {
-      filesystems = [ "~/Games/PC:rw" "~/Repos/dotfiles/bottles:rw" "/mnt/bazzite/home/bazzite/Games/PC:ro" ];
+      filesystems = [ "/nix/store:ro" "~/Games/PC:ro" "~/Repos/dotfiles/bottles:rw" "/mnt/bazzite/bazzite/Games/PC:ro"  ];
     };
   };
 
   home.file = {
+    ".var/app/io.github.ryubing.Ryujinx/config/Ryujinx/Config.json".source =
+      config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ryujinx/Config.json";
     ".var/app/com.usebottles.bottles/data/bottles/bottles/Games-Exe-Runner-Proton/bottle.yml".source =
       config.lib.file.mkOutOfStoreSymlink "${dotfiles}/bottles/bottle.yml";
     ".config/lsfg-vk/conf.toml".source =
@@ -43,6 +45,36 @@
     ".config/ludusavi/config.yaml".source =
       config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ludusavi/config.yaml";
   };
+
+  # TODO: Restore Games from NAS
+  home.activation.ryujinxKeys = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    keys_dir="$HOME/.var/app/io.github.ryubing.Ryujinx/config/Ryujinx/system"
+    if [[ ! -f $keys_dir/prod.keys ]]; then
+      mkdir -p "$keys_dir"
+      ${pkgs.unzip}/bin/unzip -oj \
+        '/mnt/nas/homelab/data/media/games/Switch/Firmware/ProdKeys.net-v20.3.0.zip' \
+        -d "$keys_dir"
+    fi
+  '';
+
+  home.activation.ryujinxFirmware = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    registered="$HOME/.var/app/io.github.ryubing.Ryujinx/config/Ryujinx/bis/system/Contents/registered"
+    sentinel="$registered/.installed"
+    if [[ ! -f $sentinel ]]; then
+      mkdir -p "$registered"
+      tmp=$(mktemp -d)
+      ${pkgs.unzip}/bin/unzip -oj \
+        '/mnt/nas/homelab/data/media/games/Switch/Firmware/Firmware.20.3.0.zip' \
+        -d "$tmp"
+      for nca in "$tmp"/*.nca; do
+        dir="$registered/$(basename "$nca")"
+        mkdir -p "$dir"
+        mv "$nca" "$dir/00"
+      done
+      rm -rf "$tmp"
+      touch "$sentinel"
+    fi
+  '';
 
   home.activation.steamRomManagerBootstrap = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     sentinel="$HOME/.local/share/steam-rom-manager/bootstrapped"
@@ -67,7 +99,7 @@
   '';
 
   home.activation.ludusaviBootstrap = lib.hm.dag.entryAfter [ "rcloneConfig" ] ''
-    mkdir -p "$HOME/Backups/ludusavi
+    mkdir -p "$HOME/Backups/ludusavi"
     if [[ -z $(ls -A $HOME/Backups/ludusavi 2>/dev/null) ]]; then
       ${pkgs.rclone}/bin/rclone sync \
         --fast-list --ignore-checksum \

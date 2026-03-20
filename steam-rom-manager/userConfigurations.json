@@ -3,7 +3,7 @@
         "parserType": "Glob",
         "configTitle": "Nintendo Switch - Ryujinx(Flatpak)",
         "steamDirectory": "${steamdirglobal}",
-        "romDirectory": "/mnt/bazzite/home/bazzite/Games/Switch",
+        "romDirectory": "/mnt/bazzite/bazzite/Games/Switch",
         "steamCategories": [
             "Switch"
         ],
@@ -94,7 +94,7 @@
         "parserType": "Glob",
         "configTitle": "PC - Bottles (Flatpak)",
         "steamDirectory": "${steamdirglobal}",
-        "romDirectory": "/mnt/bazzite/home/bazzite/Games/PC",
+        "romDirectory": "/mnt/bazzite/bazzite/Games/PC",
         "steamCategories": [
             "PC - Bottles (Flatpak)"
         ],
