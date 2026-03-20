@@ -2,18 +2,23 @@
 
 {
   boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 10;
-  boot.loader.timeout = 0;
+  boot.loader.systemd-boot.configurationLimit = 10;  
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Enable "Silent boot"
+  boot.consoleLogLevel = 3;
+  boot.initrd.verbose = false;
   boot.kernelParams = [
     "quiet"
-    "loglevel=3"
-    "rd.systemd.show_status=false"
-    "rd.udev.log_level=3"
-    "udev.log_priority=3"
-    "vt.global_cursor_default=0"
+    "udev.log_level=3"
+    "systemd.show_status=auto"
   ];
-  boot.consoleLogLevel = 0;
+  # Hide the OS choice for bootloaders.
+  # It's still possible to open the bootloader list by pressing any key
+  # It will just not appear on screen unless a key is pressed
+  boot.loader.timeout = 0;
+
+  boot.plymouth.enable = true;
 
   networking.networkmanager.enable = true;
 
