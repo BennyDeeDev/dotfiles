@@ -4,6 +4,9 @@
 
 - [ ] Vscode extensions per project
 - [ ] Secure Boot
+- [ ] Change Display Scaling dynamically
+- [ ] PS5 Instant Gamescope Session
+- [ ] Theme aware Catppuccin Cursors
 
 ## Project Ideas
 
