@@ -9,3 +9,21 @@ fi
 if systemctl --user is-active --quiet swayosd; then
   systemctl --user restart swayosd
 fi
+
+# On NixOS, ~/.config/Code/User/settings.json goes through the nix store (read-only),
+# so sed --follow-symlinks in omarchy-theme-set-vscode can't write through it.
+# Resolve the real path and apply the theme change directly.
+VS_CODE_THEME="$HOME/.config/omarchy/current/theme/vscode.json"
+SETTINGS_LINK="$HOME/.config/Code/User/settings.json"
+
+if [[ -f $VS_CODE_THEME ]] && [[ -L $SETTINGS_LINK ]]; then
+  real_settings=$(readlink -f "$SETTINGS_LINK")
+  theme_name=$(jq -r '.name' "$VS_CODE_THEME")
+
+  if [[ -f $real_settings ]] && [[ -n $theme_name ]]; then
+    if ! grep -q '"workbench.colorTheme"' "$real_settings"; then
+      sed -i -E '0,/\{/{s/\{/{ "workbench.colorTheme": "",/}' "$real_settings"
+    fi
+    sed -i -E "s/(\"workbench\.colorTheme\"[[:space:]]*:[[:space:]]*\")[^\"]*(\")/\1$theme_name\2/" "$real_settings"
+  fi
+fi
