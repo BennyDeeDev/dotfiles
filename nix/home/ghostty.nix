@@ -1,7 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   home.packages = [ pkgs.ghostty ];
+
+  xdg.terminal-exec = lib.mkIf pkgs.stdenv.isLinux {
+    enable = true;
+    settings.default = [ "com.mitchellh.ghostty.desktop" ];
+  };
 
   xdg.configFile = {
     "ghostty/config".source = ../../ghostty/config;

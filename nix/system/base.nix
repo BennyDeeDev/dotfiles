@@ -62,6 +62,7 @@
     vim
     fuse
   ];
+  environment.variables.EDITOR = "vim";
 
   zramSwap.enable = true;
   services.envfs.enable = true;

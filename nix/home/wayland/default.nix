@@ -3,6 +3,7 @@
 {
   imports = [
     ./env.nix
+    ./uwsm.nix
     ./mako.nix
     ./hypridle.nix
     ./hyprsunset.nix
