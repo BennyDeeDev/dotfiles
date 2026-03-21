@@ -3,6 +3,29 @@
 {
   services.flatpak.packages = [ "io.github.ryubing.Ryujinx" ];
 
+  xdg.desktopEntries."io.github.ryubing.Ryujinx" = {
+    name = "Ryujinx";
+    exec = "flatpak run --branch=stable --arch=x86_64 --command=ryujinx-wrapper --env=AVALONIA_GLOBAL_SCALE_FACTOR=2 --file-forwarding io.github.ryubing.Ryujinx @@ %f @@";
+    icon = "io.github.ryubing.Ryujinx";
+    terminal = false;
+    type = "Application";
+    comment = "A Nintendo Switch Emulator";
+    genericName = "Nintendo Switch Emulator";
+    categories = [ "Game" "Emulator" ];
+    mimeType = [
+      "application/x-nx-nca"
+      "application/x-nx-nro"
+      "application/x-nx-nso"
+      "application/x-nx-nsp"
+      "application/x-nx-xci"
+    ];
+    settings = {
+      Keywords = "Switch;Nintendo;Emulator;";
+      StartupWMClass = "Ryujinx";
+      PrefersNonDefaultGPU = "true";
+    };
+  };
+
   services.flatpak.overrides."io.github.ryubing.Ryujinx".Context = {
     filesystems = [ "/nix/store:ro" "~/Games/Switch:ro" "${dotfiles}/ryujinx:rw" "/mnt/bazzite/bazzite/Games/Switch:ro" ];
     shared = [ "!network" ];

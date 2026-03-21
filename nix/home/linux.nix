@@ -98,14 +98,6 @@
     file:///mnt/nas/ludusavi NAS - Ludusavi
   '';
 
-  xdg.dataFile = {
-    # Application overrides
-    # TODO: Iterate over them instead of listing each one
-    "applications/steam.desktop".source = ../../applications/steam.desktop;
-    "applications/steam-rom-manager.desktop".source = ../../applications/steam-rom-manager.desktop;
-    "applications/io.github.ryubing.Ryujinx.desktop".source = ../../applications/io.github.ryubing.Ryujinx.desktop;
-  };
-
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
