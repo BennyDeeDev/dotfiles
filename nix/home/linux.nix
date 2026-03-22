@@ -53,6 +53,9 @@
     # Editors
     vscode
 
+    # Gamedev
+    aseprite
+
     # Browsers
     brave
 
