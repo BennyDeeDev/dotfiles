@@ -61,6 +61,7 @@
 
     # Editors
     vscode
+    lldb
 
     # Gamedev
     aseprite

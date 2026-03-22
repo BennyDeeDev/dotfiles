@@ -14,6 +14,7 @@
     mutableExtensionsDir = false;
     package = pkgs.vscode;
     profiles.default.extensions = with pkgs.vscode-extensions; [
+      github.copilot-chat
       catppuccin.catppuccin-vsc
       catppuccin.catppuccin-vsc-icons
       vadimcn.vscode-lldb
