@@ -61,6 +61,7 @@
     git
     vim
     fuse
+    gcc
   ];
   environment.variables.EDITOR = "vim";
 

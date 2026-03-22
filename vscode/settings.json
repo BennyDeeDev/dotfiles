@@ -53,6 +53,7 @@
 
   "typescript.updateImportsOnFileMove.enabled": "always",
   "go.toolsManagement.autoUpdate": true,
+  "zig.zls.enabled": "on",
 
   "github.copilot.enable": {
     "*": false,

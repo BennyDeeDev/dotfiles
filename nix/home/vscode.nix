@@ -1,19 +1,31 @@
-{ pkgs, lib, config, dotfiles, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  dotfiles,
+  ...
+}:
 
 {
+  home.packages = [ pkgs.nixfmt ];
+
   programs.vscode = {
     enable = true;
+    mutableExtensionsDir = false;
     package = pkgs.vscode;
     profiles.default.extensions = with pkgs.vscode-extensions; [
       catppuccin.catppuccin-vsc
       catppuccin.catppuccin-vsc-icons
+      vadimcn.vscode-lldb
+      jnoortheen.nix-ide
+      ziglang.vscode-zig
     ];
   };
 
-  home.file = {
-    ".config/Code/User/settings.json".source =
+  xdg.configFile = {
+    "Code/User/settings.json".source =
       config.lib.file.mkOutOfStoreSymlink "${dotfiles}/vscode/settings.json";
-    ".config/Code/User/keybindings.json".source =
+    "Code/User/keybindings.json".source =
       config.lib.file.mkOutOfStoreSymlink "${dotfiles}/vscode/keybindings-linux.json";
   };
 
@@ -23,4 +35,3 @@
     chmod 644 "$HOME/.vscode/argv.json"
   '';
 }
-

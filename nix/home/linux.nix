@@ -1,7 +1,7 @@
 { pkgs, config, lib, ... }:
 
 {
-  imports = [ ./ghostty.nix ./vscode.nix ];
+  imports = [ ./ghostty.nix ./vscode.nix ./nvim.nix ];
 
   home.packages = with pkgs; [
     # Media & audio
