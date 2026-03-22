@@ -1,4 +1,9 @@
-{ pkgs, lib, dotfiles, ... }:
+{
+  pkgs,
+  lib,
+  dotfiles,
+  ...
+}:
 
 {
   home.packages = [ pkgs.rclone ];

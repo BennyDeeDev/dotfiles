@@ -8,7 +8,7 @@
     shellAliases = {
       nrs = "sudo nixos-rebuild switch --flake ${dotfiles}#desktop";
     };
-    
+
     autocd = true;
 
     history = {

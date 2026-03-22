@@ -16,7 +16,7 @@ in
   boot.supportedFilesystems = [ "cifs" ];
   environment.systemPackages = [ pkgs.cifs-utils ];
 
-  fileSystems."/mnt/nas/homelab"  = nasMount "Homelab";
+  fileSystems."/mnt/nas/homelab" = nasMount "Homelab";
   fileSystems."/mnt/nas/benjamin" = nasMount "Benjamin";
   fileSystems."/mnt/nas/ludusavi" = nasMount "Ludusavi";
 }

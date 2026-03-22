@@ -1,10 +1,21 @@
-{ pkgs, lib, config, dotfiles, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  dotfiles,
+  ...
+}:
 
 {
   services.flatpak.packages = [ "io.github.ryubing.Ryujinx" ];
 
   services.flatpak.overrides."io.github.ryubing.Ryujinx".Context = {
-    filesystems = [ "/nix/store:ro" "~/Games/Switch:ro" "${dotfiles}/ryujinx:rw" "/mnt/bazzite/bazzite/Games/Switch:ro" ];
+    filesystems = [
+      "/nix/store:ro"
+      "~/Games/Switch:ro"
+      "${dotfiles}/ryujinx:rw"
+      "/mnt/bazzite/bazzite/Games/Switch:ro"
+    ];
     shared = [ "!network" ];
   };
 

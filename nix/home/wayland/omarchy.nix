@@ -1,4 +1,9 @@
-{ pkgs, omarchy, lib, ... }:
+{
+  pkgs,
+  omarchy,
+  lib,
+  ...
+}:
 
 {
   home.sessionPath = [ "$HOME/.local/share/omarchy/bin" ];

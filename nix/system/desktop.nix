@@ -18,7 +18,12 @@
         "bluez5.enable-sbc-xq" = true;
         "bluez5.enable-msbc" = true;
         "bluez5.enable-hw-volume" = true;
-        "bluez5.roles" = [ "hsp_hs" "hsp_ag" "hfp_hf" "hfp_ag" ];
+        "bluez5.roles" = [
+          "hsp_hs"
+          "hsp_ag"
+          "hfp_hf"
+          "hfp_ag"
+        ];
       };
     };
   };
@@ -50,7 +55,10 @@
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     config.hyprland = {
-      default = [ "hyprland" "gtk" ];
+      default = [
+        "hyprland"
+        "gtk"
+      ];
       "org.freedesktop.impl.portal.Settings" = [ "gtk" ];
     };
   };
@@ -67,12 +75,19 @@
     localNetworkGameTransfers.openFirewall = true;
     gamescopeSession = {
       enable = true;
-      args = [ "--mangoapp" "--mouse-sensitivity" "2.0" ];
-      steamArgs = [ "-steamdeck" "-steamos3" ];
+      args = [
+        "--mangoapp"
+        "--mouse-sensitivity"
+        "2.0"
+      ];
+      steamArgs = [
+        "-steamdeck"
+        "-steamos3"
+      ];
     };
     extraPackages = [
-      (pkgs.writeShellScriptBin "steamos-session-select" ''steam -shutdown'')
-      (pkgs.writeShellScriptBin "steamos-update" ''exit 7'')
+      (pkgs.writeShellScriptBin "steamos-session-select" "steam -shutdown")
+      (pkgs.writeShellScriptBin "steamos-update" "exit 7")
       (pkgs.writeShellScriptBin "steamos-select-branch" ''echo "Not applicable for this OS"'')
       (pkgs.writeShellScriptBin "jupiter-biosupdate" ''echo "No updates configured for this bios"; exit 0'')
     ];

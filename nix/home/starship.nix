@@ -8,4 +8,3 @@
 
   home.sessionVariables.STARSHIP_CONFIG = lib.mkForce "$HOME/.config/omarchy/current/theme/starship.toml";
 }
-

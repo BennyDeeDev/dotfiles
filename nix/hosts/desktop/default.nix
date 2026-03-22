@@ -37,7 +37,15 @@
   fileSystems."/mnt/bazzite" = {
     device = "/dev/disk/by-id/nvme-Samsung_SSD_990_PRO_1TB_S7HDNJ0Y413952T-part3";
     fsType = "btrfs";
-    options = [ "ro" "subvol=/home" "relatime" "ssd" "discard=async" "space_cache=v2" "nofail" ];
+    options = [
+      "ro"
+      "subvol=/home"
+      "relatime"
+      "ssd"
+      "discard=async"
+      "space_cache=v2"
+      "nofail"
+    ];
   };
 
   services.btrfs.autoScrub = {
@@ -52,7 +60,12 @@
   virtualisation.libvirtd.enable = true;
 
   home-manager.users.benjamin = {
-    imports = [ ../../home ../../home/linux.nix ../../home/wayland ../../home/gamescope ];
+    imports = [
+      ../../home
+      ../../home/linux.nix
+      ../../home/wayland
+      ../../home/gamescope
+    ];
     home.username = "benjamin";
     home.homeDirectory = "/home/benjamin";
     programs.git.settings.user = {

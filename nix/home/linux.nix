@@ -1,7 +1,16 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 {
-  imports = [ ./ghostty.nix ./vscode.nix ./nvim.nix ];
+  imports = [
+    ./ghostty.nix
+    ./vscode.nix
+    ./nvim.nix
+  ];
 
   home.packages = with pkgs; [
     # Media & audio
@@ -109,7 +118,7 @@
       "x-scheme-handler/http" = "brave-browser.desktop";
       "x-scheme-handler/https" = "brave-browser.desktop";
       "x-scheme-handler/mailto" = "brave-browser.desktop";
-      
+
       # Files
       "inode/directory" = "org.gnome.Nautilus.desktop";
 
