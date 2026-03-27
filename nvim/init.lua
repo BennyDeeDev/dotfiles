@@ -1,15 +1,50 @@
 vim.g.mapleader = " "
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 vim.opt.number = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.statuscolumn = "%s%l  "
+vim.opt.signcolumn = "yes"
 vim.opt.title = true
 vim.opt.titlestring = "%t - " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. " - nvim"
+vim.opt.termguicolors = true
+vim.opt.undofile = true
+
+local gs = require("gitsigns")
+local fzf = require("fzf-lua")
+local blink = require("blink.cmp")
+local conform = require("conform")
+local neckpain = require("no-neck-pain")
+
+gs.setup({})
+
+blink.setup({
+	keymap = { preset = "enter" },
+})
+
+conform.setup({
+	formatters_by_ft = {
+		lua = { "stylua" },
+		nix = { "nixfmt" },
+		zig = { "zigfmt" },
+		json = { "prettier" },
+		jsonc = { "prettier" },
+		yaml = { "prettier" },
+		markdown = { "prettier" },
+		toml = { "taplo" },
+		bash = { "shfmt" },
+	},
+	format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
+})
+
+neckpain.setup({
+	autocmds = {
+		enableOnVimEnter = true,
+	},
+})
 
 vim.cmd.colorscheme("catppuccin-nvim")
-
-vim.keymap.set("n", "<leader><leader>", "<cmd>FzfLua files<cr>")
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 
 vim.lsp.config("lua_ls", {
 	cmd = { "lua-language-server" },
@@ -26,8 +61,8 @@ vim.lsp.config("lua_ls", {
 	},
 })
 
-vim.lsp.config("njxd", {
-	ckd = { "nixd" },
+vim.lsp.config("nixd", {
+	cmd = { "nixd" },
 	filetypes = { "nix" },
 	settings = {
 		nixd = {
@@ -46,32 +81,29 @@ vim.lsp.config("zls", {
 
 vim.lsp.enable({ "lua_ls", "nixd", "zls" })
 
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = function(data)
+		if vim.fn.isdirectory(data.file) == 1 then
+			vim.cmd.bwipeout(data.buf)
+			fzf.files({ cwd = data.file })
+		elseif data.file == "" then
+			fzf.files()
+		end
+	end,
+})
+
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "<filetype>" },
+	pattern = { "lua", "nix", "zig", "json", "jsonc", "toml", "yaml", "markdown", "bash" },
 	callback = function()
 		vim.treesitter.start()
 	end,
 })
 
-require("gitsigns").setup()
-
-require("blink.cmp").setup({
-	keymap = { preset = "enter" },
-})
-
-require("conform").setup({
-	formatters_by_ft = {
-		lua = { "stylua" },
-		nix = { "nixfmt" },
-		zig = { "zigfmt" },
-		json = { "prettier" },
-		jsonc = { "prettier" },
-	},
-	format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
-})
-
-require("no-neck-pain").setup({
-	autocmds = {
-		enableOnVimEnter = true,
-	},
-})
+vim.keymap.set("n", "<leader><space>", "<cmd>FzfLua files<cr>")
+vim.keymap.set("n", "<leader>f", "<cmd>FzfLua files cwd=~/Repos<cr>")
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
+vim.keymap.set("n", "<leader>b", "<cmd>FzfLua buffers<cr>")
+vim.keymap.set("n", "<leader>/", "<cmd>FzfLua live_grep<cr>")
+vim.keymap.set("n", "<leader>hr", gs.reset_hunk)
+vim.keymap.set("n", "<leader>hR", gs.reset_buffer)
+vim.keymap.set("n", "<leader>hi", gs.preview_hunk_inline)

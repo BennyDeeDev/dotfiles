@@ -16,8 +16,8 @@
       gitsigns-nvim
       conform-nvim
       blink-cmp
-      # TODO: consider using withPlugins
-      nvim-treesitter.withAllGrammars
+
+      (nvim-treesitter.withPlugins (p: [ p.lua p.nix p.zig p.json p.toml p.yaml p.markdown p.markdown_inline p.bash ]))
     ];
   };
 
@@ -27,6 +27,8 @@
     lua-language-server
     stylua
     zls
+    taplo
+    shfmt
   ];
 
   xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/nvim";
