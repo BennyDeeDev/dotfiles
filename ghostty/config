@@ -11,8 +11,6 @@ window-padding-y = 8
 quit-after-last-window-closed = true
 confirm-close-surface = false
 
-window-show-tab-bar = always
-
 # Cursor
 adjust-cursor-thickness = 2
 
