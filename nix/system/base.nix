@@ -73,6 +73,10 @@
   ];
   environment.variables.EDITOR = "vim";
 
+  security.sudo.extraConfig = ''
+    Defaults timestamp_type=tty,timestamp_timeout=-1
+  '';
+
   zramSwap.enable = true;
   services.envfs.enable = true;
 

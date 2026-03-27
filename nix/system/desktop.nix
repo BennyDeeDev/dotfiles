@@ -77,8 +77,7 @@
       enable = true;
       args = [
         "--mangoapp"
-        "--mouse-sensitivity"
-        "2.0"
+        "--mouse-sensitivity=0.5"
       ];
       steamArgs = [
         "-steamdeck"

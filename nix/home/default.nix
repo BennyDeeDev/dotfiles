@@ -12,7 +12,6 @@
 
   home.packages = with pkgs; [
     # Editors & dev
-    neovim
     lazygit
     lazydocker
     docker-compose

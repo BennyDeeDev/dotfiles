@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  dotfiles,
   ...
 }:
 
@@ -13,6 +14,9 @@
   ];
 
   home.packages = with pkgs; [
+    # Ai
+    claude-code
+
     # Media & audio
     playerctl
     pamixer
@@ -97,8 +101,12 @@
     extraConfig = {
       REPOS = "${config.home.homeDirectory}/Repos";
       BACKUPS = "${config.home.homeDirectory}/Backups";
+      VMS = "${config.home.homeDirectory}/VMs";
     };
   };
+
+  home.file.".claude/settings.json".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/claude/settings.json";
 
   xdg.configFile."gtk-3.0/bookmarks".text = ''
     file://${config.home.homeDirectory}/Documents

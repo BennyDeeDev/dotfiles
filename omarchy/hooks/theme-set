@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# On NixOS, ghostty runs via a wrapper symlink; match the command line path
-if pgrep -f "/bin/ghostty$" >/dev/null; then
-  pkill -SIGUSR2 -f "/bin/ghostty$"
+# On NixOS, ghostty runs as .ghostty-wrapped; match by process name substring
+if pgrep ghostty >/dev/null; then
+  pkill -SIGUSR2 ghostty
 fi
 
 # On NixOS, swayosd runs as a systemd service; restart it to pick up new theme CSS
@@ -26,4 +26,15 @@ if [[ -f $VS_CODE_THEME ]] && [[ -L $SETTINGS_LINK ]]; then
     fi
     sed -i -E "s/(\"workbench\.colorTheme\"[[:space:]]*:[[:space:]]*\")[^\"]*(\")/\1$theme_name\2/" "$real_settings"
   fi
+fi
+
+# Update Claude Code theme based on whether the current omarchy theme is light or dark
+CLAUDE_JSON="$HOME/.claude.json"
+if [[ -f $CLAUDE_JSON ]]; then
+  if [[ -f "$HOME/.config/omarchy/current/theme/light.mode" ]]; then
+    claude_theme="light"
+  else
+    claude_theme="dark"
+  fi
+  jq --arg t "$claude_theme" '.theme = $t' "$CLAUDE_JSON" > "$CLAUDE_JSON.tmp" && mv "$CLAUDE_JSON.tmp" "$CLAUDE_JSON"
 fi
