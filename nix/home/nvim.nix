@@ -16,6 +16,7 @@
       gitsigns-nvim
       conform-nvim
       blink-cmp
+      toggleterm-nvim
 
       (nvim-treesitter.withPlugins (p: [ p.lua p.nix p.zig p.json p.toml p.yaml p.markdown p.markdown_inline p.bash ]))
     ];
