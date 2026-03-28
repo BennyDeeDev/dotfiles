@@ -8,9 +8,11 @@ $os\
 $directory\
 [](fg:foreground bg:accent)\
 $git_branch\
-[](fg:accent bg:foreground)\
+[](bg:foreground fg:accent)\
+$nix_shell\
+[](fg:foreground bg:accent)\
 $kubernetes\
-[](fg:foreground)\
+[](fg:accent)\
 $line_break\
 $character
 """
@@ -56,9 +58,11 @@ symbol = ""
 style = "bg:accent"
 format = '[[ $symbol $branch ](fg:background bg:accent)]($style)'
 
-[git_status]
-style = "bg:accent"
-format = '[[($all_status$ahead_behind )](fg:background bg:accent)]($style)'
+[nix_shell]
+disabled = false
+symbol = "󱄅"
+style = "bg:foreground fg:background"
+format = '[ $symbol $name ]($style)'
 
 [kubernetes]
 disabled = false
