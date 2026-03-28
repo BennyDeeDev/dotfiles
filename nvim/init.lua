@@ -40,19 +40,44 @@ conform.setup({
 	format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
 })
 
-toggleterm.setup()
+toggleterm.setup({ persist_size = false })
 
 local term = Terminal:new({
 	direction = "float",
 	hidden = true,
 	close_on_exit = false,
 })
+local vterm = Terminal:new({
+	direction = "vertical",
+	hidden = true,
+	close_on_exit = false,
+	on_close = function()
+		neckpain.toggle_side("right")
+	end,
+})
 local lazygit = Terminal:new({ cmd = "lazygit", direction = "float", hidden = true })
+local vlazygit = Terminal:new({
+	cmd = "lazygit",
+	direction = "vertical",
+	hidden = true,
+	on_close = function()
+		neckpain.toggle_side("right")
+	end,
+})
 local claude = Terminal:new({
 	cmd = "claude --continue 2>/dev/null || claude",
 	direction = "float",
 	hidden = true,
 	close_on_exit = false,
+})
+local vclaude = Terminal:new({
+	cmd = "claude --continue 2>/dev/null || claude",
+	direction = "vertical",
+	hidden = true,
+	close_on_exit = false,
+	on_close = function()
+		neckpain.toggle_side("right")
+	end,
 })
 
 neckpain.setup({
@@ -127,11 +152,23 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>")
 vim.keymap.set("n", "<leader>t", function()
 	term:toggle()
 end)
+vim.keymap.set("n", "<leader>T", function()
+	neckpain.toggle_side("right")
+	vterm:toggle(vim.o.columns * 0.5)
+end)
 vim.keymap.set("n", "<leader>g", function()
 	lazygit:toggle()
 end)
+vim.keymap.set("n", "<leader>G", function()
+	neckpain.toggle_side("right")
+	vlazygit:toggle(vim.o.columns * 0.5)
+end)
 vim.keymap.set("n", "<leader>c", function()
 	claude:toggle()
+end)
+vim.keymap.set("n", "<leader>C", function()
+	neckpain.toggle_side("right")
+	vclaude:toggle(vim.o.columns * 0.5)
 end)
 
 vim.keymap.set("n", "<leader>hr", gs.reset_hunk)
