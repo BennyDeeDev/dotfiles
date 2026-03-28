@@ -18,7 +18,7 @@
       blink-cmp
       toggleterm-nvim
 
-      (nvim-treesitter.withPlugins (p: [ p.lua p.nix p.zig p.json p.toml p.yaml p.markdown p.markdown_inline p.bash ]))
+      (nvim-treesitter.withPlugins (p: [ p.lua p.nix p.zig p.json p.toml p.yaml p.markdown p.markdown_inline p.bash p.just ]))
     ];
   };
 
@@ -30,6 +30,7 @@
     zls
     taplo
     shfmt
+    just
   ];
 
   xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/nvim";

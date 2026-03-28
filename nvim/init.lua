@@ -26,6 +26,13 @@ blink.setup({
 })
 
 conform.setup({
+	formatters = {
+		just_fmt = {
+			command = "just",
+			args = { "--fmt", "--unstable", "--justfile", "$FILENAME" },
+			stdin = false,
+		},
+	},
 	formatters_by_ft = {
 		lua = { "stylua" },
 		nix = { "nixfmt" },
@@ -36,6 +43,8 @@ conform.setup({
 		markdown = { "prettier" },
 		toml = { "taplo" },
 		bash = { "shfmt" },
+		sh = { "shfmt" },
+		just = { "just_fmt" },
 	},
 	format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
 })
@@ -60,6 +69,16 @@ local vlazygit = Terminal:new({
 	cmd = "lazygit",
 	direction = "vertical",
 	hidden = true,
+	on_close = function()
+		neckpain.toggle_side("right")
+	end,
+})
+local just = Terminal:new({ cmd = "just", direction = "float", hidden = true, close_on_exit = false })
+local vjust = Terminal:new({
+	cmd = "just",
+	direction = "vertical",
+	hidden = true,
+	close_on_exit = false,
 	on_close = function()
 		neckpain.toggle_side("right")
 	end,
@@ -135,7 +154,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "lua", "nix", "zig", "json", "jsonc", "toml", "yaml", "markdown", "bash" },
+	pattern = { "lua", "nix", "zig", "json", "jsonc", "toml", "yaml", "markdown", "bash", "sh", "just" },
 	callback = function()
 		vim.treesitter.start()
 	end,
@@ -148,6 +167,7 @@ vim.keymap.set("n", "<leader>b", "<cmd>FzfLua buffers<cr>")
 vim.keymap.set("n", "<leader>/", "<cmd>FzfLua live_grep<cr>")
 
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>")
+vim.keymap.set("n", "<C-S>", "<cmd>w<cr>")
 
 vim.keymap.set("n", "<leader>t", function()
 	term:toggle()
@@ -155,6 +175,13 @@ end)
 vim.keymap.set("n", "<leader>T", function()
 	neckpain.toggle_side("right")
 	vterm:toggle(vim.o.columns * 0.5)
+end)
+vim.keymap.set("n", "<leader>j", function()
+	just:toggle()
+end)
+vim.keymap.set("n", "<leader>J", function()
+	neckpain.toggle_side("right")
+	vjust:toggle(vim.o.columns * 0.5)
 end)
 vim.keymap.set("n", "<leader>g", function()
 	lazygit:toggle()
