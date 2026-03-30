@@ -168,6 +168,8 @@ vim.keymap.set("n", "<leader>/", "<cmd>FzfLua live_grep<cr>")
 
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>")
 vim.keymap.set("n", "<C-S>", "<cmd>w<cr>")
+vim.keymap.set("n", "<S-l>", ":bnext<CR>", { silent = true })
+vim.keymap.set("n", "<S-h>", ":bprev<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>t", function()
 	term:toggle()
