@@ -61,7 +61,9 @@ local vterm = Terminal:new({
 	hidden = true,
 	close_on_exit = false,
 	on_close = function()
-		neckpain.toggle_side("right")
+		if _G.NoNeckPain and not _G.NoNeckPain.state.enabled then
+			vim.cmd("NoNeckPain")
+		end
 	end,
 })
 local lazygit = Terminal:new({ cmd = "lazygit", direction = "float", hidden = true })
@@ -70,7 +72,9 @@ local vlazygit = Terminal:new({
 	direction = "vertical",
 	hidden = true,
 	on_close = function()
-		neckpain.toggle_side("right")
+		if _G.NoNeckPain and not _G.NoNeckPain.state.enabled then
+			vim.cmd("NoNeckPain")
+		end
 	end,
 })
 local just = Terminal:new({ cmd = "just", direction = "float", hidden = true, close_on_exit = false })
@@ -80,7 +84,9 @@ local vjust = Terminal:new({
 	hidden = true,
 	close_on_exit = false,
 	on_close = function()
-		neckpain.toggle_side("right")
+		if _G.NoNeckPain and not _G.NoNeckPain.state.enabled then
+			vim.cmd("NoNeckPain")
+		end
 	end,
 })
 local claude = Terminal:new({
@@ -95,13 +101,16 @@ local vclaude = Terminal:new({
 	hidden = true,
 	close_on_exit = false,
 	on_close = function()
-		neckpain.toggle_side("right")
+		if _G.NoNeckPain and not _G.NoNeckPain.state.enabled then
+			vim.cmd("NoNeckPain")
+		end
 	end,
 })
 
 neckpain.setup({
+	width = 120,
 	autocmds = {
-		enableOnVimEnter = true,
+		enableOnVimEnter = "safe",
 	},
 })
 
@@ -146,9 +155,9 @@ vim.api.nvim_create_autocmd("VimEnter", {
 	callback = function(data)
 		if vim.fn.isdirectory(data.file) == 1 then
 			vim.cmd.bwipeout(data.buf)
-			fzf.files({ cwd = data.file })
+			fzf.combine({ pickers = "oldfiles;git_files", cwd = data.file })
 		elseif data.file == "" then
-			fzf.files()
+			fzf.combine({ pickers = "oldfiles;git_files" })
 		end
 	end,
 })
@@ -160,8 +169,9 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-vim.keymap.set("n", "<leader><space>", "<cmd>FzfLua files<cr>")
-vim.keymap.set("n", "<leader>f", "<cmd>FzfLua files cwd=~/Repos<cr>")
+vim.keymap.set("n", "<leader><space>", "<cmd>FzfLua combine pickers=oldfiles;git_files<cr>")
+vim.keymap.set("n", "<leader>f", "<cmd>FzfLua files<cr>")
+vim.keymap.set("n", "<leader>p", "<cmd>FzfLua files cwd=~/Repos<cr>")
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 vim.keymap.set("n", "<leader>b", "<cmd>FzfLua buffers<cr>")
 vim.keymap.set("n", "<leader>/", "<cmd>FzfLua live_grep<cr>")
@@ -175,28 +185,24 @@ vim.keymap.set("n", "<leader>t", function()
 	term:toggle()
 end)
 vim.keymap.set("n", "<leader>T", function()
-	neckpain.toggle_side("right")
 	vterm:toggle(vim.o.columns * 0.5)
 end)
 vim.keymap.set("n", "<leader>j", function()
 	just:toggle()
 end)
 vim.keymap.set("n", "<leader>J", function()
-	neckpain.toggle_side("right")
 	vjust:toggle(vim.o.columns * 0.5)
 end)
 vim.keymap.set("n", "<leader>g", function()
 	lazygit:toggle()
 end)
 vim.keymap.set("n", "<leader>G", function()
-	neckpain.toggle_side("right")
 	vlazygit:toggle(vim.o.columns * 0.5)
 end)
 vim.keymap.set("n", "<leader>c", function()
 	claude:toggle()
 end)
 vim.keymap.set("n", "<leader>C", function()
-	neckpain.toggle_side("right")
 	vclaude:toggle(vim.o.columns * 0.5)
 end)
 
