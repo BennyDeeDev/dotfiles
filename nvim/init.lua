@@ -161,9 +161,9 @@ vim.api.nvim_create_autocmd("VimEnter", {
 	callback = function(data)
 		if vim.fn.isdirectory(data.file) == 1 then
 			vim.cmd.bwipeout(data.buf)
-			fzf.combine({ pickers = "oldfiles;git_files", cwd = data.file })
+			fzf.files({ cwd = data.file })
 		elseif data.file == "" then
-			fzf.combine({ pickers = "oldfiles;git_files" })
+			fzf.files()
 		end
 	end,
 })
@@ -175,7 +175,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-vim.keymap.set("n", "<leader><space>", "<cmd>FzfLua combine pickers=oldfiles;git_files<cr>")
+vim.keymap.set("n", "<leader><space>", "<cmd>FzfLua oldfiles<cr>")
 vim.keymap.set("n", "<leader>f", "<cmd>FzfLua files<cr>")
 vim.keymap.set("n", "<leader>p", "<cmd>FzfLua files cwd=~/Repos<cr>")
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
