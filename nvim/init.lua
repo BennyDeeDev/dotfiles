@@ -212,6 +212,8 @@ vim.keymap.set("n", "<leader>C", function()
 	vclaude:toggle(vim.o.columns * 0.5)
 end)
 
+vim.keymap.set("n", "<leader>s", "<cmd>FzfLua git_status<cr>")
+
 vim.keymap.set("n", "<leader>hr", gs.reset_hunk)
 vim.keymap.set("n", "<leader>hR", gs.reset_buffer)
 vim.keymap.set("n", "<leader>hi", gs.preview_hunk_inline)

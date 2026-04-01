@@ -23,14 +23,23 @@
   };
 
   home.packages = with pkgs; [
+    # LSP
     nixd
-    nixfmt
     lua-language-server
-    stylua
     zls
+
+    # Formatters
+    nixfmt
+    stylua
     taplo
     shfmt
     just
+
+    # fzf-lua
+    fd
+    ripgrep
+    bat
+    delta
   ];
 
   xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/nvim";
