@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -33,6 +33,9 @@
     enable = true;
     withUWSM = true;
   };
+
+  # uwsm must be in GDM's PATH for TryExec=uwsm in hyprland-uwsm.desktop to succeed
+  systemd.services.display-manager.path = [ pkgs.uwsm ];
 
   # TODO: remove once nixos is stable
   fileSystems."/mnt/bazzite" = {

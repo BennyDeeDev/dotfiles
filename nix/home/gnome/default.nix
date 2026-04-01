@@ -13,14 +13,6 @@
     gnomeExtensions.dash-to-dock
   ];
 
-  xdg.configFile."autostart/brave.desktop".text = ''
-    [Desktop Entry]
-    Type=Application
-    Name=Brave Browser
-    Exec=brave
-    X-GNOME-Autostart-enabled=true
-  '';
-
   dconf = {
     enable = true;
     settings = {
