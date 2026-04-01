@@ -47,7 +47,6 @@
 
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
-  security.pam.services.greetd.enableGnomeKeyring = true;
 
   services.flatpak.enable = true;
 
@@ -92,11 +91,4 @@
     ];
   };
 
-  services.greetd = {
-    enable = true;
-    settings.default_session = {
-      command = "${pkgs.tuigreet}/bin/tuigreet --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --remember --remember-session --time --asterisks";
-      user = "greeter";
-    };
-  };
 }
