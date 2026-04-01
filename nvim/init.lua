@@ -27,6 +27,11 @@ blink.setup({
 
 conform.setup({
 	formatters = {
+		zig_fmt = {
+			command = "zig",
+			args = { "fmt", "$FILENAME" },
+			stdin = false,
+		},
 		just_fmt = {
 			command = "just",
 			args = { "--fmt", "--unstable", "--justfile", "$FILENAME" },
@@ -36,7 +41,7 @@ conform.setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
 		nix = { "nixfmt" },
-		zig = { "zigfmt" },
+		zig = { "zig_fmt" },
 		json = { "prettier" },
 		jsonc = { "prettier" },
 		yaml = { "prettier" },
@@ -47,6 +52,7 @@ conform.setup({
 		just = { "just_fmt" },
 	},
 	format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
+	notify_on_error = false,
 })
 
 toggleterm.setup({ persist_size = false })

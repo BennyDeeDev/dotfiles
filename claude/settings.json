@@ -1,4 +1,6 @@
 {
   "outputStyle": "Explanatory",
-  "defaultMode": "auto"
+  "permissions": {
+    "defaultMode": "auto"
+  }
 }
