@@ -43,6 +43,7 @@
     gnome-font-viewer
     gnome-logs
     gnome-system-monitor
+    gnome-weather
     loupe
     papers
 

@@ -14,5 +14,6 @@
     ./hyprland.nix
     ./packages.nix
     ./omarchy.nix
+    ./darkman.nix
   ];
 }

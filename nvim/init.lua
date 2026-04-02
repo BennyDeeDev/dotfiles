@@ -3,6 +3,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 vim.opt.number = true
+vim.opt.scrolloff = 16
 vim.opt.clipboard = "unnamedplus"
 vim.opt.statuscolumn = "%s%l  "
 vim.opt.signcolumn = "yes"
