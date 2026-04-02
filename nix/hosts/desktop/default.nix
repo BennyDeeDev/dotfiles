@@ -4,7 +4,7 @@
   imports = [
     ../../system/base.nix
     ../../system/desktop.nix
-    ../../system/gnome.nix
+    ../../system/kde.nix
     ../../system/nas.nix
     ./disko.nix
     ./hardware-configuration.nix
@@ -34,8 +34,11 @@
     withUWSM = true;
   };
 
-  # uwsm must be in GDM's PATH for TryExec=uwsm in hyprland-uwsm.desktop to succeed
-  systemd.services.display-manager.path = [ pkgs.uwsm ];
+  # uwsm must be in plasmalogin's PATH for TryExec=uwsm in hyprland-uwsm.desktop to succeed
+  systemd.services.plasmalogin.path = [ pkgs.uwsm ];
+
+  # plasmalogin daemon has no XDG_DATA_DIRS so QStandardPaths can't find non-Plasma session files
+  systemd.services.plasmalogin.environment.XDG_DATA_DIRS = "/run/current-system/sw/share";
 
   # TODO: remove once nixos is stable
   fileSystems."/mnt/bazzite" = {
@@ -69,7 +72,7 @@
       ../../home/linux.nix
       ../../home/wayland
       ../../home/gamescope
-      ../../home/gnome
+      ../../home/kde
     ];
     home.username = "benjamin";
     home.homeDirectory = "/home/benjamin";

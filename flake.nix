@@ -14,6 +14,11 @@
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs =
@@ -23,6 +28,7 @@
       omarchy,
       nix-flatpak,
       disko,
+      plasma-manager,
       ...
     }:
     let
@@ -52,6 +58,7 @@
             home-manager.nixosModules.home-manager
             homeManagerModule
             nix-flatpak.nixosModules.nix-flatpak
+            { home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ]; }
           ];
         };
       };
