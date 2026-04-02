@@ -24,7 +24,7 @@
     libnotify
     ffmpegthumbnailer
     obs-studio
-    celluloid
+    showtime
 
     # Network & bluetooth
     bluetui

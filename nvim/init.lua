@@ -175,8 +175,8 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-vim.keymap.set("n", "<leader><space>", "<cmd>FzfLua oldfiles<cr>")
-vim.keymap.set("n", "<leader>f", "<cmd>FzfLua files<cr>")
+vim.keymap.set("n", "<leader><space>", "<cmd>FzfLua files<cr>")
+vim.keymap.set("n", "<leader>r", "<cmd>FzfLua oldfiles<cr>")
 vim.keymap.set("n", "<leader>p", "<cmd>FzfLua files cwd=~/Repos<cr>")
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 vim.keymap.set("n", "<leader>b", "<cmd>FzfLua buffers<cr>")
