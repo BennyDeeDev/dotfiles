@@ -9,7 +9,7 @@
     };
     lightModeScripts.omarchy = ''
       bash $HOME/.local/share/omarchy/bin/omarchy-theme-set catppuccin-latte-extended
-      /etc/profiles/per-user/$USER/bin/asdbctl set 30
+      /etc/profiles/per-user/$USER/bin/asdbctl set 40
     '';
     darkModeScripts.omarchy = ''
       bash $HOME/.local/share/omarchy/bin/omarchy-theme-set catppuccin-extended
