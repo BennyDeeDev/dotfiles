@@ -8,7 +8,6 @@
     slurp
     satty
     hyprpicker
-    hyprsunset
     hyprlock
     xwayland-satellite
     uwsm
