@@ -1,13 +1,18 @@
 #!/bin/bash
 
+# On NixOS, swaybg runs as .swaybg-wrapped so pkill -x swaybg in omarchy-theme-bg-next
+# doesn't kill it. Restart it here with the updated background symlink.
+pkill -x '.swaybg-wrapped' || true
+setsid uwsm-app -- swaybg -i "$HOME/.config/omarchy/current/background" -m fill >/dev/null 2>&1 &
+
 # On NixOS, ghostty runs as .ghostty-wrapped; match by process name substring
 if pgrep ghostty >/dev/null; then
-  pkill -SIGUSR2 ghostty
+	pkill -SIGUSR2 ghostty
 fi
 
 # On NixOS, swayosd runs as a systemd service; restart it to pick up new theme CSS
 if systemctl --user is-active --quiet swayosd; then
-  systemctl --user restart swayosd
+	systemctl --user restart swayosd
 fi
 
 # On NixOS, ~/.config/Code/User/settings.json goes through the nix store (read-only),
@@ -17,24 +22,24 @@ VS_CODE_THEME="$HOME/.config/omarchy/current/theme/vscode.json"
 SETTINGS_LINK="$HOME/.config/Code/User/settings.json"
 
 if [[ -f $VS_CODE_THEME ]] && [[ -L $SETTINGS_LINK ]]; then
-  real_settings=$(readlink -f "$SETTINGS_LINK")
-  theme_name=$(jq -r '.name' "$VS_CODE_THEME")
+	real_settings=$(readlink -f "$SETTINGS_LINK")
+	theme_name=$(jq -r '.name' "$VS_CODE_THEME")
 
-  if [[ -f $real_settings ]] && [[ -n $theme_name ]]; then
-    if ! grep -q '"workbench.colorTheme"' "$real_settings"; then
-      sed -i -E '0,/\{/{s/\{/{ "workbench.colorTheme": "",/}' "$real_settings"
-    fi
-    sed -i -E "s/(\"workbench\.colorTheme\"[[:space:]]*:[[:space:]]*\")[^\"]*(\")/\1$theme_name\2/" "$real_settings"
-  fi
+	if [[ -f $real_settings ]] && [[ -n $theme_name ]]; then
+		if ! grep -q '"workbench.colorTheme"' "$real_settings"; then
+			sed -i -E '0,/\{/{s/\{/{ "workbench.colorTheme": "",/}' "$real_settings"
+		fi
+		sed -i -E "s/(\"workbench\.colorTheme\"[[:space:]]*:[[:space:]]*\")[^\"]*(\")/\1$theme_name\2/" "$real_settings"
+	fi
 fi
 
 # Update Claude Code theme based on whether the current omarchy theme is light or dark
 CLAUDE_JSON="$HOME/.claude.json"
 if [[ -f $CLAUDE_JSON ]]; then
-  if [[ -f "$HOME/.config/omarchy/current/theme/light.mode" ]]; then
-    claude_theme="light"
-  else
-    claude_theme="dark"
-  fi
-  jq --arg t "$claude_theme" '.theme = $t' "$CLAUDE_JSON" > "$CLAUDE_JSON.tmp" && mv "$CLAUDE_JSON.tmp" "$CLAUDE_JSON"
+	if [[ -f "$HOME/.config/omarchy/current/theme/light.mode" ]]; then
+		claude_theme="light"
+	else
+		claude_theme="dark"
+	fi
+	jq --arg t "$claude_theme" '.theme = $t' "$CLAUDE_JSON" >"$CLAUDE_JSON.tmp" && mv "$CLAUDE_JSON.tmp" "$CLAUDE_JSON"
 fi
