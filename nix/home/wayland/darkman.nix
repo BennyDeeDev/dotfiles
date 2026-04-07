@@ -8,11 +8,11 @@
       lng = 7.468429;
     };
     lightModeScripts.omarchy = ''
-      bash $HOME/.local/share/omarchy/bin/omarchy-theme-set catppuccin-latte-extended
+      /run/current-system/sw/bin/bash $HOME/.local/share/omarchy/bin/omarchy-theme-set catppuccin-latte-extended
       /etc/profiles/per-user/$USER/bin/asdbctl set 40
     '';
     darkModeScripts.omarchy = ''
-      bash $HOME/.local/share/omarchy/bin/omarchy-theme-set catppuccin-extended
+      /run/current-system/sw/bin/bash $HOME/.local/share/omarchy/bin/omarchy-theme-set catppuccin-extended
       /etc/profiles/per-user/$USER/bin/asdbctl set 20
     '';
   };
