@@ -51,6 +51,7 @@ conform.setup({
 		bash = { "shfmt" },
 		sh = { "shfmt" },
 		just = { "just_fmt" },
+		gdscript = { "gdformat" },
 	},
 	format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
 	notify_on_error = false,
@@ -156,7 +157,13 @@ vim.lsp.config("zls", {
 	root_markers = { "build.zig" },
 })
 
-vim.lsp.enable({ "lua_ls", "nixd", "zls" })
+vim.lsp.config("gdscript", {
+	cmd = vim.lsp.rpc.connect("127.0.0.1", 6005),
+	filetypes = { "gdscript" },
+	root_markers = { "project.godot" },
+})
+
+vim.lsp.enable({ "lua_ls", "nixd", "zls", "gdscript" })
 
 vim.api.nvim_create_autocmd("VimEnter", {
 	callback = function(data)
@@ -170,7 +177,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "lua", "nix", "zig", "json", "jsonc", "toml", "yaml", "markdown", "bash", "sh", "just" },
+	pattern = { "lua", "nix", "zig", "json", "jsonc", "toml", "yaml", "markdown", "bash", "sh", "just", "gdscript" },
 	callback = function()
 		vim.treesitter.start()
 	end,

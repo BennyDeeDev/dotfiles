@@ -18,7 +18,7 @@
       blink-cmp
       toggleterm-nvim
 
-      (nvim-treesitter.withPlugins (p: [ p.lua p.nix p.zig p.json p.toml p.yaml p.markdown p.markdown_inline p.bash p.just ]))
+      (nvim-treesitter.withPlugins (p: [ p.lua p.nix p.zig p.json p.toml p.yaml p.markdown p.markdown_inline p.bash p.just p.gdscript ]))
     ];
   };
 
@@ -34,6 +34,7 @@
     taplo
     shfmt
     just
+    gdtoolkit_4
 
     # fzf-lua
     fd
