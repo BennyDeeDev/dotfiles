@@ -12,6 +12,8 @@ vim.opt.titlestring = "%t - " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. " 
 vim.opt.termguicolors = true
 vim.opt.undofile = true
 
+local roslyn = require("roslyn")
+local autopairs = require("nvim-autopairs")
 local gs = require("gitsigns")
 local fzf = require("fzf-lua")
 local blink = require("blink.cmp")
@@ -52,6 +54,7 @@ conform.setup({
 		sh = { "shfmt" },
 		just = { "just_fmt" },
 		gdscript = { "gdformat" },
+		cs = { "csharpier" },
 	},
 	format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
 	notify_on_error = false,
@@ -165,6 +168,10 @@ vim.lsp.config("gdscript", {
 
 vim.lsp.enable({ "lua_ls", "nixd", "zls", "gdscript" })
 
+roslyn.setup({ exe = "Microsoft.CodeAnalysis.LanguageServer" })
+
+autopairs.setup({})
+
 vim.api.nvim_create_autocmd("VimEnter", {
 	callback = function(data)
 		if vim.fn.isdirectory(data.file) == 1 then
@@ -177,7 +184,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "lua", "nix", "zig", "json", "jsonc", "toml", "yaml", "markdown", "bash", "sh", "just", "gdscript" },
+	pattern = { "lua", "nix", "zig", "json", "jsonc", "toml", "yaml", "markdown", "bash", "sh", "just", "gdscript", "cs" },
 	callback = function()
 		vim.treesitter.start()
 	end,
