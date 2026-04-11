@@ -17,8 +17,10 @@
       conform-nvim
       blink-cmp
       toggleterm-nvim
+      roslyn-nvim
+      nvim-autopairs
 
-      (nvim-treesitter.withPlugins (p: [ p.lua p.nix p.zig p.json p.toml p.yaml p.markdown p.markdown_inline p.bash p.just p.gdscript ]))
+      (nvim-treesitter.withPlugins (p: [ p.lua p.nix p.zig p.json p.toml p.yaml p.markdown p.markdown_inline p.bash p.just p.gdscript p.c_sharp ]))
     ];
   };
 
@@ -27,6 +29,7 @@
     nixd
     lua-language-server
     zls
+    roslyn-ls
 
     # Formatters
     nixfmt
@@ -35,6 +38,7 @@
     shfmt
     just
     gdtoolkit_4
+    csharpier
 
     # fzf-lua
     fd

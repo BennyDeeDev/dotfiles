@@ -70,7 +70,8 @@
 
     # Gamedev
     aseprite
-    godot
+    godot-mono
+    dotnet-sdk
 
     # Browsers
     brave
