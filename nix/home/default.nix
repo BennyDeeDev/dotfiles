@@ -55,7 +55,7 @@
   };
 
   xdg.configFile."opencode/opencode.json".source = ../../opencode/opencode.json;
-  xdg.configFile."opencode/instructions.md".source = ../../opencode/instructions.md;
+  xdg.configFile."opencode/AGENTS.md".source = ../../opencode/AGENTS.md;
 
   programs.home-manager.enable = true;
 }

@@ -1,0 +1,2 @@
+- Never run `kubectl exec` or `kubectl run`. These commands are blocked and will fail.
+- On NixOS, never run `home-manager switch` — use `nrs` (which runs `sudo nixos-rebuild switch --flake ~/Repos/dotfiles#desktop`) so the full system config (including home-manager as a module) is rebuilt together.
