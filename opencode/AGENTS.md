@@ -1,2 +1,5 @@
 - Never run `kubectl exec` or `kubectl run`. These commands are blocked and will fail.
 - On NixOS, never run `home-manager switch` — use `nrs` (which runs `sudo nixos-rebuild switch --flake ~/Repos/dotfiles#desktop`) so the full system config (including home-manager as a module) is rebuilt together.
+- All projects live in `$HOME/Repos`.
+- Local documentation repos (cloned per `Docsfile`) live in `$HOME/Docs/<name>` (e.g. `$HOME/Docs/danklinux-docs`, `$HOME/Docs/niri-docs`).
+- Don't add comments just to describe what code does. Only add comments that help the IDE (e.g. hover docs, function explanations) or document a non-obvious decision.

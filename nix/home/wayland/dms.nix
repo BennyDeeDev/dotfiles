@@ -16,6 +16,13 @@
   xdg.configFile."DankMaterialShell/themes/catppuccin.json".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/dms-themes/catppuccin.json";
 
+  xdg.configFile."dms/wallpapers/dark.png".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/wallpapers/dark.png";
+  xdg.configFile."dms/wallpapers/light.png".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/wallpapers/light.png";
+  xdg.configFile."DankMaterialShell/settings.json".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/dms/settings.json";
+
   programs.dank-material-shell = {
     enable = true;
 
@@ -25,15 +32,13 @@
     };
 
     # Core features
-    enableSystemMonitoring = true; # System monitoring widgets (dgop)
+    enableSystemMonitoring = true;
     dgop.package = dgop.packages.${pkgs.system}.default;
 
-    enableVPN = false; # VPN management widget
-    enableDynamicTheming = true; # Wallpaper-based theming (matugen)
-    enableAudioWavelength = true; # Audio visualizer (cava)
-    enableCalendarEvents = true; # Calendar integration (khal)
-
-    settings = import ./dms-settings.nix { inherit config; };
+    enableVPN = false;
+    enableDynamicTheming = false;
+    enableAudioWavelength = true;
+    enableCalendarEvents = true;
 
     plugins = { };
   };

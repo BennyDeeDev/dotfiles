@@ -32,6 +32,7 @@
       "git cherry-pick *": "ask",
       "git stash drop *": "ask",
       "git rm *": "ask",
+      "git mv *": "ask",
       "gh pr merge *": "ask",
       "gh pr close *": "ask",
       "gh pr edit *": "ask",
