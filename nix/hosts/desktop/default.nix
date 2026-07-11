@@ -42,7 +42,7 @@
     device = "/dev/disk/by-id/nvme-Samsung_SSD_990_PRO_1TB_S7HDNJ0Y413952T-part3";
     fsType = "btrfs";
     options = [
-      "ro"
+      "rw"
       "subvol=/home"
       "relatime"
       "ssd"

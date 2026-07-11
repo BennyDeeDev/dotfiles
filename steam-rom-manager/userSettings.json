@@ -35,8 +35,8 @@
 	"version": 10,
 	"fuzzyMatcher": {
 		"timestamps": {
-			"check": 1774292304830,
-			"download": 1774292304830
+			"check": 1776886608349,
+			"download": 1776886608349
 		},
 		"verbose": false,
 		"filterProviders": true

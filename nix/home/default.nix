@@ -17,6 +17,7 @@
     docker-compose
     gh
     prettier
+    opencode
 
     # CLI tools
     eza
@@ -33,6 +34,7 @@
     wget
     watch
     unzip
+    sqlite
 
     # Fonts
     nerd-fonts.jetbrains-mono
@@ -51,6 +53,9 @@
       emoji = [ "Noto Color Emoji" ];
     };
   };
+
+  xdg.configFile."opencode/opencode.json".source = ../../opencode/opencode.json;
+  xdg.configFile."opencode/instructions.md".source = ../../opencode/instructions.md;
 
   programs.home-manager.enable = true;
 }

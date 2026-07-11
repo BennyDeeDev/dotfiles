@@ -230,6 +230,11 @@ end)
 vim.keymap.set("n", "<leader>s", "<cmd>FzfLua git_status<cr>")
 
 vim.keymap.set("n", "<leader>Y", ":%y+<cr>")
+vim.keymap.set("n", "<leader>L", function()
+	local ref = vim.fn.expand("%") .. ":" .. vim.fn.line(".")
+	vim.fn.setreg("+", ref)
+	vim.notify(ref)
+end)
 vim.keymap.set("n", "<leader>P", 'ggVG"+p')
 
 vim.keymap.set("n", "<leader>hr", gs.reset_hunk)

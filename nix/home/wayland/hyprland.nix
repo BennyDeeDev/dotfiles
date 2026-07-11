@@ -1,6 +1,8 @@
-{ omarchy, ... }:
+{ omarchy, pkgs, ... }:
 
 {
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;

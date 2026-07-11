@@ -53,7 +53,7 @@
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config.hyprland = {
+    config.common = {
       default = [
         "hyprland"
         "gtk"

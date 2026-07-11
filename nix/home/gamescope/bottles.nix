@@ -6,12 +6,15 @@
   services.flatpak.overrides."com.usebottles.bottles".Context = {
     filesystems = [
       "/nix/store:ro"
-      "~/Games/PC:ro"
+      "~/Games/PC:rw"
       "${dotfiles}/bottles:rw"
-      "/mnt/bazzite/bazzite/Games/PC:ro"
+      "/mnt/bazzite/bazzite/Games/PC:rw"
     ];
   };
 
   home.file.".var/app/com.usebottles.bottles/data/bottles/bottles/Games-Exe-Runner-Proton/bottle.yml".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/bottles/bottle.yml";
+
+  home.file.".var/app/com.usebottles.bottles/data/bottles/bottles/Games-Exe-Runner-Proton/dosdevices/d:".source =
+    config.lib.file.mkOutOfStoreSymlink "/mnt/bazzite/bazzite/Games/PC";
 }
