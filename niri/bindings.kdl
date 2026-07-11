@@ -5,13 +5,13 @@ binds {
     Ctrl+Shift+E { spawn "code"; }
     Ctrl+Shift+P { spawn "keepassxc"; }
     Ctrl+Shift+S { spawn "spotify-launcher"; }
-    Ctrl+Space   { spawn "walker"; }
+    Ctrl+Space   { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
 
     Ctrl+Q       { close-window; }
     Ctrl+Shift+Q { quit; }
-    Ctrl+Shift+L { spawn "hyprlock"; }
+    Ctrl+Shift+L { spawn "dms" "ipc" "call" "lock" "lock"; }
     Ctrl+Shift+V { toggle-window-floating; }
-    Ctrl+Shift+W { spawn-sh "pkill waybar; waybar &"; }
+    Ctrl+Shift+W { spawn "dms" "restart"; }
 
     Super+Shift+O repeat=false { toggle-overview; }
     Super+Shift+R { switch-preset-column-width; }
@@ -25,16 +25,16 @@ binds {
     Super+Shift+K { move-window-up; }
     Super+Shift+J { move-window-down; }
 
-    Super+1 { focus-workspace 1; }
-    Super+2 { focus-workspace 2; }
-    Super+3 { focus-workspace 3; }
-    Super+4 { focus-workspace 4; }
-    Super+5 { focus-workspace 5; }
-    Super+6 { focus-workspace 6; }
-    Super+7 { focus-workspace 7; }
-    Super+8 { focus-workspace 8; }
-    Super+9 { focus-workspace 9; }
-    Super+0 { focus-workspace 10; }
+    F1  { focus-workspace 1; }
+    F2  { focus-workspace 2; }
+    F3  { focus-workspace 3; }
+    F4  { focus-workspace 4; }
+    F5  { focus-workspace 5; }
+    F6  { focus-workspace 6; }
+    F7  { focus-workspace 7; }
+    F8  { focus-workspace 8; }
+    F9  { focus-workspace 9; }
+    F10 { focus-workspace 10; }
 
     Shift+F1  { move-window-to-workspace 1; }
     Shift+F2  { move-window-to-workspace 2; }
@@ -55,24 +55,24 @@ binds {
     Ctrl+Tab       { focus-column-right-or-first; }
     Ctrl+Shift+Tab { focus-column-left-or-last; }
 
-    Print           { screenshot; }
-    Ctrl+Shift+4    { screenshot; }
+    Print           { spawn "dms" "ipc" "call" "niri" "screenshot"; }
+    Ctrl+Shift+4    { spawn "dms" "ipc" "call" "niri" "screenshot"; }
 
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "raise"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "lower"; }
-    XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn "swayosd-client" "--input-volume" "mute-toggle"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "increment" "3"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "decrement" "3"; }
+    XF86AudioMute        allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "mute"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "mute"; }
 
-    Alt+XF86AudioRaiseVolume { spawn "swayosd-client" "--output-volume" "+1"; }
-    Alt+XF86AudioLowerVolume { spawn "swayosd-client" "--output-volume" "-1"; }
+    Alt+XF86AudioRaiseVolume { spawn "dms" "ipc" "call" "audio" "increment" "1"; }
+    Alt+XF86AudioLowerVolume { spawn "dms" "ipc" "call" "audio" "decrement" "1"; }
 
-    XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "asdbctl up -s 5 && brightness=$(asdbctl get | awk '{print $2}') && progress=$(awk \"BEGIN{printf \\\"%.2f\\\", $brightness/100}\") && swayosd-client --custom-icon display-brightness-symbolic --custom-progress \"$progress\" --custom-progress-text \"${brightness}%\""; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "asdbctl down -s 5 && brightness=$(asdbctl get | awk '{print $2}') && progress=$(awk \"BEGIN{printf \\\"%.2f\\\", $brightness/100}\") && swayosd-client --custom-icon display-brightness-symbolic --custom-progress \"$progress\" --custom-progress-text \"${brightness}%\""; }
-    Alt+XF86MonBrightnessUp   { spawn-sh "asdbctl up -s 1 && brightness=$(asdbctl get | awk '{print $2}') && progress=$(awk \"BEGIN{printf \\\"%.2f\\\", $brightness/100}\") && swayosd-client --custom-icon display-brightness-symbolic --custom-progress \"$progress\" --custom-progress-text \"${brightness}%\""; }
-    Alt+XF86MonBrightnessDown { spawn-sh "asdbctl down -s 1 && brightness=$(asdbctl get | awk '{print $2}') && progress=$(awk \"BEGIN{printf \\\"%.2f\\\", $brightness/100}\") && swayosd-client --custom-icon display-brightness-symbolic --custom-progress \"$progress\" --custom-progress-text \"${brightness}%\""; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "increment" "5"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "decrement" "5"; }
+    Alt+XF86MonBrightnessUp   { spawn "dms" "ipc" "call" "brightness" "increment" "1"; }
+    Alt+XF86MonBrightnessDown { spawn "dms" "ipc" "call" "brightness" "decrement" "1"; }
 
-    XF86AudioNext  allow-when-locked=true { spawn "swayosd-client" "--playerctl" "next"; }
-    XF86AudioPause allow-when-locked=true { spawn "swayosd-client" "--playerctl" "play-pause"; }
-    XF86AudioPlay  allow-when-locked=true { spawn "swayosd-client" "--playerctl" "play-pause"; }
-    XF86AudioPrev  allow-when-locked=true { spawn "swayosd-client" "--playerctl" "previous"; }
+    XF86AudioNext  allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "next"; }
+    XF86AudioPause allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "playPause"; }
+    XF86AudioPlay  allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "playPause"; }
+    XF86AudioPrev  allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "previous"; }
 }

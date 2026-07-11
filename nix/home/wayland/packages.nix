@@ -3,13 +3,10 @@
 {
   home.packages = with pkgs; [
     wl-clipboard
-    swaybg
     grim
     slurp
-    satty
-    hyprpicker
-    hyprlock
+    swappy
     xwayland-satellite
-    uwsm
+    adw-gtk3
   ];
 }

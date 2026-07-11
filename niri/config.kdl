@@ -5,7 +5,7 @@ include "looknfeel.kdl"
 include "bindings.kdl"
 include "autostart.kdl"
 include "rules.kdl"
-include "~/.config/omarchy/current/theme/niri.kdl"
+// include "dms/colors.kdl"  # enable when niri >= 26.04 (optional=true) lands in nixpkgs
 
 workspace "www"
 workspace "term"
