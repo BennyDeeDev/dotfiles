@@ -1,12 +1,16 @@
 {
   "currentThemeName": "custom",
-  "currentThemeCategory": "custom",
-  "customThemeFile": "/home/benjamin/.config/DankMaterialShell/themes/catppuccin.json",
+  "currentThemeCategory": "registry",
+  "customThemeFile": "/home/benjamin/.config/DankMaterialShell/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
         "flavor": "mocha",
         "accent": "mauve"
+      },
+      "light": {
+        "flavor": "latte",
+        "accent": "blue"
       }
     }
   },

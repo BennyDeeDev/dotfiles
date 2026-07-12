@@ -1,11 +1,37 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "model": "{env:OPENCODE_MODEL_STRONG}",
+  "small_model": "{env:OPENCODE_MODEL_CHEAP}",
+  "default_agent": "orchestrator",
+  "agent": {
+    "orchestrator": {
+      "model": "{env:OPENCODE_MODEL_STRONG}"
+    },
+    "reviewer": {
+      "model": "{env:OPENCODE_MODEL_STRONG}"
+    },
+    "vision": {
+      "model": "{env:OPENCODE_MODEL_STRONG}"
+    },
+    "writer": {
+      "model": "{env:OPENCODE_MODEL_MID}"
+    },
+    "explainer": {
+      "model": "{env:OPENCODE_MODEL_MID}"
+    },
+    "scout": {
+      "model": "{env:OPENCODE_MODEL_CHEAP}"
+    },
+    "inspector": {
+      "model": "{env:OPENCODE_MODEL_CHEAP}"
+    }
+  },
   "permission": {
     "read": "allow",
     "edit": "ask",
     "webfetch": "allow",
     "websearch": "allow",
-    "external_directory": "allow",
+    "external_directory": "ask",
     "bash": {
       "*": "allow",
       "rm *": "ask",

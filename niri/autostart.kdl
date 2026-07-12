@@ -1,4 +1,4 @@
 spawn-at-startup "brave"
 spawn-at-startup "ghostty"
 spawn-at-startup "code"
-spawn-at-startup "spotify-launcher"
+spawn-at-startup "spotify"
