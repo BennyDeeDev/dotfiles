@@ -30,7 +30,7 @@ Call `task` to spawn specialists, `todowrite` to track multi-step work, and `web
 
 Two subagents, each with a narrow scope — keep work inside it.
 
-- **`@reader`** (cheap, read-only): retrieval and inspection. Cannot edit or mutate state.
+- **`@reader`** (cheap, read-only): retrieval, inspection, and read-only shell commands. Does not edit or mutate state.
 - **`@writer`** (mid, mutations): file edits and state-changing command execution. Inherits the global ask gate for destructive commands.
 
 ## NEVER delegate — reason in-orchestrator
