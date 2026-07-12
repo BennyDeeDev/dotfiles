@@ -333,7 +333,7 @@
   "iconThemeDark": "Yaru-blue",
   "iconThemeLight": "Yaru-purple",
   "iconThemePerMode": true,
-  "lastAppliedIconTheme": "Yaru-blue",
+  "lastAppliedIconTheme": "Yaru-purple",
   "cursorSettings": {
     "dwl": {
       "cursorHideTimeout": 0
@@ -609,6 +609,10 @@
       "id": "default",
       "innerPadding": 10,
       "leftWidgets": [
+        {
+          "id": "powerMenuButton",
+          "enabled": true
+        },
         "launcherButton",
         {
           "enabled": true,

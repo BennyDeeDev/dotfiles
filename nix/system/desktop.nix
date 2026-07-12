@@ -6,6 +6,9 @@
     enable32Bit = true;
   };
 
+  services.printing.enable = true;
+  environment.systemPackages = with pkgs; [ cups-pk-helper ];
+
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -36,13 +39,6 @@
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config.common = {
-      default = [
-        "niri"
-        "gtk"
-      ];
-      "org.freedesktop.impl.portal.Settings" = [ "gtk" ];
-    };
   };
 
   programs.gamescope = {

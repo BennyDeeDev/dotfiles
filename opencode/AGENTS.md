@@ -3,3 +3,4 @@
 - All projects live in `$HOME/Repos`.
 - Local documentation repos (cloned per `Docsfile`) live in `$HOME/Docs/<name>` (e.g. `$HOME/Docs/danklinux-docs`, `$HOME/Docs/niri-docs`).
 - Don't add comments just to describe what code does. Only add comments that help the IDE (e.g. hover docs, function explanations) or document a non-obvious decision.
+- After editing anything that needs building (e.g. `.nix` files), run the appropriate build command to verify. Don't switch — the user runs that themselves.
