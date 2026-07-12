@@ -1,6 +1,8 @@
-# Rules
+# Local Rules
 
-- For any multi-step task, create a per-session progress file at `opencode/tasks/<YYYY-MM-DD>-<HHMMSS>-<short-slug>.md` (e.g. `2026-07-12-143052-add-progressive-enhancement.md`) at the start of the task and keep it current as work proceeds
+- Be terse. Prefer short answers over walls of text
+
+- For any multi-step task, the orchestrator creates ONE per-session progress file at `opencode/tasks/<YYYY-MM-DD>-<HHMMSS>-<short-slug>.md` (e.g. `2026-07-12-143052-add-progressive-enhancement.md`) at the start of the task and keeps it current as work proceeds. There is exactly one progress file per session.
 
 - Never run `kubectl exec` or `kubectl run`. These commands are blocked and will fail
 
