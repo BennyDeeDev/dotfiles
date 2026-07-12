@@ -19,7 +19,7 @@
     "explainer": {
       "model": "{env:OPENCODE_MODEL_MID}"
     },
-    "scout": {
+    "seeker": {
       "model": "{env:OPENCODE_MODEL_CHEAP}"
     },
     "inspector": {
