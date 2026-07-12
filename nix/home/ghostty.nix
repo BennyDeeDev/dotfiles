@@ -12,6 +12,7 @@
     "ghostty/config".source = ../../ghostty/config;
     "ghostty/config-local".source =
       if pkgs.stdenv.isLinux then ../../ghostty/linux.conf else ../../ghostty/macos.conf;
-    "ghostty/themes".source = ../../ghostty/themes;
+    "ghostty/themes/catppuccin-mocha.conf".source = ../../ghostty/themes/catppuccin-mocha.conf;
+    "ghostty/themes/catppuccin-latte.conf".source = ../../ghostty/themes/catppuccin-latte.conf;
   };
 }

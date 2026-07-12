@@ -37,6 +37,8 @@
     sqlite
 
     # Fonts
+    inter
+    fira-code
     nerd-fonts.jetbrains-mono
     nerd-fonts.hack
     nerd-fonts.iosevka
@@ -55,7 +57,8 @@
   };
 
   xdg.configFile."opencode/opencode.json".source = ../../opencode/opencode.json;
-  xdg.configFile."opencode/instructions.md".source = ../../opencode/instructions.md;
+  xdg.configFile."opencode/AGENTS.md".source = ../../opencode/AGENTS.md;
+  xdg.configFile."opencode/agents".source = ../../opencode/agents;
 
   programs.home-manager.enable = true;
 }

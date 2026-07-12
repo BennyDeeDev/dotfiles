@@ -1,6 +1,6 @@
 {
-  "workbench.colorTheme": "Catppuccin Latte",
-  "workbench.iconTheme": "catppuccin-latte",
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.iconTheme": "catppuccin-mocha",
   "workbench.startupEditor": "none",
   "workbench.layoutControl.enabled": false,
   "workbench.secondarySideBar.defaultVisibility": "visible",
@@ -9,7 +9,7 @@
 
   "window.commandCenter": false,
   "window.confirmSaveUntitledWorkspace": false,
-  "window.autoDetectColorScheme": false,
+  "window.autoDetectColorScheme": true,
   "window.title": "${folderName}${separator}${activeEditorShort}",
   "window.titleSeparator": " — ",
 

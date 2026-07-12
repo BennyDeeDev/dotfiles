@@ -1,41 +1,68 @@
 binds {
+    // `include` DMS binds above your own to let your binds override defaults.
+    // include "~/.config/niri/dms/binds.kdl"
+
+    // === Application Launchers ===
     Ctrl+Shift+T { spawn "ghostty"; }
     Ctrl+Shift+F { spawn "nautilus"; }
     Ctrl+Shift+B { spawn "brave"; }
     Ctrl+Shift+E { spawn "code"; }
     Ctrl+Shift+P { spawn "keepassxc"; }
-    Ctrl+Shift+S { spawn "spotify-launcher"; }
-    Ctrl+Space   { spawn "walker"; }
+    Ctrl+Shift+S { spawn "spotify"; }
 
+    // === DMS IPC ===
+    Ctrl+Space   { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+    Ctrl+Shift+L { spawn "dms" "ipc" "call" "lock" "lock"; }
+    Ctrl+Shift+W { spawn "dms" "restart"; }
+    Super+Comma  { spawn "dms" "ipc" "call" "settings" "focusOrToggle"; }
+    Super+N      { spawn "dms" "ipc" "call" "notifications" "toggle"; }
+    Super+M      { spawn "dms" "ipc" "call" "processlist" "focusOrToggle"; }
+    Super+V      { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
+
+    // === Window Management ===
     Ctrl+Q       { close-window; }
     Ctrl+Shift+Q { quit; }
-    Ctrl+Shift+L { spawn "hyprlock"; }
     Ctrl+Shift+V { toggle-window-floating; }
-    Ctrl+Shift+W { spawn-sh "pkill waybar; waybar &"; }
 
+    // === Overview ===
     Super+Shift+O repeat=false { toggle-overview; }
+
+    // === Sizing ===
     Super+Shift+R { switch-preset-column-width; }
+    Super+Minus       { set-column-width "-10%"; }
+    Super+Equal       { set-column-width "+10%"; }
+    Super+Shift+Minus { set-window-height "-10%"; }
+    Super+Shift+Equal { set-window-height "+10%"; }
+
+    // === Focus Navigation ===
     Super+H { focus-column-left; }
     Super+L { focus-column-right; }
     Super+K { focus-window-up; }
     Super+J { focus-window-down; }
 
+    // === Window Movement ===
     Super+Shift+H { move-column-left; }
     Super+Shift+L { move-column-right; }
     Super+Shift+K { move-window-up; }
     Super+Shift+J { move-window-down; }
 
-    Super+1 { focus-workspace 1; }
-    Super+2 { focus-workspace 2; }
-    Super+3 { focus-workspace 3; }
-    Super+4 { focus-workspace 4; }
-    Super+5 { focus-workspace 5; }
-    Super+6 { focus-workspace 6; }
-    Super+7 { focus-workspace 7; }
-    Super+8 { focus-workspace 8; }
-    Super+9 { focus-workspace 9; }
-    Super+0 { focus-workspace 10; }
+    // === Tab Switching ===
+    Ctrl+Tab       { focus-column-right-or-first; }
+    Ctrl+Shift+Tab { focus-column-left-or-last; }
 
+    // === Workspace Navigation (F-keys) ===
+    F1  { focus-workspace 1; }
+    F2  { focus-workspace 2; }
+    F3  { focus-workspace 3; }
+    F4  { focus-workspace 4; }
+    F5  { focus-workspace 5; }
+    F6  { focus-workspace 6; }
+    F7  { focus-workspace 7; }
+    F8  { focus-workspace 8; }
+    F9  { focus-workspace 9; }
+    F10 { focus-workspace 10; }
+
+    // === Move to Workspace ===
     Shift+F1  { move-window-to-workspace 1; }
     Shift+F2  { move-window-to-workspace 2; }
     Shift+F3  { move-window-to-workspace 3; }
@@ -47,32 +74,32 @@ binds {
     Shift+F9  { move-window-to-workspace 9; }
     Shift+F10 { move-window-to-workspace 10; }
 
-    Super+Minus       { set-column-width "-10%"; }
-    Super+Equal       { set-column-width "+10%"; }
-    Super+Shift+Minus { set-window-height "-10%"; }
-    Super+Shift+Equal { set-window-height "+10%"; }
+    // === Screenshots ===
+    Print        { spawn "dms" "ipc" "call" "niri" "screenshot"; }
+    Ctrl+Shift+4 { spawn "dms" "ipc" "call" "niri" "screenshot"; }
 
-    Ctrl+Tab       { focus-column-right-or-first; }
-    Ctrl+Shift+Tab { focus-column-left-or-last; }
+    // === Audio Controls ===
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "increment" "3"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "decrement" "3"; }
+    XF86AudioMute        allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "mute"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "mute"; }
 
-    Print           { screenshot; }
-    Ctrl+Shift+4    { screenshot; }
+    Alt+XF86AudioRaiseVolume { spawn "dms" "ipc" "call" "audio" "increment" "1"; }
+    Alt+XF86AudioLowerVolume { spawn "dms" "ipc" "call" "audio" "decrement" "1"; }
 
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "raise"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "lower"; }
-    XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn "swayosd-client" "--input-volume" "mute-toggle"; }
+    // === Brightness Controls ===
+    // XF86MonBrightnessUp   allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "increment" "5"; }
+    // XF86MonBrightnessDown allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "decrement" "5"; }
+    // Alt+XF86MonBrightnessUp   { spawn "dms" "ipc" "call" "brightness" "increment" "1"; }
+    // Alt+XF86MonBrightnessDown { spawn "dms" "ipc" "call" "brightness" "decrement" "1"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "asdbctl" "up" "-s" "5"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "asdbctl" "down" "-s" "5"; }
+    Alt+XF86MonBrightnessUp   { spawn "asdbctl" "up" "-s" "1"; }
+    Alt+XF86MonBrightnessDown { spawn "asdbctl" "down" "-s" "1"; }
 
-    Alt+XF86AudioRaiseVolume { spawn "swayosd-client" "--output-volume" "+1"; }
-    Alt+XF86AudioLowerVolume { spawn "swayosd-client" "--output-volume" "-1"; }
-
-    XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "asdbctl up -s 5 && brightness=$(asdbctl get | awk '{print $2}') && progress=$(awk \"BEGIN{printf \\\"%.2f\\\", $brightness/100}\") && swayosd-client --custom-icon display-brightness-symbolic --custom-progress \"$progress\" --custom-progress-text \"${brightness}%\""; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "asdbctl down -s 5 && brightness=$(asdbctl get | awk '{print $2}') && progress=$(awk \"BEGIN{printf \\\"%.2f\\\", $brightness/100}\") && swayosd-client --custom-icon display-brightness-symbolic --custom-progress \"$progress\" --custom-progress-text \"${brightness}%\""; }
-    Alt+XF86MonBrightnessUp   { spawn-sh "asdbctl up -s 1 && brightness=$(asdbctl get | awk '{print $2}') && progress=$(awk \"BEGIN{printf \\\"%.2f\\\", $brightness/100}\") && swayosd-client --custom-icon display-brightness-symbolic --custom-progress \"$progress\" --custom-progress-text \"${brightness}%\""; }
-    Alt+XF86MonBrightnessDown { spawn-sh "asdbctl down -s 1 && brightness=$(asdbctl get | awk '{print $2}') && progress=$(awk \"BEGIN{printf \\\"%.2f\\\", $brightness/100}\") && swayosd-client --custom-icon display-brightness-symbolic --custom-progress \"$progress\" --custom-progress-text \"${brightness}%\""; }
-
-    XF86AudioNext  allow-when-locked=true { spawn "swayosd-client" "--playerctl" "next"; }
-    XF86AudioPause allow-when-locked=true { spawn "swayosd-client" "--playerctl" "play-pause"; }
-    XF86AudioPlay  allow-when-locked=true { spawn "swayosd-client" "--playerctl" "play-pause"; }
-    XF86AudioPrev  allow-when-locked=true { spawn "swayosd-client" "--playerctl" "previous"; }
+    // === Media Controls ===
+    XF86AudioPause allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "playPause"; }
+    XF86AudioPlay  allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "playPause"; }
+    XF86AudioPrev  allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "previous"; }
+    XF86AudioNext  allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "next"; }
 }

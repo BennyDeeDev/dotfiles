@@ -21,6 +21,7 @@
     playerctl
     pamixer
     pavucontrol
+    pulseaudio
     libnotify
     ffmpegthumbnailer
     obs-studio
@@ -116,8 +117,7 @@
   home.file.".claude/settings.json".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/claude/settings.json";
 
-  xdg.configFile."godot".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/godot";
+  xdg.configFile."godot".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/godot";
 
   xdg.configFile."gtk-3.0/bookmarks".text = ''
     file://${config.home.homeDirectory}/Documents

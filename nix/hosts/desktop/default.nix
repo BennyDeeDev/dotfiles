@@ -29,13 +29,12 @@
   hardware.enableRedistributableFirmware = true;
   hardware.amdgpu.initrd.enable = true;
 
-  programs.hyprland = {
+  programs.niri = {
     enable = true;
-    withUWSM = true;
+    package = pkgs.niri;
   };
 
-  # uwsm must be in GDM's PATH for TryExec=uwsm in hyprland-uwsm.desktop to succeed
-  systemd.services.display-manager.path = [ pkgs.uwsm ];
+  services.displayManager.defaultSession = "niri";
 
   # TODO: remove once nixos is stable
   fileSystems."/mnt/bazzite" = {

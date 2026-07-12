@@ -6,6 +6,9 @@
     enable32Bit = true;
   };
 
+  services.printing.enable = true;
+  environment.systemPackages = with pkgs; [ cups-pk-helper ];
+
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -13,19 +16,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
-    wireplumber.extraConfig.bluetoothEnhancements = {
-      "monitor.bluez.properties" = {
-        "bluez5.enable-sbc-xq" = true;
-        "bluez5.enable-msbc" = true;
-        "bluez5.enable-hw-volume" = true;
-        "bluez5.roles" = [
-          "hsp_hs"
-          "hsp_ag"
-          "hfp_hf"
-          "hfp_ag"
-        ];
-      };
-    };
   };
 
   hardware.keyboard.zsa.enable = true;
@@ -41,10 +31,6 @@
   };
 
   # Allow users to write brave theme policy (used by omarchy-theme-set)
-  systemd.tmpfiles.rules = [
-    "d /etc/brave/policies/managed 0775 root users -"
-  ];
-
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
@@ -53,13 +39,6 @@
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config.common = {
-      default = [
-        "hyprland"
-        "gtk"
-      ];
-      "org.freedesktop.impl.portal.Settings" = [ "gtk" ];
-    };
   };
 
   programs.gamescope = {

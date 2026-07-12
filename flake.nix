@@ -1,13 +1,21 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    omarchy = {
-      url = "github:basecamp/omarchy/master";
-      flake = false;
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dgop = {
+      url = "github:AvengeMedia/dgop";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dms-plugin-registry = {
+      url = "github:AvengeMedia/dms-plugin-registry";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     disko = {
@@ -20,7 +28,9 @@
     {
       nixpkgs,
       home-manager,
-      omarchy,
+      dms,
+      dgop,
+      dms-plugin-registry,
       nix-flatpak,
       disko,
       ...
@@ -30,7 +40,15 @@
       homeManagerModule = {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit omarchy nix-flatpak dotfiles; };
+        home-manager.extraSpecialArgs = {
+          inherit
+            dms
+            dgop
+            dms-plugin-registry
+            nix-flatpak
+            dotfiles
+            ;
+        };
       };
     in
     {
