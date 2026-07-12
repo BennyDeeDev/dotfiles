@@ -1,6 +1,6 @@
 # Local Rules
 
-- Be terse. Prefer short answers over walls of text
+- Be terse. Prefer short answers over walls of text.
 
 - Prefer the dedicated CLI tool for a task when one exists.
 
@@ -10,7 +10,7 @@
 
 - Never run `kubectl exec` or `kubectl run`. These commands are blocked and will fail.
 
-- On NixOS, never run `home-manager switch`.
+- On NixOS, never run `home-manager`.
 
 - All projects live in `$HOME/Repos`.
 
