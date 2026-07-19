@@ -7,7 +7,10 @@
   };
 
   services.printing.enable = true;
-  environment.systemPackages = with pkgs; [ cups-pk-helper ];
+  environment.systemPackages = with pkgs; [
+    cups-pk-helper
+    efibootmgr
+  ];
 
   security.rtkit.enable = true;
   services.pipewire = {
@@ -23,6 +26,12 @@
   services.udev.packages = [ pkgs.asdbctl ];
 
   programs.dconf.enable = true;
+
+  services.displayManager.dms-greeter = {
+    enable = true;
+    compositor.name = "niri";
+    configHome = "/home/benjamin";
+  };
 
   services.xserver.xkb = {
     layout = "us";
@@ -70,4 +79,28 @@
     ];
   };
 
+  security.sudo.extraRules = [
+    {
+      users = [ "benjamin" ];
+      commands = [
+        {
+          command = "/run/current-system/sw/bin/efibootmgr";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
+
+  services.displayManager.sessionPackages = [
+    (pkgs.makeDesktopItem {
+      name = "windows";
+      destination = "/share/wayland-sessions";
+      desktopName = "Windows";
+      comment = "Reboot to Windows Boot Manager";
+      exec = ''/home/benjamin/Repos/dotfiles/bin/linux/dot-cmd-reboot-to "Windows Boot Manager" reboot'';
+      type = "Application";
+      categories = [ "System" ];
+      extraConfig = { "X-DesktopNames" = "Windows"; };
+    } // { providedSessions = [ "windows" ]; })
+  ];
 }
