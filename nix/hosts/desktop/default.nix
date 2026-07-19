@@ -4,7 +4,6 @@
   imports = [
     ../../system/base.nix
     ../../system/desktop.nix
-    ../../system/gnome.nix
     ../../system/nas.nix
     ./disko.nix
     ./hardware-configuration.nix
@@ -88,7 +87,6 @@
       ../../home/linux.nix
       ../../home/wayland
       ../../home/gamescope
-      ../../home/gnome
     ];
     home.username = "benjamin";
     home.homeDirectory = "/home/benjamin";
