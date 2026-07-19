@@ -22,6 +22,10 @@
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -33,6 +37,7 @@
       dms-plugin-registry,
       nix-flatpak,
       disko,
+      lanzaboote,
       ...
     }:
     let
@@ -65,6 +70,7 @@
         desktop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
+            lanzaboote.nixosModules.lanzaboote
             ./nix/hosts/desktop
             disko.nixosModules.disko
             home-manager.nixosModules.home-manager

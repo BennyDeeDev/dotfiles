@@ -93,3 +93,53 @@ enumeration order changes:
 ```bash
 lsblk -o NAME,SIZE,SERIAL
 ```
+
+## Secure Boot (Lanzaboote)
+
+Signs all boot artifacts and enforces Secure Boot via the lanzaboote module configured in `nix/hosts/desktop/default.nix`. Keys auto-generate at `/var/lib/sbctl` and auto-enroll alongside Microsoft's UEFI CA on the first Setup-Mode boot. The steps below are the manual BIOS flow required on MSI boards to actually flip Secure Boot on.
+
+**1. Rebuild and install the signed bootloader**
+
+```bash
+cd ~/Repos/dotfiles
+sudo nixos-rebuild boot --install-bootloader --flake .#desktop
+```
+
+Must use `--install-bootloader`: the signed UKIs and `systemd-bootx64.efi` are
+written to the ESP only by `bootctl install`. A plain `switch` leaves the old
+unsigned binary on the ESP, which bricks on `Maximum Security` once Secure Boot
+is on.
+
+Verify before rebooting:
+
+```bash
+sudo sbctl verify
+```
+
+All `nixos-generation-*.efi`, `BOOTX64.EFI`, and `systemd-bootx64.efi` must
+show ✓. The `kernel-*.efi` entries are expected to show ✗ — they are
+intermediate images never loaded by firmware.
+
+**2. Reboot and enter the BIOS (spam `Del`)**
+
+Switch to Advanced mode (`F7`), then:
+
+1. **Security → Secure Boot**: set `Secure Boot` = `[Enabled]`, `Secure Boot
+   Mode` = `[Custom]`, `Secure Boot Preset` = `[Maximum Security]`.
+2. **Security → Secure Boot → Key Management**: set `Provision Factory Default
+   keys` = `[Disabled]`. Save and exit (`F10`).
+3. Re-enter the BIOS before the OS boots.
+4. **Security → Secure Boot → Key Management**: click `Delete all Secure Boot
+   variables`. Confirm both prompts (delete, then reset without saving).
+
+**3. Verify Secure Boot is enforced**
+
+```bash
+sudo sbctl status
+sudo sbctl verify
+bootctl status
+```
+
+Expected: `Secure Boot: Enabled`, `Setup Mode: Disabled`, `Vendor Keys:
+microsoft builtin-db builtin-KEK builtin-PK` (your keys enrolled alongside
+Microsoft's).

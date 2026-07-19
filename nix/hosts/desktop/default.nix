@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
@@ -11,6 +11,26 @@
   ];
 
   networking.hostName = "nixos";
+
+  environment.systemPackages = with pkgs; [
+    sbctl
+  ];
+
+  # Lanzaboote replaces systemd-boot and signs boot artifacts.
+  # Keys are provisioned at /var/lib/sbctl via `sudo sbctl create-keys`.
+  boot = {
+    loader.systemd-boot.enable = lib.mkForce false;
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
+      configurationLimit = 10;
+      autoGenerateKeys.enable = true;
+      autoEnrollKeys = {
+        enable = true;
+        autoReboot = true;
+      };
+    };
+  };
 
   boot.supportedFilesystems = [ "btrfs" ];
 
