@@ -14,7 +14,7 @@ window-rule {
 }
 
 window-rule {
-    match at-startup=true app-id="spotify"
+    match at-startup=true app-id="Spotify"
     open-on-workspace "media"
 }
 
