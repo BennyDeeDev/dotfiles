@@ -130,6 +130,18 @@
     file:///mnt/nas/ludusavi NAS - Ludusavi
   '';
 
+  xdg.desktopEntries.windows = {
+    name = "Windows";
+    exec = ''/home/benjamin/Repos/dotfiles/bin/linux/dot-cmd-reboot-to "Windows Boot Manager" reboot'';
+    comment = "Reboot to Windows Boot Manager";
+    icon = "system-reboot-symbolic";
+    type = "Application";
+    categories = [ "System" ];
+    settings = {
+      "X-DesktopNames" = "Windows";
+    };
+  };
+
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
