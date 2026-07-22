@@ -6,6 +6,7 @@
     ./git.nix
     ./zsh.nix
     ./starship.nix
+    ./devops.nix
   ];
 
   home.stateVersion = "25.11";

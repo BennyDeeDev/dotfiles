@@ -391,7 +391,7 @@
   "soundPluggedIn": true,
   "muteSoundsWhenMediaPlaying": true,
   "acMonitorTimeout": 0,
-  "acLockTimeout": 300,
+  "acLockTimeout": 600,
   "acSuspendTimeout": 900,
   "acSuspendBehavior": 0,
   "acProfileName": "",
