@@ -12,6 +12,12 @@
     },
     "reader": {
       "model": "{env:OPENCODE_MODEL_CHEAP}"
+    },
+    "tutor": {
+      "model": "{env:OPENCODE_MODEL_MID}"
+    },
+    "reviewer": {
+      "model": "{env:OPENCODE_MODEL_STRONG}"
     }
   },
   "autoupdate": false,

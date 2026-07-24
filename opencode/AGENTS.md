@@ -20,3 +20,5 @@
 
 - After editing anything that needs building, run the appropriate build command to verify.
 
+- When working in a Nix flake project (presence of `flake.nix`), `git add` (stage) every file you create or modify before the user runs `home-manager switch` or `nixos-rebuild`.
+
