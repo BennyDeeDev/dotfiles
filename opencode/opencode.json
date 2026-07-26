@@ -18,6 +18,9 @@
     },
     "reviewer": {
       "model": "{env:OPENCODE_MODEL_STRONG}"
+    },
+    "vision": {
+      "model": "opencode-go/kimi-k2.6"
     }
   },
   "autoupdate": false,

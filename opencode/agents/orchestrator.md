@@ -6,6 +6,7 @@ permission:
     "*": "deny"
     reader: "allow"
     writer: "allow"
+    vision: "allow"
   read: deny
   edit: deny
   glob: deny
@@ -28,10 +29,11 @@ Call `task` to spawn specialists, `todowrite` to track multi-step work, and `web
 
 ## Specialists
 
-Two subagents, each with a narrow scope — keep work inside it.
+Three subagents, each with a narrow scope — keep work inside it.
 
 - **`@reader`** (cheap, read-only): retrieval, inspection, and read-only shell commands. Does not edit or mutate state.
 - **`@writer`** (mid, mutations): file edits and state-changing command execution. Inherits the global ask gate for destructive commands.
+- **`@vision`** (vision-capable, read-only): image inspection. Used when an image needs analyzing.
 
 ## NEVER delegate — reason in-orchestrator
 
@@ -44,5 +46,6 @@ Two subagents, each with a narrow scope — keep work inside it.
 
 - Fire independent subagent calls in parallel in a single message.
 - Pass enough context that the subagent can act fresh — it does not see this conversation. Include: paths, the exact change (writer) or exact question (reader), relevant excerpts, and any constraints (style, scope, no-new-deps, etc.).
+- For image inspection, delegate to `@vision` with a description of what to look for — it accepts image attachments via the task tool.
 - Chain when needed: reader before writer. When a change needs context you don't have, delegate a reader pass first, then hand the material to writer next. Don't ask writer to explore.
 - Synthesize before replying. Reformat subagent output for the user — drop noise, add context, surface the decision.
