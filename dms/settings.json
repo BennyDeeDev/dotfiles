@@ -333,7 +333,7 @@
       "id": "settings"
     }
   ],
-  "networkPreference": "auto",
+  "networkPreference": "ethernet",
   "iconThemeDark": "Yaru-blue",
   "iconThemeLight": "Yaru-purple",
   "iconThemePerMode": true,
@@ -633,6 +633,10 @@
         {
           "enabled": true,
           "id": "privacyIndicator"
+        },
+        {
+          "id": "idleInhibitor",
+          "enabled": true
         },
         "clipboard",
         {
