@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,6 +32,7 @@
   outputs =
     {
       nixpkgs,
+      nixpkgs-unstable,
       home-manager,
       dms,
       dgop,
@@ -78,6 +80,19 @@
             nix-flatpak.nixosModules.nix-flatpak
           ];
         };
+        pi5-server = nixpkgs-unstable.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [ ./nix/hosts/pi5-server ];
+        };
+        pi5-kiosk = nixpkgs-unstable.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [ ./nix/hosts/pi5-kiosk ];
+        };
       };
+      images.pi5-bootstrap =
+        (nixpkgs-unstable.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [ ./nix/images/pi5-bootstrap.nix ];
+        }).config.system.build.sdImage;
     };
 }

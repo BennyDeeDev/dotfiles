@@ -1,10 +1,20 @@
 { pkgs, lib, ... }:
 
+let
+  nasMount = share: {
+    fsType = "cifs";
+    device = "//192.168.178.254/${share}";
+    options = [
+      "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s"
+      "credentials=/etc/nixos/smb-secrets"
+      "uid=1000,gid=100"
+    ];
+  };
+in
 {
   imports = [
     ../../system/base.nix
     ../../system/desktop.nix
-    ../../system/nas.nix
     ./disko.nix
     ./hardware-configuration.nix
   ];
@@ -13,6 +23,7 @@
 
   environment.systemPackages = with pkgs; [
     sbctl
+    cifs-utils
   ];
 
   # Lanzaboote replaces systemd-boot and signs boot artifacts.
@@ -32,7 +43,10 @@
     binfmt.emulatedSystems = [ "aarch64-linux" ];
   };
 
-  boot.supportedFilesystems = [ "btrfs" ];
+  boot.supportedFilesystems = [
+    "btrfs"
+    "cifs"
+  ];
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
@@ -96,4 +110,8 @@
       email = "45900418+BennyDeeDev@users.noreply.github.com";
     };
   };
+
+  fileSystems."/mnt/nas/homelab" = nasMount "Homelab";
+  fileSystems."/mnt/nas/benjamin" = nasMount "Benjamin";
+  fileSystems."/mnt/nas/ludusavi" = nasMount "Ludusavi";
 }
