@@ -76,11 +76,13 @@
 
     # Browsers
     brave
+    google-chrome
 
     # Personal
     keepassxc
     spotify
     localsend
+    rpi-imager
   ];
 
   programs.direnv = {

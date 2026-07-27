@@ -31,7 +31,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 # Tools
-alias c='opencode'
+alias o='OPENCODE_ENABLE_EXA=1 opencode'
 alias d='docker'
 alias n='nvim'
 alias t='tmux attach || tmux new -s main'

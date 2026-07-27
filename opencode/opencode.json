@@ -7,6 +7,9 @@
     "orchestrator": {
       "model": "{env:OPENCODE_MODEL_STRONG}"
     },
+    "generalist": {
+      "model": "{env:OPENCODE_MODEL_STRONG}"
+    },
     "writer": {
       "model": "{env:OPENCODE_MODEL_MID}"
     },
