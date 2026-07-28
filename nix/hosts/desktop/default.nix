@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 let
   nasMount = share: {
@@ -6,7 +6,7 @@ let
     device = "//192.168.178.254/${share}";
     options = [
       "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s"
-      "credentials=/etc/nixos/smb-secrets"
+      "credentials=${config.sops.templates."smb-creds".path}"
       "uid=1000,gid=100"
     ];
   };
@@ -17,6 +17,7 @@ in
     ../../system/desktop.nix
     ./disko.nix
     ./hardware-configuration.nix
+    ../../modules/sops.nix
   ];
 
   networking.hostName = "nixos";
@@ -25,6 +26,31 @@ in
     sbctl
     cifs-utils
   ];
+
+  sops.secrets."smb-username" = {
+    sopsFile = ../../secrets/desktop.yaml;
+    owner = "root";
+    mode = "0400";
+  };
+  sops.secrets."smb-password" = {
+    sopsFile = ../../secrets/desktop.yaml;
+    owner = "root";
+    mode = "0400";
+  };
+  sops.secrets."smb-domain" = {
+    sopsFile = ../../secrets/desktop.yaml;
+    owner = "root";
+    mode = "0400";
+  };
+  sops.templates."smb-creds" = {
+    content = ''
+      username=${config.sops.placeholder."smb-username"}
+      password=${config.sops.placeholder."smb-password"}
+      domain=${config.sops.placeholder."smb-domain"}
+    '';
+    owner = "root";
+    mode = "0600";
+  };
 
   # Lanzaboote replaces systemd-boot and signs boot artifacts.
   # Keys are provisioned at /var/lib/sbctl via `sudo sbctl create-keys`.
@@ -58,6 +84,7 @@ in
     Policy.AutoEnable = true;
   };
   services.blueman.enable = true;
+  services.pcscd.enable = true;
 
   hardware.cpu.amd.updateMicrocode = true;
   hardware.enableRedistributableFirmware = true;
@@ -102,6 +129,7 @@ in
       ../../home/linux.nix
       ../../home/wayland
       ../../home/gamescope
+      ../../home/sops.nix
     ];
     home.username = "benjamin";
     home.homeDirectory = "/home/benjamin";

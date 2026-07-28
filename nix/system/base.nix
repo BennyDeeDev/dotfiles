@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   boot.loader.systemd-boot.enable = true;
@@ -41,6 +41,14 @@
 
   programs.zsh.enable = true;
 
+  sops.secrets."benjamin-password" = {
+    sopsFile = ../secrets/common.yaml;
+    neededForUsers = true;
+    owner = "root";
+    group = "root";
+    mode = "0400";
+  };
+
   users.users.benjamin = {
     isNormalUser = true;
     shell = pkgs.zsh;
@@ -50,7 +58,7 @@
       "docker"
       "libvirtd"
     ];
-    hashedPasswordFile = "/etc/nixos/password-hash";
+    hashedPasswordFile = config.sops.secrets."benjamin-password".path;
   };
 
   nixpkgs.config.allowUnfree = true;

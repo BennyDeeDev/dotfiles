@@ -1,22 +1,23 @@
-{
-  pkgs,
-  lib,
-  dotfiles,
-  ...
-}:
-
+{ config, pkgs, ... }:
 {
   home.packages = [ pkgs.rclone ];
 
-  # TODO: Should use SOPS at some point
-  home.activation.rcloneConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    if [[ ! -f $HOME/.config/rclone/rclone.conf ]]; then
-      password=$(grep -oP 'password=\K.*' /etc/nixos/smb-secrets)
-      obscured=$(${pkgs.rclone}/bin/rclone obscure "$password")
-      mkdir -p "$HOME/.config/rclone"
-      sed "s/^pass =$/pass = $obscured/" \
-        "${dotfiles}/rclone/rclone.conf" \
-        > "$HOME/.config/rclone/rclone.conf"
-    fi
-  '';
+  sops.secrets."smb-username" = {
+    sopsFile = ../../secrets/desktop.yaml;
+  };
+  sops.secrets."smb-password-rclone-obscured" = {
+    sopsFile = ../../secrets/desktop.yaml;
+  };
+
+  sops.templates."rclone.conf" = {
+    content = ''
+      [ludusavi-1759601223]
+      type = smb
+      host = 192.168.178.254
+      port = 445
+      user = ${config.sops.placeholder."smb-username"}
+      pass = ${config.sops.placeholder."smb-password-rclone-obscured"}
+    '';
+    path = "${config.xdg.configHome}/rclone/rclone.conf";
+  };
 }

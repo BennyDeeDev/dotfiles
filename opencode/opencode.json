@@ -24,9 +24,31 @@
     },
     "vision": {
       "model": "opencode-go/kimi-k2.6"
+    },
+    "compaction": {
+      "model": "{env:OPENCODE_MODEL_CHEAP}"
     }
   },
   "autoupdate": false,
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "reserved": 200000
+  },
+  "provider": {
+    "opencode-go": {
+      "models": {
+        "glm-5.2": {
+          "reasoning": true,
+          "variants": {
+            "default": {
+              "reasoningEffort": "high"
+            }
+          }
+        }
+      }
+    }
+  },
   "permission": {
     "read": "allow",
     "edit": "ask",

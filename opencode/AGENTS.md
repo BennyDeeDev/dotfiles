@@ -22,3 +22,5 @@
 
 - When working in a Nix flake project (presence of `flake.nix`), `git add` (stage) every file you create or modify before the user runs `home-manager switch` or `nixos-rebuild`.
 
+- When a change involves a meaningful tradeoff (security vs convenience, manual vs automated, decoupling vs reuse, locking-in vs agnostic), present the options and let the user decide. Do not pick for them. Do not fire writers that implement the choice until the user has confirmed.
+

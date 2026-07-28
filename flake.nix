@@ -27,6 +27,10 @@
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -44,6 +48,7 @@
       nix-flatpak,
       disko,
       lanzaboote,
+      sops-nix,
       nixos-hardware,
       ...
     }:
@@ -52,6 +57,7 @@
       homeManagerModule = {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
+        home-manager.sharedModules = [ sops-nix.homeManagerModules.sops ];
         home-manager.extraSpecialArgs = {
           inherit
             dms
@@ -83,6 +89,7 @@
             home-manager.nixosModules.home-manager
             homeManagerModule
             nix-flatpak.nixosModules.nix-flatpak
+            sops-nix.nixosModules.sops
           ];
         };
         pi5-server = nixpkgs-unstable.lib.nixosSystem {

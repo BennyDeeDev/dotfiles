@@ -12,7 +12,7 @@
   home.file.".config/ludusavi/config.yaml".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ludusavi/config.yaml";
 
-  home.activation.ludusaviBootstrap = lib.hm.dag.entryAfter [ "rcloneConfig" ] ''
+  home.activation.ludusaviBootstrap = lib.hm.dag.entryAfter [ "sops-nix.service" ] ''
     mkdir -p "$HOME/Backups/ludusavi"
     if [[ -z $(ls -A $HOME/Backups/ludusavi 2>/dev/null) ]]; then
       ${pkgs.rclone}/bin/rclone sync \
