@@ -64,6 +64,7 @@
     libsecret
     keymapp
     asdbctl
+    age
 
     # Editors
     vscode
