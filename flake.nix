@@ -27,6 +27,10 @@
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -40,6 +44,7 @@
       nix-flatpak,
       disko,
       lanzaboote,
+      nixos-hardware,
       ...
     }:
     let
@@ -82,11 +87,17 @@
         };
         pi5-server = nixpkgs-unstable.lib.nixosSystem {
           system = "aarch64-linux";
-          modules = [ ./nix/hosts/pi5-server ];
+          modules = [
+            nixos-hardware.nixosModules.raspberry-pi-5
+            ./nix/hosts/pi5-server
+          ];
         };
         pi5-kiosk = nixpkgs-unstable.lib.nixosSystem {
           system = "aarch64-linux";
-          modules = [ ./nix/hosts/pi5-kiosk ];
+          modules = [
+            nixos-hardware.nixosModules.raspberry-pi-5
+            ./nix/hosts/pi5-kiosk
+          ];
         };
       };
       images.pi5-bootstrap =
