@@ -7,4 +7,7 @@
   ];
 
   networking.hostName = "pi5";
+
+  # Passwordless wheel only on the bootstrap image
+  security.sudo.wheelNeedsPassword = false;
 }

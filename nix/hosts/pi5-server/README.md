@@ -30,19 +30,56 @@ authentication disabled, and provisions the SSH public key from
 from any host holding the matching private key:
 
 ```bash
-ssh benjamin@<pi-ip>
+ssh ssh benjamin@pi5.fritz.box
 ```
 
 `benjamin` is in `wheel`; sudo prompts for the user password (set via
 `/etc/nixos/password-hash` on the host).
 
-## Deploy a role configuration
+## Sops age key enrollment
 
-```bash
-nixos-rebuild switch \
-  --flake .#pi5-server \
-  --target-host benjamin@<pi-ip> \
-  --use-remote-sudo
+On first boot, `sops.age.generateKey = true` writes
+`/var/lib/sops-nix/key.txt` on the SD card, but decryption of
+`benjamin-password` fails because the Pi's age pubkey isn't listed in
+`.sops.yaml` yet. The bootstrap image sets
+`security.sudo.wheelNeedsPassword = false` so you can still run `sudo` to
+extract the pubkey even though the real password isn't usable yet
+(`hashedPasswordFile` can't decrypt, so the password login path is broken
+until enrollment completes).
+
+After SSH'ing in via your authorized key, print the Pi's age pubkey:
+
+```sh
+sudo nix shell nixpkgs#age -c age-keygen -y /var/lib/sops-nix/key.txt
 ```
 
-Swap `pi5-server` for `pi5-kiosk` to deploy the kiosk role.
+Back on your desktop, add the printed `age1...` string to `.sops.yaml` as
+a new anchor (e.g. `- &pi5 age1...`) and append `*pi5` to the `age:`
+recipients under `nix/secrets/common.yaml`'s `creation_rules`. Then
+re-encrypt the file to the expanded recipient set and commit:
+
+```sh
+sops updatekeys nix/secrets/common.yaml
+git add .sops.yaml nix/secrets/common.yaml
+git commit
+```
+
+## Deploy a role configuration
+
+First-time role switch (bootstrap still running):
+
+```bash
+nixos-rebuild switch --flake .#pi5-server \
+  --target-host benjamin@pi5.fritz.box \
+  --build-host benjamin@pi5.fritz.box \
+  --sudo
+```
+
+Subsequent rebuilds (role config now running):
+
+```bash
+nixos-rebuild switch --flake .#pi5-server \
+  --target-host benjamin@pi5.fritz.box \
+  --build-host benjamin@pi5.fritz.box \
+  --sudo --ask-sudo-password
+```

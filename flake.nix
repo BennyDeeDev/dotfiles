@@ -6,19 +6,6 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell/stable";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    dgop = {
-      url = "github:AvengeMedia/dgop";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    dms-plugin-registry = {
-      url = "github:AvengeMedia/dms-plugin-registry";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     disko = {
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,6 +22,19 @@
       url = "github:NixOS/nixos-hardware/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dgop = {
+      url = "github:AvengeMedia/dgop";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dms-plugin-registry = {
+      url = "github:AvengeMedia/dms-plugin-registry";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -42,14 +42,14 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
-      dms,
-      dgop,
-      dms-plugin-registry,
-      nix-flatpak,
       disko,
       lanzaboote,
       sops-nix,
       nixos-hardware,
+      nix-flatpak,
+      dms,
+      dgop,
+      dms-plugin-registry,
       ...
     }:
     let
@@ -74,28 +74,29 @@
         vm = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./nix/hosts/vm
+            nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
             homeManagerModule
-            nix-flatpak.nixosModules.nix-flatpak
+            ./nix/hosts/vm
           ];
         };
         desktop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            lanzaboote.nixosModules.lanzaboote
-            ./nix/hosts/desktop
             disko.nixosModules.disko
+            lanzaboote.nixosModules.lanzaboote
+            sops-nix.nixosModules.sops
+            nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
             homeManagerModule
-            nix-flatpak.nixosModules.nix-flatpak
-            sops-nix.nixosModules.sops
+            ./nix/hosts/desktop
           ];
         };
         pi5-server = nixpkgs-unstable.lib.nixosSystem {
           system = "aarch64-linux";
           modules = [
             nixos-hardware.nixosModules.raspberry-pi-5
+            sops-nix.nixosModules.sops
             ./nix/hosts/pi5-server
           ];
         };
@@ -103,6 +104,7 @@
           system = "aarch64-linux";
           modules = [
             nixos-hardware.nixosModules.raspberry-pi-5
+            sops-nix.nixosModules.sops
             ./nix/hosts/pi5-kiosk
           ];
         };
@@ -110,7 +112,10 @@
       images.pi5-bootstrap =
         (nixpkgs-unstable.lib.nixosSystem {
           system = "aarch64-linux";
-          modules = [ ./nix/images/pi5-bootstrap.nix ];
+          modules = [
+            sops-nix.nixosModules.sops
+            ./nix/images/pi5-bootstrap.nix
+          ];
         }).config.system.build.sdImage;
     };
 }
