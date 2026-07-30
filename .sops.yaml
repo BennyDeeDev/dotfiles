@@ -2,7 +2,7 @@ keys:
   - &dev age1yubikey1qg4gcageg0xhm0dt920qkth72mql7f2fmjv80xrguyhgzdpg8sw3zv7vaqm
   - &desktop age1fhpkmpywlernhej78dvywqwu2ngtte9u7yx0lk9lxj3krqwerpuqy3mvw4
   - &desktop_hm age14gqtkkews0ttelvsuy0dky33q67jrv3vtyluun4te2zmymzp3uxs9qu4yt
-  - &pi5-server age1u79rsknzs760dg3dnsf3u03snh8x8mx8d0fkk3hr3rh6fe7gqplse5yley
+  - &pi5-server age13sgj756jngug94tf3gcnjg79dsqcqm08x3tgrzphp2wj8gcd2ppqq3vucp
 creation_rules:
   - path_regex: nix/secrets/common\.ya?ml$
     key_groups:
