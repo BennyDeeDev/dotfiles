@@ -1,9 +1,16 @@
 { ... }:
 
 {
-  imports = [ ../../modules/pi5.nix ];
+  imports = [
+    ../../modules/pi5.nix
+    ./home-assistant.nix
+  ];
 
   networking.hostName = "pi5-server";
 
-  # TODO: home-assistant, pihole, etc.
+  # Firewall disabled temporarily
+  networking.firewall.enable = false;
+
+  virtualisation.podman.enable = true;
+  virtualisation.oci-containers.backend = "podman";
 }
