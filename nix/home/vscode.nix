@@ -13,14 +13,24 @@
     enable = true;
     mutableExtensionsDir = false;
     package = pkgs.vscode;
-    profiles.default.extensions = with pkgs.vscode-extensions; [
-      github.copilot-chat
-      catppuccin.catppuccin-vsc
-      catppuccin.catppuccin-vsc-icons
-      vadimcn.vscode-lldb
-      jnoortheen.nix-ide
-      ziglang.vscode-zig
-    ];
+    profiles.default.extensions =
+      with pkgs.vscode-extensions;
+      [
+        github.copilot-chat
+        catppuccin.catppuccin-vsc
+        catppuccin.catppuccin-vsc-icons
+        jnoortheen.nix-ide
+      ]
+      ++ [
+        (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+          mktplcRef = {
+            publisher = "ltmoerdani";
+            name = "opencode-copilot-chat";
+            version = "0.4.3";
+            sha256 = "sha256-bEwbLnComG8e8UPsuGktcCFv/Xu14dMQ7ae5iERHv30=";
+          };
+        })
+      ];
   };
 
   xdg.configFile = {
