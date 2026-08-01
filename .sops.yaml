@@ -17,3 +17,8 @@ creation_rules:
           - *dev
           - *desktop
           - *desktop_hm
+  - path_regex: nix/secrets/pi5-server\.ya?ml$
+    key_groups:
+      - age:
+          - *dev
+          - *pi5-server

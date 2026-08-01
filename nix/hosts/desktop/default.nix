@@ -1,16 +1,5 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, ... }:
 
-let
-  nasMount = share: {
-    fsType = "cifs";
-    device = "//192.168.178.254/${share}";
-    options = [
-      "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s"
-      "credentials=${config.sops.templates."smb-creds".path}"
-      "uid=1000,gid=100"
-    ];
-  };
-in
 {
   imports = [
     ../../system/base.nix
@@ -18,38 +7,20 @@ in
     ./disko.nix
     ./hardware-configuration.nix
     ../../modules/sops.nix
+    ../../modules/nas.nix
   ];
 
   networking.hostName = "nixos";
 
   environment.systemPackages = with pkgs; [
     sbctl
-    cifs-utils
   ];
 
-  sops.secrets."smb-username" = {
+  host.nas = {
     sopsFile = ../../secrets/desktop.yaml;
-    owner = "root";
-    mode = "0400";
-  };
-  sops.secrets."smb-password" = {
-    sopsFile = ../../secrets/desktop.yaml;
-    owner = "root";
-    mode = "0400";
-  };
-  sops.secrets."smb-domain" = {
-    sopsFile = ../../secrets/desktop.yaml;
-    owner = "root";
-    mode = "0400";
-  };
-  sops.templates."smb-creds" = {
-    content = ''
-      username=${config.sops.placeholder."smb-username"}
-      password=${config.sops.placeholder."smb-password"}
-      domain=${config.sops.placeholder."smb-domain"}
-    '';
-    owner = "root";
-    mode = "0600";
+    uid = 1000;
+    gid = 100;
+    shares = [ "Homelab" "Benjamin" "Ludusavi" ];
   };
 
   # Lanzaboote replaces systemd-boot and signs boot artifacts.
@@ -71,7 +42,6 @@ in
 
   boot.supportedFilesystems = [
     "btrfs"
-    "cifs"
   ];
 
   hardware.bluetooth.enable = true;
@@ -138,8 +108,4 @@ in
       email = "45900418+BennyDeeDev@users.noreply.github.com";
     };
   };
-
-  fileSystems."/mnt/nas/homelab" = nasMount "Homelab";
-  fileSystems."/mnt/nas/benjamin" = nasMount "Benjamin";
-  fileSystems."/mnt/nas/ludusavi" = nasMount "Ludusavi";
 }

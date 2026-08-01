@@ -3,6 +3,7 @@
 {
   imports = [
     ../../modules/pi5.nix
+    ../../modules/nas.nix
     ./home-assistant.nix
   ];
 
@@ -13,4 +14,9 @@
 
   virtualisation.podman.enable = true;
   virtualisation.oci-containers.backend = "podman";
+
+  host.nas = {
+    sopsFile = ../../secrets/pi5-server.yaml;
+    shares = [ "Homelab" ];
+  };
 }

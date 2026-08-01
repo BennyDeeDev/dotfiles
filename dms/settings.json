@@ -209,7 +209,7 @@
   "workspaceNameIcons": {},
   "waveProgressEnabled": true,
   "scrollTitleEnabled": true,
-  "mediaAdaptiveWidthEnabled": true,
+  "mediaAdaptiveWidthEnabled": false,
   "audioVisualizerEnabled": true,
   "audioScrollMode": "volume",
   "audioWheelScrollAmount": 5,
