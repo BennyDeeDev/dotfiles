@@ -26,8 +26,8 @@
           mktplcRef = {
             publisher = "ltmoerdani";
             name = "opencode-copilot-chat";
-            version = "0.4.3";
-            sha256 = "sha256-bEwbLnComG8e8UPsuGktcCFv/Xu14dMQ7ae5iERHv30=";
+            version = "0.2.8";
+            sha256 = "sha256-Z9qmenRfJsSEPpyKQ8YAcLD46kdQjBFfhw2K1d1ny2M=";
           };
         })
       ];
