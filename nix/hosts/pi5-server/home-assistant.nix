@@ -60,4 +60,25 @@
   };
 
   networking.firewall.allowedTCPPorts = [ 8123 ];
+
+  host.containerBackups = {
+    ha = {
+      repository = "/mnt/nas/restic/ha-restic";
+      paths = [ "/var/lib/homeassistant" ];
+      services = [ "podman-homeassistant.service" ];
+      mountPoint = "/mnt/nas/restic";
+    };
+    otbr = {
+      repository = "/mnt/nas/restic/otbr-restic";
+      paths = [ "/var/lib/otbr" ];
+      services = [ "podman-otbr.service" ];
+      mountPoint = "/mnt/nas/restic";
+    };
+    matter = {
+      repository = "/mnt/nas/restic/matter-restic";
+      paths = [ "/var/lib/matter-server" ];
+      services = [ "podman-matter-server.service" ];
+      mountPoint = "/mnt/nas/restic";
+    };
+  };
 }

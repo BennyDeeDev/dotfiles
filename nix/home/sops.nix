@@ -7,6 +7,7 @@
     yubikey-manager
   ];
 
+  sops.defaultSopsFile = ../secrets/desktop.yaml;
   sops.age.keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
   sops.age.generateKey = true;
 

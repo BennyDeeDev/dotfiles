@@ -121,6 +121,7 @@
 
   xdg.configFile."godot".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/godot";
 
+  xdg.configFile."gtk-3.0/bookmarks".force = true;
   xdg.configFile."gtk-3.0/bookmarks".text = ''
     file://${config.home.homeDirectory}/Documents
     file://${config.home.homeDirectory}/Downloads
@@ -130,6 +131,7 @@
     file:///mnt/nas/benjamin NAS - Benjamin
     file:///mnt/nas/homelab NAS - Homelab
     file:///mnt/nas/ludusavi NAS - Ludusavi
+    file:///mnt/nas/restic NAS - Restic
   '';
 
   xdg.desktopEntries.windows = {

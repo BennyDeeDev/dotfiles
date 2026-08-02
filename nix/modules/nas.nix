@@ -1,10 +1,3 @@
-# NAS module
-#
-# Expects the host's `sopsFile` to contain these keys:
-#   smb-username, smb-password
-# The module renders them into a CIFS credentials template at
-# `sops.templates."smb-creds"` and points every mount's
-# `credentials=` option at it.
 {
   config,
   pkgs,
@@ -24,9 +17,6 @@ in
       type = lib.types.listOf lib.types.str;
       default = [ ];
     };
-    sopsFile = lib.mkOption {
-      type = lib.types.path;
-    };
     uid = lib.mkOption {
       type = lib.types.nullOr lib.types.int;
       default = null;
@@ -45,24 +35,14 @@ in
     boot.supportedFilesystems = [ "cifs" ];
     environment.systemPackages = [ pkgs.cifs-utils ];
 
-    sops.secrets."smb-username" = {
-      sopsFile = cfg.sopsFile;
-      owner = "root";
-      mode = "0400";
-    };
-    sops.secrets."smb-password" = {
-      sopsFile = cfg.sopsFile;
-      owner = "root";
-      mode = "0400";
-    };
+    sops.secrets."smb-username" = { };
+    sops.secrets."smb-password" = { };
     sops.templates."smb-creds" = {
       content = ''
         username=${config.sops.placeholder."smb-username"}
         password=${config.sops.placeholder."smb-password"}
         domain=${cfg.domain}
       '';
-      owner = "root";
-      mode = "0600";
     };
 
     fileSystems = builtins.listToAttrs (

@@ -44,9 +44,6 @@
   sops.secrets."benjamin-password" = {
     sopsFile = ../secrets/common.yaml;
     neededForUsers = true;
-    owner = "root";
-    group = "root";
-    mode = "0400";
   };
 
   users.users.benjamin = {

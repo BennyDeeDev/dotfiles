@@ -4,6 +4,7 @@
   imports = [
     ../../modules/pi5.nix
     ../../modules/nas.nix
+    ../../modules/container-backup.nix
     ./home-assistant.nix
   ];
 
@@ -16,7 +17,11 @@
   virtualisation.oci-containers.backend = "podman";
 
   host.nas = {
-    sopsFile = ../../secrets/pi5-server.yaml;
-    shares = [ "Homelab" ];
+    shares = [
+      "Homelab"
+      "Restic"
+    ];
   };
+
+  sops.defaultSopsFile = ../../secrets/pi5-server.yaml;
 }

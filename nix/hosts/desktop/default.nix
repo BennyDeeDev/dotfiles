@@ -16,11 +16,17 @@
     sbctl
   ];
 
+  sops.defaultSopsFile = ../../secrets/desktop.yaml;
+
   host.nas = {
-    sopsFile = ../../secrets/desktop.yaml;
     uid = 1000;
     gid = 100;
-    shares = [ "Homelab" "Benjamin" "Ludusavi" ];
+    shares = [
+      "Homelab"
+      "Benjamin"
+      "Ludusavi"
+      "Restic"
+    ];
   };
 
   # Lanzaboote replaces systemd-boot and signs boot artifacts.

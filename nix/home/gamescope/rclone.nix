@@ -2,12 +2,8 @@
 {
   home.packages = [ pkgs.rclone ];
 
-  sops.secrets."smb-username" = {
-    sopsFile = ../../secrets/desktop.yaml;
-  };
-  sops.secrets."smb-password-rclone-obscured" = {
-    sopsFile = ../../secrets/desktop.yaml;
-  };
+  sops.secrets."smb-username" = {};
+  sops.secrets."smb-password-rclone-obscured" = {};
 
   sops.templates."rclone.conf" = {
     content = ''
