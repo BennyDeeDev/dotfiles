@@ -7,8 +7,6 @@
 }:
 
 {
-  home.packages = [ pkgs.nixfmt ];
-
   programs.vscode = {
     enable = true;
     mutableExtensionsDir = false;

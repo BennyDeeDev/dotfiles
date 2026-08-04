@@ -3,20 +3,31 @@
   config,
   lib,
   dotfiles,
+  nix-flatpak,
   ...
 }:
 
 {
   imports = [
+    ./common.nix
+    nix-flatpak.homeManagerModules.nix-flatpak
+    ./devops.nix
     ./ghostty.nix
     ./vscode.nix
     ./nvim.nix
   ];
 
-  home.packages = with pkgs; [
-    # Ai
-    claude-code
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      sansSerif = [ "Noto Sans" ];
+      serif = [ "Noto Serif" ];
+      monospace = [ "Hack Nerd Font" ];
+      emoji = [ "Noto Color Emoji" ];
+    };
+  };
 
+  home.packages = with pkgs; [
     # Media & audio
     playerctl
     pamixer
@@ -115,9 +126,6 @@
       VMS = "${config.home.homeDirectory}/VMs";
     };
   };
-
-  home.file.".claude/settings.json".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/claude/settings.json";
 
   xdg.configFile."godot".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/godot";
 

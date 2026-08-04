@@ -23,6 +23,10 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,6 +46,7 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
+      darwin,
       disko,
       lanzaboote,
       sops-nix,
@@ -117,5 +122,12 @@
             ./nix/images/pi5-bootstrap.nix
           ];
         }).config.system.build.sdImage;
+
+      darwinConfigurations.mbp-personal = darwin.lib.darwinSystem {
+        modules = [
+          home-manager.darwinModules.home-manager
+          ./nix/hosts/mbp-personal/default.nix
+        ];
+      };
     };
 }

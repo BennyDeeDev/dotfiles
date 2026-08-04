@@ -99,9 +99,8 @@
 
   virtualisation.libvirtd.enable = true;
 
-  home-manager.users.benjamin = {
+  home-manager.users.benjamin = { dotfiles, ... }: {
     imports = [
-      ../../home
       ../../home/linux.nix
       ../../home/wayland
       ../../home/gamescope
@@ -109,6 +108,8 @@
     ];
     home.username = "benjamin";
     home.homeDirectory = "/home/benjamin";
+    home.stateVersion = "25.11";
+    programs.zsh.shellAliases.nrs = "sudo nixos-rebuild switch --flake ${dotfiles}#desktop";
     programs.git.settings.user = {
       name = "BennyDeeDev";
       email = "45900418+BennyDeeDev@users.noreply.github.com";
