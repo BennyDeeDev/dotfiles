@@ -1,9 +1,12 @@
 { pkgs, ... }:
 
 {
+  imports = [ ../../system/darwin.nix ];
+
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   nix.settings.experimental-features = "nix-command flakes";
+  system.primaryUser = "benjaminderksen";
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
