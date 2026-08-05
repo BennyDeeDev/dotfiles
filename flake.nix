@@ -126,6 +126,7 @@
       darwinConfigurations.mbp-personal = darwin.lib.darwinSystem {
         modules = [
           home-manager.darwinModules.home-manager
+          homeManagerModule
           ./nix/hosts/mbp-personal/default.nix
         ];
       };

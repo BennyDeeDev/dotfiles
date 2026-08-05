@@ -14,6 +14,9 @@ This repo uses [sops-nix](https://github.com/Mic92/sops-nix) with [age](https://
 
 ## One-time YubiKey setup
 
+On a new or factory-reset YubiKey, the public factory defaults are PIN `123456`
+and PUK `12345678`.
+
 ```
 ykman piv access change-pin
 ykman piv access change-puk
