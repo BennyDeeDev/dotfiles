@@ -23,6 +23,15 @@ sudo mv /etc/zprofile /etc/zprofile.before-nix-darwin
 sudo mv /etc/zshrc /etc/zshrc.before-nix-darwin
 ```
 
+## Grant Terminal Full Disk Access
+
+The macOS `universalaccess` defaults, including Reduce Motion, require the
+application running `darwin-rebuild` to have **Full Disk Access**.
+
+Enable it in **System Settings → Privacy & Security → Full Disk Access** for
+the terminal application you use, such as Terminal, Ghostty, or Visual Studio
+Code. Quit and reopen that application afterward, then run the rebuild again.
+
 ## 3. Subsequent rebuilds
 
 ```sh
