@@ -1,7 +1,11 @@
 { pkgs, ... }:
 
+let
+  workstation = import ../../profiles/workstation.nix;
+in
+
 {
-  imports = [ ../../profiles/darwin/workstation ];
+  imports = [ workstation.darwin ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 
@@ -36,8 +40,8 @@
 
   home-manager.users.benjaminderksen = {
     imports = [
-      ../../profiles/home/common/workstation
-      ../../profiles/home/darwin/workstation
+      workstation.homeManager.common
+      workstation.homeManager.darwin
     ];
     home.stateVersion = "26.05";
     # sops.defaultSopsFile = ../../secrets/desktop.yaml;

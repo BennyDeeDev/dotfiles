@@ -1,15 +1,23 @@
 { ... }:
 
+let
+  workstation = import ../../profiles/workstation.nix;
+  gaming = import ../../profiles/gaming.nix;
+in
+
 {
   imports = [
-    ../../profiles/nixos/workstation
-    ../../profiles/nixos/gaming
+    workstation.nixos
+    gaming.nixos
     ./disko.nix
     ./hardware-configuration.nix
-    ../../modules/nixos/nas.nix
   ];
 
   networking.hostName = "nixos-desktop";
+  networking.firewall = {
+    allowedTCPPorts = [ 53317 ];
+    allowedUDPPorts = [ 53317 ];
+  };
 
   system.stateVersion = "25.11";
 
@@ -49,13 +57,12 @@
 
   home-manager.users.benjamin = { dotfiles, ... }: {
     imports = [
-      ../../profiles/home/common/workstation
-      ../../profiles/home/linux/workstation
-      ../../profiles/home/linux/gaming
+      workstation.homeManager.common
+      workstation.homeManager.linux
+      gaming.homeManager.linux
     ];
     sops.defaultSopsFile = ../../secrets/desktop.yaml;
-    dotfiles.sops.yubikeyIdentity =
-      "AGE-PLUGIN-YUBIKEY-17Z2J5Q5Z709P64S7VFQZT";
+    dotfiles.sops.yubikeyIdentity = "AGE-PLUGIN-YUBIKEY-17Z2J5Q5Z709P64S7VFQZT";
     home.username = "benjamin";
     home.homeDirectory = "/home/benjamin";
     home.stateVersion = "25.11";
