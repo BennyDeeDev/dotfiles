@@ -1,5 +1,5 @@
 .DS_Store
-files/ghostty/config-local
+ghostty/config-local
 result
 opencode/tasks/
 pi5-bootstrap.img

@@ -58,6 +58,7 @@
       ...
     }:
     let
+      dotfiles = "/home/benjamin/Repos/dotfiles";
       homeManagerModule = {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
@@ -68,22 +69,32 @@
             dgop
             dms-plugin-registry
             nix-flatpak
+            dotfiles
             ;
         };
       };
     in
     {
       nixosConfigurations = {
+        vm = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            nix-flatpak.nixosModules.nix-flatpak
+            home-manager.nixosModules.home-manager
+            homeManagerModule
+            ./nix/hosts/vm
+          ];
+        };
         desktop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit nix-flatpak; };
           modules = [
             disko.nixosModules.disko
             lanzaboote.nixosModules.lanzaboote
             sops-nix.nixosModules.sops
+            nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
             homeManagerModule
-            ./hosts/desktop/configuration.nix
+            ./nix/hosts/desktop
           ];
         };
         pi5-server = nixpkgs-unstable.lib.nixosSystem {
@@ -91,7 +102,7 @@
           modules = [
             nixos-hardware.nixosModules.raspberry-pi-5
             sops-nix.nixosModules.sops
-            ./hosts/pi5-server/configuration.nix
+            ./nix/hosts/pi5-server
           ];
         };
         pi5-kiosk = nixpkgs-unstable.lib.nixosSystem {
@@ -99,7 +110,7 @@
           modules = [
             nixos-hardware.nixosModules.raspberry-pi-5
             sops-nix.nixosModules.sops
-            ./hosts/pi5-kiosk/configuration.nix
+            ./nix/hosts/pi5-kiosk
           ];
         };
       };
@@ -108,7 +119,7 @@
           system = "aarch64-linux";
           modules = [
             sops-nix.nixosModules.sops
-            ./images/pi5-bootstrap.nix
+            ./nix/images/pi5-bootstrap.nix
           ];
         }).config.system.build.sdImage;
 
@@ -116,7 +127,7 @@
         modules = [
           home-manager.darwinModules.home-manager
           homeManagerModule
-          ./hosts/mbp-personal/configuration.nix
+          ./nix/hosts/mbp-personal/default.nix
         ];
       };
     };
