@@ -8,8 +8,8 @@ files are deployed through Home Manager.
 
 ```text
 hosts/       Host-specific system and Home Manager entrypoints
-modules/     Reusable capability modules, with platform-only subfolders
-profiles/    Flat role bundles such as workstation, gaming, and server
+modules/     Reusable Home Manager, NixOS, and nix-darwin modules
+profiles/    Complete feature bundles such as graphical, Wayland, and gaming
 files/       Application configuration deployed by Home Manager
 images/      Nix-built installation images
 secrets/     SOPS-encrypted secrets and documentation

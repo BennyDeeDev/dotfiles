@@ -51,6 +51,7 @@ in
         lib.nameValuePair "/mnt/nas/${lib.toLower share}" {
           fsType = "cifs";
           device = "//${cfg.server}/${share}";
+          # noauto + x-systemd.automount: don't mount at boot, lazily attach on first access
           options = [
             "noauto,x-systemd.automount"
             "credentials=${config.sops.templates."smb-creds".path}"

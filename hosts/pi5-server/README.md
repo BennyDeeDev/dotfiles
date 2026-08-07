@@ -26,7 +26,7 @@ Replace `/dev/sdX` with the SD card device — verify with `lsblk` first.
 
 The bootstrap image sets `hostName = "pi5"`, runs sshd with password
 authentication disabled, and provisions the SSH public key from
-  `hosts/pi5-server/configuration.nix` into the `benjamin` user's `authorized_keys`. SSH in
+  `profiles/nixos/pi5/user.nix` into the `benjamin` user's `authorized_keys`. SSH in
 from any host holding the matching private key:
 
 ```bash

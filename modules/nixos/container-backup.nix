@@ -29,7 +29,9 @@ in
 
             services = lib.mkOption {
               type = lib.types.listOf lib.types.str;
-              description = "systemd unit names to stop before backup and start after.";
+              description = ''
+                systemd unit names to stop before backup and start after.
+              '';
             };
 
             timerConfig = lib.mkOption {
@@ -101,9 +103,17 @@ in
               ];
               ExecStart = pkgs.writeShellScript "restore-${name}" ''
                 set -euo pipefail
+
+                # Initialize repo if needed (no-op if already exists).
                 restic init 2>/dev/null || true
+
+                # Case 1: repo unreachable → fail hard, systemd retries in 2 min.
                 count=$(restic snapshots --json | jq 'length')
+
+                # Case 2: 0 snapshots → nothing to restore.
                 [[ "$count" -eq 0 ]] && { echo "no snapshots to restore"; exit 0; }
+
+                # Case 3: snapshots exist → restore latest.
                 restic restore latest --target /
               '';
               ExecStartPost = "${pkgs.coreutils}/bin/touch ${sentinel}";
