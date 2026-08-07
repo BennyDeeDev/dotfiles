@@ -32,10 +32,8 @@ alias ....='cd ../../..'
 
 # Tools
 alias o='OPENCODE_ENABLE_EXA=1 opencode'
-alias d='docker'
+alias d='podman'
 alias n='nvim'
-alias t='tmux attach || tmux new -s main'
-
 alias lg='lazygit'
 alias k='kubectl'
 
@@ -43,7 +41,3 @@ alias k='kubectl'
 alias g='git'
 alias gcm='git commit -m'
 alias gcam='git commit -a -m'
-alias gcad='git commit -a --amend'
-
-
-

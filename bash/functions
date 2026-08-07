@@ -1,5 +1,5 @@
 __cd_and_exec() {
-  local dirs=(~/Repos ~/.config ~/Docs)
+  local dirs=(~/Repos)
 
   local selected
   selected=$(find "${dirs[@]}" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf)

@@ -73,6 +73,19 @@
             ;
         };
       };
+      darwinHomeManagerModule = {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.sharedModules = [ sops-nix.homeManagerModules.sops ];
+        home-manager.extraSpecialArgs = {
+          inherit
+            dms
+            dgop
+            dms-plugin-registry
+            nix-flatpak
+            ;
+        };
+      };
     in
     {
       nixosConfigurations = {
@@ -126,7 +139,7 @@
       darwinConfigurations.mbp-personal = darwin.lib.darwinSystem {
         modules = [
           home-manager.darwinModules.home-manager
-          homeManagerModule
+          darwinHomeManagerModule
           ./nix/hosts/mbp-personal/default.nix
         ];
       };

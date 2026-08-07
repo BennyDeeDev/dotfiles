@@ -4,9 +4,7 @@
   home.packages = [ pkgs.opencode ];
 
   home.sessionVariables = {
-    OPENCODE_MODEL_CHEAP = "opencode-go/deepseek-v4-flash";
-    OPENCODE_MODEL_MID = "opencode-go/minimax-m3";
-    OPENCODE_MODEL_STRONG = "opencode-go/glm-5.2";
+    OPENCODE_MODEL = "opencode-go/gpt-5.6-luna";
   };
 
   xdg.configFile."opencode/opencode.json".source = ../../opencode/opencode.json;

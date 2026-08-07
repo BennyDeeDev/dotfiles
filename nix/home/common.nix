@@ -2,17 +2,28 @@
 
 {
   imports = [
+    ./devops.nix
+    ./direnv.nix
     ./git.nix
+    ./ghostty.nix
+    ./nvim.nix
     ./zsh.nix
     ./starship.nix
     ./opencode.nix
+    ./vscode.nix
   ];
 
   home.packages = with pkgs; [
     # Languages & development
     lazygit
-    lazydocker
+    podman
     gh
+
+    # Applications
+    brave
+    keepassxc
+    spotify
+    vscode
     
     # CLI tools
     eza

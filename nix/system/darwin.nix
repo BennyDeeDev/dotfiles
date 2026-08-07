@@ -1,6 +1,8 @@
 { config, lib, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
+
   system.defaults = {
     NSGlobalDomain = {
       AppleIconAppearanceTheme = "RegularAutomatic";
@@ -190,32 +192,10 @@
         trusted = true;
       }
     ];
-    brews = [
-      "mas"
-    ];
-    masApps = {
-      Xcode = 497799835;
-      "Final Cut Pro" = 424389933;
-    };
     casks = [
       "boring-notch"
-      "opencode-desktop"
-      "caffeine"
-      "brave-browser"
-      "appcleaner"
-      "docker-desktop"
       "ghostty"
-      "keepassxc"
-      "spotify"
-      "the-unarchiver"
-      "visual-studio-code"
       "stats"
-      "obs"
-      "raspberry-pi-imager"
-      "google-drive"
-      "vlc"
-      "ledger-wallet"
-      "teamviewer"
     ];
     onActivation.cleanup = "uninstall";
   };
