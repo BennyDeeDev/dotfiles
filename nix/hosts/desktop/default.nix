@@ -99,16 +99,20 @@
 
   virtualisation.libvirtd.enable = true;
 
-  home-manager.users.benjamin = {
+  home-manager.users.benjamin = { dotfiles, ... }: {
     imports = [
-      ../../home
       ../../home/linux.nix
       ../../home/wayland
       ../../home/gamescope
       ../../home/sops.nix
     ];
+    sops.defaultSopsFile = ../../secrets/desktop.yaml;
+    dotfiles.sops.yubikeyIdentity =
+      "AGE-PLUGIN-YUBIKEY-17Z2J5Q5Z709P64S7VFQZT";
     home.username = "benjamin";
     home.homeDirectory = "/home/benjamin";
+    home.stateVersion = "25.11";
+    programs.zsh.shellAliases.nrs = "sudo nixos-rebuild switch --flake ${dotfiles}#desktop";
     programs.git.settings.user = {
       name = "BennyDeeDev";
       email = "45900418+BennyDeeDev@users.noreply.github.com";

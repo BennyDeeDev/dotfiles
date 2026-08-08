@@ -1,18 +1,31 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
+let
+  cfg = config.dotfiles.sops;
+  identityFile = "${config.xdg.configHome}/sops/age/identity.txt";
+in
 {
-  home.packages = with pkgs; [
-    age
-    age-plugin-yubikey
-    sops
-    yubikey-manager
-  ];
+  options.dotfiles.sops.yubikeyIdentity = lib.mkOption {
+    type = lib.types.str;
+    description = "age-plugin-yubikey identity pointer.";
+  };
 
-  sops.defaultSopsFile = ../secrets/desktop.yaml;
-  sops.age.keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
-  sops.age.generateKey = true;
+  config = {
+    home.packages = with pkgs; [
+      age
+      age-plugin-yubikey
+      sops
+      yubikey-manager
+    ];
 
-  home.file."${config.xdg.configHome}/sops/age/identity.txt".text =
-    "AGE-PLUGIN-YUBIKEY-17Z2J5Q5Z709P64S7VFQZT";
+    sops.age.keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
+    sops.age.generateKey = true;
 
-  home.sessionVariables.SOPS_AGE_KEY_FILE = "${config.xdg.configHome}/sops/age/identity.txt";
+    home.file."${config.xdg.configHome}/sops/age/identity.txt" = {
+      text = cfg.yubikeyIdentity;
+    };
+
+    home.sessionVariables = {
+      SOPS_AGE_KEY_FILE = identityFile;
+    };
+  };
 }

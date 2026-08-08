@@ -1,32 +1,20 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "{env:OPENCODE_MODEL_STRONG}",
-  "small_model": "{env:OPENCODE_MODEL_CHEAP}",
-  "default_agent": "orchestrator",
+  "model": "{env:OPENCODE_MODEL}",
+  "small_model": "{env:OPENCODE_MODEL}",
+  "default_agent": "plan",
   "agent": {
-    "orchestrator": {
-      "model": "{env:OPENCODE_MODEL_STRONG}"
-    },
     "generalist": {
-      "model": "{env:OPENCODE_MODEL_STRONG}"
-    },
-    "writer": {
-      "model": "{env:OPENCODE_MODEL_MID}"
-    },
-    "reader": {
-      "model": "{env:OPENCODE_MODEL_CHEAP}"
+      "model": "{env:OPENCODE_MODEL}"
     },
     "tutor": {
-      "model": "{env:OPENCODE_MODEL_MID}"
+      "model": "{env:OPENCODE_MODEL}"
     },
     "reviewer": {
-      "model": "{env:OPENCODE_MODEL_STRONG}"
-    },
-    "vision": {
-      "model": "opencode-go/kimi-k2.6"
+      "model": "{env:OPENCODE_MODEL}"
     },
     "compaction": {
-      "model": "{env:OPENCODE_MODEL_CHEAP}"
+      "model": "{env:OPENCODE_MODEL}"
     }
   },
   "autoupdate": false,
@@ -34,20 +22,6 @@
     "auto": true,
     "prune": true,
     "reserved": 200000
-  },
-  "provider": {
-    "opencode-go": {
-      "models": {
-        "glm-5.2": {
-          "reasoning": true,
-          "variants": {
-            "default": {
-              "reasoningEffort": "high"
-            }
-          }
-        }
-      }
-    }
   },
   "permission": {
     "read": "allow",
@@ -136,39 +110,34 @@
       "kubectl wait *": "allow",
       "kubectl exec *": "deny",
       "kubectl run *": "deny",
-      "docker *": "ask",
-      "docker ps *": "allow",
-      "docker images *": "allow",
-      "docker logs *": "allow",
-      "docker inspect *": "allow",
-      "docker stats *": "allow",
-      "docker version *": "allow",
-      "docker info *": "allow",
-      "docker history *": "allow",
-      "docker diff *": "allow",
-      "docker top *": "allow",
-      "docker events *": "allow",
-      "docker port *": "allow",
-      "docker wait *": "allow",
-      "docker network ls *": "allow",
-      "docker network inspect *": "allow",
-      "docker volume ls *": "allow",
-      "docker volume inspect *": "allow",
-      "docker context ls *": "allow",
-      "docker context inspect *": "allow",
-      "docker context show *": "allow",
-      "docker system df *": "allow",
-      "docker buildx ls *": "allow",
-      "docker buildx inspect *": "allow",
-      "docker compose ps *": "allow",
-      "docker compose config *": "allow",
-      "docker compose images *": "allow",
-      "docker compose logs *": "allow",
-      "docker compose top *": "allow",
-      "docker compose port *": "allow",
-      "docker compose stats *": "allow",
-      "docker compose version *": "allow",
-      "docker compose ls *": "allow",
+      "podman *": "ask",
+      "podman ps *": "allow",
+      "podman images *": "allow",
+      "podman logs *": "allow",
+      "podman inspect *": "allow",
+      "podman stats *": "allow",
+      "podman version *": "allow",
+      "podman info *": "allow",
+      "podman history *": "allow",
+      "podman diff *": "allow",
+      "podman top *": "allow",
+      "podman events *": "allow",
+      "podman port *": "allow",
+      "podman wait *": "allow",
+      "podman network ls *": "allow",
+      "podman network inspect *": "allow",
+      "podman volume ls *": "allow",
+      "podman volume inspect *": "allow",
+      "podman system df *": "allow",
+      "podman compose ps *": "allow",
+      "podman compose config *": "allow",
+      "podman compose images *": "allow",
+      "podman compose logs *": "allow",
+      "podman compose top *": "allow",
+      "podman compose port *": "allow",
+      "podman compose stats *": "allow",
+      "podman compose version *": "allow",
+      "podman compose ls *": "allow",
       "flux *": "ask",
       "flux check *": "allow",
       "flux debug *": "allow",

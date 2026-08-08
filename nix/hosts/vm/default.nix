@@ -16,13 +16,13 @@
 
   home-manager.users.benjamin = {
     imports = [
-      ../../home
       ../../home/linux.nix
       ../../home/wayland
       ../../home/gamescope
     ];
     home.username = "benjamin";
     home.homeDirectory = "/home/benjamin";
+    home.stateVersion = "25.11";
     programs.git.settings.user = {
       name = "BennyDeeDev";
       email = "45900418+BennyDeeDev@users.noreply.github.com";

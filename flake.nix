@@ -23,6 +23,10 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,6 +46,7 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
+      darwin,
       disko,
       lanzaboote,
       sops-nix,
@@ -65,6 +70,19 @@
             dms-plugin-registry
             nix-flatpak
             dotfiles
+            ;
+        };
+      };
+      darwinHomeManagerModule = {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.sharedModules = [ sops-nix.homeManagerModules.sops ];
+        home-manager.extraSpecialArgs = {
+          inherit
+            dms
+            dgop
+            dms-plugin-registry
+            nix-flatpak
             ;
         };
       };
@@ -117,5 +135,13 @@
             ./nix/images/pi5-bootstrap.nix
           ];
         }).config.system.build.sdImage;
+
+      darwinConfigurations.mbp-personal = darwin.lib.darwinSystem {
+        modules = [
+          home-manager.darwinModules.home-manager
+          darwinHomeManagerModule
+          ./nix/hosts/mbp-personal/default.nix
+        ];
+      };
     };
 }
