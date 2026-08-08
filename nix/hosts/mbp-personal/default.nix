@@ -20,7 +20,6 @@
       "Final Cut Pro" = 424389933;
     };
     casks = [
-      "podman-desktop"
       "google-drive"
       "ledger-wallet"
       "obs"
@@ -41,8 +40,7 @@
     imports = [ ../../home/darwin.nix ];
     home.stateVersion = "26.05";
     # sops.defaultSopsFile = ../../secrets/desktop.yaml;
-    dotfiles.sops.yubikeyIdentity =
-      "AGE-PLUGIN-YUBIKEY-19TEYVQ5ZLFFEFYSGZHTZ3";
+    dotfiles.sops.yubikeyIdentity = "AGE-PLUGIN-YUBIKEY-19TEYVQ5ZLFFEFYSGZHTZ3";
     programs.zsh.shellAliases.drs = "sudo darwin-rebuild switch --flake ~/Repos/dotfiles#mbp-personal";
     programs.git.settings.user = {
       name = "BennyDeeDev";

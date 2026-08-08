@@ -4,7 +4,7 @@
   home.packages = [ pkgs.opencode ];
 
   home.sessionVariables = {
-    OPENCODE_MODEL = "opencode-go/gpt-5.6-luna";
+    OPENCODE_MODEL = "openai/gpt-5.6-luna#xhigh";
   };
 
   xdg.configFile."opencode/opencode.json".source = ../../opencode/opencode.json;

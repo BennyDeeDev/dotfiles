@@ -19,9 +19,16 @@
     dock = {
       autohide = true;
       mru-spaces = false;
+      show-recents = false;
     };
 
     finder = {
+      _FXShowPosixPathInTitle = true;
+      AppleShowAllExtensions = true;
+      FXEnableExtensionChangeWarning = false;
+      QuitMenuItem = true;
+      ShowPathbar = true;
+      ShowStatusBar = true;
       FXDefaultSearchScope = "SCcf";
       FXPreferredViewStyle = "Nlsv";
       NewWindowTarget = "Home";
@@ -83,7 +90,11 @@
             enabled = true;
             value = {
               type = "standard";
-              parameters = [ 65535 122 8388608 ];
+              parameters = [
+                65535
+                122
+                8388608
+              ];
             };
           };
 
@@ -92,7 +103,11 @@
             enabled = true;
             value = {
               type = "standard";
-              parameters = [ 65535 120 8388608 ];
+              parameters = [
+                65535
+                120
+                8388608
+              ];
             };
           };
 
@@ -101,7 +116,11 @@
             enabled = true;
             value = {
               type = "standard";
-              parameters = [ 65535 99 8388608 ];
+              parameters = [
+                65535
+                99
+                8388608
+              ];
             };
           };
 
@@ -110,7 +129,11 @@
             enabled = true;
             value = {
               type = "standard";
-              parameters = [ 65535 118 8388608 ];
+              parameters = [
+                65535
+                118
+                8388608
+              ];
             };
           };
 
@@ -119,7 +142,11 @@
             enabled = true;
             value = {
               type = "standard";
-              parameters = [ 65535 96 8388608 ];
+              parameters = [
+                65535
+                96
+                8388608
+              ];
             };
           };
 
@@ -128,7 +155,11 @@
             enabled = true;
             value = {
               type = "standard";
-              parameters = [ 65535 97 8388608 ];
+              parameters = [
+                65535
+                97
+                8388608
+              ];
             };
           };
 
@@ -137,7 +168,11 @@
             enabled = true;
             value = {
               type = "standard";
-              parameters = [ 65535 98 8388608 ];
+              parameters = [
+                65535
+                98
+                8388608
+              ];
             };
           };
 
@@ -146,7 +181,11 @@
             enabled = true;
             value = {
               type = "standard";
-              parameters = [ 65535 100 8388608 ];
+              parameters = [
+                65535
+                100
+                8388608
+              ];
             };
           };
 
@@ -155,7 +194,11 @@
             enabled = true;
             value = {
               type = "standard";
-              parameters = [ 65535 101 8388608 ];
+              parameters = [
+                65535
+                101
+                8388608
+              ];
             };
           };
 
@@ -164,7 +207,11 @@
             enabled = true;
             value = {
               type = "standard";
-              parameters = [ 65535 109 8388608 ];
+              parameters = [
+                65535
+                109
+                8388608
+              ];
             };
           };
         };
