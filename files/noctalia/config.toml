@@ -32,7 +32,7 @@ order = [ "default" ]
         id = "g2"
         members = [ "audio_visualizer", "media" ]
         opacity = 1.0
-        padding = 10.0
+        padding = 15.0
 
 [[control_center.shortcuts]]
 type = "caffeine"
@@ -54,6 +54,7 @@ pinned = [ "brave-browser", "com.mitchellh.ghostty", "code", "spotify", "org.gno
 reserve_space = false
 
 [hooks]
+started = "noctalia msg wallpaper-random"
 theme_mode_changed = "noctalia msg wallpaper-random"
 
 [idle]
@@ -126,7 +127,7 @@ panel_anchor_bar = "default"
 [theme]
 builtin = "Catppuccin"
 community_palette = "Catppuccin Mocha Mauve-Lavender"
-mode = "dark"
+mode = "auto"
 source = "community"
 
     [theme.templates]
@@ -134,17 +135,17 @@ source = "community"
     enable_community_templates = false
 
 [wallpaper]
-directory_dark = "/home/benjamin/Repos/nix-config-noctalia-niri/files/noctalia/dark"
-directory_light = "/home/benjamin/Repos/nix-config-noctalia-niri/files/noctalia/light"
+directory_dark = "/home/benjamin/Repos/nix-config/files/noctalia/dark"
+directory_light = "/home/benjamin/Repos/nix-config/files/noctalia/light"
 
     [wallpaper.default]
-    path = "/home/benjamin/Repos/nix-config-noctalia-niri/files/noctalia/dark/dark.png"
+    path = "/home/benjamin/Repos/nix-config/files/noctalia/dark/dark.png"
 
     [wallpaper.last]
-    path = "/home/benjamin/Repos/nix-config-noctalia-niri/files/noctalia/dark/dark.png"
+    path = "/home/benjamin/Repos/nix-config/files/noctalia/dark/dark.png"
 
     [wallpaper.monitors.DP-1]
-    path = "/home/benjamin/Repos/nix-config-noctalia-niri/files/noctalia/dark/dark.png"
+    path = "/home/benjamin/Repos/nix-config/files/noctalia/dark/dark.png"
 
 [widget.Session2]
 font_scale = 1.25
