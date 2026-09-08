@@ -3,7 +3,6 @@
   lanzaboote,
   noctalia,
   noctalia-greeter,
-  nixos-hardware,
   sops-nix,
   ...
 }:
@@ -19,7 +18,6 @@
     inherit lanzaboote;
   };
   macos = import ./macos { inherit home-manager; };
-  pi5 = import ./pi5 { inherit nixos-hardware; };
-  pi5Image = import ./pi5-image { inherit nixos-hardware sops-nix; };
+  pi5 = import ./pi5;
   terminal = import ./terminal;
 }

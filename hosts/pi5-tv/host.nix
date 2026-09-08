@@ -20,9 +20,23 @@ inputs@{ ... }:
       };
     in
     {
+      nixpkgs.overlays = [ (import ../../overlays/execline-cross.nix) ];
       networking.hostName = "pi5-tv";
       system.stateVersion = "26.05";
-      boot.loader.generic-extlinux-compatible.useGenerationDeviceTree = false;
+      hardware.raspberry-pi.firmware = {
+        enable = true;
+        uboot.enable = true;
+      };
+      fileSystems."/boot/firmware" = {
+        device = "/dev/disk/by-label/FIRMWARE";
+        fsType = "vfat";
+      };
+
+      # linux-rpi does not provide tpm-crb, but NixOS systemd-initrd
+      # assumes it exists on aarch64 when TPM2 support is enabled.
+      # https://github.com/NixOS/nixpkgs/issues/344963
+      # https://github.com/NixOS/nixpkgs/pull/346547
+      boot.initrd.systemd.tpm2.enable = false;
       boot.kernelParams = [ "video=HDMI-A-1:1920x1080@60D" ];
       boot.kernelPackages = lib.mkForce (pkgs.linuxPackagesFor rpiKernel4k);
     };

@@ -108,16 +108,28 @@ as the `tv` user's `android-tv-apps.service`.
 Run this from the x86 Linux desktop after the Pi is reachable over SSH:
 
 ```bash
-# Build and activate the TV configuration.
+# Cross-build and activate the TV configuration.
 nixos-rebuild switch \
   --no-reexec \
   --flake .#pi5-tv-cross \
-  --target-host benjamin@192.168.178.163 \
+  --target-host benjamin@pi5-bootstrap.fritz.box \
   --sudo \
   --ask-elevate-password
 ```
 
-To rebuild directly on the Pi instead, run this on the Pi:
+To build natively on the Pi while starting from the desktop:
+
+```bash
+nixos-rebuild switch \
+  --no-reexec \
+  --flake .#pi5-tv \
+  --build-host benjamin@pi5-bootstrap.fritz.box \
+  --target-host benjamin@pi5-bootstrap.fritz.box \
+  --sudo \
+  --ask-elevate-password
+```
+
+To build and activate directly on the Pi, run this on the Pi:
 
 ```bash
 sudo nixos-rebuild switch --flake .#pi5-tv
