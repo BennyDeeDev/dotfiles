@@ -1,0 +1,10 @@
+[
+  {
+    "title": "Stremio",
+    "target": "/etc/profiles/per-user/benjamin/bin/stremio"
+  },
+  {
+    "title": "Vacuum Tube",
+    "target": "/etc/profiles/per-user/benjamin/bin/VacuumTube"
+  }
+]
