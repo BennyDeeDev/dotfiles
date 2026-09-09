@@ -5,7 +5,7 @@ let
 in
 {
   nixos =
-    { modulesPath, ... }:
+    { modulesPath, pkgs, ... }:
     {
       imports = [
         profiles.nixos.nixos
@@ -13,9 +13,9 @@ in
         "${modulesPath}/installer/sd-card/sd-image-aarch64.nix"
       ];
 
-      networking.hostName = "pi5";
+      boot.kernelPackages = pkgs.linuxPackages;
 
-      # Passwordless wheel only on the bootstrap image
+      networking.hostName = "pi5-bootstrap";
       security.sudo.wheelNeedsPassword = false;
     };
 }
