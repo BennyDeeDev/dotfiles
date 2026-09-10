@@ -33,6 +33,7 @@ in
       ryujinx.homeManager
       steam.homeManager
       steam-rom-manager.homeManager
+      waydroid.homeManager
       windows.homeManager
     ];
   };
