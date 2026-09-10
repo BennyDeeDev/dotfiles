@@ -9,6 +9,8 @@
         desktopSession = "niri";
       };
 
+      nixpkgs.overlays = [ (import ../../../overlays/gamescope-session.nix) ];
+
       programs.noctalia-greeter.enable = lib.mkForce false;
 
       programs.steam = {

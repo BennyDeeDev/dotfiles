@@ -1,8 +1,18 @@
 [
   {
     "title": "Stremio",
-    "target": "/etc/profiles/per-user/benjamin/bin/stremio",
-    "launchOptions": "DISABLE_GAMESCOPE_WSI=1 %command%"
+    "target": "/etc/profiles/per-user/benjamin/bin/waydroid-steam-launcher",
+    "launchOptions": "com.stremio.one"
+  },
+  {
+    "title": "SmartTube",
+    "target": "/etc/profiles/per-user/benjamin/bin/waydroid-steam-launcher",
+    "launchOptions": "org.smarttube.stable"
+  },
+  {
+    "title": "Nuvio TV",
+    "target": "/etc/profiles/per-user/benjamin/bin/waydroid-steam-launcher",
+    "launchOptions": "com.nuvio.tv"
   },
   {
     "title": "Vacuum Tube",
