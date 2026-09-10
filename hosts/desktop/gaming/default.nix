@@ -9,6 +9,7 @@ let
   ryujinx = import ./ryujinx.nix;
   steam = import ./steam.nix;
   steam-rom-manager = import ./steam-rom-manager.nix;
+  waydroid = import ./waydroid.nix;
   windows = import ./windows.nix;
 in
 {
@@ -17,6 +18,7 @@ in
       jovian.nixosModules.jovian
       flatpak.nixos
       steam.nixos
+      waydroid.nixos
       windows.nixos
     ];
   };

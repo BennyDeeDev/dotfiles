@@ -18,6 +18,11 @@
         swappy.enable = true;
       };
 
+      dconf.settings."com/stremio/stremio" = {
+        "remember-window-state" = true;
+        "window-fullscreen" = true;
+      };
+
       home.packages = with pkgs; [
         adw-gtk3
         baobab

@@ -1,10 +1,12 @@
 [
   {
     "title": "Stremio",
-    "target": "/etc/profiles/per-user/benjamin/bin/stremio"
+    "target": "/etc/profiles/per-user/benjamin/bin/stremio",
+    "launchOptions": "DISABLE_GAMESCOPE_WSI=1 %command%"
   },
   {
     "title": "Vacuum Tube",
-    "target": "/etc/profiles/per-user/benjamin/bin/VacuumTube"
+    "target": "/etc/profiles/per-user/benjamin/bin/VacuumTube",
+    "launchOptions": "env -u LD_PRELOAD %command% --ozone-platform=x11"
   }
 ]
