@@ -8,6 +8,7 @@
 }:
 
 {
+  apps = import ./apps;
   nixos = import ./nixos { inherit sops-nix; };
   desktop = import ./desktop {
     inherit

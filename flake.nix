@@ -73,7 +73,10 @@
       };
 
       homeConfigurations.deck = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
         extraSpecialArgs = {
           nixConfig = "/home/deck/Repos/nix-config";
           flakeHost = "deck";

@@ -9,7 +9,10 @@ in
   homeManager =
     { ... }:
     {
-      imports = [ profiles.terminal.homeManager ];
+      imports = [
+        profiles.apps.homeManager
+        profiles.terminal.homeManager
+      ];
 
       home = {
         username = "deck";
