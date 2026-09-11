@@ -32,6 +32,7 @@
             ff = "fzf --preview 'bat --style=numbers --color=always {}'";
             nrs = "sudo nixos-rebuild switch --flake ${nixConfig}#${flakeHost}";
             drs = "sudo darwin-rebuild switch --flake ${nixConfig}#${flakeHost}";
+            hms = "home-manager switch --flake ${nixConfig}#${flakeHost}";
             ".." = "cd ..";
             "..." = "cd ../..";
             "...." = "cd ../../..";

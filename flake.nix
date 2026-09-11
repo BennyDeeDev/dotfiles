@@ -42,6 +42,7 @@
 
   outputs =
     inputs@{
+      home-manager,
       nixpkgs,
       darwin,
       ...
@@ -69,6 +70,15 @@
           system = "aarch64-linux";
           modules = [ (import ./hosts/pi5-kiosk inputs).nixos ];
         };
+      };
+
+      homeConfigurations.deck = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = {
+          nixConfig = "/home/deck/Repos/nix-config";
+          flakeHost = "deck";
+        };
+        modules = [ (import ./hosts/deck inputs).homeManager ];
       };
 
       darwinConfigurations.mbp-personal = darwin.lib.darwinSystem {
