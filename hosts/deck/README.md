@@ -21,6 +21,25 @@ home-manager switch --flake ~/Repos/nix-config#deck
 The configuration currently imports the shared terminal profile. It can be
 reduced later if its packages use more storage than desired.
 
+## Default shell
+
+Home Manager installs and configures Zsh, but standalone Home Manager does not
+change SteamOS's login shell. Set Zsh as the `deck` user's login shell once:
+
+```bash
+chsh -s /bin/zsh
+```
+
+Log out and back in afterward. Verify the result with:
+
+```bash
+getent passwd deck
+printf '%s\n' "$SHELL"
+```
+
+Use `/bin/zsh` rather than `/home/deck/.nix-profile/bin/zsh` as the login shell;
+the Nix profile path changes between Home Manager generations.
+
 ## Nix GPU setup
 
 The Deck keeps SteamOS and its native kernel/GPU drivers. Nix graphical
