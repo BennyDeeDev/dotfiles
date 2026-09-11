@@ -2,7 +2,6 @@
   homeManager =
     {
       config,
-      nixConfig,
       lib,
       pkgs,
       ...

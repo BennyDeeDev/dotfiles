@@ -2,13 +2,12 @@
   homeManager =
     {
       config,
-      nixConfig,
       pkgs,
       ...
     }:
     let
       layerJson = "${pkgs.lsfg-vk}/share/vulkan/implicit_layer.d/VkLayer_LS_frame_generation.json";
-      configFile = "${nixConfig}/files/gaming/lsfg-vk/conf.toml";
+      configFile = ../../../files/gaming/lsfg-vk/conf.toml;
     in
     {
       home.packages = [ pkgs.lsfg-vk ];
@@ -17,10 +16,10 @@
 
       services.flatpak.overrides = {
         "io.github.ryubing.Ryujinx".Context.filesystems = [
-          "${nixConfig}/files/gaming/lsfg-vk:ro"
+          "${../../../files/gaming/lsfg-vk}:ro"
         ];
         "com.usebottles.bottles".Context.filesystems = [
-          "${nixConfig}/files/gaming/lsfg-vk:ro"
+          "${../../../files/gaming/lsfg-vk}:ro"
         ];
       };
       home.file = {
