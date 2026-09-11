@@ -25,10 +25,7 @@ in
   homeManager =
     { pkgs, ... }:
     {
-      targets.genericLinux = {
-        enable = true;
-        gpu.enable = false;
-      };
+      targets.genericLinux.enable = true;
 
       nix = {
         package = pkgs.nix;
