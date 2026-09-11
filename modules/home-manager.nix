@@ -25,6 +25,7 @@ in
   };
 
   homeManager = {
+    news.display = "silent";
     programs.home-manager.enable = true;
   };
 }

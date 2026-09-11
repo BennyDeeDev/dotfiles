@@ -1,10 +1,13 @@
 let
   nixSettings = {
-    auto-optimise-store = true;
     experimental-features = [
       "nix-command"
       "flakes"
     ];
+  };
+
+  nixSystemSettings = nixSettings // {
+    auto-optimise-store = true;
   };
 
   nixGc = {
@@ -15,13 +18,18 @@ let
 
   common = {
     nixpkgs.config.allowUnfree = true;
-    nix.settings = nixSettings;
+    nix.settings = nixSystemSettings;
   };
 in
 {
   homeManager =
     { pkgs, ... }:
     {
+      targets.genericLinux = {
+        enable = true;
+        gpu.enable = false;
+      };
+
       nix = {
         package = pkgs.nix;
         settings = nixSettings;

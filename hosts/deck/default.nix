@@ -1,8 +1,10 @@
 inputs@{
+  home-manager,
   ...
 }:
 
 let
+  homeManagerModule = import ../../modules/home-manager.nix { inherit home-manager; };
   nixModule = import ../../modules/nix.nix;
   profiles = import ../../profiles inputs;
 in
@@ -11,6 +13,7 @@ in
     { ... }:
     {
       imports = [
+        homeManagerModule.homeManager
         nixModule.homeManager
         profiles.apps.homeManager
         profiles.terminal.homeManager
@@ -22,6 +25,5 @@ in
         stateVersion = "26.05";
       };
 
-      programs.home-manager.enable = true;
     };
 }
