@@ -3,6 +3,7 @@ inputs@{
 }:
 
 let
+  nixModule = import ../../modules/nix.nix;
   profiles = import ../../profiles inputs;
 in
 {
@@ -10,6 +11,7 @@ in
     { ... }:
     {
       imports = [
+        nixModule.homeManager
         profiles.apps.homeManager
         profiles.terminal.homeManager
       ];
