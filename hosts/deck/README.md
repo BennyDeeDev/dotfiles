@@ -114,16 +114,19 @@ remains unchanged.
 
 ### Native 5K
 
-Native 5K was tested with HBR3, 8 bpc, DSC disabled, and
-`5120x2880@60` successfully selected by KDE, but the display remained black.
+Native `5120x2880@60` is broken on SteamOS 3.8 with the Linux 6.16
+Neptune kernel, where the Studio Display black-screens even though KDE accepts
+the mode.
 
-The Studio Display uses an unusual 2x1 tiled DisplayPort layout. AMD added
-specific upstream fixes for it in 2026:
+On SteamOS 3.9 Preview with Valve's Linux 7.2 Neptune kernel, native 5K works.
+The working link uses:
 
-- [`drm/amd/display: hide Apple Studio Display secondary tile`](https://www.mail-archive.com/amd-gfx%40lists.freedesktop.org/msg147305.html)
-- [`drm/amd/display: Prune per-tile Timing from Apple Studio Display Primary Tile`](https://mail-archive.com/amd-gfx%40lists.freedesktop.org/msg147688.html)
-
-The fixes are backported to Linux `6.18.50+` and `7.2.4+`.
+```text
+4 lanes × HBR2
+10 bpc
+DSC enabled
+5120x2880@60
+```
 
 ## After SteamOS updates
 
