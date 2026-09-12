@@ -15,6 +15,7 @@
         { ... }:
         {
           imports = [
+            profiles.apps.homeManager
             profiles.desktop.homeManager
             profiles.terminal.homeManager
             sopsModule.homeManager
