@@ -23,8 +23,8 @@
       kwin = {
         effects.desktopSwitching.animation = "off";
         virtualDesktops = {
-          number = 5;
-          rows = 1;
+          number = 10;
+          rows = 2;
         };
       };
     };
