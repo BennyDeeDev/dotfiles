@@ -75,7 +75,10 @@ in
               enable = true;
               format = "longDate";
             };
-            time.showSeconds = "never";
+            time = {
+              format = "24h";
+              showSeconds = "never";
+            };
             font = {
               family = "Noto Sans";
               size = 11;

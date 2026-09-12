@@ -6,6 +6,7 @@
       plasma-manager.homeModules.plasma-manager
       ./appearance.nix
       ./panels.nix
+      ./shortcuts.nix
       ./virtual-desktops.nix
       ./window-rules.nix
     ];
@@ -13,6 +14,14 @@
     programs.plasma = {
       enable = true;
       overrideConfig = true;
+
+      input.keyboard = {
+        repeatRate = 25;
+        repeatDelay = 150;
+      };
+
+      session.sessionRestore.restoreOpenApplicationsOnLogin = "onLastLogout";
+      kwin.effects.desktopSwitching.animation = "off";
     };
   };
 }

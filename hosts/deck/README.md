@@ -43,6 +43,26 @@ printf '%s\n' "$SHELL"
 Use `/bin/zsh` rather than `/home/deck/.nix-profile/bin/zsh` as the login shell;
 the Nix profile path changes between Home Manager generations.
 
+## ZSA/Oryx
+
+SteamOS already grants the active desktop user access to USB and `hidraw`
+devices through its generic `uaccess` udev rules. This is sufficient for Oryx
+web flashing and live training with ZSA keyboards.
+
+The relevant default rule is `/usr/lib/udev/rules.d/70-steam-jupiter-input.rules`:
+
+```udev
+# USB devices and topological children
+SUBSYSTEMS=="usb", TAG+="uaccess"
+
+# HID devices over hidraw
+KERNEL=="hidraw*", TAG+="uaccess"
+```
+
+`systemd-logind` uses the `uaccess` tag to grant the active desktop user
+temporary access to the device. This is why the ZSA `50-zsa.rules` file and
+the `plugdev` group are not needed on SteamOS.
+
 ## Nix GPU setup
 
 The Deck keeps SteamOS and its native kernel/GPU drivers. Nix graphical
