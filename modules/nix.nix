@@ -25,8 +25,6 @@ in
   homeManager =
     { pkgs, ... }:
     {
-      targets.genericLinux.enable = true;
-
       nix = {
         package = pkgs.nix;
         settings = nixSettings;

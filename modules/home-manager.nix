@@ -26,6 +26,7 @@ in
 
   homeManager = {
     news.display = "silent";
+    targets.genericLinux.enable = true;
     programs.home-manager.enable = true;
   };
 }
