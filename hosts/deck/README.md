@@ -124,3 +124,15 @@ specific upstream fixes for it in 2026:
 - [`drm/amd/display: Prune per-tile Timing from Apple Studio Display Primary Tile`](https://mail-archive.com/amd-gfx%40lists.freedesktop.org/msg147688.html)
 
 The fixes are backported to Linux `6.18.50+` and `7.2.4+`.
+
+## After SteamOS updates
+
+A SteamOS update may break the Nix integration even though the Nix store and
+Home Manager configuration survive.
+
+SteamOS keeps `/nix` on persistent storage, but OS updates can replace the
+system-side shell and systemd integration used by Nix.
+
+The simplest fix is to **rerun the same Nix installer used for the original
+installation**. This repaired the installation without removing the existing
+Nix store or Home Manager state.
