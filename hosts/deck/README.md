@@ -18,6 +18,30 @@ After activation, use the generated `hms` alias or run:
 home-manager switch -b hm-backup --flake ~/Repos/nix-config#deck
 ```
 
+## YubiKey age support
+
+SteamOS includes PC/SC but not the optional CCID reader driver. Install the
+driver in the current SteamOS image before using YubiKey-backed age identities:
+
+```bash
+sudo steamos-readonly disable
+sudo pacman-key --init
+sudo pacman-key --populate archlinux holo
+sudo pacman -S --needed ccid
+sudo steamos-readonly enable
+sudo systemctl enable --now pcscd.socket
+sudo systemctl restart pcscd.service
+```
+
+Verify that the reader is available:
+
+```bash
+age-plugin-yubikey --list-all
+```
+
+The `ccid` package is installed outside Home Manager and may need to be
+reinstalled after a SteamOS image update.
+
 ## Plasma session restore
 
 KDE session restore is enabled. On Wayland, applications may restore without

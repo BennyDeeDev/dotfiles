@@ -3,11 +3,11 @@
         "parserType": "Glob",
         "configTitle": "Nintendo Switch - Ryujinx(Flatpak)",
         "steamDirectory": "${steamdirglobal}",
-        "romDirectory": "/mnt/games/Switch",
+        "romDirectory": "${romsdirglobal}/Switch",
         "steamCategories": [
             "Switch"
         ],
-        "executableArgs": "run io.github.ryubing.Ryujinx --fullscreen \"${filePath}\"",
+        "executableArgs": "flatpak run io.github.ryubing.Ryujinx --fullscreen \"${filePath}\"",
         "executableModifier": "\"${exePath}\"",
         "startInDirectory": "",
         "titleModifier": "${fuzzyTitle}",
@@ -29,7 +29,7 @@
             "glob": "${title} \\[0100*000\\]\\[v0\\]*.@(nsp|NSP|xci|XCI|nca|NCA|nro|NRO|nso|NSO)"
         },
         "executable": {
-            "path": "/run/current-system/sw/bin/flatpak",
+            "path": "/usr/bin/env",
             "shortcutPassthrough": false,
             "appendArgsToExecutable": true
         },
@@ -95,11 +95,11 @@
         "parserType": "Glob",
         "configTitle": "PC - Bottles (Flatpak)",
         "steamDirectory": "${steamdirglobal}",
-        "romDirectory": "/mnt/games/PC",
+        "romDirectory": "${romsdirglobal}/PC",
         "steamCategories": [
             "PC - Bottles (Flatpak)"
         ],
-        "executableArgs": "run --command=bottles-cli --unshare=network com.usebottles.bottles run -b \"Games Exe Runner Proton\" -e \"${filePath}\"",
+        "executableArgs": "flatpak run --command=bottles-cli --unshare=network com.usebottles.bottles run -b \"Games Exe Runner Proton\" -e \"${filePath}\"",
         "executableModifier": "\"${exePath}\"",
         "startInDirectory": "",
         "titleModifier": "${/:/|${title}|}",
@@ -122,7 +122,7 @@
             "glob": "${title}/{,!(NoDVD|_Redist|_CommonRedist|EasyAntiCheat|BattlEye|exec|Engine|AdvGuide|ArtbookOST|ERD_ArtbookOST|Gameface|Crashpad)/}!(unins*|*[Cc]rash*|*[Rr]eport*|crs-*|*[Ss]etup*|patcher*|*[Bb]enchmark*|*[Ll]anguage*|*[Mm]onitor*|*_EAC|RapidCRC*|*[Ss]hipping*|*DED*|*[Pp]rotected*|dxweb*|?*[Ll]auncher*|*32|*.profile).exe"
         },
         "executable": {
-            "path": "/run/current-system/sw/bin/flatpak",
+            "path": "/usr/bin/env",
             "shortcutPassthrough": false,
             "appendArgsToExecutable": true
         },
@@ -211,7 +211,7 @@
             ]
         },
         "parserInputs": {
-            "manualManifests": "/home/benjamin/.config/steam-rom-manager/userData/manifests/media"
+            "manualManifests": "${srmdir}/userData/manifests/media"
         },
         "executable": {
             "path": "",
@@ -303,7 +303,7 @@
             ]
         },
         "parserInputs": {
-            "manualManifests": "/home/benjamin/.config/steam-rom-manager/userData/manifests/system"
+            "manualManifests": "${srmdir}/userData/manifests/system"
         },
         "executable": {
             "path": "",

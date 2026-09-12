@@ -14,12 +14,10 @@
           ExecStartPost = "${lib.getExe' config.systemd.package "systemctl"} reboot";
         };
         script = ''
-          boot_number="$(
-            ${lib.getExe pkgs.efibootmgr} |
-              ${lib.getExe pkgs.gnugrep} -m1 -E \
-                '^Boot[[:xdigit:]]{4}[*]?[[:space:]]+Windows Boot Manager([[:space:]]|$)' |
-              ${lib.getExe' pkgs.coreutils "cut"} -c 5-8
-          )"
+          boot_number="$(${lib.getExe pkgs.efibootmgr} |
+            ${lib.getExe pkgs.gnugrep} -m1 -E \
+              '^Boot[[:xdigit:]]{4}[*]?[[:space:]]+Windows Boot Manager([[:space:]]|$)' |
+            ${lib.getExe' pkgs.coreutils "cut"} -c 5-8)"
 
           if [[ -z "$boot_number" ]]; then
             printf 'Windows Boot Manager EFI entry not found\n' >&2
