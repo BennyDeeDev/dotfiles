@@ -10,6 +10,9 @@
       ./window-rules.nix
     ];
 
-    programs.plasma.enable = true;
+    programs.plasma = {
+      enable = true;
+      overrideConfig = true;
+    };
   };
 }
