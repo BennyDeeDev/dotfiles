@@ -1,8 +1,5 @@
 # Steam Deck Home Manager
 
-This output keeps SteamOS intact and manages only the `deck` user's home with
-Home Manager. It does not install NixOS, change the kernel, or use Jovian-NixOS.
-
 ## First activation
 
 From the checkout on the Steam Deck:
@@ -21,8 +18,13 @@ After activation, use the generated `hms` alias or run:
 home-manager switch -b hm-backup --flake ~/Repos/nix-config#deck
 ```
 
-The configuration currently imports the shared terminal profile. It can be
-reduced later if its packages use more storage than desired.
+## Plasma session restore
+
+KDE session restore is enabled. On Wayland, applications may restore without
+their previous virtual desktop, size, or position because support depends on
+KWin and each application. See KDE's [Wayland session restore notes](https://blogs.kde.org/2025/04/12/this-week-in-plasma-the-beginnings-of-wayland-session-restore/),
+[known issues](https://community.kde.org/Plasma/Wayland_Known_Significant_Issues),
+and [bug 421870](https://bugs.kde.org/show_bug.cgi?id=421870)
 
 ## Default shell
 

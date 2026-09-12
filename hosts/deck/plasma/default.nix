@@ -7,8 +7,6 @@
       ./appearance.nix
       ./panels.nix
       ./shortcuts.nix
-      ./virtual-desktops.nix
-      ./window-rules.nix
     ];
 
     programs.plasma = {
@@ -21,7 +19,14 @@
       };
 
       session.sessionRestore.restoreOpenApplicationsOnLogin = "onLastLogout";
-      kwin.effects.desktopSwitching.animation = "off";
+
+      kwin = {
+        effects.desktopSwitching.animation = "off";
+        virtualDesktops = {
+          number = 5;
+          rows = 1;
+        };
+      };
     };
   };
 }
